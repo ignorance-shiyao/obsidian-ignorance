@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.6
+Smaller theme.css (about 147 KB): the styles for features that belong to the Ignorance Advanced plugin (diagrams, charts, containers, slides, reader, paged view, export) now ship with the plugin, 1.0.4 or later. Install the plugin to keep those looks.
+
 ## 1.0.5
 Mermaid diagram colors no longer rely on `!important`; Ignorance Advanced 1.0.3 releases the inline styles Mermaid sets so plain selectors win.
 
