@@ -61,6 +61,10 @@ The theme works on its own. Add **[Ignorance Advanced](https://community.obsidia
 scripts/install-to-vault.sh /path/to/vault   # copies theme.css and manifest.json into the vault
 ```
 
+## Feedback
+
+If you run into a problem or want a feature, please [open an issue](https://github.com/ignorance-shiyao/obsidian-ignorance/issues). A screenshot and your Obsidian version help a lot.
+
 ## Support
 
 If you enjoy the theme, you can buy me a coffee. Thank you!

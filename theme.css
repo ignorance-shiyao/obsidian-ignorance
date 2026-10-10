@@ -698,14 +698,14 @@ select:focus {
 
 /* Never nest: inside a property row the row is the focus target, so its inputs
    stay completely bare. */
-.metadata-property :is(input, textarea, select, .metadata-input-longtext),
-.metadata-property :is(input, textarea, select):focus,
-.metadata-property :is(input, textarea, select):focus-visible {
-  background: transparent !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-  outline: none !important;
-  box-shadow: none !important;
+.metadata-property :is(input, textarea, select, .metadata-input-longtext):not(#_ib),
+.metadata-property :is(input, textarea, select):focus:not(#_ib),
+.metadata-property :is(input, textarea, select):focus-visible:not(#_ib) {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  box-shadow: none;
 }
 
 .metadata-property {
@@ -756,11 +756,11 @@ input[type="radio"] {
   background-color: var(--ib-accent-solid);
 }
 
-.checkbox-container input[type="checkbox"] {
-  background: transparent !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
+.checkbox-container input[type="checkbox"]:not(#_ib) {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 input[type="range"] {
@@ -943,18 +943,20 @@ kbd,
    instead of nav-folder-collapse-indicator. Replace every folder chevron while
    preserving the native clickable toggle element. */
 .nav-folder-title :is(.nav-folder-collapse-indicator, .collapse-icon, .tree-item-icon) {
-  display: inline-flex !important;
   flex: 0 0 18px;
-  width: 18px !important;
-  height: 18px !important;
   margin-inline-end: 5px;
   align-items: center;
   justify-content: center;
-  color: transparent !important;
+}
+.nav-folder-title :is(.nav-folder-collapse-indicator, .collapse-icon, .tree-item-icon):not(#_ib) {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  color: transparent;
 }
 
-.nav-folder-title :is(.nav-folder-collapse-indicator, .collapse-icon, .tree-item-icon) > svg {
-  display: none !important;
+.nav-folder-title :is(.nav-folder-collapse-indicator, .collapse-icon, .tree-item-icon) > svg:not(#_ib) {
+  display: none;
 }
 
 .nav-folder-title :is(.nav-folder-collapse-indicator, .collapse-icon, .tree-item-icon)::before {
@@ -1085,13 +1087,13 @@ kbd,
    title row, the tab strip and its inner wrapper. Leaving any one unpainted
    lets a lighter system slate show through, so all of them take one surface
    and inactive tabs stay transparent on top of it. */
-.theme-dark .titlebar,
-.theme-dark .titlebar-inner,
-.theme-dark .titlebar-button-container,
-.theme-dark .workspace-tabs.mod-root > .workspace-tab-header-container,
-.theme-dark .workspace-tabs.mod-root > .workspace-tab-header-container > .workspace-tab-header-container-inner,
-.theme-dark .workspace-tab-header-container-inner {
-  background: var(--titlebar-background) !important;
+.theme-dark .titlebar:not(#_ib),
+.theme-dark .titlebar-inner:not(#_ib),
+.theme-dark .titlebar-button-container:not(#_ib),
+.theme-dark .workspace-tabs.mod-root > .workspace-tab-header-container:not(#_ib),
+.theme-dark .workspace-tabs.mod-root > .workspace-tab-header-container > .workspace-tab-header-container-inner:not(#_ib),
+.theme-dark .workspace-tab-header-container-inner:not(#_ib) {
+  background: var(--titlebar-background);
 }
 
 .theme-dark .workspace-tabs.mod-root > .workspace-tab-header-container .workspace-tab-header:not(.is-active) {
@@ -1119,11 +1121,11 @@ kbd,
   box-shadow: var(--ib-shadow-drawer);
 }
 
-.workspace-drawer-tab-options .workspace-tab-header,
-.workspace-drawer-tab-options .workspace-tab-header.is-active {
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
+.workspace-drawer-tab-options .workspace-tab-header:not(#_ib),
+.workspace-drawer-tab-options .workspace-tab-header.is-active:not(#_ib) {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
 }
 
 .workspace-drawer-tab-options .workspace-tab-header-inner {
@@ -1199,8 +1201,14 @@ body.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile {
 .is-hidden-frameless:not(.is-fullscreen) .titlebar,
 .is-hidden-frameless:not(.is-fullscreen) .titlebar-inner {
   color: var(--titlebar-text-color-focused);
-  background: var(--background-primary) !important;
-  border-bottom-color: var(--background-modifier-border) !important;
+}
+.titlebar:not(#_ib),
+.titlebar-inner:not(#_ib),
+.titlebar-button-container:not(#_ib),
+.is-hidden-frameless:not(.is-fullscreen) .titlebar:not(#_ib),
+.is-hidden-frameless:not(.is-fullscreen) .titlebar-inner:not(#_ib) {
+  background: var(--background-primary);
+  border-bottom-color: var(--background-modifier-border);
 }
 
 .workspace-tabs.mod-sidedock > .workspace-tab-header-container {
@@ -1278,8 +1286,17 @@ body.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile {
 .markdown-source-view.mod-cm6 .cm-url,
 .markdown-source-view.mod-cm6 .cm-hmd-internal-link .cm-underline,
 .markdown-source-view.mod-cm6 .cm-link .cm-underline {
-  color: var(--ib-link) !important;
   text-decoration: none;
+}
+.markdown-rendered a:not(#_ib),
+.markdown-rendered .internal-link:not(#_ib),
+.markdown-rendered .external-link:not(#_ib),
+.markdown-source-view.mod-cm6 .cm-hmd-internal-link:not(#_ib),
+.markdown-source-view.mod-cm6 .cm-link:not(#_ib),
+.markdown-source-view.mod-cm6 .cm-url:not(#_ib),
+.markdown-source-view.mod-cm6 .cm-hmd-internal-link .cm-underline:not(#_ib),
+.markdown-source-view.mod-cm6 .cm-link .cm-underline:not(#_ib) {
+  color: var(--ib-link);
 }
 
 .markdown-rendered a:hover {
@@ -1294,17 +1311,14 @@ body.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile {
 .markdown-source-view.mod-cm6 .cm-strikethrough,
 .markdown-source-view.mod-cm6 .cm-formatting-strikethrough {
   color: var(--ib-text-muted);
-  text-decoration-line: line-through;
-  text-decoration-color: color-mix(in srgb, var(--ib-accent-brand) 58%, transparent);
-  text-decoration-thickness: 1.5px;
-  text-decoration-skip-ink: none;
+  text-decoration: line-through color-mix(in srgb, var(--ib-accent-brand) 58%, transparent) 1.5px;
 }
 
 .theme-dark .markdown-rendered del,
 .theme-dark .markdown-source-view.mod-cm6 .cm-strikethrough,
 .theme-dark .markdown-source-view.mod-cm6 .cm-formatting-strikethrough {
   color: var(--ib-text-muted);
-  text-decoration-color: color-mix(in srgb, var(--ib-text-accent) 62%, transparent);
+  text-decoration: line-through color-mix(in srgb, var(--ib-text-accent) 62%, transparent) 1.5px;
 }
 
 .markdown-rendered mark,
@@ -1314,8 +1328,6 @@ body.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile {
   border-radius: var(--ib-radius-xs) var(--ib-radius-xs) 0 0;
   box-shadow: inset 0 -2px 0 var(--ib-accent-brand);
   padding: 0.02em 0.08em;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
 }
 
 .theme-dark .markdown-rendered mark,
@@ -1426,7 +1438,7 @@ body.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile {
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-quote:not(.cm-active) .cm-blockquote-border { display: none; }
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-quote-2 { padding-inline-start: calc(var(--ib-quote-inset) * 2) !important; }
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-quote-3 { padding-inline-start: calc(var(--ib-quote-inset) * 3) !important; }
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-quote-4 { padding-inline-start: calc(var(--ib-quote-inset) * 4) !important; }
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-quote-4:not(#_ib) { padding-inline-start: calc(var(--ib-quote-inset) * 4); }
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-quote-2:not(.cm-active) {
   background-image: linear-gradient(var(--ib-accent-brand), var(--ib-accent-brand));
   background-repeat: no-repeat;
@@ -1498,9 +1510,9 @@ body.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile {
   line-height: 1.55;
 }
 
-.markdown-rendered thead,
-.markdown-rendered thead tr {
-  background: transparent !important;
+.markdown-rendered thead:not(#_ib),
+.markdown-rendered thead tr:not(#_ib) {
+  background: transparent;
 }
 
 .markdown-rendered thead :is(th, td) {
@@ -1510,17 +1522,20 @@ body.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile {
   letter-spacing: normal;
   text-align: left;
   vertical-align: middle;
-  background: var(--ib-table-heading-bg) !important;
   border-color: var(--ib-divider);
   text-shadow: none;
+}
+
+.markdown-rendered thead :is(th, td):not(#_ib) {
+  background: var(--ib-table-heading-bg);
 }
 
 /* 列显式对齐（:--: / --:）时表头跟随数据列，未指定时保持居中 */
 .markdown-rendered thead :is(th, td)[align="left"] { text-align: left; }
 .markdown-rendered thead :is(th, td)[align="right"] { text-align: right; }
 
-.markdown-rendered thead :is(th, td):empty {
-  background: transparent !important;
+.markdown-rendered thead :is(th, td):empty:not(#_ib) {
+  background: transparent;
 }
 
 .markdown-rendered tbody tr:nth-child(odd) td {
@@ -1607,9 +1622,9 @@ body.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile {
 /* Obsidian may apply its editor code colors after theme variables. Keep the
    light editor block explicitly light so raw Mermaid and fenced text remain readable. */
 /* Obsidian may apply its editor code colors after theme variables; pin both modes. */
-:is(.theme-light, .theme-dark) .markdown-source-view.mod-cm6 :is(.cm-line.HyperMD-codeblock, .HyperMD-codeblock, .cm-formatting-code-block) {
-  color: var(--ib-text-primary) !important;
-  background-color: var(--ib-bg-code-block) !important;
+:is(.theme-light, .theme-dark) .markdown-source-view.mod-cm6 :is(.cm-line.HyperMD-codeblock, .HyperMD-codeblock, .cm-formatting-code-block):not(#_ib) {
+  color: var(--ib-text-primary);
+  background-color: var(--ib-bg-code-block);
 }
 
 .theme-light .markdown-source-view.mod-cm6 .HyperMD-codeblock ::selection {
@@ -1704,11 +1719,15 @@ body.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile {
 :is(.markdown-preview-section, .markdown-rendered) .mermaid:not(.ibm-mermaid-enhanced) svg,
 .markdown-source-view.mod-cm6 .cm-scroller .mermaid:not(.ibm-mermaid-enhanced) svg {
   display: block;
-  width: auto !important;
-  height: auto !important;
-  max-width: 100% !important;
-  max-height: calc(100vh - 230px) !important;
   margin: auto;
+}
+
+:is(.markdown-preview-section, .markdown-rendered) .mermaid:not(.ibm-mermaid-enhanced) svg:not(#_ib),
+.markdown-source-view.mod-cm6 .cm-scroller .mermaid:not(.ibm-mermaid-enhanced) svg:not(#_ib) {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: calc(100vh - 230px);
 }
 
 .theme-dark :is(.markdown-preview-section, .markdown-rendered) .mermaid,
@@ -1803,16 +1822,18 @@ body.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile {
 /* 编辑图片链接时 Obsidian 在下方弹出的预览浮层没有宽度上限，
    没写宽度的大图会按原图尺寸铺满窗口；限制在正文宽度内（插件提供 --ib-text-column）。 */
 .markdown-source-view.mod-cm6 .cm-editor .cm-tooltip.cm-image-reveal-tooltip .image-embed .image-wrapper img {
-  max-width: var(--ib-text-column, var(--file-line-width)) !important;
   height: auto;
+}
+.markdown-source-view.mod-cm6 .cm-editor .cm-tooltip.cm-image-reveal-tooltip .image-embed .image-wrapper img:not(#_ib) {
+  max-width: var(--ib-text-column, var(--file-line-width));
 }
 :is(.markdown-rendered, .markdown-source-view.mod-cm6) .image-embed .image-wrapper {
   display: inline-block;
 }
-:is(.markdown-rendered, .markdown-source-view.mod-cm6) .image-embed:has(img:is([alt="left"], [alt$="|left"], [alt^="left|"])) {
+:is(.markdown-rendered, .markdown-source-view.mod-cm6) .image-embed[data-ib-align="left"] {
   text-align: left;
 }
-:is(.markdown-rendered, .markdown-source-view.mod-cm6) .image-embed:has(img:is([alt="right"], [alt$="|right"], [alt^="right|"])) {
+:is(.markdown-rendered, .markdown-source-view.mod-cm6) .image-embed[data-ib-align="right"] {
   text-align: right;
 }
 
@@ -1821,8 +1842,8 @@ body.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile {
 :is(.markdown-rendered, .markdown-source-view.mod-cm6) .image-embed .image-wrapper {
   position: relative;
 }
-.image-embed:has(.ib-image-actions) > .embed-actions {
-  display: none !important;
+.image-embed.ib-has-image-actions > .embed-actions:not(#_ib) {
+  display: none;
 }
 .ib-image-actions {
   position: absolute;
@@ -1876,7 +1897,7 @@ body.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile {
   background: var(--background-modifier-border);
 }
 @media print {
-  .ib-image-actions { display: none !important; }
+  .ib-image-actions:not(#_ib) { display: none; }
 }
 
 .search-result-file-match {
@@ -1967,8 +1988,8 @@ textarea {
 
   /* !important: the screen rule is gated by body:not(.ib-hide-heading-labels),
      which outranks a plain selector here. */
-  .markdown-rendered :is(h1, h2, h3, h4, h5, h6)::before {
-    content: none !important;
+  .markdown-rendered :is(h1, h2, h3, h4, h5, h6):not(#_ib)::before {
+    content: none;
   }
 
   .markdown-rendered pre {
@@ -2004,11 +2025,11 @@ textarea {
 }
 
 /* Inline code and very long paths/URLs wrap without adding oversized pills. */
-:is(.markdown-rendered:not(.cm-table-widget), .markdown-preview-view) :not(pre) > code,
-.markdown-source-view.mod-cm6 .cm-line :is(.cm-inline-code, .cm-url, .cm-link) {
-  white-space: break-spaces !important;
-  overflow-wrap: anywhere !important;
-  word-break: break-word !important;
+:is(.markdown-rendered:not(.cm-table-widget), .markdown-preview-view) :not(pre) > code:not(#_ib),
+.markdown-source-view.mod-cm6 .cm-line :is(.cm-inline-code, .cm-url, .cm-link):not(#_ib) {
+  white-space: break-spaces;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 /* The user prefers wrapping to horizontal scrolling for fenced source. */
@@ -2053,21 +2074,31 @@ textarea {
   white-space: nowrap !important;
 }
 
-:is(.markdown-rendered:not(.cm-table-widget), .markdown-preview-view) tbody td:has(> code:only-child) {
+:is(.markdown-rendered:not(.cm-table-widget), .markdown-preview-view) tbody td.ib-code-cell {
   width: 1%;
-  white-space: nowrap !important;
+}
+
+:is(.markdown-rendered:not(.cm-table-widget), .markdown-preview-view) tbody td.ib-code-cell:not(#_ib) {
+  white-space: nowrap;
 }
 
 :is(.markdown-rendered:not(.cm-table-widget), .markdown-preview-view) :is(th, td) :is(a, code) {
   max-width: 100%;
-  overflow-wrap: break-word !important;
-  word-break: normal !important;
+}
+
+:is(.markdown-rendered:not(.cm-table-widget), .markdown-preview-view) :is(th, td) :is(a, code):not(#_ib) {
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 :is(.markdown-rendered:not(.cm-table-widget), .markdown-preview-view) :is(img, video, iframe, canvas),
 .markdown-source-view.mod-cm6 :is(img, video, iframe, canvas) {
-  max-width: 100% !important;
   height: auto;
+}
+
+:is(.markdown-rendered:not(.cm-table-widget), .markdown-preview-view) :is(img, video, iframe, canvas):not(#_ib),
+.markdown-source-view.mod-cm6 :is(img, video, iframe, canvas):not(#_ib) {
+  max-width: 100%;
 }
 
 /* Navigation, properties and controls should truncate or wrap inside the pane. */
@@ -2113,10 +2144,10 @@ textarea {
   font-size: inherit;
 }
 
-.markdown-source-view.mod-cm6 .cm-table-widget .cm-line :is(.cm-inline-code, .cm-url, .cm-link) {
-  white-space: inherit !important;
-  overflow-wrap: normal !important;
-  word-break: normal !important;
+.markdown-source-view.mod-cm6 .cm-table-widget .cm-line :is(.cm-inline-code, .cm-url, .cm-link):not(#_ib) {
+  white-space: inherit;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 
@@ -2380,17 +2411,21 @@ body {
 
 /* ---------- Mermaid source highlighting (tokens tagged by the plugin) ---------- */
 
-.ibm-mermaid-fence { color: var(--text-faint) !important; }
+.ibm-mermaid-fence:not(#_ib) { color: var(--text-faint); }
 /* Mermaid source highlighting uses the same syntax palette as code blocks. */
-.ibm-mermaid-keyword { color: var(--ib-syntax-keyword) !important; font-weight: 700; }
-.ibm-mermaid-node { color: var(--ib-syntax-function) !important; font-weight: 600; }
-.ibm-mermaid-label { color: var(--ib-text-accent) !important; }
-.ibm-mermaid-string { color: var(--ib-syntax-string) !important; }
-.ibm-mermaid-number { color: var(--ib-syntax-number) !important; }
-.ibm-mermaid-property { color: var(--ib-syntax-property) !important; }
-.ibm-mermaid-operator { color: var(--ib-syntax-operator) !important; font-weight: 700; }
-.ibm-mermaid-punctuation { color: var(--ib-syntax-punctuation) !important; }
-.ibm-mermaid-comment { color: var(--ib-syntax-comment) !important; font-style: italic; }
+.ibm-mermaid-keyword { font-weight: 700; }
+.ibm-mermaid-keyword:not(#_ib) { color: var(--ib-syntax-keyword); }
+.ibm-mermaid-node { font-weight: 600; }
+.ibm-mermaid-node:not(#_ib) { color: var(--ib-syntax-function); }
+.ibm-mermaid-label:not(#_ib) { color: var(--ib-text-accent); }
+.ibm-mermaid-string:not(#_ib) { color: var(--ib-syntax-string); }
+.ibm-mermaid-number:not(#_ib) { color: var(--ib-syntax-number); }
+.ibm-mermaid-property:not(#_ib) { color: var(--ib-syntax-property); }
+.ibm-mermaid-operator { font-weight: 700; }
+.ibm-mermaid-operator:not(#_ib) { color: var(--ib-syntax-operator); }
+.ibm-mermaid-punctuation:not(#_ib) { color: var(--ib-syntax-punctuation); }
+.ibm-mermaid-comment { font-style: italic; }
+.ibm-mermaid-comment:not(#_ib) { color: var(--ib-syntax-comment); }
 
 /* ---------- Diagram / code block chrome (plugin supplies the DOM) ---------- */
 
@@ -2422,7 +2457,7 @@ body {
 }
 
 .mermaid.ibm-mermaid-enhanced,
-.markdown-source-view.mod-cm6 .cm-embed-block:has(.mermaid.ibm-mermaid-enhanced) {
+.markdown-source-view.mod-cm6 .cm-embed-block.ib-has-mermaid {
   border: 1px solid var(--ib-card-border) !important;
   border-radius: var(--ib-card-radius) !important;
   background: linear-gradient(180deg, color-mix(in srgb, var(--ib-accent-brand) var(--ib-card-tint), var(--ib-diagram-bg)) 0%, var(--ib-diagram-bg) var(--ib-card-fade)) !important;
@@ -2432,8 +2467,8 @@ body {
   color: var(--text-normal);
   transition: color var(--ib-dur-fast) var(--ib-ease-out);
 }
-.mermaid.ibm-mermaid-enhanced:hover { border-color: var(--ib-card-border-hover) !important; }
-.markdown-source-view.mod-cm6 .cm-embed-block:has(.mermaid.ibm-mermaid-enhanced) .mermaid.ibm-mermaid-enhanced {
+.mermaid.ibm-mermaid-enhanced:hover:not(#_ib) { border-color: var(--ib-card-border-hover); }
+.markdown-source-view.mod-cm6 .cm-embed-block.ib-has-mermaid .mermaid.ibm-mermaid-enhanced {
   border: 0 !important;
   border-radius: 0 !important;
   background: transparent !important;
@@ -2443,13 +2478,15 @@ body {
 /* Code blocks share the diagram card: same border, tint, hover and header. */
 .markdown-rendered pre.ibc-enhanced {
   color: var(--ib-compat-code-text);
-  border: 1px solid var(--ib-card-border) !important;
-  border-radius: var(--ib-code-radius) !important;
-  background: linear-gradient(180deg, color-mix(in srgb, var(--ib-accent-brand) var(--ib-card-tint), var(--ib-bg-code-block)) 0%, var(--ib-bg-code-block) var(--ib-card-fade)) !important;
-  box-shadow: var(--ib-card-highlight) !important;
   transition: color var(--ib-dur-fast) var(--ib-ease-out);
 }
-.markdown-rendered pre.ibc-enhanced:hover { border-color: var(--ib-card-border-hover) !important; }
+.markdown-rendered pre.ibc-enhanced:not(#_ib) {
+  border: 1px solid var(--ib-card-border);
+  border-radius: var(--ib-code-radius);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--ib-accent-brand) var(--ib-card-tint), var(--ib-bg-code-block)) 0%, var(--ib-bg-code-block) var(--ib-card-fade));
+  box-shadow: var(--ib-card-highlight);
+}
+.markdown-rendered pre.ibc-enhanced:hover:not(#_ib) { border-color: var(--ib-card-border-hover); }
 .markdown-rendered pre.ibc-enhanced > .ibm-block-header { background: transparent; }
 .markdown-rendered pre.ibc-enhanced > .ibm-block-header {
   box-sizing: border-box;
@@ -2465,8 +2502,10 @@ body {
 
 /* Editing view: long code lines wrap inside the block too. */
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
-  white-space: pre-wrap !important;
   overflow-wrap: anywhere;
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock:not(#_ib) {
+  white-space: pre-wrap;
 }
 
 /* Editing view: the block is drawn line by line, so the card is built from
@@ -2480,17 +2519,19 @@ body {
   position: relative;
   min-height: 44px;
   box-sizing: border-box;
-  padding-top: 10px !important;
-  padding-bottom: 10px !important;
-  border-top: 1px solid var(--ib-card-border) !important;
-  border-bottom: 1px solid var(--background-modifier-border) !important;
-  border-radius: var(--ib-card-radius) var(--ib-card-radius) 0 0 !important;
-  background: linear-gradient(180deg, color-mix(in srgb, var(--ib-accent-brand) var(--ib-card-tint), var(--ib-bg-code-block)) 0%, var(--ib-bg-code-block) 100%) !important;
   box-shadow: var(--ib-card-highlight);
 }
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
-  border-bottom: 1px solid var(--ib-card-border) !important;
-  border-radius: 0 0 var(--ib-card-radius) var(--ib-card-radius) !important;
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin:not(#_ib) {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 1px solid var(--ib-card-border);
+  border-bottom: 1px solid var(--background-modifier-border);
+  border-radius: var(--ib-card-radius) var(--ib-card-radius) 0 0;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--ib-accent-brand) var(--ib-card-tint), var(--ib-bg-code-block)) 0%, var(--ib-bg-code-block) 100%);
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end:not(#_ib) {
+  border-bottom: 1px solid var(--ib-card-border);
+  border-radius: 0 0 var(--ib-card-radius) var(--ib-card-radius);
 }
 .markdown-source-view.mod-cm6 .HyperMD-codeblock-begin .code-block-flair {
   left: var(--ib-space-3, 12px);
@@ -2529,19 +2570,26 @@ body {
 .ibm-mermaid-toolbar,
 .ibm-block-header .ibm-copy-source,
 .ibm-block-header .ibm-edit-source {
-  border: 1px solid var(--ib-border-default, var(--background-modifier-border)) !important;
   border-radius: var(--ib-radius-md, 6px);
-  background: var(--ib-bg-primary, var(--background-primary)) !important;
+}
+.ibm-mermaid-toolbar:not(#_ib),
+.ibm-block-header .ibm-copy-source:not(#_ib),
+.ibm-block-header .ibm-edit-source:not(#_ib) {
+  border: 1px solid var(--ib-border-default, var(--background-modifier-border));
+  background: var(--ib-bg-primary, var(--background-primary));
 }
 .ibm-block-header button {
   font: 600 var(--ib-tiny-size, 12px) / 28px var(--font-interface-theme);
   border-radius: var(--ib-radius-md, 8px);
-  color: var(--text-muted) !important;
-  box-shadow: none !important;
   transition: color var(--ib-dur-fast) var(--ib-ease-out);
 }
-.ibm-mermaid-toolbar button { border: 0 !important; border-radius: 0 !important; background: transparent !important; }
-.ibm-mermaid-toolbar .ibm-mermaid-percent { font-size: var(--ib-small-size, 14px); font-variant-numeric: tabular-nums; color: var(--text-normal) !important; }
+.ibm-block-header button:not(#_ib) {
+  color: var(--text-muted);
+  box-shadow: none;
+}
+.ibm-mermaid-toolbar button:not(#_ib) { border: 0; border-radius: 0; background: transparent; }
+.ibm-mermaid-toolbar .ibm-mermaid-percent { font-size: var(--ib-small-size, 14px); font-variant-numeric: tabular-nums; }
+.ibm-mermaid-toolbar .ibm-mermaid-percent:not(#_ib) { color: var(--text-normal); }
 /* 默认可读的大图在自己的视口内滚动，不扩大笔记或纸张宽度。 */
 .mermaid.ibm-mermaid-enhanced.is-readable-scroll > .ibm-mermaid-canvas {
   overflow: auto;
@@ -2554,16 +2602,17 @@ body {
   height: var(--ibm-readable-height);
   pointer-events: none;
 }
-.mermaid.ibm-mermaid-enhanced.is-readable-scroll > .ibm-mermaid-canvas > svg {
-  left: var(--ibm-readable-center) !important;
+.mermaid.ibm-mermaid-enhanced.is-readable-scroll > .ibm-mermaid-canvas > svg:not(#_ib) {
+  left: var(--ibm-readable-center);
 }
-.ibm-block-header button:hover {
-  color: var(--text-accent) !important;
-  background: var(--ib-bg-hover, var(--background-modifier-hover)) !important;
-  border-color: var(--ib-border-default, var(--background-modifier-border)) !important;
+.ibm-block-header button:hover:not(#_ib) {
+  color: var(--text-accent);
+  background: var(--ib-bg-hover, var(--background-modifier-hover));
+  border-color: var(--ib-border-default, var(--background-modifier-border));
 }
-.ibm-block-header button:active { color: var(--text-accent) !important; background: var(--ib-bg-active, var(--background-modifier-active-hover)) !important; }
-.ibm-block-header button:focus-visible { outline: 2px solid var(--ib-focus, var(--interactive-accent)) !important; outline-offset: 1px; }
+.ibm-block-header button:active:not(#_ib) { color: var(--text-accent); background: var(--ib-bg-active, var(--background-modifier-active-hover)); }
+.ibm-block-header button:focus-visible { outline-offset: 1px; }
+.ibm-block-header button:focus-visible:not(#_ib) { outline: 2px solid var(--ib-focus, var(--interactive-accent)); }
 
 .ibm-mermaid-error {
   padding: var(--ib-space-3, 12px);
@@ -2738,21 +2787,21 @@ body {
   /* People */
   & g[data-ibm-c4="person"] rect:not(.background) { fill: color-mix(in srgb, var(--c4-person) 10%, var(--ib-mm-card)); stroke: color-mix(in srgb, var(--c4-person) 35%, transparent); rx: 10px; ry: 10px; }
   & g[data-ibm-c4="person"] circle { fill: var(--c4-person); stroke: var(--ib-mm-card); stroke-width: 3px; }
-  & g[data-ibm-c4="external"]:has(circle) rect:not(.background) { fill: color-mix(in srgb, var(--c4-external) 12%, var(--ib-mm-card)); stroke: color-mix(in srgb, var(--c4-external) 40%, transparent); rx: 10px; ry: 10px; }
+  & g[data-ibm-c4="external"][data-ibm-c4-disc] rect:not(.background) { fill: color-mix(in srgb, var(--c4-external) 12%, var(--ib-mm-card)); stroke: color-mix(in srgb, var(--c4-external) 40%, transparent); rx: 10px; ry: 10px; }
   & g[data-ibm-c4="external"] circle { fill: var(--c4-external); stroke: var(--ib-mm-card); stroke-width: 3px; }
   & path.ibm-c4-avatar { fill: #FFFFFF; stroke: none; }
-  & g[data-ibm-c4]:has(circle) :is(text, tspan) { fill: var(--ib-mm-text); }
-  & g[data-ibm-c4]:has(circle) .c4-name :is(text, tspan) { font-weight: 700; }
-  & g[data-ibm-c4]:has(circle) :is(.c4-type, .c4-descr) :is(text, tspan) { fill: var(--ib-mm-muted); }
+  & g[data-ibm-c4][data-ibm-c4-disc] :is(text, tspan) { fill: var(--ib-mm-text); }
+  & g[data-ibm-c4][data-ibm-c4-disc] .c4-name :is(text, tspan) { font-weight: 700; }
+  & g[data-ibm-c4][data-ibm-c4-disc] :is(.c4-type, .c4-descr) :is(text, tspan) { fill: var(--ib-mm-muted); }
 
   /* Software systems (incl. databases and queues) */
   & g[data-ibm-c4="system"] :is(rect, path):not(.background) { fill: var(--c4-system); stroke: color-mix(in srgb, var(--c4-system) 75%, #000); }
   & g[data-ibm-c4="system"] rect:not(.background) { rx: 10px; ry: 10px; }
-  & g[data-ibm-c4="external"]:not(:has(circle)) :is(rect, path):not(.background) { fill: var(--c4-external); stroke: color-mix(in srgb, var(--c4-external) 75%, #000); }
-  & g[data-ibm-c4="external"]:not(:has(circle)) rect:not(.background) { rx: 10px; ry: 10px; }
-  & g[data-ibm-c4]:not(:has(circle)) :is(text, tspan) { fill: #FFFFFF; }
-  & g[data-ibm-c4]:not(:has(circle)) .c4-name :is(text, tspan) { font-weight: 700; }
-  & g[data-ibm-c4]:not(:has(circle)) :is(.c4-type, .c4-descr) :is(text, tspan) { fill: #FFFFFF; }
+  & g[data-ibm-c4="external"]:not([data-ibm-c4-disc]) :is(rect, path):not(.background) { fill: var(--c4-external); stroke: color-mix(in srgb, var(--c4-external) 75%, #000); }
+  & g[data-ibm-c4="external"]:not([data-ibm-c4-disc]) rect:not(.background) { rx: 10px; ry: 10px; }
+  & g[data-ibm-c4]:not([data-ibm-c4-disc]) :is(text, tspan) { fill: #FFFFFF; }
+  & g[data-ibm-c4]:not([data-ibm-c4-disc]) .c4-name :is(text, tspan) { font-weight: 700; }
+  & g[data-ibm-c4]:not([data-ibm-c4-disc]) :is(.c4-type, .c4-descr) :is(text, tspan) { fill: #FFFFFF; }
 
   /* Boundaries (Mermaid's default is #444 dashed) */
   & rect[stroke-dasharray][stroke="#444444"] { stroke: color-mix(in srgb, var(--ib-mm-accent-stroke) 35%, var(--ib-mm-cluster-stroke)); stroke-dasharray: 6 5; fill: color-mix(in srgb, var(--ib-accent-brand) 2.5%, transparent); rx: 14px; ry: 14px; }
@@ -2872,7 +2921,8 @@ body {
   & g.venn-set-3 :is(path, circle) { fill: var(--ib-mm-series-4); stroke: var(--ib-mm-series-4); }
   & g.venn-intersection :is(path, circle) { fill: transparent; stroke: none; }
   /* The title carries an inline near-black fill. */
-  & text.venn-title { fill: var(--ib-mm-text) !important; font-weight: 700; }
+  & text.venn-title { font-weight: 700; }
+  & text.venn-title:not(#_ib) { fill: var(--ib-mm-text); }
   & :is(text, tspan) { fill: var(--ib-mm-text); stroke: none; }
   & :is(text, tspan)[data-ibm-on-mark] { fill: var(--ib-mm-text); }
   /* Mermaid sizes every label 24px inline; intersections need less. */
@@ -3141,7 +3191,7 @@ kbd {
 
 /* 标题是自由文本：Obsidian 会在编辑时弹出「已有取值」下拉，像个选择器。
    焦点在标题属性里时不显示它，保持纯文本输入。 */
-body:has(.metadata-property[data-property-key="title" i]:focus-within) .suggestion-container.mod-property-value { display: none !important; }
+body.ib-title-property-focus .suggestion-container.mod-property-value:not(#_ib) { display: none; }
 
 /* File tree: active note as an accent pill with bold accent text. */
 .nav-file-title.is-active,
@@ -3230,7 +3280,7 @@ body:not(.is-mobile) .status-bar {
   & path.ibm-lane-icon:not(#_ib) { fill: none; stroke: var(--lane); stroke-width: 2px; stroke-linecap: round; stroke-linejoin: round; }
   /* Mermaid's label div is a shrink-wrapped table-cell; make it fill the
      (plugin-widened) foreignObject so the name centres under the icon. */
-  & g.swimlane-label foreignObject > div { display: block !important; width: 100% !important; max-width: none !important; text-align: center !important; }
+  & g.swimlane-label foreignObject > div:not(#_ib) { display: block; width: 100%; max-width: none; text-align: center; }
   & g.swimlane-label :is(span, p, div) { color: var(--lane-text, var(--ib-mm-text)); font-weight: 700; font-size: 16px; line-height: 1.35; text-align: center; white-space: normal; }
 
   /* Cards: white, lane-colored border and icon; terminals are plain cards here. */
@@ -3348,11 +3398,11 @@ body:not(.is-mobile) .status-bar {
   & g.legend:nth-child(8n+1 of .legend) rect { fill: var(--ib-mm-series-1) !important; stroke: var(--ib-mm-series-1) !important; }
   & g.legend:nth-child(8n+2 of .legend) rect { fill: var(--ib-mm-series-2) !important; stroke: var(--ib-mm-series-2) !important; }
   & g.legend:nth-child(8n+3 of .legend) rect { fill: var(--ib-mm-series-3) !important; stroke: var(--ib-mm-series-3) !important; }
-  & g.legend:nth-child(8n+4 of .legend) rect { fill: var(--ib-mm-series-4) !important; stroke: var(--ib-mm-series-4) !important; }
-  & g.legend:nth-child(8n+5 of .legend) rect { fill: var(--ib-mm-series-5) !important; stroke: var(--ib-mm-series-5) !important; }
-  & g.legend:nth-child(8n+6 of .legend) rect { fill: var(--ib-mm-series-6) !important; stroke: var(--ib-mm-series-6) !important; }
-  & g.legend:nth-child(8n+7 of .legend) rect { fill: var(--ib-mm-series-7) !important; stroke: var(--ib-mm-series-7) !important; }
-  & g.legend:nth-child(8n+8 of .legend) rect { fill: var(--ib-mm-series-8) !important; stroke: var(--ib-mm-series-8) !important; }
+  & g.legend:nth-child(8n+4 of .legend) rect:not(#_ib) { fill: var(--ib-mm-series-4); stroke: var(--ib-mm-series-4); }
+  & g.legend:nth-child(8n+5 of .legend) rect:not(#_ib) { fill: var(--ib-mm-series-5); stroke: var(--ib-mm-series-5); }
+  & g.legend:nth-child(8n+6 of .legend) rect:not(#_ib) { fill: var(--ib-mm-series-6); stroke: var(--ib-mm-series-6); }
+  & g.legend:nth-child(8n+7 of .legend) rect:not(#_ib) { fill: var(--ib-mm-series-7); stroke: var(--ib-mm-series-7); }
+  & g.legend:nth-child(8n+8 of .legend) rect:not(#_ib) { fill: var(--ib-mm-series-8); stroke: var(--ib-mm-series-8); }
 }
 
 /* Mindmap and timeline: the theme ramp by Mermaid's section-N classes. */
@@ -3394,10 +3444,10 @@ body:not(.is-mobile) .status-bar {
 
 /* Class: cream boxes straight on Mermaid's outline (the plugin draws a
    rounded card with a header band instead). */
-.mermaid :is(#_ib#_ib, svg[id]):is([aria-roledescription="class"], [aria-roledescription="classDiagram"]) g.node:has(.members-group):not([data-ibm-carded]) > g.basic > path:first-child {
+.mermaid :is(#_ib#_ib, svg[id]):is([aria-roledescription="class"], [aria-roledescription="classDiagram"]) g.node[data-ibm-members]:not([data-ibm-carded]) > g.basic > path:first-child {
   fill: color-mix(in srgb, var(--ib-mm-series-2) 8%, var(--ib-mm-card));
 }
-.mermaid :is(#_ib#_ib, svg[id]):is([aria-roledescription="class"], [aria-roledescription="classDiagram"]) g.node:has(.members-group):not([data-ibm-carded]) :is(g.basic > path + path, .divider path) {
+.mermaid :is(#_ib#_ib, svg[id]):is([aria-roledescription="class"], [aria-roledescription="classDiagram"]) g.node[data-ibm-members]:not([data-ibm-carded]) :is(g.basic > path + path, .divider path) {
   stroke: color-mix(in srgb, var(--ib-mm-series-2) 40%, transparent);
 }
 
@@ -3412,25 +3462,28 @@ body:not(.is-mobile) .status-bar {
   /* Mermaid 11's person pictogram is an opaque bitmap that cannot be re-toned;
      the card alone reads better than a dark square. */
   & g.person-man image { display: none; }
-  & g.person-man, & g:has(> rect[fill="#1168BD"]) { filter: var(--ib-mm-shadow); }
+  & g.person-man, & g[data-ibm-c4-system] { filter: var(--ib-mm-shadow); }
   & :is(line, path)[stroke="#444444"] { stroke: var(--ib-mm-accent-stroke); }
 }
 
 /* Live Preview code block copy button — same look as the header buttons. */
 .markdown-source-view.mod-cm6 .ibc-live-copy {
-  border: 1px solid var(--ib-border-default, var(--background-modifier-border)) !important;
-  border-radius: var(--ib-radius-md, 6px) !important;
-  background: var(--ib-bg-primary, var(--background-primary)) !important;
-  color: var(--text-muted) !important;
-  box-shadow: none !important;
   cursor: pointer;
   transition: color var(--ib-dur-fast) var(--ib-ease-out);
 }
-.markdown-source-view.mod-cm6 .ibc-live-copy:hover {
-  color: var(--text-accent) !important;
-  background: var(--ib-bg-hover, var(--background-modifier-hover)) !important;
+.markdown-source-view.mod-cm6 .ibc-live-copy:not(#_ib) {
+  border: 1px solid var(--ib-border-default, var(--background-modifier-border));
+  border-radius: var(--ib-radius-md, 6px);
+  background: var(--ib-bg-primary, var(--background-primary));
+  color: var(--text-muted);
+  box-shadow: none;
 }
-.markdown-source-view.mod-cm6 .ibc-live-copy:focus-visible { outline: 2px solid var(--ib-focus, var(--interactive-accent)) !important; outline-offset: 1px; }
+.markdown-source-view.mod-cm6 .ibc-live-copy:hover:not(#_ib) {
+  color: var(--text-accent);
+  background: var(--ib-bg-hover, var(--background-modifier-hover));
+}
+.markdown-source-view.mod-cm6 .ibc-live-copy:focus-visible { outline-offset: 1px; }
+.markdown-source-view.mod-cm6 .ibc-live-copy:focus-visible:not(#_ib) { outline: 2px solid var(--ib-focus, var(--interactive-accent)); }
 
 /* --------------------------------------------------------------------------
  * 插件驱动的外观偏好
@@ -3479,8 +3532,8 @@ body.is-phone .markdown-rendered:not(.cm-table-widget) table {
 body.is-phone .markdown-rendered pre.ibc-enhanced > code {
   font-size: var(--ib-code-text-size);
 }
-body.is-phone .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
-  padding-inline: var(--ib-space-3) !important;
+body.is-phone .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock:not(#_ib) {
+  padding-inline: var(--ib-space-3);
 }
 
 /* 系统开启「减弱动态效果」时去掉过渡动画。 */
@@ -3490,12 +3543,12 @@ body.is-phone .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
     --ib-dur-base: 0ms;
     --ib-dur-slow: 0ms;
   }
-  body *,
-  body *::before,
-  body *::after {
-    transition-duration: 0ms !important;
-    animation-duration: 0ms !important;
-    animation-iteration-count: 1 !important;
+  body *:not(#_ib),
+body *:not(#_ib)::before,
+body *:not(#_ib)::after {
+    transition-duration: 0ms;
+    animation-duration: 0ms;
+    animation-iteration-count: 1;
   }
 }
 
@@ -3608,13 +3661,13 @@ body {
   overflow-x: auto;
   scrollbar-width: none;
 }
-.view-header:has(> .ibp-toolbar) > .view-header-title-container {
+.ibp-toolbar-host > .view-header > .view-header-title-container {
   flex: 1 1 0;
   min-width: 80px;
   justify-content: flex-start;
 }
 /* 阅读/编辑切换与收藏已在工具栏或「⋯」里，标题行不再重复放原生按钮。 */
-.workspace-leaf-content[data-type="markdown"]:has(.ibp-toolbar) .view-actions .view-action:has(svg:is(.lucide-book-open, .lucide-pencil, .lucide-edit-3, .lucide-bookmark)) {
+.workspace-leaf-content[data-type="markdown"].ibp-toolbar-host .view-actions .view-action.ib-mode-action {
   display: none;
 }
 /* 切换按钮显示「切过去」的目标模式。 */
@@ -3642,9 +3695,9 @@ body {
 ) {
   background: var(--ib-page-desk);
 }
-.workspace-leaf-content[data-type="markdown"] .markdown-reading-view .markdown-preview-view,
-.workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-scroller {
-  background: transparent !important;
+.workspace-leaf-content[data-type="markdown"] .markdown-reading-view .markdown-preview-view:not(#_ib),
+.workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-scroller:not(#_ib) {
+  background: transparent;
 }
 .workspace-leaf-content[data-type="markdown"] :is(
   .markdown-reading-view .markdown-preview-sizer,
@@ -3671,22 +3724,28 @@ body {
   .embedded-backlinks
 ) {
   box-sizing: border-box;
-  width: 100% !important;
-  max-width: 100% !important;
+}
+.workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-sizer > :is(
+  .cm-contentContainer,
+  .metadata-container,
+  .embedded-backlinks
+):not(#_ib) {
+  width: 100%;
+  max-width: 100%;
 }
 /* 全宽由 Obsidian「编辑器 → 缩减栏宽」关闭决定；开启时用工具栏「正文宽度」档位。 */
 .workspace-leaf-content[data-type="markdown"] :is(
   .markdown-reading-view .markdown-preview-view:not(.is-readable-line-width) .markdown-preview-sizer,
   .markdown-source-view.mod-cm6:not(.is-readable-line-width) .cm-sizer
-) {
-  width: calc(100% - 48px) !important;
+):not(#_ib) {
+  width: calc(100% - 48px);
 }
-.workspace-leaf-content[data-type="markdown"]:has(.markdown-source-view.mod-cm6:not(.is-readable-line-width)) .ibp-toolbar .ibp-text-button {
+.workspace-leaf-content[data-type="markdown"].ibp-source-fixed-width .ibp-toolbar .ibp-text-button {
   opacity: 0.45;
   pointer-events: none;
 }
 /* 分页阅读时正文宽度由纸张决定，宽度按钮置灰；打字机、专注只作用于编辑，阅读时隐藏。 */
-.workspace-leaf-content[data-type="markdown"]:has(.ibp-has-book) .ibp-toolbar .ibp-text-button {
+.workspace-leaf-content[data-type="markdown"].ibp-book-host .ibp-toolbar .ibp-text-button {
   opacity: 0.45;
   pointer-events: none;
 }
@@ -3704,12 +3763,17 @@ body.is-phone .workspace-leaf-content[data-type="markdown"] :is(
   .markdown-reading-view .markdown-preview-sizer,
   .markdown-source-view.mod-cm6.is-live-preview .cm-sizer
 ) {
-  width: 100% !important;
-  margin: 0 !important;
   /* 左右留白交给 Obsidian 移动端自带的 --file-margins，避免双重缩进。 */
-  padding: var(--ib-space-5, 24px) 0 calc(var(--ib-space-8, 64px) + 48px) !important;
   border-radius: 0;
   box-shadow: none;
+}
+body.is-phone .workspace-leaf-content[data-type="markdown"] :is(
+  .markdown-reading-view .markdown-preview-sizer,
+  .markdown-source-view.mod-cm6.is-live-preview .cm-sizer
+):not(#_ib) {
+  width: 100%;
+  margin: 0;
+  padding: var(--ib-space-5, 24px) 0 calc(var(--ib-space-8, 64px) + 48px);
 }
 /* Settings popovers. */
 .ibp-popover {
@@ -3750,23 +3814,25 @@ body.is-phone .workspace-leaf-content[data-type="markdown"] :is(
 .ibp-popover .ibp-hint a { cursor: pointer; }
 
 @media print {
-  .ibp-toolbar { display: none !important; }
+  .ibp-toolbar:not(#_ib) { display: none; }
 }
 /* The in-document backlinks panel is not part of the page content. */
 .ibp-has-book .embedded-backlinks { display: none; }
 
 /* Paged reading view: a full render cut into real pages. */
 .ibp-staging {
-  position: fixed !important;
   left: -100000px;
   top: 0;
-  height: auto !important;
-  padding: 0 !important;
-  margin: 0 !important;
   visibility: hidden;
   pointer-events: none;
 }
-.ibp-has-book:has(> .ibp-book > .ibp-page) > .markdown-preview-sizer { display: none !important; }
+.ibp-staging:not(#_ib) {
+  position: fixed;
+  height: auto;
+  padding: 0;
+  margin: 0;
+}
+.ibp-has-book.ib-has-pages > .markdown-preview-sizer:not(#_ib) { display: none; }
 /* Keep the native preview visible until a real page can replace it. The
    initial book must still have measurable paper geometry without extending
    the scroll range or exposing an empty desk during asynchronous rendering. */
@@ -3799,24 +3865,25 @@ body.is-phone .workspace-leaf-content[data-type="markdown"] :is(
 }
 .ibp-page .ibp-page-body {
   /* It carries .markdown-preview-view for styling; not the desk background. */
-  background: transparent !important;
   position: relative;
-  overflow: clip !important;
   contain: paint;
-  clip-path: inset(0);
-  padding: 0 !important;
-  max-width: none !important;
   width: 100%;
   height: 100%;
 }
+.ibp-page .ibp-page-body:not(#_ib) {
+  background: transparent;
+  overflow: clip;
+  padding: 0;
+  max-width: none;
+}
 /* !important: the plugin pins .mermaid.ibm-mermaid-enhanced to
    position: relative !important for its pan/zoom canvas. */
-.ibp-page .ibp-page-body > .ibp-placed {
-  position: absolute !important;
-  left: 0 !important;
-  right: 0 !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
+.ibp-page .ibp-page-body > .ibp-placed:not(#_ib) {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 .ibp-page-number {
   position: absolute;
@@ -3843,7 +3910,8 @@ body.is-phone .workspace-leaf-content[data-type="markdown"] :is(
   text-align: right;
   border-bottom: 0.5pt solid var(--ib-border-default);
 }
-.ibp-book .ibm-block-header, .ibp-staging .ibm-block-header { display: none !important; }
+.ibp-book .ibm-block-header:not(#_ib),
+.ibp-staging .ibm-block-header:not(#_ib) { display: none; }
 
 /* Export stage (Ignorance Advanced). Off-screen for PDF; a brief overlay
    at the window's top-left while images are captured. */
@@ -3879,22 +3947,24 @@ body.is-phone .workspace-leaf-content[data-type="markdown"] :is(
   padding: var(--ibp-mt) var(--ibp-mr) var(--ibp-mb) var(--ibp-ml);
   background: var(--ib-page-paper);
 }
-:is(.ibp-export, .ibp-export-preview__book) .ibp-long-sheet > .markdown-preview-view { padding: 0 !important; background: transparent !important; }
+:is(.ibp-export, .ibp-export-preview__book) .ibp-long-sheet > .markdown-preview-view:not(#_ib) { padding: 0; background: transparent; }
 .ibp-export .ibp-capture-solo {
   box-sizing: border-box;
   width: calc(var(--ibp-page-w) - var(--ibp-ml) - var(--ibp-mr));
   padding: 8px;
   background: var(--ib-page-paper);
 }
-:is(.ibp-export, .ibp-export-preview__book, .ibp-export-preview__slides) .ibm-block-header { display: none !important; }
+:is(.ibp-export, .ibp-export-preview__book, .ibp-export-preview__slides) .ibm-block-header:not(#_ib) { display: none; }
 :is(.ibp-book, .ibp-staging, .ibp-export, .ibp-export-preview__book) pre.ibc-enhanced > .ibm-block-header {
-  display: flex !important;
   align-items: center;
   padding: 0 12px;
   white-space: normal;
 }
-:is(.ibp-book, .ibp-staging, .ibp-export, .ibp-export-preview__book) pre.ibc-enhanced > .ibm-block-header .ibm-block-actions {
-  display: none !important;
+:is(.ibp-book, .ibp-staging, .ibp-export, .ibp-export-preview__book) pre.ibc-enhanced > .ibm-block-header:not(#_ib) {
+  display: flex;
+}
+:is(.ibp-book, .ibp-staging, .ibp-export, .ibp-export-preview__book) pre.ibc-enhanced > .ibm-block-header .ibm-block-actions:not(#_ib) {
+  display: none;
 }
 /* Export preview window (Ignorance Advanced): the result as it will be
    written, on the desk color, before anything is saved. */
@@ -3938,7 +4008,8 @@ body.is-phone .workspace-leaf-content[data-type="markdown"] :is(
 @keyframes ibp-spin { to { transform: rotate(360deg); } }
 /* While the preview builds, the app behind may switch palettes: dim and blur it
    so the switch reads softly, but keep it visible so the app doesn't look frozen. */
-.modal-container.ibp-export-generating > .modal-bg { opacity: 1 !important; background: rgba(0, 0, 0, .45); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.modal-container.ibp-export-generating > .modal-bg { background: rgba(0, 0, 0, .45); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.modal-container.ibp-export-generating > .modal-bg:not(#_ib) { opacity: 1; }
 .ibp-export-preview__book {
   display: flex;
   flex-direction: column;
@@ -3952,7 +4023,7 @@ body.is-phone .workspace-leaf-content[data-type="markdown"] :is(
 .ibp-export-preview__book .ibp-page { flex: 0 0 auto; box-shadow: var(--ib-shadow-paper); }
 .ibp-export-preview__slides { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 16px; }
 .ibp-export-preview__slide { flex: 0 0 auto; overflow: hidden; border-radius: var(--ib-radius-sm); box-shadow: var(--ib-shadow-paper); }
-.ibp-export-preview__slide > .ibp-export-stage { position: relative !important; left: 0 !important; }
+.ibp-export-preview__slide > .ibp-export-stage:not(#_ib) { position: relative; left: 0; }
 /* Absolutely filled: iOS WebKit resolves height:100% of a flex item to 0. */
 .ibp-export-preview__frame { position: absolute; inset: 0; display: block; width: 100%; height: 100%; border: 0; background: #FFFFFF; }
 .ibp-export-preview__footer { align-items: center; margin-top: 0; }
@@ -4016,15 +4087,18 @@ body.is-phone .workspace-leaf-content[data-type="markdown"] :is(
   flex: 1 1 0;
   min-width: 0;
   height: 44px;
-  margin: 0 !important;
   font-size: var(--ib-body-size, 16px);
   box-shadow: none;
 }
+.is-mobile .ibp-export-preview__footer > button:not(#_ib) {
+  margin: 0;
+}
 
 @media print {
-  .ibp-export.ibp-print-root { position: static !important; display: block !important; left: auto !important; background: #FFFFFF !important; }
-  .ibp-print-root .ibp-page { margin: 0 !important; break-after: page; break-inside: avoid; box-shadow: none !important; border-radius: 0 !important; }
-  .ibp-print-root .ibp-page:last-child { break-after: auto; }
+  .ibp-export.ibp-print-root:not(#_ib) { position: static; display: block; left: auto; background: #FFFFFF; }
+  .ibp-print-root .ibp-page { page-break-after: always; page-break-inside: avoid; }
+  .ibp-print-root .ibp-page:not(#_ib) { margin: 0; box-shadow: none; border-radius: 0; }
+  .ibp-print-root .ibp-page:last-child { page-break-after: auto; }
 }
 
 /* [toc] (Ignorance Advanced): a quiet card, indented by heading level. */
@@ -4060,9 +4134,6 @@ body.is-phone .workspace-leaf-content[data-type="markdown"] :is(
   transition: opacity var(--ib-dur-fast) var(--ib-ease-out);
 }
 .markdown-source-view.mod-cm6 .cm-line.ib-writing-dim:hover,
-.markdown-source-view.mod-cm6 .cm-line.ib-writing-dim:has(.cm-selectionBackground) {
-  opacity: 0.72;
-}
 @media (prefers-reduced-motion: reduce) {
   .markdown-source-view.mod-cm6 .cm-line.ib-writing-dim { transition: none; }
 }
@@ -4161,7 +4232,7 @@ body.is-phone .workspace-leaf-content[data-type="markdown"] :is(
 .ibc-container--kpi li { margin: 0; padding: var(--ib-space-3) var(--ib-space-4); border: var(--ib-border-1) solid var(--ib-border-default); border-radius: var(--ib-radius-lg); background: var(--ib-bg-tertiary); }
 .ibc-container--kpi li > strong:first-child { display: block; margin-bottom: var(--ib-space-1); color: var(--ib-text-accent); font-size: 2em; line-height: 1.1; }
 .ibc-container--gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: var(--ib-space-3); }
-.ibc-container--gallery > p:not(:has(img)) { display: none; }
+.ibc-container--gallery > p:not(.ib-has-img) { display: none; }
 .ibc-gallery__item { display: flex; flex-direction: column; gap: var(--ib-space-1); min-width: 0; margin: 0; }
 .ibc-gallery__item :is(.internal-embed, .image-wrapper) { display: block; width: 100%; }
 .ibc-gallery__item img { display: block; width: 100%; height: auto; margin: 0; aspect-ratio: 4 / 3; border-radius: var(--ib-radius-md); object-fit: cover; }
@@ -4180,8 +4251,8 @@ body.is-phone .workspace-leaf-content[data-type="markdown"] :is(
 .ibc-container--matrix li:nth-child(4) { border-color: var(--ib-success-border); background: var(--ib-success-bg); }
 /* Axis labels are elements added by Ignorance Advanced: y on the left
    (stacked characters), the grid in the middle, x underneath. */
-.ibc-container--matrix:has(> .ibc-matrix__body) { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--ib-space-2); }
-.ibc-container--matrix:not(:has(> .ibc-matrix__axis--y)) { grid-template-columns: minmax(0, 1fr); }
+.ibc-container--matrix.ib-has-body { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0 var(--ib-space-2); }
+.ibc-container--matrix:not(.ib-has-axis-y) { grid-template-columns: minmax(0, 1fr); }
 .ibc-matrix__body { grid-column: -2; min-width: 0; }
 .ibc-matrix__body > :is(ul, ol) { display: grid; grid-template-columns: 1fr 1fr; gap: var(--ib-space-3); margin: 0; padding: 0; list-style: none; }
 .ibc-matrix__axis { color: var(--ib-text-muted); font-size: var(--ib-tiny-size); line-height: 1.25; }
@@ -4191,21 +4262,23 @@ body.is-phone .workspace-leaf-content[data-type="markdown"] :is(
 .ibc-container--roadmap > ol { display: flex; flex-wrap: wrap; gap: var(--ib-space-3); margin: 0; padding: var(--ib-space-3) 0 0; list-style: none; }
 .ibc-container--roadmap li { position: relative; flex: 1 1 9rem; min-width: 0; margin: 0; padding: var(--ib-space-3); border: var(--ib-border-1) solid var(--ib-border-default); border-radius: var(--ib-radius-md); background: var(--ib-bg-secondary); }
 .ibc-container--roadmap li > strong:first-child { color: var(--ib-text-accent); }
-.ibc-container-source-covered { display: none !important; }
+.ibc-container-source-covered:not(#_ib) { display: none; }
 /* Native preview measures a section using its next sibling's offsetTop.
    display:none makes that position zero and produces negative cached heights.
    Keep the covered section's position while hiding its duplicated contents. */
 .markdown-preview-sizer > .ibc-container-source-covered {
-  display: block !important;
-  height: 0 !important;
-  min-height: 0 !important;
-  max-height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  border: 0 !important;
-  overflow: hidden !important;
   visibility: hidden;
   pointer-events: none;
+}
+.markdown-preview-sizer > .ibc-container-source-covered:not(#_ib) {
+  display: block;
+  height: 0;
+  min-height: 0;
+  max-height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
 }
 .ibc-container-editor-widget { display: block; width: 100%; }
 .ibc-container-editor-error { white-space: pre-wrap; }
@@ -4263,7 +4336,6 @@ body.is-phone .workspace-leaf-content[data-type="markdown"] :is(
   border: var(--ib-border-1) solid var(--ib-border-default);
   border-radius: var(--ib-radius-lg);
   background: var(--ib-bg-secondary);
-  break-inside: avoid;
   page-break-inside: avoid;
 }
 .ib-echarts-block canvas,
@@ -4394,10 +4466,10 @@ body {
 /* ---------- No box in a box ----------
    A block nested in another block (code shown inside code, code in a
    callout) keeps its tint but drops its own frame. */
-.markdown-rendered pre pre.ibc-enhanced,
-.markdown-rendered .callout pre.ibc-enhanced {
-  border-color: transparent !important;
-  box-shadow: none !important;
+.markdown-rendered pre pre.ibc-enhanced:not(#_ib),
+.markdown-rendered .callout pre.ibc-enhanced:not(#_ib) {
+  border-color: transparent;
+  box-shadow: none;
 }
 
 /* ---------- Table of contents: a card with a dotted outline ---------- */
@@ -4470,9 +4542,11 @@ body {
 .markdown-rendered .ibm-toc-level-4 { --ib-toc-depth: 3; }
 .markdown-rendered .ibm-toc-level-5 { --ib-toc-depth: 4; }
 .markdown-rendered .ibm-toc-level-6 { --ib-toc-depth: 5; }
-.markdown-rendered .ibm-toc-link { color: var(--ib-text-primary) !important; text-decoration: none; }
-.markdown-rendered .ibm-toc-level-1 > .ibm-toc-link { color: var(--ib-text-accent) !important; font-weight: 700; }
-.markdown-rendered .ibm-toc-link:hover { color: var(--ib-text-accent) !important; }
+.markdown-rendered .ibm-toc-link { text-decoration: none; }
+.markdown-rendered .ibm-toc-link:not(#_ib) { color: var(--ib-text-primary); }
+.markdown-rendered .ibm-toc-level-1 > .ibm-toc-link { font-weight: 700; }
+.markdown-rendered .ibm-toc-level-1 > .ibm-toc-link:not(#_ib) { color: var(--ib-text-accent); }
+.markdown-rendered .ibm-toc-link:hover:not(#_ib) { color: var(--ib-text-accent); }
 
 /* ---------- Properties: the same card head ---------- */
 .markdown-rendered .metadata-container {
@@ -4513,10 +4587,10 @@ body {
 /* reveal.css 默认给容器/letterbox 铺白底，缩放居中后在幻灯片四周露出白边框（暗色尤其割裂）。
    只把这些容器底色透明 → letterbox 透出 .slide-frame，无缝。注意：不要动 section 的 padding——
    .slide-surface 自身的内容内边距来自它，清零会让内容越界。 */
-.reveal,
-.reveal .slides,
-.reveal .slides > section:not(.slide-surface),
-.reveal .slides > section > section:not(.slide-surface) { background: transparent !important; }
+.reveal:not(#_ib),
+.reveal .slides:not(#_ib),
+.reveal .slides > section:not(.slide-surface):not(#_ib),
+.reveal .slides > section > section:not(.slide-surface):not(#_ib) { background: transparent; }
 .reveal { font-family: var(--font-family); color: var(--fg); }
 .reveal .slides { text-align: left; }
 
@@ -4614,9 +4688,9 @@ body {
 }
 /* 演示舞台跟随 Ignorance 主题的桌面底色（与笔记纸面外的底色一致），幻灯片皮肤只作用于画幅内部。
    幻灯片作为一块悬浮画幅居中（Reveal margin 留出四周空间），操作区是舞台顶部的悬浮条。 */
-.ibp-presentation-stage,
-.ibp-presentation-stage > .reveal:fullscreen {
-  background: var(--ib-page-desk) !important;
+.ibp-presentation-stage:not(#_ib),
+.ibp-presentation-stage > .reveal:fullscreen:not(#_ib) {
+  background: var(--ib-page-desk);
 }
 .ibp-presentation-stage > .reveal {
   font-family: var(--ib-font-sans);
@@ -4639,22 +4713,22 @@ body {
 /* Reveal.js 会把幻灯片的 class 复制到铺满舞台的背景层（.backgrounds > .slide-background）上，
    皮肤写给 .slide-surface 的底色、边框和条纹装饰会连带画满整个舞台，看起来像多叠了一页。
    背景层只保留透明，画幅外露出舞台底色。 */
-.reveal .backgrounds .slide-background.slide-surface {
-  background: none !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  padding: 0 !important;
+.reveal .backgrounds .slide-background.slide-surface:not(#_ib) {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
 }
-.reveal .backgrounds .slide-background.slide-surface::before,
-.reveal .backgrounds .slide-background.slide-surface::after {
-  display: none !important;
+.reveal .backgrounds .slide-background.slide-surface:not(#_ib)::before,
+.reveal .backgrounds .slide-background.slide-surface:not(#_ib)::after {
+  display: none;
 }
 
-/* fragment（<!-- step --> 分步块）默认全显：编辑预览、缩略图、导出都不因分步而隐藏内容。
+/* fragment（\3c !-- step --> 分步块）默认全显：编辑预览、缩略图、导出都不因分步而隐藏内容。
    放映时由 SlidePreview 的 .is-presenting 规则恢复「未 .visible 则隐藏」的分步行为。
    用 !important 压过 reveal.css 的 .fragment{opacity:0}。 */
-.reveal .fragment { opacity: 1 !important; visibility: visible !important; }
+.reveal .fragment:not(#_ib) { opacity: 1; visibility: visible; }
 
 .slide-surface {
   font-family: var(--font-family); color: var(--fg);
@@ -4745,7 +4819,7 @@ body {
 
 .slide-surface a {
     color: var(--primary-color);
-    text-decoration-color: color-mix(in srgb, var(--primary-color) 38%, transparent);
+    text-decoration: underline color-mix(in srgb, var(--primary-color) 38%, transparent);
     text-underline-offset: 0.14em;
 }
 
@@ -4825,7 +4899,7 @@ body {
 .slide-surface pre code .code-line {
   display: grid;
   grid-template-columns: 2.65em minmax(0, 1fr);
-  column-gap: 0.62em;
+  gap: 0 0.62em;
   min-width: 0;
   padding-right: 0.72em;
   line-height: inherit;
@@ -4983,7 +5057,7 @@ body {
     border-radius: 12px;
     background: var(--panel-bg);
     box-shadow: 0 14px 30px -28px color-mix(in srgb, var(--primary-color) 48%, transparent);
-    break-inside: avoid;
+    page-break-inside: avoid;
 }
 
 .slide-surface .chart-card-title {
@@ -5143,14 +5217,14 @@ body {
 /* 图文版式（借鉴 Gamma 图左/图右）：首张图浮到一侧，正文环绕 */
 .slide-surface.slide-layout-image-left,
 .slide-surface.slide-layout-image-right { display: flex; align-items: center; }
-.slide-layout-image-left .slide-inner > p:first-child:has(img),
-.slide-layout-image-right .slide-inner > p:first-child:has(img) {
+.slide-layout-image-left .slide-inner > p:first-child.ib-lead-image,
+.slide-layout-image-right .slide-inner > p:first-child.ib-lead-image {
   width: 42%; margin: 0; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 14px;
 }
-.slide-layout-image-left .slide-inner > p:first-child:has(img) { float: left; margin: 0 5% 0.6em 0; }
-.slide-layout-image-right .slide-inner > p:first-child:has(img) { float: right; margin: 0 0 0.6em 5%; }
-.slide-layout-image-left .slide-inner > p:first-child:has(img) img,
-.slide-layout-image-right .slide-inner > p:first-child:has(img) img {
+.slide-layout-image-left .slide-inner > p:first-child.ib-lead-image { float: left; margin: 0 5% 0.6em 0; }
+.slide-layout-image-right .slide-inner > p:first-child.ib-lead-image { float: right; margin: 0 0 0.6em 5%; }
+.slide-layout-image-left .slide-inner > p:first-child.ib-lead-image img,
+.slide-layout-image-right .slide-inner > p:first-child.ib-lead-image img {
   width: 100%; height: 100%; max-height: none; object-fit: cover; border-radius: 14px;
 }
 
@@ -5179,15 +5253,15 @@ body {
 
 .slide-surface.slide-layout-split .slide-body > * {
     min-width: 0;
-    break-inside: avoid;
+    page-break-inside: avoid;
     margin-top: 0;
     margin-bottom: 0.62em;
 }
 /* 内容自带分栏（:::cols）时不再二次分栏，否则整个容器挤进左栏 */
-.slide-surface.slide-layout-split .slide-body:has(> .ibc-container--cols) { columns: auto; column-rule: none; }
+.slide-surface.slide-layout-split .slide-body.ib-has-cols { columns: auto; column-rule: none; }
 /* 列表是最常见的“厚重内容”：让条目跨栏流动，只保证单个条目不被栏切断 */
-.slide-surface.slide-layout-split .slide-body > :is(ul, ol) { break-inside: auto; }
-.slide-surface.slide-layout-split .slide-body > :is(ul, ol) > li { break-inside: avoid; }
+.slide-surface.slide-layout-split .slide-body > :is(ul, ol) { page-break-inside: auto; }
+.slide-surface.slide-layout-split .slide-body > :is(ul, ol) > li { page-break-inside: avoid; }
 /* grid：正文块排成 2 列卡片栅格 */
 .slide-surface.slide-layout-grid .slide-body {
     flex: 1 1 auto;
@@ -5222,8 +5296,8 @@ body {
 /* image-full：首图整屏铺底，标题/正文叠加在底部，暗角保证可读 */
 .slide-surface.slide-layout-image-full { display: flex; align-items: flex-end; padding: 0; }
 .slide-surface.slide-layout-image-full .slide-inner { position: relative; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-end; width: 100%; height: 100%; padding: 6% 6.5%; overflow: hidden; }
-.slide-layout-image-full .slide-inner > p:first-child:has(img) { position: absolute; inset: 0; width: auto; max-width: none; margin: 0; z-index: 0; }
-.slide-layout-image-full .slide-inner > p:first-child:has(img) img {
+.slide-layout-image-full .slide-inner > p:first-child.ib-lead-image { position: absolute; inset: 0; width: auto; max-width: none; margin: 0; z-index: 0; }
+.slide-layout-image-full .slide-inner > p:first-child.ib-lead-image img {
   width: 100%; height: 100%; max-height: none; object-fit: cover;
   border: none; border-radius: 0; box-shadow: none;
 }
@@ -5240,7 +5314,7 @@ body {
 
 /* PPT 组件在幻灯片内的收口：画廊图去掉全局图片边框/限高，KPI 数字随画布略收 */
 .slide-surface .gallery { gap: 0.6em; margin: 0.4em 0; }
-.slide-surface .gallery > p { display: contents; }
+.slide-surface .gallery > p { margin: 0; }
 .slide-surface .gallery > p:empty { display: none; }
 .slide-surface .gallery img {
   max-height: none; border: none; box-shadow: none; border-radius: 10px;
@@ -5269,7 +5343,7 @@ body {
 .slide-surface .task-list .task-item {
     display: grid;
     grid-template-columns: 1.1em minmax(0, 1fr);
-    column-gap: 0.4em;
+    gap: 0 0.4em;
     align-items: start;
 }
 
@@ -5339,10 +5413,10 @@ body {
 .slide-surface .slide-inner > :last-child { margin-bottom: 0; }
 
 /* V3.3 翻页：复用主题时长，只允许opacity/transform。 */
-.reveal .slides section {
-  transition-property: opacity !important;
-  transition-duration: var(--ib-dur-slow) !important;
-  transition-timing-function: var(--ib-ease-out) !important;
+.reveal .slides section:not(#_ib) {
+  transition-property: opacity;
+  transition-duration: var(--ib-dur-slow);
+  transition-timing-function: var(--ib-ease-out);
 }
 .reveal[class*="slide-anim-"]:not(.slide-anim-none) .slides section.present .slide-inner {
   animation: ib-ppt-page-in var(--ib-dur-slow) var(--ib-ease-out);
@@ -5353,16 +5427,16 @@ body {
 }
 
 /* 导出 PPTX 时逐页截图，冻结过渡与进入动效，避免截到半透明的中间帧。 */
-.reveal.ibp-pptx-exporting .slides section,
-.reveal.ibp-pptx-exporting .slides section * {
-  animation: none !important;
-  transition: none !important;
+.reveal.ibp-pptx-exporting .slides section:not(#_ib),
+.reveal.ibp-pptx-exporting .slides section *:not(#_ib) {
+  animation: none;
+  transition: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal[class*="slide-anim-"] .slides section.present,
-  .reveal[class*="slide-anim-"] .slides section.present * {
-    animation: none !important;
+  .reveal[class*="slide-anim-"] .slides section.present:not(#_ib),
+.reveal[class*="slide-anim-"] .slides section.present *:not(#_ib) {
+    animation: none;
   }
 }
 
@@ -5426,13 +5500,14 @@ body {
   pointer-events: none;
 }
 /* 圆点和色值不拆行：标签胶囊、行内代码、正文里的色值都整体换行。 */
-:is(a.tag, code, .cm-hashtag, .cm-inline-code):has(> .ib-color-swatch),
+:is(a.tag, code, .cm-hashtag, .cm-inline-code).ib-has-swatch,
 .ib-color-value {
   white-space: nowrap;
 }
 
 /* Ignorance Advanced: light view for Markdown outside the vault. */
-.ib-external-view { padding: 0 !important; display: flex; flex-direction: column; }
+.ib-external-view { display: flex; flex-direction: column; }
+.ib-external-view:not(#_ib) { padding: 0; }
 .ib-external-view__banner {
   flex: 0 0 auto;
   padding: var(--ib-space-2) var(--ib-space-4);
@@ -5464,7 +5539,9 @@ body:not(.is-phone) .modal:is(.mod-bookmark, .ib-clip-modal) {
   align-items: stretch;
   gap: 6px;
   padding: 0 0 var(--ib-space-3);
-  border: 0 !important;
+}
+.modal.mod-bookmark .setting-item:not(#_ib) {
+  border: 0;
 }
 .modal.mod-bookmark .setting-item-info { margin: 0; }
 .modal.mod-bookmark .setting-item-description:empty { display: none; }
@@ -5476,14 +5553,16 @@ body:not(.is-phone) .modal:is(.mod-bookmark, .ib-clip-modal) {
 .modal.mod-bookmark .setting-item-control { justify-content: stretch; width: 100%; }
 .modal:is(.mod-bookmark, .ib-clip-modal) :is(input[type="text"], input[type="url"], select.dropdown:not(.is-measuring)) {
   box-sizing: border-box;
-  border: var(--ib-border-1, 1px) solid var(--ib-border-default) !important;
-  background-color: var(--background-modifier-form-field, var(--background-primary)) !important;
   width: 100%;
   max-width: none;
   height: 40px;
   padding-inline: 12px;
   font-size: var(--ib-body-size, 15px);
   border-radius: var(--ib-radius-md);
+}
+.modal:is(.mod-bookmark, .ib-clip-modal) :is(input[type="text"], input[type="url"], select.dropdown:not(.is-measuring)):not(#_ib) {
+  border: var(--ib-border-1, 1px) solid var(--ib-border-default);
+  background-color: var(--background-modifier-form-field, var(--background-primary));
 }
 .modal.mod-bookmark input[disabled] {
   color: var(--ib-text-muted);
@@ -5497,12 +5576,13 @@ body:not(.is-phone) .modal:is(.mod-bookmark, .ib-clip-modal) {
 .ib-clip-modal__field { position: relative; display: flex; align-items: center; }
 .ib-clip-modal__icon { position: absolute; left: 12px; display: flex; color: var(--ib-text-muted); pointer-events: none; }
 .ib-clip-modal__icon svg { width: 16px; height: 16px; }
-.modal.ib-clip-modal input.ib-clip-modal__input { padding-left: 36px !important; }
+.modal.ib-clip-modal input.ib-clip-modal__input:not(#_ib) { padding-left: 36px; }
 .ib-clip-modal__field:focus-within .ib-clip-modal__icon { color: var(--ib-accent-brand); }
 .ib-form-hint { color: var(--ib-text-muted); font-size: var(--ib-tiny-size); line-height: 1.5; }
 
 /* 16px keeps iOS from zooming the page when a field is focused. */
-.is-mobile .modal:is(.mod-bookmark, .ib-clip-modal) :is(input, select.dropdown:not(.is-measuring)) { height: 44px !important; min-height: 44px; font-size: 16px; line-height: 44px; }
+.is-mobile .modal:is(.mod-bookmark, .ib-clip-modal) :is(input, select.dropdown:not(.is-measuring)) { min-height: 44px; font-size: 16px; line-height: 44px; }
+.is-mobile .modal:is(.mod-bookmark, .ib-clip-modal) :is(input, select.dropdown:not(.is-measuring)):not(#_ib) { height: 44px; }
 /* Phones: Obsidian lays the dialog out as a sheet with 取消 / 保存 as text
    buttons in the title bar; keep them plain instead of boxed. */
 .is-phone .modal:is(.mod-bookmark, .ib-clip-modal) .modal-content { padding: var(--ib-space-3) var(--ib-space-4) 0; }
@@ -5510,12 +5590,14 @@ body:not(.is-phone) .modal:is(.mod-bookmark, .ib-clip-modal) {
   height: 44px;
   min-width: 0;
   padding: 0 var(--ib-space-4);
-  border: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
   color: var(--ib-text-secondary, var(--text-muted));
   font-size: 16px;
   font-weight: 500;
+}
+.is-phone .modal.mod-bookmark .modal-nav-action:not(#_ib) {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
 }
 .is-phone .modal.mod-bookmark .modal-nav-action.mod-cta { color: var(--ib-accent-brand); font-weight: 650; }
 .is-mobile .modal:is(.mod-bookmark, .ib-clip-modal) .modal-button-container {
@@ -5524,7 +5606,8 @@ body:not(.is-phone) .modal:is(.mod-bookmark, .ib-clip-modal) {
   gap: var(--ib-space-3);
   padding: 0;
 }
-.is-mobile .modal:is(.mod-bookmark, .ib-clip-modal) .modal-button-container > button { flex: 1 1 0; height: 44px; margin: 0 !important; }
+.is-mobile .modal:is(.mod-bookmark, .ib-clip-modal) .modal-button-container > button { flex: 1 1 0; height: 44px; }
+.is-mobile .modal:is(.mod-bookmark, .ib-clip-modal) .modal-button-container > button:not(#_ib) { margin: 0; }
 .is-mobile .modal:is(.mod-bookmark, .ib-clip-modal) .modal-button-container > .mod-cancel { order: 0; }
 
 /* V3.3：分页与捕获区域继承静态时长，隔离后续交互动效。 */
@@ -5535,15 +5618,17 @@ body:not(.is-phone) .modal:is(.mod-bookmark, .ib-clip-modal) {
   --ib-dur-slow: 0ms;
 }
 :is(.ibp-has-book, .ibp-book, .ibp-staging, .ibp-export,
-    .ibp-export-preview__book, .ibp-export-preview__slides),
+    .ibp-export-preview__book, .ibp-export-preview__slides):not(#_ib),
 :is(.ibp-has-book, .ibp-book, .ibp-staging, .ibp-export,
-    .ibp-export-preview__book, .ibp-export-preview__slides) :is(*, *::before, *::after) {
-  animation: none !important;
-  transition: none !important;
+    .ibp-export-preview__book, .ibp-export-preview__slides) :is(*, *::before, *::after):not(#_ib) {
+  animation: none;
+  transition: none;
 }
 @media print {
   :root { --ib-dur-fast: 0ms; --ib-dur-base: 0ms; --ib-dur-slow: 0ms; }
-  *, *::before, *::after { animation: none !important; transition: none !important; }
+  *:not(#_ib),
+*:not(#_ib)::before,
+*:not(#_ib)::after { animation: none; transition: none; }
 }
 
 /* V3.3 质感：Figma texture/noise 原图，100px 平铺；正文不随滚动运动。 */
@@ -5576,11 +5661,11 @@ body:not(.is-phone) .modal:is(.mod-bookmark, .ib-clip-modal) {
   --ib-noise-opacity: 0;
   --ib-noise-image: none;
 }
-.workspace-leaf-content[data-type="markdown"] .markdown-reading-view:is(.ibp-has-book, :has(.ibp-has-book)) {
+.workspace-leaf-content[data-type="markdown"] .markdown-reading-view:is(.ibp-has-book, .ibp-book-host) {
   --ib-noise-image: none;
   --ib-noise-opacity: 0;
 }
-.workspace-leaf-content[data-type="markdown"] .markdown-reading-view:is(.ibp-has-book, :has(.ibp-has-book))::before { content: none; }
+.workspace-leaf-content[data-type="markdown"] .markdown-reading-view:is(.ibp-has-book, .ibp-book-host)::before { content: none; }
 @media print {
   :root, .theme-dark { --ib-noise-opacity: 0; --ib-noise-image: none; }
   .workspace-leaf-content[data-type="markdown"] :is(.markdown-reading-view, .markdown-source-view.mod-cm6)::before { content: none; }
@@ -5591,40 +5676,43 @@ body:not(.is-phone) .modal:is(.mod-bookmark, .ib-clip-modal) {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.10); }
 }
-:is(.ibm-copy-source, .ibc-live-copy, .ib-code-frame [data-tool="copy"]).is-copied { color: var(--ib-success-text) !important; }
+:is(.ibm-copy-source, .ibc-live-copy, .ib-code-frame [data-tool="copy"]).is-copied:not(#_ib) { color: var(--ib-success-text); }
 :is(.ibm-copy-source, .ibc-live-copy, .ib-code-frame [data-tool="copy"]).is-copied > svg {
   animation: ib-copy-confirm var(--ib-dur-fast) var(--ib-ease-out);
   transform-origin: center;
 }
 @media (prefers-reduced-motion: reduce) {
-  :is(.ibm-copy-source, .ibc-live-copy, .ib-code-frame [data-tool="copy"]).is-copied > svg { animation: none !important; transform: none; }
+  :is(.ibm-copy-source, .ibc-live-copy, .ib-code-frame [data-tool="copy"]).is-copied > svg { transform: none; }
+  :is(.ibm-copy-source, .ibc-live-copy, .ib-code-frame [data-tool="copy"]).is-copied > svg:not(#_ib) { animation: none; }
 }
 
 /* V3.3 Callout：覆盖 Obsidian 的内联尺寸过渡，布局即时切换。 */
-.callout.is-collapsible > .callout-content {
-  height: auto !important;
-  transition-property: opacity !important;
-  transition-duration: var(--ib-dur-base) !important;
-  transition-timing-function: var(--ib-ease-out) !important;
+.callout.is-collapsible > .callout-content:not(#_ib) {
+  height: auto;
+  transition-property: opacity;
+  transition-duration: var(--ib-dur-base);
+  transition-timing-function: var(--ib-ease-out);
 }
-.callout.is-collapsible.is-collapsed > .callout-content { display: none !important; }
+.callout.is-collapsible.is-collapsed > .callout-content:not(#_ib) { display: none; }
 .callout-fold .svg-icon {
   transition: transform var(--ib-dur-base) var(--ib-ease-out);
   transform: rotate(0deg);
 }
 .callout-fold.is-collapsed .svg-icon { transform: rotate(calc(var(--direction, 1) * -180deg)); }
 @media (prefers-reduced-motion: reduce) {
-  .callout.is-collapsible > .callout-content, .callout-fold .svg-icon { transition: none !important; }
+  .callout.is-collapsible > .callout-content:not(#_ib),
+.callout-fold .svg-icon:not(#_ib) { transition: none; }
 }
 /* 上述专用规则不能覆盖分页和捕获的静态隔离。 */
-:is(.ibp-has-book, .ibp-book, .ibp-staging, .ibp-export, .ibp-export-preview__book, .ibp-export-preview__slides) .callout-content {
-  transition: none !important;
+:is(.ibp-has-book, .ibp-book, .ibp-staging, .ibp-export, .ibp-export-preview__book, .ibp-export-preview__slides) .callout-content:not(#_ib) {
+  transition: none;
 }
-@media print { .callout-content, .callout-fold .svg-icon { transition: none !important; } }
+@media print { .callout-content:not(#_ib),
+.callout-fold .svg-icon:not(#_ib) { transition: none; } }
 /* 沿用 Obsidian 打印时展开提示块的行为。 */
-.print .callout.is-collapsible.is-collapsed > .callout-content { display: block !important; }
+.print .callout.is-collapsible.is-collapsed > .callout-content:not(#_ib) { display: block; }
 @media print {
-  .callout.is-collapsible.is-collapsed > .callout-content { display: block !important; }
+  .callout.is-collapsible.is-collapsed > .callout-content:not(#_ib) { display: block; }
 }
 
 /* 只由用户点击设置状态类，首次渲染不添加。 */
@@ -5632,14 +5720,16 @@ body:not(.is-phone) .modal:is(.mod-bookmark, .ib-clip-modal) {
 @keyframes ib-callout-close { from { opacity: var(--ib-callout-opacity, 1); } to { opacity: 0; } }
 .callout-content.ib-callout-opening { animation: ib-callout-open var(--ib-dur-base) var(--ib-ease-out); }
 .callout.is-collapsed > .callout-content.ib-callout-closing {
-  display: block !important;
   animation: ib-callout-close var(--ib-dur-base) var(--ib-ease-in) forwards;
 }
+.callout.is-collapsed > .callout-content.ib-callout-closing:not(#_ib) {
+  display: block;
+}
 @media (prefers-reduced-motion: reduce) {
-  .callout-content:is(.ib-callout-opening, .ib-callout-closing) { animation: none !important; }
+  .callout-content:is(.ib-callout-opening, .ib-callout-closing):not(#_ib) { animation: none; }
 }
 @media print {
-  .callout-content:is(.ib-callout-opening, .ib-callout-closing) { animation: none !important; }
+  .callout-content:is(.ib-callout-opening, .ib-callout-closing):not(#_ib) { animation: none; }
 }
 
 /* V3.3 导出弹框：HTML 等交互预览淡入，PDF与分页输出保持静态。 */
@@ -5655,22 +5745,26 @@ body:not(.is-phone) .modal:is(.mod-bookmark, .ib-clip-modal) {
 .ibp-export-preview__frame.ibp-export-preview__reveal { animation: ib-export-preview-ready var(--ib-dur-base) var(--ib-ease-out); }
 .modal.ibp-export-preview:is([data-export-kind="pdf"], [data-export-kind="pages"]),
 .modal.ibp-export-preview:is([data-export-kind="pdf"], [data-export-kind="pages"]) :is(*, *::before, *::after) {
-  animation: none !important;
-  transition: none !important;
   --ib-noise-image: none;
   --ib-noise-opacity: 0;
 }
-@media (prefers-reduced-motion: reduce) {
-  .modal.ibp-export-preview, .ibp-export-preview__frame.ibp-export-preview__reveal { animation: none !important; }
+.modal.ibp-export-preview:is([data-export-kind="pdf"], [data-export-kind="pages"]):not(#_ib),
+.modal.ibp-export-preview:is([data-export-kind="pdf"], [data-export-kind="pages"]) :is(*, *::before, *::after):not(#_ib) {
+  animation: none;
+  transition: none;
 }
-@media print { .modal.ibp-export-preview { animation: none !important; transition: none !important; } }
+@media (prefers-reduced-motion: reduce) {
+  .modal.ibp-export-preview:not(#_ib),
+.ibp-export-preview__frame.ibp-export-preview__reveal:not(#_ib) { animation: none; }
+}
+@media print { .modal.ibp-export-preview:not(#_ib) { animation: none; transition: none; } }
 
 /* V3.3 链接/按钮：下划线以opacity出现，按钮只在按压时缩放。 */
-.markdown-rendered a:is(.internal-link, .external-link):not(:has(img, svg)) {
+.markdown-rendered a:is(.internal-link, .external-link):not(.ib-link-media) {
   position: relative;
   transition: color var(--ib-dur-fast) var(--ib-ease-out);
 }
-.markdown-rendered a:is(.internal-link, .external-link):not(:has(img, svg))::after {
+.markdown-rendered a:is(.internal-link, .external-link):not(.ib-link-media)::after {
   content: "";
   position: absolute;
   inset-inline: 0;
@@ -5680,37 +5774,37 @@ body:not(.is-phone) .modal:is(.mod-bookmark, .ib-clip-modal) {
   opacity: 0;
   transition: opacity var(--ib-dur-fast) var(--ib-ease-out);
 }
-.markdown-rendered a:is(.internal-link, .external-link):not(:has(img, svg)):is(:hover, :focus-visible) {
+.markdown-rendered a:is(.internal-link, .external-link):not(.ib-link-media):is(:hover, :focus-visible) {
   text-decoration: none;
 }
-.markdown-rendered a:is(.internal-link, .external-link):not(:has(img, svg)):is(:hover, :focus-visible)::after { opacity: 1; }
+.markdown-rendered a:is(.internal-link, .external-link):not(.ib-link-media):is(:hover, :focus-visible)::after { opacity: 1; }
 :is(button, .clickable-icon) { transition: transform var(--ib-dur-fast) var(--ib-ease-out), color var(--ib-dur-fast) var(--ib-ease-out); }
 :is(button, .clickable-icon):active:not(:disabled, [aria-disabled="true"], .is-disabled) { transform: scale(.97); }
 @media (prefers-reduced-motion: reduce) {
-  :is(button, .clickable-icon):active { transform: none !important; }
-  .markdown-rendered a::after { transition: none !important; }
+  :is(button, .clickable-icon):active:not(#_ib) { transform: none; }
+  .markdown-rendered a:not(#_ib)::after { transition: none; }
 }
-:is(.ibp-book, .ibp-staging, .ibp-export, .ibp-export-preview__book, .ibp-export-preview__slides) :is(button, .clickable-icon):active { transform: none !important; }
-@media print { :is(button, .clickable-icon):active { transform: none !important; } }
+:is(.ibp-book, .ibp-staging, .ibp-export, .ibp-export-preview__book, .ibp-export-preview__slides) :is(button, .clickable-icon):active:not(#_ib) { transform: none; }
+@media print { :is(button, .clickable-icon):active:not(#_ib) { transform: none; } }
 
 /* PDF及分页预览的按压状态也保持静态。 */
-.modal.ibp-export-preview:is([data-export-kind="pdf"], [data-export-kind="pages"]) :is(button, .clickable-icon):active { transform: none !important; }
+.modal.ibp-export-preview:is([data-export-kind="pdf"], [data-export-kind="pages"]) :is(button, .clickable-icon):active:not(#_ib) { transform: none; }
 
 /* V3.3 导出阅读器目录：活动项标记只移动transform，首次定位静态。 */
 .ib-nav-panel[data-panel="toc"] { position: relative; padding-inline-start: 12px; }
 .ib-toc-indicator { position: absolute; inset-inline-start: 0; top: 0; width: 3px; height: 34px; border-radius: 2px; background: var(--ib-accent-brand); pointer-events: none; }
-.ib-toc-indicator[hidden] { display: none !important; }
+.ib-toc-indicator[hidden]:not(#_ib) { display: none; }
 .ib-toc-indicator.is-ready { transition: transform var(--ib-dur-base) var(--ib-ease-out); }
-@media (prefers-reduced-motion: reduce) { .ib-toc-indicator { transition: none !important; } }
-@media print { .ib-toc-indicator { transition: none !important; } }
+@media (prefers-reduced-motion: reduce) { .ib-toc-indicator:not(#_ib) { transition: none; } }
+@media print { .ib-toc-indicator:not(#_ib) { transition: none; } }
 
 /* V3.3 手机阅读：390px单列，保留字体/导航，触控目标至少44px。 */
 @media (max-width: 760px) {
-  .ib-reader-header :is(.ib-reader-width, [data-action="zen"], [data-action="theme"]) { display: none !important; }
-  .ib-reader-header .ib-reader-button[data-action="font"] { display: flex !important; }
+  .ib-reader-header :is(.ib-reader-width, [data-action="zen"], [data-action="theme"]):not(#_ib) { display: none; }
+  .ib-reader-header .ib-reader-button[data-action="font"]:not(#_ib) { display: flex; }
   .ib-reader-header .ib-reader-button { min-width: 44px; min-height: 44px; }
   .ib-reader-note { font-size: 16px; line-height: 28px; }
-  .ib-reader-note :is(p, li) { line-height: 28px !important; }
+  .ib-reader-note :is(p, li):not(#_ib) { line-height: 28px; }
 }
 
 /* 手机页头顺序与Views一致；离线文件无历史时返回保持禁用。 */
@@ -5731,17 +5825,19 @@ body:not(.is-phone) .modal:is(.mod-bookmark, .ib-clip-modal) {
 }
 
 /* 导出Callout保留语义标记，以主题token随明暗切换。 */
-.ib-reader [data-ib-callout] { --ib-reader-callout-bg: var(--ib-info-bg); --ib-reader-callout-text: var(--ib-info-text); --ib-reader-callout-border: var(--ib-info-border); background-color: var(--ib-reader-callout-bg) !important; border: 1px solid var(--ib-reader-callout-border) !important; color: var(--ib-text-primary) !important; }
+.ib-reader [data-ib-callout] { --ib-reader-callout-bg: var(--ib-info-bg); --ib-reader-callout-text: var(--ib-info-text); --ib-reader-callout-border: var(--ib-info-border); }
+.ib-reader [data-ib-callout]:not(#_ib) { background-color: var(--ib-reader-callout-bg); border: 1px solid var(--ib-reader-callout-border); color: var(--ib-text-primary); }
 .ib-reader [data-ib-callout]:is([data-ib-callout="tip"], [data-ib-callout="success"], [data-ib-callout="check"], [data-ib-callout="done"]) { --ib-reader-callout-bg: var(--ib-success-bg); --ib-reader-callout-text: var(--ib-success-text); --ib-reader-callout-border: var(--ib-success-border); }
 .ib-reader [data-ib-callout]:is([data-ib-callout="warning"], [data-ib-callout="caution"], [data-ib-callout="attention"]) { --ib-reader-callout-bg: var(--ib-warning-bg); --ib-reader-callout-text: var(--ib-warning-text); --ib-reader-callout-border: var(--ib-warning-border); }
 .ib-reader [data-ib-callout]:is([data-ib-callout="failure"], [data-ib-callout="fail"], [data-ib-callout="danger"], [data-ib-callout="error"], [data-ib-callout="bug"]) { --ib-reader-callout-bg: var(--ib-error-bg); --ib-reader-callout-text: var(--ib-error-text); --ib-reader-callout-border: var(--ib-error-border); }
-.ib-reader [data-ib-callout] :is(p, li) { color: var(--ib-text-primary) !important; }
-.ib-reader [data-ib-callout-title], .ib-reader [data-ib-callout-title] * { color: var(--ib-reader-callout-text) !important; }
-.ib-reader [data-ib-callout] { border-radius: var(--ib-callout-radius) !important; }
-.ib-reader [data-ib-callout-title] { font-size: var(--ib-callout-heading-size) !important; font-weight: var(--ib-heading-bold) !important; }
-.ib-reader [data-ib-callout-content] :is(p, li) { font-size: var(--ib-callout-text-size) !important; line-height: var(--ib-callout-leading) !important; }
+.ib-reader [data-ib-callout] :is(p, li):not(#_ib) { color: var(--ib-text-primary); }
+.ib-reader [data-ib-callout-title]:not(#_ib),
+.ib-reader [data-ib-callout-title] *:not(#_ib) { color: var(--ib-reader-callout-text); }
+.ib-reader [data-ib-callout]:not(#_ib) { border-radius: var(--ib-callout-radius); }
+.ib-reader [data-ib-callout-title]:not(#_ib) { font-size: var(--ib-callout-heading-size); font-weight: var(--ib-heading-bold); }
+.ib-reader [data-ib-callout-content] :is(p, li):not(#_ib) { font-size: var(--ib-callout-text-size); line-height: var(--ib-callout-leading); }
 .ib-reader .ib-table-frame:not(.is-full) { border-radius: var(--ib-table-radius); }
-.ib-reader .ib-table-frame.is-frozen :is(thead tr, tr:first-child) > th:first-child { background: var(--ib-table-heading-bg) !important; }
+.ib-reader .ib-table-frame.is-frozen :is(thead tr, tr:first-child) > th:first-child:not(#_ib) { background: var(--ib-table-heading-bg); }
 .ib-reader .ib-code-frame { border-radius: var(--ib-code-radius); }
 .ib-reader .ib-code-frame .ib-block-bar { box-sizing: border-box; min-height: var(--ib-code-header-height); height: var(--ib-code-header-height); }
 .ib-reader .ib-code-frame .ib-caption { font-size: var(--ib-code-label-size); font-weight: var(--ib-heading-bold); }
@@ -5764,8 +5860,7 @@ body.theme-dark {
   --ib-highlight-blue-bg: var(--ib-accent-subtle);
 }
 :is(.markdown-rendered, .ib-reader-note) del:not(.slide-surface del) {
-  text-decoration-color: currentColor;
-  text-decoration-thickness: auto;
+  text-decoration: line-through currentColor auto;
 }
 :is(.markdown-rendered, .ib-reader-note) mark:not(.slide-surface mark),
 .markdown-source-view.mod-cm6 .cm-highlight,
@@ -5818,7 +5913,7 @@ body {
   accent-color: var(--ib-accent-solid);
 }
 .markdown-rendered .task-list-item.is-checked:not(.slide-surface .task-list-item),
-.ib-reader-note li:has(> input[type="checkbox"]:checked) { color: var(--ib-text-muted); }
+.ib-reader-note li.is-checked { color: var(--ib-text-muted); }
 :is(.markdown-rendered, .ib-reader-note) kbd:not(.slide-surface kbd) {
   display: inline-block;
   padding: 6px 10px;
@@ -5839,11 +5934,11 @@ body {
 }
 :is(.markdown-rendered, .ib-reader-note) dl :is(dt, dd) { line-height: inherit; }
 .ib-reader .ib-code-frame [data-ib-line="hl"] { border-radius: var(--ib-code-highlight-radius); }
-.ib-reader .ib-code-frame [data-tk~="keyword"] { color: var(--ib-syntax-keyword) !important; font-weight: var(--ib-heading-bold) !important; }
-.ib-reader .ib-code-frame :is([data-tk~="function"], [data-tk~="class-name"]) { color: var(--ib-syntax-function) !important; font-weight: var(--ib-heading-bold) !important; }
-.ib-reader .ib-code-frame [data-tk~="string"] { color: var(--ib-syntax-string) !important; }
-.ib-reader .ib-code-frame :is([data-tk~="number"], [data-tk~="boolean"]) { color: var(--ib-syntax-number) !important; }
-.ib-reader .ib-code-frame [data-tk~="comment"] { color: var(--ib-syntax-comment) !important; }
+.ib-reader .ib-code-frame [data-tk~="keyword"]:not(#_ib) { color: var(--ib-syntax-keyword); font-weight: var(--ib-heading-bold); }
+.ib-reader .ib-code-frame :is([data-tk~="function"], [data-tk~="class-name"]):not(#_ib) { color: var(--ib-syntax-function); font-weight: var(--ib-heading-bold); }
+.ib-reader .ib-code-frame [data-tk~="string"]:not(#_ib) { color: var(--ib-syntax-string); }
+.ib-reader .ib-code-frame :is([data-tk~="number"], [data-tk~="boolean"]):not(#_ib) { color: var(--ib-syntax-number); }
+.ib-reader .ib-code-frame [data-tk~="comment"]:not(#_ib) { color: var(--ib-syntax-comment); }
 .ib-reader .ib-code-frame [data-tool="copy"] { width: 30px; min-width: 30px; display: inline-flex; align-items: center; justify-content: center; white-space: nowrap; }
 
 /* 边界语法沿用原生折叠与脚注导航，仅统一排版。 */
@@ -5879,57 +5974,66 @@ body {
 /* 离线阅读器折叠：保留原始状态，动画仅透明度和箭头旋转。 */
 .ib-reader [data-ib-callout][data-ib-collapsed] > [data-ib-callout-title] { cursor: pointer; }
 .ib-reader [data-ib-callout-content] { transition: opacity var(--ib-dur-base) var(--ib-ease-out); }
-.ib-reader [data-ib-callout][data-ib-collapsed="true"] > [data-ib-callout-content] { display: none !important; }
+.ib-reader [data-ib-callout][data-ib-collapsed="true"] > [data-ib-callout-content]:not(#_ib) { display: none; }
 .ib-reader [data-ib-callout-content].ib-callout-opening { animation: ib-callout-open var(--ib-dur-base) var(--ib-ease-out); }
-.ib-reader [data-ib-callout][data-ib-collapsed="true"] > [data-ib-callout-content].ib-callout-closing { display: block !important; animation: ib-callout-close var(--ib-dur-base) var(--ib-ease-in) forwards; }
+.ib-reader [data-ib-callout][data-ib-collapsed="true"] > [data-ib-callout-content].ib-callout-closing { animation: ib-callout-close var(--ib-dur-base) var(--ib-ease-in) forwards; }
+.ib-reader [data-ib-callout][data-ib-collapsed="true"] > [data-ib-callout-content].ib-callout-closing:not(#_ib) { display: block; }
 .ib-reader [data-ib-callout-fold] svg { transform: rotate(0deg); transition: transform var(--ib-dur-base) var(--ib-ease-out); }
 .ib-reader [data-ib-callout][data-ib-collapsed="true"] [data-ib-callout-fold] svg { transform: rotate(-180deg); }
 @media (prefers-reduced-motion: reduce) {
-  .ib-reader [data-ib-callout-content], .ib-reader [data-ib-callout-fold] svg { animation: none !important; transition: none !important; }
+  .ib-reader [data-ib-callout-content]:not(#_ib),
+.ib-reader [data-ib-callout-fold] svg:not(#_ib) { animation: none; transition: none; }
 }
 @media print {
-  .ib-reader [data-ib-callout][data-ib-collapsed] > [data-ib-callout-content] { display: block !important; opacity: 1 !important; animation: none !important; transition: none !important; }
+  .ib-reader [data-ib-callout][data-ib-collapsed] > [data-ib-callout-content]:not(#_ib) { display: block; opacity: 1; animation: none; transition: none; }
 }
 
 /* V3.3 边界：阅读表格首列冻结；代码默认横向滚动，用户可开启换行。 */
-.markdown-reading-view:not(:has(.ibp-book)) .el-table > table { overflow: visible; }
+.markdown-reading-view:not(.ibp-book-host) .el-table > table { overflow: visible; }
 @media screen {
   /* Wide reading tables scroll instead of squeezing prose into tall columns. */
-  .markdown-reading-view:not(:has(.ibp-book)) .el-table > table:has(tr > :nth-child(6)) {
+  .markdown-reading-view:not(.ibp-book-host) .el-table > table.ib-wide-table {
     width: max-content; min-width: 100%; max-width: none;
   }
-  .markdown-reading-view:not(:has(.ibp-book)) .el-table > table:has(tr > :nth-child(6)) :is(th, td) {
-    white-space: nowrap !important;
+  .markdown-reading-view:not(.ibp-book-host) .el-table > table.ib-wide-table :is(th, td):not(#_ib) {
+    white-space: nowrap;
   }
 }
-.markdown-reading-view:not(:has(.ibp-book)) .el-table > table tr > :first-child {
+.markdown-reading-view:not(.ibp-book-host) .el-table > table tr > :first-child {
   position: sticky; inset-inline-start: 0; z-index: 1;
 }
-.markdown-reading-view:not(:has(.ibp-book)) .el-table > table thead tr > :first-child {
-  background: var(--ib-table-heading-bg) !important; z-index: 2;
+.markdown-reading-view:not(.ibp-book-host) .el-table > table thead tr > :first-child { z-index: 2;
 }
-.markdown-reading-view:not(:has(.ibp-book)) pre.ibc-enhanced { --code-white-space: pre; }
-.markdown-reading-view:not(:has(.ibp-book)) pre.ibc-enhanced .ib-code-line { white-space: pre; }
-.markdown-reading-view:not(:has(.ibp-book)) pre.ib-code-soft-wrap,
-.markdown-reading-view:not(:has(.ibp-book)) pre.ib-code-soft-wrap .ib-code-line { white-space: pre-wrap; --code-white-space: pre-wrap; }
+.markdown-reading-view:not(.ibp-book-host) .el-table > table thead tr > :first-child:not(#_ib) {
+  background: var(--ib-table-heading-bg);
+}
+.markdown-reading-view:not(.ibp-book-host) pre.ibc-enhanced { --code-white-space: pre; }
+.markdown-reading-view:not(.ibp-book-host) pre.ibc-enhanced .ib-code-line { white-space: pre; }
+.markdown-reading-view:not(.ibp-book-host) pre.ib-code-soft-wrap,
+.markdown-reading-view:not(.ibp-book-host) pre.ib-code-soft-wrap .ib-code-line { white-space: pre-wrap; --code-white-space: pre-wrap; }
 .ibm-block-header .ibm-code-wrap { min-width: 28px; height: 28px; padding: 0 6px; border-radius: var(--ib-radius-md); }
 .ibm-code-wrap[aria-pressed="true"] { color: var(--ib-accent-brand); }
 @media print {
-  .markdown-reading-view .el-table > table tr > :first-child { position: static !important; }
+  .markdown-reading-view .el-table > table tr > :first-child:not(#_ib) { position: static; }
   .markdown-reading-view pre.ibc-enhanced,
-  .markdown-reading-view pre.ibc-enhanced .ib-code-line { white-space: pre-wrap !important; --code-white-space: pre-wrap; }
-  .ibm-code-wrap { display: none !important; }
+  .markdown-reading-view pre.ibc-enhanced .ib-code-line { --code-white-space: pre-wrap; }
+  .markdown-reading-view pre.ibc-enhanced:not(#_ib),
+.markdown-reading-view pre.ibc-enhanced .ib-code-line:not(#_ib) { white-space: pre-wrap; }
+  .ibm-code-wrap:not(#_ib) { display: none; }
 }
 /* 静态纸面将宽表格重排到正文宽度，连续字段允许在单元格内断行。 */
-:is(.ibp-page-body, .ibp-staging, .ibp-export) table {
-  table-layout: fixed !important; width: 100% !important; max-width: 100% !important; min-width: 0 !important;
+:is(.ibp-page-body, .ibp-staging, .ibp-export) table:not(#_ib) {
+  table-layout: fixed; width: 100%; max-width: 100%; min-width: 0;
 }
-:is(.ibp-page-body, .ibp-staging, .ibp-export) :is(th, td) {
-  min-width: 0 !important; overflow-wrap: anywhere; word-break: normal;
+:is(.ibp-page-body, .ibp-staging, .ibp-export) :is(th, td) { overflow-wrap: anywhere; word-break: normal;
+}
+:is(.ibp-page-body, .ibp-staging, .ibp-export) :is(th, td):not(#_ib) {
+  min-width: 0;
 }
 @media print {
-  .markdown-reading-view table { table-layout: fixed !important; width: 100% !important; max-width: 100% !important; min-width: 0 !important; }
-  .markdown-reading-view :is(th, td) { min-width: 0 !important; overflow-wrap: anywhere; }
+  .markdown-reading-view table:not(#_ib) { table-layout: fixed; width: 100%; max-width: 100%; min-width: 0; }
+  .markdown-reading-view :is(th, td) { overflow-wrap: anywhere; }
+  .markdown-reading-view :is(th, td):not(#_ib) { min-width: 0; }
 }
 
 /* V3.3 optional H2 badge: opt-in for native reading, independent of margin labels. */
@@ -5949,7 +6053,7 @@ body.ib-heading-badge .markdown-reading-view .markdown-preview-view:not(.ibp-has
   vertical-align: middle;
 }
 @media print {
-  body.ib-heading-badge .markdown-reading-view .markdown-rendered h2::before { display: none !important; }
+  body.ib-heading-badge .markdown-reading-view .markdown-rendered h2:not(#_ib)::before { display: none; }
 }
 
 /* V3.3 semantic table captions retain their position above the data grid. */
@@ -5964,12 +6068,12 @@ body.ib-heading-badge .markdown-reading-view .markdown-preview-view:not(.ibp-has
   color: var(--ib-text-primary);
 }
 /* Standalone reader captions override source UA inline alignment. */
-.ib-reader .ib-reader-note table > caption {
-  caption-side: top !important;
-  text-align: start !important;
-  padding-bottom: var(--ib-space-3) !important;
-  font-size: var(--ib-table-caption-size) !important;
-  font-weight: var(--ib-heading-bold) !important;
+.ib-reader .ib-reader-note table > caption:not(#_ib) {
+  caption-side: top;
+  text-align: start;
+  padding-bottom: var(--ib-space-3);
+  font-size: var(--ib-table-caption-size);
+  font-weight: var(--ib-heading-bold);
 }
 
 /* V3.3 chapter card: the rail is decoration independent of its border. */
@@ -5996,7 +6100,7 @@ body { --ib-chapter-radius: 26px; --ib-chapter-rail-width: 3px; --ib-chapter-rai
   pointer-events: none;
 }
 .ibp-page-body .ibc-chapter__rail, .ibp-staging .ibc-chapter__rail { display: none; }
-@media print { .ibc-chapter__rail { display: none !important; } .ibc-container--chapter { box-shadow: none !important; } }
+@media print { .ibc-chapter__rail:not(#_ib) { display: none; } .ibc-container--chapter:not(#_ib) { box-shadow: none; } }
 
 body.ib-hide-decorations .ibc-chapter__rail { display: none; }
 @media (prefers-reduced-motion: reduce) { .ibc-chapter__rail { display: none; } }
@@ -6012,17 +6116,17 @@ body.ib-hide-decorations .ibc-chapter__rail { display: none; }
 .ibp-has-book .ib-native-chapter-layer { display:none; }
 
 /* Reading refinements: one chart frame, compact fit, theme-based marks. */
-.cm-embed-block:has(> .ib-echarts-block) { padding:0 !important; border:0 !important; background:transparent !important; box-shadow:none !important; }
+.cm-embed-block.ib-has-echarts:not(#_ib) { padding:0; border:0; background:transparent; box-shadow:none; }
 .ib-echarts-block { margin:var(--ib-space-3) 0; padding:0; height:clamp(220px, 42vh, 360px); min-height:0; overflow:hidden; }
-.ib-echarts-block > div:has(> canvas) { border:0 !important; background:transparent !important; box-shadow:none !important; }
+.ib-echarts-block > div.ib-canvas-host:not(#_ib) { border:0; background:transparent; box-shadow:none; }
 body[data-ib-table-alignment] .markdown-rendered table { width:auto; max-width:100%; }
 body[data-ib-table-alignment="left"] .markdown-rendered table { margin-inline-start:0; margin-inline-end:auto; }
 body[data-ib-table-alignment="center"] .markdown-rendered table { margin-inline:auto; }
 body[data-ib-table-alignment="right"] .markdown-rendered table { margin-inline-start:auto; margin-inline-end:0; }
-:is(.markdown-rendered, .ib-reader-note) mark { font-family:inherit; border-radius:var(--ib-radius-xs); box-decoration-break:clone; padding:0 .12em; }
-.image-embed .image-resize-corner { display:none !important; }
+:is(.markdown-rendered, .ib-reader-note) mark { font-family:inherit; border-radius:var(--ib-radius-xs); padding:0 .12em; }
+.image-embed .image-resize-corner:not(#_ib) { display:none; }
 /* Reading images can omit image-wrapper; anchor their resize layer locally. */
-.markdown-reading-view .image-embed:has(> .ib-image-resize-layer) { position:relative; }
+.markdown-reading-view .image-embed.ib-has-resize-layer { position:relative; }
 .image-embed .image-wrapper { position:relative; }
 .ib-image-resize-layer { position:absolute; pointer-events:none; z-index:3; }
 .ib-image-resize-handle { position:absolute; pointer-events:auto; padding:0; margin:0; min-width:0; width:10px; height:10px; border:1px solid var(--ib-accent-solid); border-radius:3px; background:var(--ib-bg-primary); box-shadow:var(--ib-shadow-1); opacity:0; touch-action:none; transform:translate(-50%,-50%); }
@@ -6036,22 +6140,25 @@ body[data-ib-table-alignment="right"] .markdown-rendered table { margin-inline-s
 .ib-image-resize-handle:is(.is-e,.is-w) { top:50%; width:5px; height:24px; cursor:ew-resize; }
 .ib-image-resize-handle:is(.is-nw,.is-se) { cursor:nwse-resize; }
 .ib-image-resize-handle:is(.is-ne,.is-sw) { cursor:nesw-resize; }
-@media print { .ib-image-resize-layer { display:none !important; } }
+@media print { .ib-image-resize-layer:not(#_ib) { display:none; } }
 
 :is(.ibp-staging, .ibp-export, .ibp-book) .ib-echarts-block { height:320px; min-height:0; }
 @media print { .ib-echarts-block { height:320px; min-height:0; } }
-.image-embed img[width][height] { height:revert !important; object-fit:fill; }
+.image-embed img[width][height] { object-fit:fill; }
+.image-embed img[width][height]:not(#_ib) { height:revert; }
 
 .markdown-source-view.mod-cm6 mark { color:var(--ib-text-primary); background:var(--ib-accent-subtle); border-radius:var(--ib-radius-xs); }
 /* A hidden closing fence is not a blank code line; reveal it when edited. */
-.markdown-source-view.mod-cm6.is-live-preview .cm-line.HyperMD-codeblock-end:not(.cm-active) {
-  font-size:0 !important; line-height:0 !important; min-height:0;
-  padding-top:0 !important; padding-bottom:var(--ib-space-3, 12px) !important;
+.markdown-source-view.mod-cm6.is-live-preview .cm-line.HyperMD-codeblock-end:not(.cm-active) { min-height:0;
+}
+.markdown-source-view.mod-cm6.is-live-preview .cm-line.HyperMD-codeblock-end:not(.cm-active):not(#_ib) {
+  font-size:0; line-height:0;
+  padding-top:0; padding-bottom:var(--ib-space-3, 12px);
 }
 
 /* Small diagrams keep a compact frame; large diagrams still fit the column. */
 .mermaid.ibm-mermaid-enhanced,
-.markdown-source-view.mod-cm6 .cm-embed-block:has(.mermaid.ibm-mermaid-enhanced) {
+.markdown-source-view.mod-cm6 .cm-embed-block.ib-has-mermaid {
   width: min(100%, var(--ibm-diagram-card-width, 100%)) !important;
   max-width: 100%;
   margin-inline: auto;
@@ -6061,7 +6168,7 @@ body[data-ib-table-alignment="right"] .markdown-rendered table { margin-inline-s
 /* Block position in Live Preview. Obsidian's own `.cm-content > * { margin: 0 !important }`
    (specificity 0,3,0) outranks the plugin's [data-ib-chart-align] rules, so left / center /
    right never moved the block there. These selectors are strictly more specific. */
-.markdown-source-view.mod-cm6 .cm-content > .cm-embed-block[data-ib-chart-align="left"] { margin-left: 0 !important; margin-right: auto !important; }
+.markdown-source-view.mod-cm6 .cm-content > .cm-embed-block[data-ib-chart-align="left"]:not(#_ib) { margin-left: 0; margin-right: auto; }
 .markdown-source-view.mod-cm6 .cm-content > .cm-embed-block[data-ib-chart-align="center"] { margin-left: auto !important; margin-right: auto !important; }
 .markdown-source-view.mod-cm6 .cm-content > .cm-embed-block[data-ib-chart-align="right"] { margin-left: auto !important; margin-right: 0 !important; }
 
@@ -6072,9 +6179,9 @@ body[data-ib-table-alignment="right"] .markdown-rendered table { margin-inline-s
 body[data-ib-table-alignment="left"] .markdown-source-view.mod-cm6 .cm-table-widget .table-wrapper { margin-inline: 0 auto; }
 body[data-ib-table-alignment="center"] .markdown-source-view.mod-cm6 .cm-table-widget .table-wrapper { margin-inline: auto; }
 body[data-ib-table-alignment="right"] .markdown-source-view.mod-cm6 .cm-table-widget .table-wrapper { margin-inline: auto 0; }
-.markdown-source-view.mod-cm6 .cm-table-widget .table-wrapper:has(> table[data-ib-table-align="left"]) { margin-inline: 0 auto !important; }
-.markdown-source-view.mod-cm6 .cm-table-widget .table-wrapper:has(> table[data-ib-table-align="center"]) { margin-inline: auto !important; }
-.markdown-source-view.mod-cm6 .cm-table-widget .table-wrapper:has(> table[data-ib-table-align="right"]) { margin-inline: auto 0 !important; }
+.markdown-source-view.mod-cm6 .cm-table-widget .table-wrapper[data-ib-table-align="left"]:not(#_ib) { margin-inline: 0 auto; }
+.markdown-source-view.mod-cm6 .cm-table-widget .table-wrapper[data-ib-table-align="center"]:not(#_ib) { margin-inline: auto; }
+.markdown-source-view.mod-cm6 .cm-table-widget .table-wrapper[data-ib-table-align="right"]:not(#_ib) { margin-inline: auto 0; }
 
 /* Native reading uses the same user-selected body font as Live Preview. */
 .markdown-reading-view .markdown-preview-view {
@@ -6094,7 +6201,7 @@ body[data-ib-table-alignment="right"] .markdown-source-view.mod-cm6 .cm-table-wi
   box-shadow:var(--ib-card-highlight);
   border-radius:var(--ib-card-radius);
 }
-.cm-embed-block:has(.ib-echarts-block) > .edit-block-button { display:none; }
+.cm-embed-block.ib-has-echarts > .edit-block-button { display:none; }
 
 /* Per-fence placement also applies to ordinary code blocks. */
 .markdown-rendered pre[data-ib-chart-align] { width:fit-content; max-width:100%; min-width:min(100%, 320px); }

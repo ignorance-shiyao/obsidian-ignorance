@@ -63,6 +63,10 @@
 scripts/install-to-vault.sh /path/to/vault   # 把 theme.css 和 manifest.json 拷进库
 ```
 
+## 反馈
+
+使用中遇到问题，或有功能需求，欢迎[提交 issue](https://github.com/ignorance-shiyao/obsidian-ignorance/issues)；附上截图和 Obsidian 版本会更容易定位。
+
 ## 支持
 
 如果你喜欢这个主题，欢迎请我喝杯咖啡，谢谢！
