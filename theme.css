@@ -1311,14 +1311,13 @@ body.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile {
 .markdown-source-view.mod-cm6 .cm-strikethrough,
 .markdown-source-view.mod-cm6 .cm-formatting-strikethrough {
   color: var(--ib-text-muted);
-  text-decoration: line-through color-mix(in srgb, var(--ib-accent-brand) 58%, transparent) 1.5px;
+  text-decoration: line-through;
 }
 
 .theme-dark .markdown-rendered del,
 .theme-dark .markdown-source-view.mod-cm6 .cm-strikethrough,
 .theme-dark .markdown-source-view.mod-cm6 .cm-formatting-strikethrough {
   color: var(--ib-text-muted);
-  text-decoration: line-through color-mix(in srgb, var(--ib-text-accent) 62%, transparent) 1.5px;
 }
 
 .markdown-rendered mark,
@@ -4133,7 +4132,9 @@ body.is-phone .workspace-leaf-content[data-type="markdown"] :is(
   opacity: 0.36;
   transition: opacity var(--ib-dur-fast) var(--ib-ease-out);
 }
-.markdown-source-view.mod-cm6 .cm-line.ib-writing-dim:hover,
+.markdown-source-view.mod-cm6 .cm-line.ib-writing-dim:hover {
+  opacity: 0.72;
+}
 @media (prefers-reduced-motion: reduce) {
   .markdown-source-view.mod-cm6 .cm-line.ib-writing-dim { transition: none; }
 }
@@ -4819,7 +4820,7 @@ body {
 
 .slide-surface a {
     color: var(--primary-color);
-    text-decoration: underline color-mix(in srgb, var(--primary-color) 38%, transparent);
+    text-decoration: underline;
     text-underline-offset: 0.14em;
 }
 
@@ -5246,9 +5247,12 @@ body {
     min-height: 0;
     min-width: 0;
     width: 100%;
+}
+/* The divider sits in the middle of the gap between the two columns. */
+.slide-surface.slide-layout-split .slide-body:not(.ib-has-cols) {
     columns: 2;
-    column-gap: 1.55em;
-    column-rule: 1px solid color-mix(in srgb, var(--border) 55%, transparent);
+    gap: 1.55em;
+    background: linear-gradient(color-mix(in srgb, var(--border) 55%, transparent), color-mix(in srgb, var(--border) 55%, transparent)) 50% 0 / 1px 100% no-repeat;
 }
 
 .slide-surface.slide-layout-split .slide-body > * {
@@ -5257,8 +5261,7 @@ body {
     margin-top: 0;
     margin-bottom: 0.62em;
 }
-/* 内容自带分栏（:::cols）时不再二次分栏，否则整个容器挤进左栏 */
-.slide-surface.slide-layout-split .slide-body.ib-has-cols { columns: auto; column-rule: none; }
+/* 内容自带分栏（:::cols）时不再二次分栏（见上，仅 :not(.ib-has-cols) 分栏），否则整个容器挤进左栏 */
 /* 列表是最常见的“厚重内容”：让条目跨栏流动，只保证单个条目不被栏切断 */
 .slide-surface.slide-layout-split .slide-body > :is(ul, ol) { page-break-inside: auto; }
 .slide-surface.slide-layout-split .slide-body > :is(ul, ol) > li { page-break-inside: avoid; }
@@ -5860,7 +5863,7 @@ body.theme-dark {
   --ib-highlight-blue-bg: var(--ib-accent-subtle);
 }
 :is(.markdown-rendered, .ib-reader-note) del:not(.slide-surface del) {
-  text-decoration: line-through currentColor auto;
+  text-decoration: line-through;
 }
 :is(.markdown-rendered, .ib-reader-note) mark:not(.slide-surface mark),
 .markdown-source-view.mod-cm6 .cm-highlight,
