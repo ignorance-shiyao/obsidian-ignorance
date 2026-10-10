@@ -5,7 +5,7 @@
 **A calm, readable Obsidian theme for long-form Chinese and English writing.**
 Eight colour palettes · light and dark · the same care in editing, reading, export and on mobile.
 
-[中文](README.md) · [Companion plugin](https://github.com/ignorance-shiyao/obsidian-ignorance-advanced) · [Support](#support)
+[中文](README.md) · [Companion plugin](https://community.obsidian.md/plugins/ignorance-advanced) · [Support](#support)
 
 ![License](https://img.shields.io/github/license/ignorance-shiyao/obsidian-ignorance?color=4D81EF)
 ![Release](https://img.shields.io/github/v/release/ignorance-shiyao/obsidian-ignorance?color=4D81EF)
@@ -41,13 +41,13 @@ Pick one of **eight palettes**, each tuned separately for light and dark: Azure,
 
 ## Install
 
-**From Obsidian**: Settings → Appearance → Themes → Manage → search "Ignorance" → Install and use. *(after the theme is accepted)*
+**From Obsidian**: Settings → Appearance → Themes → Manage → search "Ignorance" → Install and use. ([theme page](https://community.obsidian.md/themes/ignorance))
 
 **Manually**: download `theme.css` and `manifest.json` from the [latest release](https://github.com/ignorance-shiyao/obsidian-ignorance/releases/latest) into `<vault>/.obsidian/themes/Ignorance/`, then pick *Ignorance* under Settings → Appearance.
 
 ## Recommended: the companion plugin
 
-The theme works on its own. Add **[Ignorance Advanced](https://github.com/ignorance-shiyao/obsidian-ignorance-advanced)** for the palette switcher, Mermaid and ECharts blocks, table and image tools, paged reading, presentations (PPT view and PPTX export), and exports.
+The theme works on its own. Add **[Ignorance Advanced](https://community.obsidian.md/plugins/ignorance-advanced)** for the palette switcher, Mermaid and ECharts blocks, table and image tools, paged reading, presentations (PPT view and PPTX export), and exports.
 
 ## Notes
 

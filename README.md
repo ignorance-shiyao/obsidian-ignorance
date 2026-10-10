@@ -5,7 +5,7 @@
 **为中英文长文写作而生的 Obsidian 主题：安静、耐读。**
 八套配色 · 浅色与深色 · 编辑、阅读、导出和手机端一样用心。
 
-[English](README.en.md) · [配套插件](https://github.com/ignorance-shiyao/obsidian-ignorance-advanced) · [支持作者](#支持)
+[English](README.en.md) · [配套插件](https://community.obsidian.md/plugins/ignorance-advanced) · [支持作者](#支持)
 
 ![License](https://img.shields.io/github/license/ignorance-shiyao/obsidian-ignorance?color=4D81EF)
 ![Release](https://img.shields.io/github/v/release/ignorance-shiyao/obsidian-ignorance?color=4D81EF)
@@ -43,13 +43,13 @@
 
 ## 安装
 
-**在 Obsidian 内**：设置 → 外观 → 主题 → 管理 → 搜索 "Ignorance" → 安装并使用。*（主题通过审核后）*
+**在 Obsidian 内**：设置 → 外观 → 主题 → 管理 → 搜索 "Ignorance" → 安装并使用。（[主题页面](https://community.obsidian.md/themes/ignorance)）
 
 **手动安装**：从[最新发布](https://github.com/ignorance-shiyao/obsidian-ignorance/releases/latest)下载 `theme.css` 与 `manifest.json`，放入 `<库>/.obsidian/themes/Ignorance/`，然后在 设置 → 外观 选择 *Ignorance*。
 
 ## 推荐：配套插件
 
-主题可独立使用。再装 **[Ignorance Advanced](https://github.com/ignorance-shiyao/obsidian-ignorance-advanced)** 可获得配色切换、Mermaid 与 ECharts 增强、表格与图片工具、分页阅读、演示（PPT 视图与 PPTX 导出）和多种导出。
+主题可独立使用。再装 **[Ignorance Advanced](https://community.obsidian.md/plugins/ignorance-advanced)** 可获得配色切换、Mermaid 与 ECharts 增强、表格与图片工具、分页阅读、演示（PPT 视图与 PPTX 导出）和多种导出。
 
 ## 说明
 
