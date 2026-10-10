@@ -2711,7 +2711,7 @@ body {
   & g.quadrant text { fill: var(--ib-mm-muted); stroke: none; font-weight: 600; letter-spacing: 0.02em; }
   /* Mermaid writes the frame color as a plain inline style; the frame has no
      author-facing style hook, so !important here overrides nothing of yours. */
-  & g.border line { stroke: var(--ib-mm-cluster-stroke) !important; stroke-width: 1px !important; }
+  & g.border line { stroke: var(--ib-mm-cluster-stroke); stroke-width: 1px; }
   & g.data-point circle { fill: var(--ib-accent-brand); stroke: var(--ib-mm-card); stroke-width: 2px; filter: var(--ib-mm-shadow); }
   & g.data-point text { fill: var(--ib-mm-text); }
   & g.labels text { fill: var(--ib-mm-muted); }
@@ -2862,7 +2862,7 @@ body {
   & g.architecture-service { filter: var(--ib-mm-shadow); }
   /* Built-in icons paint their tile with an inline #087ebf; only that exact
      default is re-toned, so icon packs and author colors are untouched. */
-  & svg rect[style*="#087ebf"] { fill: var(--ib-accent-solid) !important; rx: 14px; ry: 14px; }
+  & svg rect[data-ibm-arch-group] { fill: var(--ib-accent-solid); rx: 14px; ry: 14px; }
   & path.edge { stroke: var(--ib-mm-line); stroke-width: 1.6px; fill: none; }
   & :is(text, tspan) { fill: var(--ib-mm-text); }
 }
@@ -2907,8 +2907,8 @@ body {
   & rect.treemapSection { fill-opacity: 0.08; stroke: none; rx: 10px; ry: 10px; }
   & rect.treemapSectionHeader { fill: transparent; stroke: none; }
   & rect.treemapLeaf { fill-opacity: 1; stroke: var(--ib-mm-canvas); stroke-width: 2px; rx: 8px; ry: 8px; }
-  & :is(text.treemapSectionLabel, text.treemapSectionValue) { fill: var(--ib-mm-muted) !important; stroke: none; font-weight: 650; }
-  & :is(text.treemapLabel, text.treemapValue) { fill: var(--ib-mm-on-series) !important; stroke: none; }
+  & :is(text.treemapSectionLabel, text.treemapSectionValue) { fill: var(--ib-mm-muted); stroke: none; font-weight: 650; }
+  & :is(text.treemapLabel, text.treemapValue) { fill: var(--ib-mm-on-series); stroke: none; }
 }
 
 /* Venn: translucent sets so overlaps read. */
@@ -2925,8 +2925,8 @@ body {
   & :is(text, tspan) { fill: var(--ib-mm-text); stroke: none; }
   & :is(text, tspan)[data-ibm-on-mark] { fill: var(--ib-mm-text); }
   /* Mermaid sizes every label 24px inline; intersections need less. */
-  & text.label { font-weight: 600; font-size: 17px !important; }
-  & text.label[data-ibm-on-mark] { font-size: 20px !important; }
+  & text.label { font-weight: 600; font-size: 17px; }
+  & text.label[data-ibm-on-mark] { font-size: 20px; }
   & text.venn-title { fill: var(--ib-mm-text); font-weight: 650; }
 }
 
@@ -3068,8 +3068,8 @@ body {
 
   & text:is(.taskText, [class*="taskText"]) { fill: var(--ib-mm-text-accent); font-weight: 500; }
   /* Mermaid pins doneText/activeText to #333 !important — unreadable on dark bars. */
-  & text:is([class*="doneText"], [class*="activeText"]):not(#_ib) { fill: var(--ib-mm-text-accent) !important; }
-  & text[class*="taskTextOutside"]:is([class*="doneText"], [class*="activeText"]):not(#_ib) { fill: var(--ib-mm-text) !important; }
+  & text:is([class*="doneText"], [class*="activeText"]) { fill: var(--ib-mm-text-accent); }
+  & text[class*="taskTextOutside"]:is([class*="doneText"], [class*="activeText"]) { fill: var(--ib-mm-text); }
   & text:is(.taskTextOutsideRight, .taskTextOutsideLeft, [class*="taskTextOutside"]) { fill: var(--ib-mm-text); }
   & text[class*="critText"]:not([class*="Outside"]) { fill: var(--ib-mm-text); }
   & text.milestoneText { fill: var(--ib-mm-text); font-style: normal; font-weight: 500; }
@@ -3394,9 +3394,9 @@ body:not(.is-mobile) .status-bar {
   & path.pieCircle:nth-child(8n+6 of .pieCircle) { fill: var(--ib-mm-series-6); }
   & path.pieCircle:nth-child(8n+7 of .pieCircle) { fill: var(--ib-mm-series-7); }
   & path.pieCircle:nth-child(8n+8 of .pieCircle) { fill: var(--ib-mm-series-8); }
-  & g.legend:nth-child(8n+1 of .legend) rect { fill: var(--ib-mm-series-1) !important; stroke: var(--ib-mm-series-1) !important; }
-  & g.legend:nth-child(8n+2 of .legend) rect { fill: var(--ib-mm-series-2) !important; stroke: var(--ib-mm-series-2) !important; }
-  & g.legend:nth-child(8n+3 of .legend) rect { fill: var(--ib-mm-series-3) !important; stroke: var(--ib-mm-series-3) !important; }
+  & g.legend:nth-child(8n+1 of .legend) rect { fill: var(--ib-mm-series-1); stroke: var(--ib-mm-series-1); }
+  & g.legend:nth-child(8n+2 of .legend) rect { fill: var(--ib-mm-series-2); stroke: var(--ib-mm-series-2); }
+  & g.legend:nth-child(8n+3 of .legend) rect { fill: var(--ib-mm-series-3); stroke: var(--ib-mm-series-3); }
   & g.legend:nth-child(8n+4 of .legend) rect:not(#_ib) { fill: var(--ib-mm-series-4); stroke: var(--ib-mm-series-4); }
   & g.legend:nth-child(8n+5 of .legend) rect:not(#_ib) { fill: var(--ib-mm-series-5); stroke: var(--ib-mm-series-5); }
   & g.legend:nth-child(8n+6 of .legend) rect:not(#_ib) { fill: var(--ib-mm-series-6); stroke: var(--ib-mm-series-6); }

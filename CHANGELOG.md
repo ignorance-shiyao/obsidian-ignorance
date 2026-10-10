@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.5
+Mermaid diagram colors no longer rely on `!important`; Ignorance Advanced 1.0.3 releases the inline styles Mermaid sets so plain selectors win.
+
 ## 1.0.4
 The published theme.css is now a minified build of src/theme.css (about 235 KB instead of 300 KB).
 
