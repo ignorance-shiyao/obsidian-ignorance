@@ -1,0 +1,16 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Manifest and CSS sanity
+        run: |
+          node -e "const m=require('./manifest.json');for(const k of ['name','version','minAppVersion','author'])if(!m[k]){console.error('manifest missing '+k);process.exit(1)}"
+          node -e "const s=require('fs').readFileSync('theme.css','utf8');let d=0;for(const c of s){if(c==='{')d++;if(c==='}')d--;if(d<0)process.exit(1)}if(d!==0){console.error('unbalanced braces');process.exit(1)}"
+          test -f screenshot.png
+          if grep -nE "@import|url\(https?:" theme.css; then echo "remote resources are not allowed"; exit 1; fi
