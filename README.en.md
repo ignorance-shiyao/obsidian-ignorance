@@ -57,7 +57,10 @@ The theme works on its own. Add **[Ignorance Advanced](https://community.obsidia
 
 ## Development
 
+`src/theme.css` is the readable source; `theme.css` is its minified build.
+
 ```bash
+npm ci && npm run build                      # regenerate theme.css
 scripts/install-to-vault.sh /path/to/vault   # copies theme.css and manifest.json into the vault
 ```
 

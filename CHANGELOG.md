@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.4
+The published theme.css is now a minified build of src/theme.css (about 235 KB instead of 300 KB).
+
 ## 1.0.3
 Fixes a broken rule that stopped the focus-mode hover highlight and the reduced-motion override. Fewer scorecard warnings: plain `text-decoration` values, and the split slide layout draws its own column divider.
 

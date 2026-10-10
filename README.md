@@ -59,7 +59,10 @@
 
 ## 开发
 
+`src/theme.css` 是可读源码，`theme.css` 是它的压缩构建产物。
+
 ```bash
+npm ci && npm run build                      # 重新生成 theme.css
 scripts/install-to-vault.sh /path/to/vault   # 把 theme.css 和 manifest.json 拷进库
 ```
 

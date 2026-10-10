@@ -1,0 +1,9 @@
+{
+  "name": "obsidian-ignorance",
+  "version": "1.0.4",
+  "private": true,
+  "description": "Ignorance, a calm Obsidian theme. src/theme.css is the readable source; theme.css is the minified build.",
+  "license": "MIT",
+  "scripts": { "build": "node scripts/build.mjs" },
+  "devDependencies": { "lightningcss": "1.33.0" }
+}
