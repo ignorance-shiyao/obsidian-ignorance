@@ -1251,7 +1251,7 @@ body.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile:not(#_
   margin-block: 0.9em;
 }
 
-/* Headings: same scale and H1-H6 margin labels as the Typora theme. */
+/* Headings: H1-H6 scale with margin labels. */
 .markdown-rendered :is(h1, h2, h3, h4, h5, h6),
 .markdown-source-view.mod-cm6 :is(.HyperMD-header-1, .HyperMD-header-2, .HyperMD-header-3, .HyperMD-header-4, .HyperMD-header-5, .HyperMD-header-6) {
   position: relative;
