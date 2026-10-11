@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.13
+Style Settings support (content width, corner radii, quote rail and size) and per-note layouts: `ib-wide`, `ib-narrow`, `ib-compact`, `ib-no-title`. Use with Ignorance Advanced 1.0.13.
+
 ## 1.0.12
 Source comments tidied; no change to the look. Use with Ignorance Advanced 1.0.12.
 
