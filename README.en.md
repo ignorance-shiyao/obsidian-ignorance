@@ -5,7 +5,7 @@
 **A calm, readable Obsidian theme for long-form Chinese and English writing.**
 Eight colour palettes · light and dark · the same care in editing, reading, export and on mobile.
 
-[中文](README.md) · [Companion plugin](https://github.com/ignorance-shiyao/obsidian-ignorance-advanced) · [Support](#support)
+[中文](README.md) · [Companion plugin](https://community.obsidian.md/plugins/ignorance-advanced) · [Support](#support)
 
 ![License](https://img.shields.io/github/license/ignorance-shiyao/obsidian-ignorance?color=4D81EF)
 ![Release](https://img.shields.io/github/v/release/ignorance-shiyao/obsidian-ignorance?color=4D81EF)
@@ -41,13 +41,17 @@ Pick one of **eight palettes**, each tuned separately for light and dark: Azure,
 
 ## Install
 
-**From Obsidian**: Settings → Appearance → Themes → Manage → search "Ignorance" → Install and use. *(after the theme is accepted)*
+**From Obsidian**: Settings → Appearance → Themes → Manage → search "Ignorance" → Install and use. ([theme page](https://community.obsidian.md/themes/ignorance))
 
 **Manually**: download `theme.css` and `manifest.json` from the [latest release](https://github.com/ignorance-shiyao/obsidian-ignorance/releases/latest) into `<vault>/.obsidian/themes/Ignorance/`, then pick *Ignorance* under Settings → Appearance.
 
 ## Recommended: the companion plugin
 
-The theme works on its own. Add **[Ignorance Advanced](https://github.com/ignorance-shiyao/obsidian-ignorance-advanced)** for the palette switcher, Mermaid and ECharts blocks, table and image tools, paged reading, presentations (PPT view and PPTX export), and exports.
+The theme works on its own, though some looks depend on the companion plugin. Add **[Ignorance Advanced](https://community.obsidian.md/plugins/ignorance-advanced)** for the palette switcher, Mermaid and ECharts blocks, table and image tools, paged reading, presentations (PPT view and PPTX export), and exports.
+
+**Theme only:** body text, headings, quotes, callouts, tables, code blocks and the default Azure palette all work in full.
+
+**Needs the plugin:** Mermaid diagram colours, charts and `:::` containers, slides, the reader and paged view, export styling, and a few details the plugin marks up (image alignment from alt text, compact layout for tables with six or more columns, cells holding a single code span, no arrow on links that wrap an image, file-tree icons).
 
 ## Notes
 
@@ -57,9 +61,16 @@ The theme works on its own. Add **[Ignorance Advanced](https://github.com/ignora
 
 ## Development
 
+`src/theme.css` is the readable source; `theme.css` is its minified build.
+
 ```bash
+npm ci && npm run build                      # regenerate theme.css
 scripts/install-to-vault.sh /path/to/vault   # copies theme.css and manifest.json into the vault
 ```
+
+## Feedback
+
+If you run into a problem or want a feature, please [open an issue](https://github.com/ignorance-shiyao/obsidian-ignorance/issues). A screenshot and your Obsidian version help a lot.
 
 ## Support
 
