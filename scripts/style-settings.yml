@@ -1,0 +1,76 @@
+name: Ignorance
+id: ignorance
+settings:
+    -
+        id: ib-layout
+        title: Layout
+        type: heading
+        level: 2
+        collapsed: false
+    -
+        id: ib-content-max
+        title: Content width
+        description: Maximum width of the note body.
+        type: variable-number-slider
+        default: 820
+        min: 600
+        max: 1200
+        step: 20
+        format: px
+    -
+        id: ib-shapes
+        title: Corners and rails
+        type: heading
+        level: 2
+        collapsed: true
+    -
+        id: ib-code-radius
+        title: Code block radius
+        type: variable-number-slider
+        default: 16
+        min: 0
+        max: 24
+        step: 1
+        format: px
+    -
+        id: ib-callout-radius
+        title: Callout radius
+        type: variable-number-slider
+        default: 8
+        min: 0
+        max: 20
+        step: 1
+        format: px
+    -
+        id: ib-table-radius
+        title: Table radius
+        type: variable-number-slider
+        default: 14
+        min: 0
+        max: 24
+        step: 1
+        format: px
+    -
+        id: ib-quote-rail-width
+        title: Quote rail width
+        type: variable-number-slider
+        default: 3
+        min: 1
+        max: 8
+        step: 1
+        format: px
+    -
+        id: ib-type
+        title: Type
+        type: heading
+        level: 2
+        collapsed: true
+    -
+        id: ib-quote-size
+        title: Quote text size
+        type: variable-number-slider
+        default: 18
+        min: 14
+        max: 24
+        step: 1
+        format: px

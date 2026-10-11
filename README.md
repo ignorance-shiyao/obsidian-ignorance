@@ -58,6 +58,7 @@
 ## 说明
 
 - 不内置字体；回退字体为 Noto Sans CJK SC。
+- 支持 [Style Settings](obsidian://show-plugin?id=obsidian-style-settings) 插件：可调正文宽度、代码块、标注块、表格的圆角、引用竖条宽度和引用字号。
 - 自带视图的第三方插件可能保留自己的样式。
 - `docs/style-check.md` 覆盖所有元素，可复制到库里检查主题效果。
 
