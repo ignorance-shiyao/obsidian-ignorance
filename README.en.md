@@ -56,6 +56,7 @@ The theme works on its own, though some looks depend on the companion plugin. Ad
 ## Notes
 
 - Fonts are not bundled; Noto Sans CJK SC is the fallback.
+- Per-note layouts: add `ib-wide`, `ib-narrow`, `ib-compact` or `ib-no-title` to a note's `cssclasses` property.
 - Works with the Style Settings plugin: content width, corner radii for code blocks, callouts and tables, quote rail width and quote text size.
 - Third-party plugins that ship their own views may keep their own styling.
 - `docs/style-check.md` exercises every element; copy it into a vault to review the theme.

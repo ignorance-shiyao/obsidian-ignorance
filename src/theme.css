@@ -523,7 +523,7 @@ body {
 .markdown-source-view.mod-cm6 .HyperMD-header-6 { margin: var(--ib-space-3) 0 var(--ib-space-2); }
 
 .markdown-rendered p {
-  margin-block: 0 var(--ib-space-4);
+  margin-block: 0 var(--ib-paragraph-gap, var(--ib-space-4));
   line-height: var(--ib-text-leading);
 }
 
@@ -1248,7 +1248,7 @@ body.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile:not(#_
 }
 
 .markdown-preview-view p {
-  margin-block: 0.9em;
+  margin-block: var(--ib-paragraph-gap, 0.9em);
 }
 
 /* Headings: H1-H6 scale with margin labels. */
@@ -3207,3 +3207,25 @@ body { --ib-chapter-radius: 26px; --ib-chapter-rail-width: 3px; --ib-chapter-rai
 
 /* Class HTML labels are measured with their diagram font. Body paragraph
    sizing must not shrink them after the SVG layout is complete. */
+
+/* ==========================================================================
+ * Per-note layouts: add one of these to a note's `cssclasses` property.
+ *   ib-wide     wider reading column     ib-narrow   narrower reading column
+ *   ib-compact  tighter paragraph rhythm ib-no-title hide the inline title
+ * ========================================================================== */
+.ib-wide {
+  --ib-content-max: 1120px;
+  --file-line-width: 1120px;
+}
+.ib-narrow {
+  --ib-content-max: 660px;
+  --file-line-width: 660px;
+}
+.ib-compact {
+  --ib-paragraph-gap: 0.4em;
+  --p-spacing: var(--ib-space-2);
+  --list-spacing: 0;
+}
+.ib-no-title .inline-title {
+  display: none;
+}
