@@ -1390,8 +1390,15 @@ body.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile:not(#_
   padding-inline: var(--ib-quote-inset) var(--ib-space-5);
 }
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-quote .cm-quote { color: inherit; font: inherit; }
-/* The ">" markers keep their width when hidden, which would indent only the first line. */
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-quote:not(.cm-active) .cm-formatting-quote { display: none; }
+/* CodeMirror hangs the line by a negative inline text-indent equal to the quote inset, so the hidden ">" markers
+   must keep exactly one inset of width per level or the first line slides under the rail. */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-quote:not(.cm-active) .cm-formatting-quote:not(#_ib) {
+  display: inline-block;
+  width: var(--ib-quote-inset);
+  font-size: 0;
+  overflow: hidden;
+  vertical-align: top;
+}
 /* Nested quotes: Obsidian draws the inner rails as inline widgets on the first visual line only, so wrapped
    lines lose them and sit under the rail. Hide the widgets and paint every rail as a line background instead,
    one inset per level, like the nested blockquotes in Reading view. */
