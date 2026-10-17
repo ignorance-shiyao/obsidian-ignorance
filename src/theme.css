@@ -2405,6 +2405,9 @@ body:not(.is-mobile) .status-bar {
 /* 手机：收紧表格、代码块和卡片留白，窄屏下多留给内容。 */
 body.is-phone {
   --ib-card-radius: var(--ib-radius-md);
+  /* 手机正文字号偏大，2.6em 的标题会折成单字一行；按屏宽取值并设上下限。 */
+  --inline-title-size: clamp(26px, 7.5vw, 34px);
+  --file-margins: 16px;
 }
 /* 手机笔记属性：只留一层卡片，去掉 Obsidian 移动端的内层底色框；
    行宽保持在 250px 以上，属性名与值并排显示而不是上下折行。 */
@@ -2578,10 +2581,12 @@ body.is-phone .workspace-leaf-content[data-type="markdown"] :is(
 body.is-phone .workspace-leaf-content[data-type="markdown"] :is(
   .markdown-reading-view .markdown-preview-sizer,
   .markdown-source-view.mod-cm6.is-live-preview .cm-sizer
-):not(#_ib) {
+):not(#_ib):not(#_ib2) {
   width: 100%;
   margin: 0;
-  padding: var(--ib-space-5, 24px) 0 calc(var(--ib-space-8, 64px) + 48px);
+  padding: var(--ib-space-4, 16px) 0 calc(var(--ib-space-8, 64px) + 48px);
+  border-radius: 0;
+  box-shadow: none;
 }
 /* Settings popovers. */
 /* The in-document backlinks panel is not part of the page content. */
