@@ -2408,6 +2408,14 @@ body.is-phone {
   /* 手机正文字号偏大，2.6em 的标题会折成单字一行；按屏宽取值并设上下限。 */
   --inline-title-size: clamp(26px, 7.5vw, 34px);
   --file-margins: 16px;
+  /* Obsidian 默认每级缩进 2.25em，手机大字号下三四级列表就只剩一条窄缝。 */
+  --list-indent: 1.4em;
+  /* 属性名和值比正文小一号，属性卡片不再占掉首屏。 */
+  --metadata-label-font-size: 0.85em;
+  --metadata-input-font-size: 0.85em;
+  --metadata-label-width: min(32%, 6.5em);
+  /* 引用的左侧留白（放引号的位置）在窄屏上收窄。 */
+  --ib-quote-inset: 2.6em;
 }
 /* 手机笔记属性：只留一层卡片，去掉 Obsidian 移动端的内层底色框；
    行宽保持在 250px 以上，属性名与值并排显示而不是上下折行。 */
@@ -2426,13 +2434,17 @@ body.is-phone .metadata-property {
   flex-wrap: nowrap;
 }
 body.is-phone .metadata-property .metadata-property-key {
-  width: 6.5em;
-  flex: 0 0 6.5em;
+  width: min(32%, 6.5em);
+  flex: 0 0 min(32%, 6.5em);
 }
 body.is-phone .metadata-property .metadata-property-value {
   margin-top: 0;
   padding-inline-start: 0;
   min-width: 0;
+}
+/* 列表：桌面的 2rem 外加每级缩进在手机上会让四级列表挤出屏幕。 */
+body.is-phone .markdown-rendered :is(ol, ul) {
+  padding-inline-start: 0.5em;
 }
 body.is-phone .markdown-rendered:not(.cm-table-widget) :is(th, td) {
   padding: 8px 10px;
