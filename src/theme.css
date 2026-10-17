@@ -162,21 +162,6 @@
 .markdown-reading-view:not(.ibp-book-host) .el-table > table thead tr > :first-child:not(#_ib) {
   background: var(--ib-table-heading-bg);
 }
-body.ib-heading-badge .markdown-reading-view .markdown-preview-view:not(.ibp-has-book):not(.ibp-page-body):not(.ibp-staging) h2::before {
-  content: "#";
-  position: static;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.5em;
-  height: 1.5em;
-  margin-right: 0.5em;
-  border-radius: 8px;
-  background: color-mix(in srgb, var(--ib-accent-brand) 10%, transparent);
-  color: var(--ib-accent-brand);
-  font: 700 0.72em/1 var(--font-monospace);
-  vertical-align: middle;
-}
 .markdown-reading-view table > caption {
   caption-side: top;
   text-align: start;
@@ -1031,7 +1016,6 @@ kbd,
   height: 1.1em;
   background-color: currentColor;
   opacity: 0.55;
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M18 6 6 18M6 6l12 12'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 .notice:hover::after {
   opacity: 1;
@@ -1113,31 +1097,6 @@ kbd,
 }
 
 /* Folder and file type icons */
-.nav-folder-collapse-indicator {
-  width: 18px;
-  height: 18px;
-  margin-inline-end: 4px;
-}
-
-.nav-folder-collapse-indicator svg {
-  display: none;
-}
-
-.nav-folder-collapse-indicator::before {
-  content: "";
-  display: block;
-  width: 16px;
-  height: 16px;
-  background-color: var(--ib-accent-brand);
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M3 6a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/%3E%3C/svg%3E") center / contain no-repeat;
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M3 6a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/%3E%3C/svg%3E") center / contain no-repeat;
-}
-
-.nav-folder:not(.is-collapsed) > .nav-folder-title .nav-folder-collapse-indicator::before {
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v1H5l-2 8zM5 11h17l-2 8H4z'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v1H5l-2 8zM5 11h17l-2 8H4z'/%3E%3C/svg%3E");
-}
-
 /* Obsidian 1.13+ may expose the folder toggle as collapse-icon/tree-item-icon
    instead of nav-folder-collapse-indicator. Replace every folder chevron while
    preserving the native clickable toggle element. */
@@ -1164,17 +1123,11 @@ kbd,
   width: 16px;
   height: 16px;
   background-color: var(--ib-accent-brand);
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M3 6a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/%3E%3C/svg%3E") center / contain no-repeat;
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M3 6a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
 .nav-folder:not(.is-collapsed) > .nav-folder-title :is(.nav-folder-collapse-indicator, .collapse-icon, .tree-item-icon)::before {
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v1H5l-2 8zM5 11h17l-2 8H4z'/%3E%3C/svg%3E");
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v1H5l-2 8zM5 11h17l-2 8H4z'/%3E%3C/svg%3E");
-}
-
-.theme-dark .nav-folder-title :is(.nav-folder-collapse-indicator, .collapse-icon, .tree-item-icon)::before {
-  background-color: var(--ib-accent-brand);
 }
 
 /* File-type icons: Lucide (lucide-static 1.48.0, ISC License, https://lucide.dev),
@@ -1189,31 +1142,30 @@ kbd,
   margin-inline-end: 7px;
   vertical-align: -0.12em;
   background-color: var(--ib-file-color, var(--text-muted));
-  -webkit-mask: var(--ib-file-icon) center / contain no-repeat;
   mask: var(--ib-file-icon) center / contain no-repeat;
 }
-.nav-file-title { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z' /%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5' /%3E%3C/svg%3E"); }
-:is(.nav-file-title[data-path$=".md" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z' /%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5' /%3E%3Cpath d='M10 9H8' /%3E%3Cpath d='M16 13H8' /%3E%3Cpath d='M16 17H8' /%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-md); }
-:is(.nav-file-title[data-path$=".excalidraw.md" i], .nav-file-title[data-path$=".excalidraw" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='M15.707 21.293a1 1 0 0 1-1.414 0l-1.586-1.586a1 1 0 0 1 0-1.414l5.586-5.586a1 1 0 0 1 1.414 0l1.586 1.586a1 1 0 0 1 0 1.414z' /%3E%3Cpath d='m18 13-1.375-6.874a1 1 0 0 0-.746-.776L3.235 2.028a1 1 0 0 0-1.207 1.207L5.35 15.879a1 1 0 0 0 .776.746L13 18' /%3E%3Cpath d='m2.3 2.3 7.286 7.286' /%3E%3Ccircle cx='11' cy='11' r='2' /%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-canvas); }
-:is(.nav-file-title[data-path$=".canvas" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Crect width='7' height='9' x='3' y='3' rx='1' /%3E%3Crect width='7' height='5' x='14' y='3' rx='1' /%3E%3Crect width='7' height='9' x='14' y='12' rx='1' /%3E%3Crect width='7' height='5' x='3' y='16' rx='1' /%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-canvas); }
-:is(.nav-file-title[data-path$=".base" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='M3 9h18' /%3E%3Cpath d='M9 3v18' /%3E%3Crect x='3' y='3' width='18' height='18' rx='2' /%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-sheet); }
-:is(.nav-file-title[data-path$=".doc" i], .nav-file-title[data-path$=".docx" i], .nav-file-title[data-path$=".dot" i], .nav-file-title[data-path$=".dotx" i], .nav-file-title[data-path$=".rtf" i], .nav-file-title[data-path$=".odt" i], .nav-file-title[data-path$=".pages" i], .nav-file-title[data-path$=".wps" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='M14.364 13.634a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506l4.013-4.009a1 1 0 0 0-3.004-3.004z' /%3E%3Cpath d='M14.487 7.858A1 1 0 0 1 14 7V2' /%3E%3Cpath d='M20 19.645V20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l2.516 2.516' /%3E%3Cpath d='M8 18h1' /%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-word); }
-:is(.nav-file-title[data-path$=".pdf" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z' /%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5' /%3E%3Cpath d='M11 18h2' /%3E%3Cpath d='M12 12v6' /%3E%3Cpath d='M9 13v-.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v.5' /%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-pdf); }
-:is(.nav-file-title[data-path$=".xls" i], .nav-file-title[data-path$=".xlsx" i], .nav-file-title[data-path$=".xlsm" i], .nav-file-title[data-path$=".ods" i], .nav-file-title[data-path$=".numbers" i], .nav-file-title[data-path$=".csv" i], .nav-file-title[data-path$=".tsv" i], .nav-file-title[data-path$=".et" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z' /%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5' /%3E%3Cpath d='M8 13h2' /%3E%3Cpath d='M14 13h2' /%3E%3Cpath d='M8 17h2' /%3E%3Cpath d='M14 17h2' /%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-sheet); }
-:is(.nav-file-title[data-path$=".ppt" i], .nav-file-title[data-path$=".pptx" i], .nav-file-title[data-path$=".pps" i], .nav-file-title[data-path$=".ppsx" i], .nav-file-title[data-path$=".odp" i], .nav-file-title[data-path$=".key" i], .nav-file-title[data-path$=".dps" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='M2 3h20' /%3E%3Cpath d='M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3' /%3E%3Cpath d='m7 21 5-5 5 5' /%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-slide); }
-:is(.nav-file-title[data-path$=".png" i], .nav-file-title[data-path$=".jpg" i], .nav-file-title[data-path$=".jpeg" i], .nav-file-title[data-path$=".gif" i], .nav-file-title[data-path$=".webp" i], .nav-file-title[data-path$=".bmp" i], .nav-file-title[data-path$=".avif" i], .nav-file-title[data-path$=".heic" i], .nav-file-title[data-path$=".ico" i], .nav-file-title[data-path$=".tif" i], .nav-file-title[data-path$=".tiff" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z' /%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5' /%3E%3Ccircle cx='10' cy='12' r='2' /%3E%3Cpath d='m20 17-1.296-1.296a2.41 2.41 0 0 0-3.408 0L9 22' /%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-image); }
-:is(.nav-file-title[data-path$=".svg" i], .nav-file-title[data-path$=".drawio" i], .nav-file-title[data-path$=".dio" i], .nav-file-title[data-path$=".xmind" i], .nav-file-title[data-path$=".fig" i], .nav-file-title[data-path$=".sketch" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z' /%3E%3Crect x='3' y='14' width='7' height='7' rx='1' /%3E%3Ccircle cx='17.5' cy='17.5' r='3.5' /%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-canvas); }
-:is(.nav-file-title[data-path$=".mp3" i], .nav-file-title[data-path$=".wav" i], .nav-file-title[data-path$=".m4a" i], .nav-file-title[data-path$=".flac" i], .nav-file-title[data-path$=".ogg" i], .nav-file-title[data-path$=".aac" i], .nav-file-title[data-path$=".opus" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='M4 6.835V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2h-.343' /%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5' /%3E%3Cpath d='M2 19a2 2 0 0 1 4 0v1a2 2 0 0 1-4 0v-4a6 6 0 0 1 12 0v4a2 2 0 0 1-4 0v-1a2 2 0 0 1 4 0' /%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-media); }
-:is(.nav-file-title[data-path$=".mp4" i], .nav-file-title[data-path$=".mov" i], .nav-file-title[data-path$=".webm" i], .nav-file-title[data-path$=".mkv" i], .nav-file-title[data-path$=".avi" i], .nav-file-title[data-path$=".m4v" i], .nav-file-title[data-path$=".ogv" i], .nav-file-title[data-path$=".3gp" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z' /%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5' /%3E%3Cpath d='M15.033 13.44a.647.647 0 0 1 0 1.12l-4.065 2.352a.645.645 0 0 1-.968-.56v-4.704a.645.645 0 0 1 .967-.56z' /%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-media); }
-:is(.nav-file-title[data-path$=".zip" i], .nav-file-title[data-path$=".rar" i], .nav-file-title[data-path$=".7z" i], .nav-file-title[data-path$=".tar" i], .nav-file-title[data-path$=".gz" i], .nav-file-title[data-path$=".tgz" i], .nav-file-title[data-path$=".bz2" i], .nav-file-title[data-path$=".xz" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='M13.659 22H18a2 2 0 0 0 2-2V8a2.4 2.4 0 0 0-.706-1.706l-3.588-3.588A2.4 2.4 0 0 0 14 2H6a2 2 0 0 0-2 2v11.5' /%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5' /%3E%3Cpath d='M8 12v-1' /%3E%3Cpath d='M8 18v-2' /%3E%3Cpath d='M8 7V6' /%3E%3Ccircle cx='8' cy='20' r='2' /%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-archive); }
-:is(.nav-file-title[data-path$=".epub" i], .nav-file-title[data-path$=".mobi" i], .nav-file-title[data-path$=".azw3" i], .nav-file-title[data-path$=".fb2" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='M12 5v16' /%3E%3Cpath d='M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z' /%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-book); }
-:is(.nav-file-title[data-path$=".html" i], .nav-file-title[data-path$=".htm" i], .nav-file-title[data-path$=".mhtml" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Ccircle cx='12' cy='12' r='10' /%3E%3Cpath d='M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20' /%3E%3Cpath d='M2 12h20' /%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-web); }
-:is(.nav-file-title[data-path$=".json" i], .nav-file-title[data-path$=".jsonc" i], .nav-file-title[data-path$=".json5" i], .nav-file-title[data-path$=".yaml" i], .nav-file-title[data-path$=".yml" i], .nav-file-title[data-path$=".xml" i], .nav-file-title[data-path$=".toml" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z' /%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5' /%3E%3Cpath d='M10 12a1 1 0 0 0-1 1v1a1 1 0 0 1-1 1 1 1 0 0 1 1 1v1a1 1 0 0 0 1 1' /%3E%3Cpath d='M14 18a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1 1 1 0 0 1-1-1v-1a1 1 0 0 0-1-1' /%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-data); }
-:is(.nav-file-title[data-path$=".ini" i], .nav-file-title[data-path$=".conf" i], .nav-file-title[data-path$=".cfg" i], .nav-file-title[data-path$=".env" i], .nav-file-title[data-path$=".properties" i], .nav-file-title[data-path$=".plist" i], .nav-file-title[data-path$=".lock" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='M15 8a1 1 0 0 1-1-1V2a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8z' /%3E%3Cpath d='M20 8v12a2 2 0 0 1-2 2h-4.182' /%3E%3Cpath d='m3.305 19.53.923-.382' /%3E%3Cpath d='M4 10.592V4a2 2 0 0 1 2-2h8' /%3E%3Cpath d='m4.228 16.852-.924-.383' /%3E%3Cpath d='m5.852 15.228-.383-.923' /%3E%3Cpath d='m5.852 20.772-.383.924' /%3E%3Cpath d='m8.148 15.228.383-.923' /%3E%3Cpath d='m8.53 21.696-.382-.924' /%3E%3Cpath d='m9.773 16.852.922-.383' /%3E%3Cpath d='m9.773 19.148.922.383' /%3E%3Ccircle cx='7' cy='18' r='3' /%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-data); }
-:is(.nav-file-title[data-path$=".sql" i], .nav-file-title[data-path$=".sqlite" i], .nav-file-title[data-path$=".db" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cellipse cx='12' cy='5' rx='9' ry='3' /%3E%3Cpath d='M3 5V19A9 3 0 0 0 21 19V5' /%3E%3Cpath d='M3 12A9 3 0 0 0 21 12' /%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-data); }
-:is(.nav-file-title[data-path$=".sh" i], .nav-file-title[data-path$=".bash" i], .nav-file-title[data-path$=".zsh" i], .nav-file-title[data-path$=".fish" i], .nav-file-title[data-path$=".bat" i], .nav-file-title[data-path$=".cmd" i], .nav-file-title[data-path$=".ps1" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z' /%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5' /%3E%3Cpath d='m8 16 2-2-2-2' /%3E%3Cpath d='M12 18h4' /%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-script); }
-:is(.nav-file-title[data-path$=".js" i], .nav-file-title[data-path$=".mjs" i], .nav-file-title[data-path$=".cjs" i], .nav-file-title[data-path$=".ts" i], .nav-file-title[data-path$=".tsx" i], .nav-file-title[data-path$=".jsx" i], .nav-file-title[data-path$=".py" i], .nav-file-title[data-path$=".java" i], .nav-file-title[data-path$=".kt" i], .nav-file-title[data-path$=".go" i], .nav-file-title[data-path$=".rs" i], .nav-file-title[data-path$=".c" i], .nav-file-title[data-path$=".h" i], .nav-file-title[data-path$=".cpp" i], .nav-file-title[data-path$=".hpp" i], .nav-file-title[data-path$=".cs" i], .nav-file-title[data-path$=".rb" i], .nav-file-title[data-path$=".php" i], .nav-file-title[data-path$=".swift" i], .nav-file-title[data-path$=".lua" i], .nav-file-title[data-path$=".r" i], .nav-file-title[data-path$=".dart" i], .nav-file-title[data-path$=".vue" i], .nav-file-title[data-path$=".svelte" i], .nav-file-title[data-path$=".css" i], .nav-file-title[data-path$=".scss" i], .nav-file-title[data-path$=".less" i], .nav-file-title[data-path$=".ipynb" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z' /%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5' /%3E%3Cpath d='M10 12.5 8 15l2 2.5' /%3E%3Cpath d='m14 12.5 2 2.5-2 2.5' /%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-script); }
-:is(.nav-file-title[data-path$=".txt" i], .nav-file-title[data-path$=".log" i], .nav-file-title[data-path$=".text" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z' /%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5' /%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-text); }
+.nav-file-title { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z'/%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5'/%3E%3C/svg%3E"); }
+.nav-file-title:is([data-path$=".md" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z'/%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5'/%3E%3Cpath d='M10 9H8'/%3E%3Cpath d='M16 13H8'/%3E%3Cpath d='M16 17H8'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-md); }
+.nav-file-title:is([data-path$=".excalidraw.md" i],[data-path$=".excalidraw" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15.707 21.293a1 1 0 0 1-1.414 0l-1.586-1.586a1 1 0 0 1 0-1.414l5.586-5.586a1 1 0 0 1 1.414 0l1.586 1.586a1 1 0 0 1 0 1.414z'/%3E%3Cpath d='m18 13-1.375-6.874a1 1 0 0 0-.746-.776L3.235 2.028a1 1 0 0 0-1.207 1.207L5.35 15.879a1 1 0 0 0 .776.746L13 18'/%3E%3Cpath d='m2.3 2.3 7.286 7.286'/%3E%3Ccircle cx='11' cy='11' r='2'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-canvas); }
+.nav-file-title:is([data-path$=".canvas" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect width='7' height='9' x='3' y='3' rx='1'/%3E%3Crect width='7' height='5' x='14' y='3' rx='1'/%3E%3Crect width='7' height='9' x='14' y='12' rx='1'/%3E%3Crect width='7' height='5' x='3' y='16' rx='1'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-canvas); }
+.nav-file-title:is([data-path$=".base" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 9h18'/%3E%3Cpath d='M9 3v18'/%3E%3Crect x='3' y='3' width='18' height='18' rx='2'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-sheet); }
+.nav-file-title:is([data-path$=".doc" i],[data-path$=".docx" i],[data-path$=".dot" i],[data-path$=".dotx" i],[data-path$=".rtf" i],[data-path$=".odt" i],[data-path$=".pages" i],[data-path$=".wps" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14.364 13.634a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506l4.013-4.009a1 1 0 0 0-3.004-3.004z'/%3E%3Cpath d='M14.487 7.858A1 1 0 0 1 14 7V2'/%3E%3Cpath d='M20 19.645V20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l2.516 2.516'/%3E%3Cpath d='M8 18h1'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-word); }
+.nav-file-title:is([data-path$=".pdf" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z'/%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5'/%3E%3Cpath d='M11 18h2'/%3E%3Cpath d='M12 12v6'/%3E%3Cpath d='M9 13v-.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v.5'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-pdf); }
+.nav-file-title:is([data-path$=".xls" i],[data-path$=".xlsx" i],[data-path$=".xlsm" i],[data-path$=".ods" i],[data-path$=".numbers" i],[data-path$=".csv" i],[data-path$=".tsv" i],[data-path$=".et" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z'/%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5'/%3E%3Cpath d='M8 13h2'/%3E%3Cpath d='M14 13h2'/%3E%3Cpath d='M8 17h2'/%3E%3Cpath d='M14 17h2'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-sheet); }
+.nav-file-title:is([data-path$=".ppt" i],[data-path$=".pptx" i],[data-path$=".pps" i],[data-path$=".ppsx" i],[data-path$=".odp" i],[data-path$=".key" i],[data-path$=".dps" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 3h20'/%3E%3Cpath d='M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3'/%3E%3Cpath d='m7 21 5-5 5 5'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-slide); }
+.nav-file-title:is([data-path$=".png" i],[data-path$=".jpg" i],[data-path$=".jpeg" i],[data-path$=".gif" i],[data-path$=".webp" i],[data-path$=".bmp" i],[data-path$=".avif" i],[data-path$=".heic" i],[data-path$=".ico" i],[data-path$=".tif" i],[data-path$=".tiff" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z'/%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5'/%3E%3Ccircle cx='10' cy='12' r='2'/%3E%3Cpath d='m20 17-1.296-1.296a2.41 2.41 0 0 0-3.408 0L9 22'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-image); }
+.nav-file-title:is([data-path$=".svg" i],[data-path$=".drawio" i],[data-path$=".dio" i],[data-path$=".xmind" i],[data-path$=".fig" i],[data-path$=".sketch" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z'/%3E%3Crect x='3' y='14' width='7' height='7' rx='1'/%3E%3Ccircle cx='17.5' cy='17.5' r='3.5'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-canvas); }
+.nav-file-title:is([data-path$=".mp3" i],[data-path$=".wav" i],[data-path$=".m4a" i],[data-path$=".flac" i],[data-path$=".ogg" i],[data-path$=".aac" i],[data-path$=".opus" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6.835V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2h-.343'/%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5'/%3E%3Cpath d='M2 19a2 2 0 0 1 4 0v1a2 2 0 0 1-4 0v-4a6 6 0 0 1 12 0v4a2 2 0 0 1-4 0v-1a2 2 0 0 1 4 0'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-media); }
+.nav-file-title:is([data-path$=".mp4" i],[data-path$=".mov" i],[data-path$=".webm" i],[data-path$=".mkv" i],[data-path$=".avi" i],[data-path$=".m4v" i],[data-path$=".ogv" i],[data-path$=".3gp" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z'/%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5'/%3E%3Cpath d='M15.033 13.44a.647.647 0 0 1 0 1.12l-4.065 2.352a.645.645 0 0 1-.968-.56v-4.704a.645.645 0 0 1 .967-.56z'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-media); }
+.nav-file-title:is([data-path$=".zip" i],[data-path$=".rar" i],[data-path$=".7z" i],[data-path$=".tar" i],[data-path$=".gz" i],[data-path$=".tgz" i],[data-path$=".bz2" i],[data-path$=".xz" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M13.659 22H18a2 2 0 0 0 2-2V8a2.4 2.4 0 0 0-.706-1.706l-3.588-3.588A2.4 2.4 0 0 0 14 2H6a2 2 0 0 0-2 2v11.5'/%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5'/%3E%3Cpath d='M8 12v-1'/%3E%3Cpath d='M8 18v-2'/%3E%3Cpath d='M8 7V6'/%3E%3Ccircle cx='8' cy='20' r='2'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-archive); }
+.nav-file-title:is([data-path$=".epub" i],[data-path$=".mobi" i],[data-path$=".azw3" i],[data-path$=".fb2" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 5v16'/%3E%3Cpath d='M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-book); }
+.nav-file-title:is([data-path$=".html" i],[data-path$=".htm" i],[data-path$=".mhtml" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20'/%3E%3Cpath d='M2 12h20'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-web); }
+.nav-file-title:is([data-path$=".json" i],[data-path$=".jsonc" i],[data-path$=".json5" i],[data-path$=".yaml" i],[data-path$=".yml" i],[data-path$=".xml" i],[data-path$=".toml" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z'/%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5'/%3E%3Cpath d='M10 12a1 1 0 0 0-1 1v1a1 1 0 0 1-1 1 1 1 0 0 1 1 1v1a1 1 0 0 0 1 1'/%3E%3Cpath d='M14 18a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1 1 1 0 0 1-1-1v-1a1 1 0 0 0-1-1'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-data); }
+.nav-file-title:is([data-path$=".ini" i],[data-path$=".conf" i],[data-path$=".cfg" i],[data-path$=".env" i],[data-path$=".properties" i],[data-path$=".plist" i],[data-path$=".lock" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 8a1 1 0 0 1-1-1V2a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8z'/%3E%3Cpath d='M20 8v12a2 2 0 0 1-2 2h-4.182'/%3E%3Cpath d='m3.305 19.53.923-.382'/%3E%3Cpath d='M4 10.592V4a2 2 0 0 1 2-2h8'/%3E%3Cpath d='m4.228 16.852-.924-.383'/%3E%3Cpath d='m5.852 15.228-.383-.923'/%3E%3Cpath d='m5.852 20.772-.383.924'/%3E%3Cpath d='m8.148 15.228.383-.923'/%3E%3Cpath d='m8.53 21.696-.382-.924'/%3E%3Cpath d='m9.773 16.852.922-.383'/%3E%3Cpath d='m9.773 19.148.922.383'/%3E%3Ccircle cx='7' cy='18' r='3'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-data); }
+.nav-file-title:is([data-path$=".sql" i],[data-path$=".sqlite" i],[data-path$=".db" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cellipse cx='12' cy='5' rx='9' ry='3'/%3E%3Cpath d='M3 5V19A9 3 0 0 0 21 19V5'/%3E%3Cpath d='M3 12A9 3 0 0 0 21 12'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-data); }
+.nav-file-title:is([data-path$=".sh" i],[data-path$=".bash" i],[data-path$=".zsh" i],[data-path$=".fish" i],[data-path$=".bat" i],[data-path$=".cmd" i],[data-path$=".ps1" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z'/%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5'/%3E%3Cpath d='m8 16 2-2-2-2'/%3E%3Cpath d='M12 18h4'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-script); }
+.nav-file-title:is([data-path$=".js" i],[data-path$=".mjs" i],[data-path$=".cjs" i],[data-path$=".ts" i],[data-path$=".tsx" i],[data-path$=".jsx" i],[data-path$=".py" i],[data-path$=".java" i],[data-path$=".kt" i],[data-path$=".go" i],[data-path$=".rs" i],[data-path$=".c" i],[data-path$=".h" i],[data-path$=".cpp" i],[data-path$=".hpp" i],[data-path$=".cs" i],[data-path$=".rb" i],[data-path$=".php" i],[data-path$=".swift" i],[data-path$=".lua" i],[data-path$=".r" i],[data-path$=".dart" i],[data-path$=".vue" i],[data-path$=".svelte" i],[data-path$=".css" i],[data-path$=".scss" i],[data-path$=".less" i],[data-path$=".ipynb" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z'/%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5'/%3E%3Cpath d='M10 12.5 8 15l2 2.5'/%3E%3Cpath d='m14 12.5 2 2.5-2 2.5'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-script); }
+.nav-file-title:is([data-path$=".txt" i],[data-path$=".log" i],[data-path$=".text" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z'/%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-text); }
 
 .theme-dark .workspace-split.mod-left-split,
 .theme-dark .workspace-split.mod-right-split,
@@ -1381,17 +1333,6 @@ body.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile:not(#_
    Ignorance Advanced found room for it (.ib-path-shown) or the user expanded
    it with the folder button; otherwise just the file name. */
 .workspace-leaf-content:not(.ib-path-shown) .view-header-title-parent { display: none; }
-.view-header-title-container .ib-path-toggle {
-  flex: 0 0 auto;
-  align-self: center;
-  margin-inline-end: var(--ib-space-1);
-  padding: 2px;
-  color: var(--ib-text-muted);
-  opacity: 0.7;
-}
-.view-header-title-container .ib-path-toggle svg { width: 14px; height: 14px; }
-.view-header-title-container .ib-path-toggle:hover { color: var(--ib-text-accent); opacity: 1; }
-.ib-path-shown .view-header-title-container .ib-path-toggle { color: var(--ib-text-accent); opacity: 1; }
 
 /* Native and pop-out window title bars use the same surface as their body. */
 .titlebar,
@@ -1939,9 +1880,6 @@ body.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile:not(#_
    鼠标移到图片上才淡淡出现，指向按钮时再完全显示；原生的放大/编辑按钮收进这里。 */
 :is(.markdown-rendered, .markdown-source-view.mod-cm6) .image-embed .image-wrapper {
   position: relative;
-}
-.image-embed.ib-has-image-actions > .embed-actions:not(#_ib) {
-  display: none;
 }
 
 .search-result-file-match {
@@ -2514,7 +2452,6 @@ kbd {
 
 /* 标题是自由文本：Obsidian 会在编辑时弹出「已有取值」下拉，像个选择器。
    焦点在标题属性里时不显示它，保持纯文本输入。 */
-body.ib-title-property-focus .suggestion-container.mod-property-value:not(#_ib) { display: none; }
 
 /* File tree: active note as an accent pill with bold accent text. */
 .nav-file-title.is-active,
@@ -2825,16 +2762,6 @@ body.is-phone .workspace-leaf-content[data-type="markdown"] :is(
 /* Writing modes (Ignorance Advanced). Focus dims visible lines outside the
    current paragraph; typewriter mode only scrolls the editor and never changes
    the page or editor layout. */
-.markdown-source-view.mod-cm6 .cm-line.ib-writing-dim {
-  opacity: 0.36;
-  transition: opacity var(--ib-dur-fast) var(--ib-ease-out);
-}
-.markdown-source-view.mod-cm6 .cm-line.ib-writing-dim:hover {
-  opacity: 0.72;
-}
-@media (prefers-reduced-motion: reduce) {
-  .markdown-source-view.mod-cm6 .cm-line.ib-writing-dim { transition: none; }
-}
 
 /* Markdown ::: containers (Ignorance Advanced). Component colors resolve
    through theme tokens so the same content follows light, dark and accents. */
@@ -2845,46 +2772,6 @@ body.is-phone .workspace-leaf-content[data-type="markdown"] :is(
    Keep the covered section's position while hiding its duplicated contents. */
 
 /* Inline dialect components ((green:...)), ((bar:...)), ((spark:...)) and :icons:. */
-.ib-inline-chip {
-  display: inline-flex;
-  align-items: center;
-  max-width: 100%;
-  padding: 0 var(--ib-space-2);
-  border: var(--ib-border-1) solid var(--ib-border-default);
-  border-radius: var(--ib-radius-md);
-  background: var(--ib-bg-secondary);
-  color: var(--ib-text-secondary);
-  font-size: .84em;
-  font-weight: 650;
-  line-height: 1.6;
-  vertical-align: .04em;
-  white-space: nowrap;
-}
-.ib-inline-chip--green { border-color: var(--ib-success-border); background: var(--ib-success-bg); color: var(--ib-success-text); }
-.ib-inline-chip--red { border-color: var(--ib-error-border); background: var(--ib-error-bg); color: var(--ib-error-text); }
-.ib-inline-chip--blue { border-color: var(--ib-info-border); background: var(--ib-info-bg); color: var(--ib-info-text); }
-.ib-inline-chip--amber { border-color: var(--ib-warning-border); background: var(--ib-warning-bg); color: var(--ib-warning-text); }
-.ib-inline-chip--gray { border-color: var(--ib-border-default); background: var(--ib-bg-tertiary); color: var(--ib-text-muted); }
-.ib-inline-chip--primary { border-color: color-mix(in srgb, var(--ib-accent-solid) 30%, var(--ib-border-default)); background: var(--ib-accent-subtle); color: var(--ib-text-accent); }
-.ib-inline-bar {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--ib-space-2);
-  min-width: 112px;
-  max-width: 100%;
-  vertical-align: middle;
-}
-.ib-inline-bar__label { overflow: hidden; color: var(--ib-text-muted); font-size: .82em; text-overflow: ellipsis; white-space: nowrap; }
-.ib-inline-bar__track { flex: 1 1 auto; min-width: 36px; height: 6px; overflow: hidden; border-radius: 999px; background: var(--ib-bg-tertiary); }
-.ib-inline-bar__fill { display: block; height: 100%; border-radius: inherit; background: var(--ib-accent-solid); }
-.ib-inline-bar__value { color: var(--ib-text-accent); font-size: .8em; font-variant-numeric: tabular-nums; font-weight: 700; }
-.ib-inline-spark { display: inline-block; width: 72px; height: 18px; vertical-align: middle; }
-.ib-inline-spark svg { display: block; width: 100%; height: 100%; overflow: visible; }
-.ib-inline-spark polyline { fill: none; stroke: var(--ib-accent-solid); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
-.ib-inline-spark__dot { fill: var(--ib-accent-solid); }
-.ib-inline-icon-wrap { display: inline-flex; align-items: center; vertical-align: -.16em; }
-.ib-inline-icon { display: inline-block; width: 1.1em; height: 1.1em; color: currentColor; }
-.ib-inline-editor-widget { cursor: text; }
 
 /* ECharts code blocks render to Canvas while reading and SVG in page/export staging. */
 
@@ -2978,7 +2865,6 @@ body {
 .markdown-rendered .metadata-properties-heading::after {
   left: 29px; width: 18px; height: 18px; margin-top: -9px;
   background: var(--ib-text-accent);
-  -webkit-mask: var(--ib-icon-list) center / 18px 18px no-repeat;
 }
 
 /* Presentation view styles (used by the Ignorance Advanced plugin) */
@@ -3091,13 +2977,13 @@ body {
 /* Form dialogs: 添加书签 (Obsidian) and 剪藏网页 (Ignorance Advanced).
    Label above a full-width field, no row dividers, one field height, the
    footer on the right (side by side and equal on phones). */
-body:not(.is-phone) .modal:is(.mod-bookmark, .ib-clip-modal) {
+body:not(.is-phone) .modal.mod-bookmark {
   width: min(460px, calc(100vw - 32px));
   padding: var(--ib-space-5) var(--ib-space-5) var(--ib-space-4);
   border-radius: var(--ib-radius-lg, 14px);
 }
-.modal:is(.mod-bookmark, .ib-clip-modal) .modal-title { font-size: var(--ib-h5-size, 17px); font-weight: 650; }
-.modal:is(.mod-bookmark, .ib-clip-modal) .modal-content { display: flex; flex-direction: column; gap: var(--ib-space-2); padding-top: var(--ib-space-3); }
+.modal.mod-bookmark .modal-title { font-size: var(--ib-h5-size, 17px); font-weight: 650; }
+.modal.mod-bookmark .modal-content { display: flex; flex-direction: column; gap: var(--ib-space-2); padding-top: var(--ib-space-3); }
 .modal.mod-bookmark .setting-item {
   flex-direction: column;
   align-items: stretch;
@@ -3109,13 +2995,13 @@ body:not(.is-phone) .modal:is(.mod-bookmark, .ib-clip-modal) {
 }
 .modal.mod-bookmark .setting-item-info { margin: 0; }
 .modal.mod-bookmark .setting-item-description:empty { display: none; }
-:is(.modal.mod-bookmark .setting-item-name, .ib-form-label) {
+:is(.modal.mod-bookmark .setting-item-name) {
   color: var(--ib-text-muted);
   font-size: var(--ib-small-size, 13px);
   font-weight: 500;
 }
 .modal.mod-bookmark .setting-item-control { justify-content: stretch; width: 100%; }
-.modal:is(.mod-bookmark, .ib-clip-modal) :is(input[type="text"], input[type="url"], select.dropdown:not(.is-measuring)) {
+.modal.mod-bookmark :is(input[type="text"], input[type="url"], select.dropdown:not(.is-measuring)) {
   box-sizing: border-box;
   width: 100%;
   max-width: none;
@@ -3124,7 +3010,7 @@ body:not(.is-phone) .modal:is(.mod-bookmark, .ib-clip-modal) {
   font-size: var(--ib-body-size, 15px);
   border-radius: var(--ib-radius-md);
 }
-.modal:is(.mod-bookmark, .ib-clip-modal) :is(input[type="text"], input[type="url"], select.dropdown:not(.is-measuring)):not(#_ib) {
+.modal.mod-bookmark :is(input[type="text"], input[type="url"], select.dropdown:not(.is-measuring)):not(#_ib) {
   border: var(--ib-border-1, 1px) solid var(--ib-border-default);
   background-color: var(--background-modifier-form-field, var(--background-primary));
 }
@@ -3134,22 +3020,15 @@ body:not(.is-phone) .modal:is(.mod-bookmark, .ib-clip-modal) {
   border-color: transparent;
   text-overflow: ellipsis;
 }
-.modal:is(.mod-bookmark, .ib-clip-modal) .modal-button-container { margin-top: var(--ib-space-3); gap: var(--ib-space-2); }
-.modal:is(.mod-bookmark, .ib-clip-modal) .modal-button-container > button { min-width: 84px; height: 36px; }
-
-.ib-clip-modal__field { position: relative; display: flex; align-items: center; }
-.ib-clip-modal__icon { position: absolute; left: 12px; display: flex; color: var(--ib-text-muted); pointer-events: none; }
-.ib-clip-modal__icon svg { width: 16px; height: 16px; }
-.modal.ib-clip-modal input.ib-clip-modal__input:not(#_ib) { padding-left: 36px; }
-.ib-clip-modal__field:focus-within .ib-clip-modal__icon { color: var(--ib-accent-brand); }
-.ib-form-hint { color: var(--ib-text-muted); font-size: var(--ib-tiny-size); line-height: 1.5; }
+.modal.mod-bookmark .modal-button-container { margin-top: var(--ib-space-3); gap: var(--ib-space-2); }
+.modal.mod-bookmark .modal-button-container > button { min-width: 84px; height: 36px; }
 
 /* 16px keeps iOS from zooming the page when a field is focused. */
-.is-mobile .modal:is(.mod-bookmark, .ib-clip-modal) :is(input, select.dropdown:not(.is-measuring)) { min-height: 44px; font-size: 16px; line-height: 44px; }
-.is-mobile .modal:is(.mod-bookmark, .ib-clip-modal) :is(input, select.dropdown:not(.is-measuring)):not(#_ib) { height: 44px; }
+.is-mobile .modal.mod-bookmark :is(input, select.dropdown:not(.is-measuring)) { min-height: 44px; font-size: 16px; line-height: 44px; }
+.is-mobile .modal.mod-bookmark :is(input, select.dropdown:not(.is-measuring)):not(#_ib) { height: 44px; }
 /* Phones: Obsidian lays the dialog out as a sheet with 取消 / 保存 as text
    buttons in the title bar; keep them plain instead of boxed. */
-.is-phone .modal:is(.mod-bookmark, .ib-clip-modal) .modal-content { padding: var(--ib-space-3) var(--ib-space-4) 0; }
+.is-phone .modal.mod-bookmark .modal-content { padding: var(--ib-space-3) var(--ib-space-4) 0; }
 .is-phone .modal.mod-bookmark .modal-nav-action {
   height: 44px;
   min-width: 0;
@@ -3164,15 +3043,15 @@ body:not(.is-phone) .modal:is(.mod-bookmark, .ib-clip-modal) {
   box-shadow: none;
 }
 .is-phone .modal.mod-bookmark .modal-nav-action.mod-cta { color: var(--ib-accent-brand); font-weight: 650; }
-.is-mobile .modal:is(.mod-bookmark, .ib-clip-modal) .modal-button-container {
+.is-mobile .modal.mod-bookmark .modal-button-container {
   display: flex;
   flex-direction: row;
   gap: var(--ib-space-3);
   padding: 0;
 }
-.is-mobile .modal:is(.mod-bookmark, .ib-clip-modal) .modal-button-container > button { flex: 1 1 0; height: 44px; }
-.is-mobile .modal:is(.mod-bookmark, .ib-clip-modal) .modal-button-container > button:not(#_ib) { margin: 0; }
-.is-mobile .modal:is(.mod-bookmark, .ib-clip-modal) .modal-button-container > .mod-cancel { order: 0; }
+.is-mobile .modal.mod-bookmark .modal-button-container > button { flex: 1 1 0; height: 44px; }
+.is-mobile .modal.mod-bookmark .modal-button-container > button:not(#_ib) { margin: 0; }
+.is-mobile .modal.mod-bookmark .modal-button-container > .mod-cancel { order: 0; }
 
 /* V3.3：分页与捕获区域继承静态时长，隔离后续交互动效。 */
 @media print {
@@ -3246,19 +3125,6 @@ body:not(.is-phone) .modal:is(.mod-bookmark, .ib-clip-modal) {
 /* 只由用户点击设置状态类，首次渲染不添加。 */
 @keyframes ib-callout-open { from { opacity: var(--ib-callout-opacity, 0); } to { opacity: 1; } }
 @keyframes ib-callout-close { from { opacity: var(--ib-callout-opacity, 1); } to { opacity: 0; } }
-.callout-content.ib-callout-opening { animation: ib-callout-open var(--ib-dur-base) var(--ib-ease-out); }
-.callout.is-collapsed > .callout-content.ib-callout-closing {
-  animation: ib-callout-close var(--ib-dur-base) var(--ib-ease-in) forwards;
-}
-.callout.is-collapsed > .callout-content.ib-callout-closing:not(#_ib) {
-  display: block;
-}
-@media (prefers-reduced-motion: reduce) {
-  .callout-content:is(.ib-callout-opening, .ib-callout-closing):not(#_ib) { animation: none; }
-}
-@media print {
-  .callout-content:is(.ib-callout-opening, .ib-callout-closing):not(#_ib) { animation: none; }
-}
 
 /* V3.3 导出弹框：HTML 等交互预览淡入，PDF与分页输出保持静态。 */
 @keyframes ib-export-open {
@@ -3297,7 +3163,6 @@ body:not(.is-phone) .modal:is(.mod-bookmark, .ib-clip-modal) {
 /* PDF及分页预览的按压状态也保持静态。 */
 
 /* V3.3 导出阅读器目录：活动项标记只移动transform，首次定位静态。 */
-.ib-nav-panel[data-panel="toc"] { position: relative; padding-inline-start: 12px; }
 
 /* V3.3 手机阅读：390px单列，保留字体/导航，触控目标至少44px。 */
 
@@ -3306,7 +3171,6 @@ body:not(.is-phone) .modal:is(.mod-bookmark, .ib-clip-modal) {
 /* 导出Callout保留语义标记，以主题token随明暗切换。 */
 
 /* Obsidian 无显式字号时使用主题默认；自定义字号仍由 Obsidian 管理。 */
-body.ib-theme-text-size:not(#_ib) { --font-text-size: var(--ib-text-size); }
 
 /* 行内标记只表达语义，不叠加强调色下划线。 */
 body {
@@ -3358,9 +3222,6 @@ body {
 }
 
 /* V3.3 optional H2 badge: opt-in for native reading, independent of margin labels. */
-@media print {
-  body.ib-heading-badge .markdown-reading-view .markdown-rendered h2:not(#_ib)::before { display: none; }
-}
 
 /* V3.3 semantic table captions retain their position above the data grid. */
 /* Standalone reader captions override source UA inline alignment. */
@@ -3369,14 +3230,10 @@ body {
 body { --ib-chapter-radius: 26px; --ib-chapter-rail-width: 3px; --ib-chapter-rail-height: 110px; --ib-chapter-rail-inset: 18px; --ib-chapter-rail-purple: #8b5cf6; --ib-chapter-rail-cyan: #22b8d6; }
 
 /* Native chapter cards: preserve the renderer's cached section ownership. */
-.markdown-reading-view .ib-native-chapters { position:relative; isolation:isolate; }
-.ib-native-chapter-layer { position:absolute; inset:0; pointer-events:none; z-index:0; }
 
 /* Reading refinements: one chart frame, compact fit, theme-based marks. */
-.cm-embed-block.ib-has-echarts:not(#_ib) { padding:0; border:0; background:transparent; box-shadow:none; }
 .image-embed .image-resize-corner:not(#_ib) { display:none; }
 /* Reading images can omit image-wrapper; anchor their resize layer locally. */
-.markdown-reading-view .image-embed.ib-has-resize-layer { position:relative; }
 .image-embed .image-wrapper { position:relative; }
 .image-embed img[width][height] { object-fit:fill; }
 .image-embed img[width][height]:not(#_ib) { height:revert; }
@@ -3409,7 +3266,6 @@ body { --ib-chapter-radius: 26px; --ib-chapter-rail-width: 3px; --ib-chapter-rai
 /* Paper staging and paged reading inherit the same body font override. */
 
 /* ECharts shares the diagram header and card treatment. */
-.cm-embed-block.ib-has-echarts > .edit-block-button { display:none; }
 
 /* Per-fence placement also applies to ordinary code blocks. */
 /* The two buttons only appear while the pointer is over the table (or a touch has focused it). */
