@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.15
+Phones: the page fills the screen width without card corners or extra margins, titles size to the screen so they no longer wrap one character per line, and lists, property names and quotes are tightened for narrow screens. Component text (headings, quotes, callouts, footnotes, definition lists, keys, details titles, table captions) scales with the body font size above 15px. Text element styles moved here from Ignorance Advanced, so the theme alone gives the same look. Use with Ignorance Advanced 1.0.15.
+
 ## 1.0.13
 Style Settings support (content width, corner radii, quote rail and size) and per-note layouts: `ib-wide`, `ib-narrow`, `ib-compact`, `ib-no-title`. Use with Ignorance Advanced 1.0.13.
 
