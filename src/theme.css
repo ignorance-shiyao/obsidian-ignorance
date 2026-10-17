@@ -318,6 +318,29 @@ body.ib-heading-badge .markdown-reading-view .markdown-preview-view:not(.ibp-has
    这里在 body 上重申主题默认字体栈。Obsidian「外观 → 字体」有设置时仍以它为准。 */
 body {
   --ib-code-text-size: calc(var(--font-text-size, 15px) * .8);
+  /* 组件字号随正文放大（设计稿以 15px 正文为基准）：正文 ≤ 15px 时保持原像素值，
+     手机或调大字号时标题、引用、标注、脚注等等比放大，不会比正文还小。
+     :root 上的同名像素值保留作后备；Style Settings 的设置写在 body.css-settings-manager 上，仍然优先。 */
+  --ib-heading-h1-size: max(25px, calc(var(--font-text-size, 15px) * 25 / 15));
+  --ib-heading-h2-size: max(21px, calc(var(--font-text-size, 15px) * 21 / 15));
+  --ib-heading-h3-size: max(18px, calc(var(--font-text-size, 15px) * 18 / 15));
+  --ib-heading-h4-size: max(16px, calc(var(--font-text-size, 15px) * 16 / 15));
+  --ib-heading-h5-size: max(14px, calc(var(--font-text-size, 15px) * 14 / 15));
+  --ib-heading-h6-size: max(12px, calc(var(--font-text-size, 15px) * 12 / 15));
+  --ib-quote-size: max(18px, calc(var(--font-text-size, 15px) * 18 / 15));
+  --ib-quote-leading: max(30px, calc(var(--font-text-size, 15px) * 30 / 15));
+  --ib-quote-mark-size: max(42px, calc(var(--font-text-size, 15px) * 42 / 15));
+  --ib-callout-heading-size: max(14px, calc(var(--font-text-size, 15px) * 14 / 15));
+  --ib-callout-text-size: max(13px, calc(var(--font-text-size, 15px) * 13 / 15));
+  --ib-callout-leading: max(22px, calc(var(--font-text-size, 15px) * 22 / 15));
+  --ib-code-label-size: max(12px, calc(var(--font-text-size, 15px) * 12 / 15));
+  --ib-key-size: max(12px, calc(var(--font-text-size, 15px) * 12 / 15));
+  --ib-definition-size: max(13px, calc(var(--font-text-size, 15px) * 13 / 15));
+  --ib-definition-leading: max(24px, calc(var(--font-text-size, 15px) * 24 / 15));
+  --ib-footnote-size: max(11px, calc(var(--font-text-size, 15px) * 11 / 15));
+  --ib-footnote-leading: max(20px, calc(var(--font-text-size, 15px) * 20 / 15));
+  --ib-details-title-size: max(14px, calc(var(--font-text-size, 15px) * 14 / 15));
+  --ib-table-caption-size: max(13px, calc(var(--font-text-size, 15px) * 13 / 15));
   --font-text-theme: var(--ib-font-sans);
   --font-interface-theme: var(--ib-font-interface);
   --font-monospace-theme: var(--ib-font-mono);
