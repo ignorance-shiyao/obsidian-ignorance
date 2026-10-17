@@ -12,6 +12,182 @@
  * text (6.46:1).
  */
 
+/* --------------------------------------------------------------------------
+ * 正文元素（引用、高亮、键帽、脚注、折叠块、复选框、定义列表、表格）
+ * 从插件迁回主题，只装主题也能得到同样的样式。放在最前面：之后的主题规则在同等特异性时仍优先。
+ * -------------------------------------------------------------------------- */
+.markdown-rendered blockquote:not(.slide-surface blockquote) {
+  position: relative;
+  background: transparent;
+  padding: var(--ib-space-4) var(--ib-space-5) var(--ib-space-4) var(--ib-quote-inset);
+  color: var(--ib-text-primary);
+  font-family: var(--ib-font-serif);
+  font-size: var(--ib-quote-size);
+  line-height: var(--ib-quote-leading);
+  font-weight: var(--ib-heading-bold);
+}
+.markdown-rendered blockquote:not(.slide-surface blockquote) > p {
+  font-size: inherit;
+  line-height: inherit;
+}
+.markdown-rendered blockquote:not(.slide-surface blockquote)::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--ib-quote-rail-width);
+  background: var(--ib-accent-brand);
+  border-radius: var(--ib-radius-xs);
+}
+.markdown-rendered blockquote:not(.slide-surface blockquote)::after {
+  content: "“";
+  position: absolute;
+  inset: var(--ib-space-2) auto auto var(--ib-space-2);
+  color: var(--ib-accent-brand);
+  font-family: var(--ib-font-serif);
+  font-size: var(--ib-quote-mark-size);
+  line-height: 1;
+  opacity: var(--ib-quote-mark-opacity);
+  pointer-events: none;
+}
+.markdown-rendered blockquote blockquote:not(.slide-surface blockquote) {
+  background: transparent;
+}
+.markdown-rendered blockquote:not(.slide-surface blockquote) cite {
+  display: block;
+  text-align: right;
+  color: var(--ib-text-muted);
+  font-family: var(--ib-font-sans);
+  font-size: var(--ib-tiny-size);
+  line-height: var(--ib-tiny-leading);
+  font-weight: normal;
+  font-style: normal;
+}
+.callout:not(.slide-surface .callout) .callout-title {
+  font-size: var(--ib-callout-heading-size);
+  font-weight: var(--ib-heading-bold);
+  color: var(--ib-callout-semantic-text, rgb(var(--callout-color)));
+}
+.callout:not(.slide-surface .callout) .callout-content,
+.callout:not(.slide-surface .callout) .callout-content :is(p, li) {
+  font-size: var(--ib-callout-text-size);
+  line-height: var(--ib-callout-leading);
+}
+.markdown-rendered table,
+.markdown-source-view.mod-cm6 .cm-table-widget { font-variant-numeric: tabular-nums; }
+.markdown-rendered pre:not(.ibc-enhanced) { box-shadow: var(--ib-card-highlight), var(--ib-shadow-1); }
+.markdown-rendered del:not(.slide-surface del) {
+  text-decoration: line-through;
+}
+.markdown-rendered mark:not(.slide-surface mark),
+.markdown-source-view.mod-cm6 .cm-highlight,
+.theme-dark .markdown-source-view.mod-cm6 .cm-highlight {
+  color: var(--ib-highlight-yellow-text);
+  background: var(--ib-highlight-yellow-bg);
+  border-radius: var(--ib-radius-xs);
+  box-shadow: none;
+}
+.markdown-rendered mark[data-highlight="red"]:not(.slide-surface mark),
+.markdown-rendered mark[data-highlight="orange"]:not(.slide-surface mark),
+.markdown-rendered mark[data-highlight="green"]:not(.slide-surface mark),
+.markdown-rendered mark[data-highlight="blue"]:not(.slide-surface mark),
+.markdown-rendered mark[data-highlight="purple"]:not(.slide-surface mark) {
+  color: var(--ib-text-primary);
+  background: var(--highlight-background);
+}
+.markdown-rendered mark[data-highlight="red"]:not(.slide-surface mark) { --highlight-background: var(--highlight-background-red); }
+.markdown-rendered mark[data-highlight="orange"]:not(.slide-surface mark) { --highlight-background: var(--highlight-background-orange); }
+.markdown-rendered mark[data-highlight="green"]:not(.slide-surface mark) { --highlight-background: var(--highlight-background-green); }
+.markdown-rendered mark[data-highlight="blue"]:not(.slide-surface mark) { --highlight-background: var(--highlight-background-blue); }
+.markdown-rendered mark[data-highlight="purple"]:not(.slide-surface mark) { --highlight-background: var(--highlight-background-purple); }
+.markdown-rendered input[type="checkbox"]:not(.slide-surface input) {
+  --checkbox-radius: var(--ib-task-radius);
+  border-radius: var(--ib-task-radius);
+  accent-color: var(--ib-accent-solid);
+}
+.markdown-rendered kbd:not(.slide-surface kbd) {
+  display: inline-block;
+  padding: 6px 10px;
+  border: var(--ib-border-1) solid var(--ib-border-default);
+  border-radius: var(--ib-key-radius);
+  background: var(--ib-bg-secondary);
+  color: var(--ib-text-primary);
+  font-size: var(--ib-key-size);
+  font-weight: 600;
+  line-height: 1.2;
+  vertical-align: middle;
+  box-shadow: none;
+}
+.markdown-rendered dl:not(.slide-surface dl) {
+  font-size: var(--ib-definition-size);
+  line-height: var(--ib-definition-leading);
+  color: var(--ib-text-secondary);
+}
+.markdown-rendered dl dt,
+.markdown-rendered dl dd { line-height: inherit; }
+.markdown-rendered details:not(.slide-surface details) {
+  padding: var(--ib-space-2) var(--ib-space-4);
+  border: var(--ib-border-1) solid var(--ib-border-default);
+  border-radius: var(--ib-details-radius);
+  background: var(--ib-bg-secondary);
+}
+.markdown-rendered details:not(.slide-surface details) > summary {
+  color: var(--ib-text-primary);
+  font-size: var(--ib-details-title-size);
+  font-weight: var(--ib-heading-bold);
+  cursor: pointer;
+}
+.markdown-rendered details > summary::marker { color: var(--ib-accent-solid); }
+.markdown-rendered details[open] > summary + * { margin-top: var(--ib-space-3); }
+.markdown-rendered .footnotes:not(.slide-surface .footnotes) {
+  margin-top: var(--ib-space-5);
+  padding-top: var(--ib-space-3);
+  border-top: var(--ib-border-1) solid var(--ib-divider);
+  color: var(--ib-text-secondary);
+  font-size: var(--ib-footnote-size);
+  line-height: var(--ib-footnote-leading);
+}
+.markdown-rendered .footnotes p,
+.markdown-rendered .footnotes li {
+  font-size: var(--ib-footnote-size);
+  line-height: var(--ib-footnote-leading);
+  color: inherit;
+}
+.markdown-rendered .footnotes > hr { display: none; }
+.markdown-reading-view:not(.ibp-book-host) .el-table > table { overflow: visible; }
+.markdown-reading-view:not(.ibp-book-host) .el-table > table tr > :first-child {
+  position: sticky; inset-inline-start: 0; z-index: 1;
+}
+.markdown-reading-view:not(.ibp-book-host) .el-table > table thead tr > :first-child { z-index: 2;
+}
+.markdown-reading-view:not(.ibp-book-host) .el-table > table thead tr > :first-child:not(#_ib) {
+  background: var(--ib-table-heading-bg);
+}
+body.ib-heading-badge .markdown-reading-view .markdown-preview-view:not(.ibp-has-book):not(.ibp-page-body):not(.ibp-staging) h2::before {
+  content: "#";
+  position: static;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5em;
+  height: 1.5em;
+  margin-right: 0.5em;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--ib-accent-brand) 10%, transparent);
+  color: var(--ib-accent-brand);
+  font: 700 0.72em/1 var(--font-monospace);
+  vertical-align: middle;
+}
+.markdown-reading-view table > caption {
+  caption-side: top;
+  text-align: start;
+  padding: 0 0 var(--ib-space-3);
+  font-size: var(--ib-table-caption-size);
+  font-weight: var(--ib-heading-bold);
+  color: var(--ib-text-primary);
+}
+.markdown-rendered mark { font-family:inherit; border-radius:var(--ib-radius-xs); padding:0 .12em; }
+
+
 :root {
   --ib-font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Segoe UI", sans-serif;
   --ib-font-interface: var(--ib-font-sans);
@@ -1372,7 +1548,6 @@ body.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile:not(#_
   border-radius: var(--ib-radius-md) 0 0 var(--ib-radius-md);
 }
 
-/* V3.3 语义引用；演示视图沿用独立版式。独立阅读器保留伪元素。 */
 
 /* Live Preview quotes follow the reading-view quote: serif type and a bold rail. */
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-quote {
