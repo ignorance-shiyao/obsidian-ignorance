@@ -2585,15 +2585,8 @@ body.is-phone .workspace-leaf-content[data-type="markdown"] :is(
 body.is-phone .workspace-leaf-content[data-type="markdown"] :is(
   .markdown-reading-view .markdown-preview-sizer,
   .markdown-source-view.mod-cm6.is-live-preview .cm-sizer
-) {
-  /* 左右留白交给 Obsidian 移动端自带的 --file-margins，避免双重缩进。 */
-  border-radius: 0;
-  box-shadow: none;
-}
-body.is-phone .workspace-leaf-content[data-type="markdown"] :is(
-  .markdown-reading-view .markdown-preview-sizer,
-  .markdown-source-view.mod-cm6.is-live-preview .cm-sizer
 ):not(#_ib):not(#_ib2) {
+  /* 左右留白交给 Obsidian 移动端自带的 --file-margins，避免双重缩进。 */
   width: 100%;
   margin: 0;
   padding: var(--ib-space-4, 16px) 0 calc(var(--ib-space-8, 64px) + 48px);

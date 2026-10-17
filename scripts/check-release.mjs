@@ -28,6 +28,11 @@ const before = css;
 execFileSync("node", ["scripts/build.mjs"], { stdio: "ignore" });
 check(read("theme.css") === before, "theme.css is up to date with src/theme.css");
 
+// Phone / tablet rules must win over the desktop rules they adjust (see scripts/check-cascade.mjs).
+let cascade = "";
+try { execFileSync("node", ["scripts/check-cascade.mjs"], { encoding: "utf8" }); } catch (error) { cascade = String(error.stdout).trim().split("\n").pop(); }
+check(!cascade, "device rules win over desktop rules", cascade);
+
 // Directory lint rules
 const count = (pattern, text = css) => (text.match(pattern) || []).length;
 const stripped = css.replace(/\/\* @settings[\s\S]*?\*\//, "");
