@@ -10,9 +10,7 @@ Eight colour palettes · light and dark · the same care in editing, reading, ex
 ![License](https://img.shields.io/github/license/ignorance-shiyao/obsidian-ignorance?color=4D81EF)
 ![Release](https://img.shields.io/github/v/release/ignorance-shiyao/obsidian-ignorance?color=4D81EF)
 
-<img src="docs/assets/palettes-light.gif" alt="Switching palettes in light mode" width="760">
-
-<img src="docs/assets/palettes-dark.gif" alt="Switching palettes in dark mode" width="760">
+<img src="docs/assets/hero-desktop.jpg" alt="Ignorance in light and dark mode" width="820">
 
 </div>
 
@@ -20,19 +18,35 @@ Eight colour palettes · light and dark · the same care in editing, reading, ex
 
 Pick one of **eight palettes**, each tuned separately for light and dark: Azure, Pine, Book, Graphite, Terracotta, Teal, Wisteria and Amber. Headings, links, quotes, highlights, callouts and tables all follow the palette. Palette switching lives in the companion plugin; the theme itself ships with the Azure default.
 
+<div align="center">
+<img src="docs/assets/palettes.jpg" alt="The eight palettes in light and dark" width="820">
+<br><br>
+<img src="docs/assets/palettes-light.gif" alt="Switching palettes in light mode (screen recording)" width="400"> <img src="docs/assets/palettes-dark.gif" alt="Switching palettes in dark mode (screen recording)" width="400">
+</div>
+
+## Quiet, readable, structured
+
+<div align="center">
+<img src="docs/assets/typography.jpg" alt="Heading hierarchy, quotes, highlights, code and tables" width="820">
+<br><br>
+<img src="docs/assets/structured-notes.jpg" alt="Callouts, tables and quotes in a structured note" width="820">
+</div>
+
 ## One look, everywhere
 
 <div align="center">
 
-| Light | Dark |
-| :---: | :---: |
-| <img src="docs/assets/showcase-light.jpg" width="420"> | <img src="docs/assets/showcase-dark.jpg" width="420"> |
+<img src="docs/assets/everywhere.jpg" alt="Editor, Reading view, PDF export and mobile" width="820">
+
+### On your phone
+
+<img src="docs/assets/mobile.gif" alt="Ignorance on a phone: reading, bilingual notes and the eight palettes" width="360">
 
 </div>
 
 ## What it does
 
-- **Typography first**: system fonts with PingFang SC / Microsoft YaHei, an 820 px reading column, generous line height, a clear H1–H6 scale that stays identical in Live Preview, Reading view and exports.
+- **Typography first**: system fonts with PingFang SC / Microsoft YaHei, a reading column sized to your window, generous line height, a clear H1–H6 scale that stays identical in Live Preview, Reading view and exports.
 - **Considered blocks**: quotes with a bold rail, tables with a stronger header and soft stripes, code blocks with header, line numbers and syntax colours, callouts in several tones, round task checkboxes, footnotes, and six highlight colours that follow Obsidian's `--highlight-background-*` variables.
 - **Light and dark designed together**, with calibrated contrast. Obsidian's own accent colour can optionally take over.
 - **Mobile**: tighter spacing, horizontally scrolling tables, finger-sized controls.
