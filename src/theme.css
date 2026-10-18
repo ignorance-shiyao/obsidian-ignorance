@@ -18,13 +18,15 @@
  * -------------------------------------------------------------------------- */
 .markdown-rendered blockquote:not(.slide-surface blockquote) {
   position: relative;
-  background: transparent;
-  padding: var(--ib-space-4) var(--ib-space-5) var(--ib-space-4) var(--ib-quote-inset);
+  /* 淡底与紧凑留白延续纸面正文的阅读节奏。 */
+  background: var(--ib-quote-bg);
+  border-radius: 0 var(--ib-radius-md) var(--ib-radius-md) 0;
+  padding: var(--ib-space-3) var(--ib-space-4) var(--ib-space-3) var(--ib-quote-inset);
   color: var(--ib-text-primary);
   font-family: var(--ib-font-serif);
   font-size: var(--ib-quote-size);
   line-height: var(--ib-quote-leading);
-  font-weight: var(--ib-heading-bold);
+  font-weight: 400;
 }
 .markdown-rendered blockquote:not(.slide-surface blockquote) > p {
   font-size: inherit;
@@ -51,6 +53,7 @@
 }
 .markdown-rendered blockquote blockquote:not(.slide-surface blockquote) {
   background: transparent;
+  border-radius: 0;
 }
 .markdown-rendered blockquote:not(.slide-surface blockquote) cite {
   display: block;
@@ -176,23 +179,23 @@
 :root {
   --ib-font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Segoe UI", sans-serif;
   --ib-font-interface: var(--ib-font-sans);
-  --ib-font-serif: "Noto Serif SC", "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", Georgia, serif;
+  --ib-font-serif: Georgia, "Noto Serif SC", "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", serif;
   --ib-font-heading: var(--ib-font-serif);
   --ib-font-heading-small: var(--ib-font-sans);
-  --ib-heading-h1-size: 25px;
-  --ib-heading-h2-size: 21px;
+  --ib-heading-h1-size: 30px;
+  --ib-heading-h2-size: 22px;
   --ib-heading-h3-size: 18px;
   --ib-heading-h4-size: 16px;
   --ib-heading-h5-size: 14px;
   --ib-heading-h6-size: 12px;
   --ib-heading-bold: 700;
-  --ib-quote-size: 18px;
-  --ib-quote-leading: 30px;
-  --ib-quote-mark-size: 42px;
-  --ib-quote-mark-opacity: .3;
-  --ib-quote-rail-width: 3px;
-  --ib-quote-inset: 64px;
-  --ib-table-radius: 14px;
+  --ib-quote-size: 15px;
+  --ib-quote-leading: 24px;
+  --ib-quote-mark-size: 32px;
+  --ib-quote-mark-opacity: .85;
+  --ib-quote-rail-width: 2px;
+  --ib-quote-inset: 40px;
+  --ib-table-radius: 6px;
   /* One step above the table text, whatever size that is. */
   --ib-table-heading-size: calc(1em + 1px);
   --ib-table-caption-size: 13px;
@@ -200,8 +203,8 @@
   --ib-callout-heading-size: 14px;
   --ib-callout-text-size: 13px;
   --ib-callout-leading: 22px;
-  --ib-code-radius: 16px;
-  --ib-code-header-height: 42px;
+  --ib-code-radius: 8px;
+  --ib-code-header-height: 36px;
   --ib-code-label-size: 12px;
   --ib-code-leading: 1.667;
   --ib-code-highlight-radius: 5px;
@@ -215,7 +218,7 @@
   --ib-details-radius: 8px;
   --ib-details-title-size: 14px;
   --ib-font-mono: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --ib-heading-weight: 650;
+  --ib-heading-weight: 600;
   --ib-presentation-scrim-strong: rgba(0, 0, 0, 0.66);
   --ib-presentation-scrim-soft: rgba(0, 0, 0, 0.12);
   --ib-presentation-text-on-scrim: #FFFFFF;
@@ -249,7 +252,7 @@
 
   /* Type scale (design draft, Foundations) */
   --ib-text-size: 15px;
-  --ib-text-leading: 1.8;
+  --ib-text-leading: 1.65;
   --ib-small-size: 14px;
   --ib-small-leading: 1.6;
   --ib-tiny-size: 12px;
@@ -285,9 +288,9 @@
   --h4-size: var(--ib-heading-h4-size);
   --h5-size: var(--ib-heading-h5-size);
   --h6-size: var(--ib-heading-h6-size);
-  --h1-weight: var(--ib-heading-bold);
-  --h2-weight: var(--ib-heading-bold);
-  --h3-weight: var(--ib-heading-bold);
+  --h1-weight: var(--ib-heading-weight);
+  --h2-weight: var(--ib-heading-weight);
+  --h3-weight: var(--ib-heading-weight);
   --h4-weight: var(--ib-heading-bold);
   --h5-weight: var(--ib-heading-bold);
   --h6-weight: var(--ib-heading-bold);
@@ -302,19 +305,21 @@
 /* Obsidian 在 body 上给 --font-*-theme 写了占位值，:root 上的声明到不了正文；
    这里在 body 上重申主题默认字体栈。Obsidian「外观 → 字体」有设置时仍以它为准。 */
 body {
-  --ib-code-text-size: calc(var(--font-text-size, 15px) * .8);
+  --ib-code-text-size: calc(var(--font-text-size, 15px) * .9);
+  /* Native consecutive-block headings read this variable after their own margins. */
+  --heading-spacing: var(--ib-space-5);
   /* 组件字号随正文放大（设计稿以 15px 正文为基准）：正文 ≤ 15px 时保持原像素值，
      手机或调大字号时标题、引用、标注、脚注等等比放大，不会比正文还小。
      :root 上的同名像素值保留作后备；Style Settings 的设置写在 body.css-settings-manager 上，仍然优先。 */
-  --ib-heading-h1-size: max(25px, calc(var(--font-text-size, 15px) * 25 / 15));
-  --ib-heading-h2-size: max(21px, calc(var(--font-text-size, 15px) * 21 / 15));
+  --ib-heading-h1-size: max(30px, calc(var(--font-text-size, 15px) * 30 / 15));
+  --ib-heading-h2-size: max(22px, calc(var(--font-text-size, 15px) * 22 / 15));
   --ib-heading-h3-size: max(18px, calc(var(--font-text-size, 15px) * 18 / 15));
   --ib-heading-h4-size: max(16px, calc(var(--font-text-size, 15px) * 16 / 15));
   --ib-heading-h5-size: max(14px, calc(var(--font-text-size, 15px) * 14 / 15));
   --ib-heading-h6-size: max(12px, calc(var(--font-text-size, 15px) * 12 / 15));
-  --ib-quote-size: max(18px, calc(var(--font-text-size, 15px) * 18 / 15));
-  --ib-quote-leading: max(30px, calc(var(--font-text-size, 15px) * 30 / 15));
-  --ib-quote-mark-size: max(42px, calc(var(--font-text-size, 15px) * 42 / 15));
+  --ib-quote-size: max(15px, calc(var(--font-text-size, 15px) * 15 / 15));
+  --ib-quote-leading: max(24px, calc(var(--font-text-size, 15px) * 24 / 15));
+  --ib-quote-mark-size: max(32px, calc(var(--font-text-size, 15px) * 32 / 15));
   --ib-callout-heading-size: max(14px, calc(var(--font-text-size, 15px) * 14 / 15));
   --ib-callout-text-size: max(13px, calc(var(--font-text-size, 15px) * 13 / 15));
   --ib-callout-leading: max(22px, calc(var(--font-text-size, 15px) * 22 / 15));
@@ -329,6 +334,7 @@ body {
   --font-text-theme: var(--ib-font-sans);
   --font-interface-theme: var(--ib-font-interface);
   --font-monospace-theme: var(--ib-font-mono);
+  --ib-quote-bg: color-mix(in srgb, var(--ib-accent-brand) 7%, var(--ib-page-paper, var(--ib-bg-primary)));
   --ib-table-heading-bg: color-mix(in srgb, var(--ib-accent-brand) 5%, var(--ib-bg-primary));
   --ib-table-stripe-bg: color-mix(in srgb, var(--ib-accent-brand) 2%, var(--ib-bg-primary));
 }
@@ -1513,9 +1519,10 @@ body.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile:not(#_
 }
 
 
-/* Live Preview quotes follow the reading-view quote: serif type and a bold rail. */
+/* Live Preview quotes follow the reading-view quote: serif type and a quiet background. */
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-quote {
   --blockquote-background-color: transparent;
+  background-color: var(--ib-quote-bg);
   position: relative;
   border-inline-start-width: var(--ib-quote-rail-width);
   /* CodeMirror hangs wrapped lines with inline text-indent/padding sized for "> "; a quote with its own
@@ -1523,7 +1530,7 @@ body.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile:not(#_
   font-family: var(--ib-font-serif);
   font-size: var(--ib-quote-size);
   line-height: var(--ib-quote-leading);
-  font-weight: var(--ib-heading-bold);
+  font-weight: 400;
 }
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-quote:not(#_ib) {
   padding-inline: var(--ib-quote-inset) var(--ib-space-5);
@@ -1588,7 +1595,7 @@ body.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile:not(#_
   border: 0;
   border-right: 1px solid var(--ib-divider);
   border-bottom: 1px solid var(--ib-divider);
-  padding: 12px 16px;
+  padding: 8px 12px;
   vertical-align: middle;
   line-height: 1.55;
 }
@@ -2658,11 +2665,12 @@ body {
      分页不影响编辑，编辑时不画页边界和页码。
    - 阅读：未开分页时同样是连续纸面；开启分页后由插件渲染真实分页（.ibp-has-book），
      与 PDF / 图片导出一致。 */
+/* 连续纸面不再画桌面和纸张边界：视图与纸同色，正文直接铺在页面上（分页阅读仍是桌面上的纸张）。 */
 .workspace-leaf-content[data-type="markdown"] :is(
   .markdown-reading-view,
   .markdown-source-view.mod-cm6
 ) {
-  background: var(--ib-page-desk);
+  background: var(--ib-page-paper);
 }
 .workspace-leaf-content[data-type="markdown"] .markdown-reading-view .markdown-preview-view:not(#_ib),
 .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-scroller:not(#_ib) {
@@ -2676,16 +2684,13 @@ body {
   box-sizing: border-box;
   width: min(calc(100% - 48px), var(--ib-content-max, 820px));
   max-width: none;
-  margin: 32px auto 64px;
+  margin: 0 auto;
   padding-inline: clamp(var(--ib-space-4, 16px), 3vw, var(--ib-space-6, 32px));
   /* 纸面上下也留白，属性卡片和首段内容不贴着纸边。 */
   padding-block: clamp(var(--ib-space-5, 24px), 3vw, 40px) clamp(var(--ib-space-6, 32px), 4vw, 56px);
-  background: var(--ib-page-paper);
-  border-radius: var(--ib-radius-xl);
-  /* The continuous paper is as tall as the note (tens of thousands of px). A
-     large blur around it is repainted all the way while scrolling and left
-     blank tiles on fast scrolls; a ring plus a tight shadow reads the same. */
-  box-shadow: var(--ib-shadow-paper-long);
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
 }
 .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-sizer > :is(
   .cm-contentContainer,
@@ -2798,9 +2803,9 @@ body {
   --h4-size: var(--ib-heading-h4-size);
   --h5-size: var(--ib-heading-h5-size);
   --h6-size: var(--ib-heading-h6-size);
-  --h1-weight: var(--ib-heading-bold);
-  --h2-weight: var(--ib-heading-bold);
-  --h3-weight: var(--ib-heading-bold);
+  --h1-weight: var(--ib-heading-weight);
+  --h2-weight: var(--ib-heading-weight);
+  --h3-weight: var(--ib-heading-weight);
   --h4-weight: var(--ib-heading-bold);
   --h5-weight: var(--ib-heading-bold);
   --h6-weight: var(--ib-heading-bold);

@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased
+Continuous reading uses a flat paper surface. Larger serif headings, steadier paragraph spacing and compact tinted quotes bring the reading hierarchy together; code cards use clearer text and a smaller toolbar while staying light in light mode. Tables use tighter cells and calmer corners. Style Settings defaults match the updated quote and corner sizes.
+
 ## 1.0.16
 Smaller theme.css (under 100 KB): styles for elements that only Ignorance Advanced creates moved to the plugin, and the file-type icons are written more compactly. No visual change. Use with Ignorance Advanced 1.0.16.
 
