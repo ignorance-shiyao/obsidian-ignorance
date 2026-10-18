@@ -2347,9 +2347,6 @@ body {
 
 /* Quadrant chart: four faint washes, readable quadrant titles, accent points. */
 
-/* Use case: actors on cards with an avatar disc, a boundary panel with a
-   header band, tinted ellipses, solid associations starting from a dot and
-   dotted includes (the plugin adds the card, disc, band, icon and dots). */
 
 /* Git graph: branches take the chart ramp; labels are pills. */
 
@@ -2361,29 +2358,22 @@ body {
 
 /* Timeline: tinted cards with a colored rule instead of saturated blocks. */
 
-/* ZenUML: cards for participants, quiet frames, theme lines. */
 
 /* Architecture: groups as dashed rounded panels, services as cards. */
 
 /* Radar: translucent series areas, quiet graticule. */
 
-/* Event modeling: keep the notation's meaning (UI / command / event /
-   read model / automation) but in the theme's tints. Mermaid writes those as
-   fill attributes, so they are matched by value. */
 
 /* Treemap: faint section panels, leaves as solid rounded tiles in their
    section's color (the plugin tags each leaf with its section's slot). */
 
 /* Venn: translucent sets so overlaps read. */
 
-/* Ishikawa: accent spine and head, category chips, quiet ribs. */
 
-/* Wardley map: soft canvas, quiet axes and stages, accent components. */
 
 /* 文字跨过连线、边界或数据点时，用均匀的纸面色描边隔开底图。
    内部 tspan 有自己的绘制样式，因此一并指定；关系作者的 fill 保持原样。 */
 
-/* Tree view: accent directories, file names in the body color, faint guides. */
 
 /* User journey: tinted stage headers, white task cards, a slim accent axis
    and a mood strip (the plugin lines the faces up and tags each mood). */
