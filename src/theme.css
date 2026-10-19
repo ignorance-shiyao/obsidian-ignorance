@@ -3330,6 +3330,56 @@ body { --ib-chapter-radius: 26px; --ib-chapter-rail-width: 3px; --ib-chapter-rai
   display: none;
 }
 
+/* Long-form reading modes (per note, via cssclasses).
+ *   ib-large  bigger text, looser lines, stronger contrast, thicker focus ring
+ *   ib-eink   no shadows, motion or tints; hard borders, underlined links (e-ink and low-power screens)
+ * Meaning never relies on colour alone: links stay underlined, strong and emphasis stay weighted. */
+.ib-large {
+  --ib-text-size: 20px;
+  --ib-text-leading: 1.85;
+  --font-text-size: 20px;
+  --line-height-normal: 1.85;
+  --ib-focus-width: 3px;
+  --text-normal: var(--ib-text-primary);
+  --text-muted: color-mix(in srgb, var(--ib-text-primary) 82%, var(--ib-bg-primary));
+}
+.ib-large :is(a, .external-link, .internal-link) {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+.ib-large :is(table, .callout, pre) {
+  font-size: max(0.9em, 17px);
+}
+.ib-eink {
+  --text-normal: var(--ib-text-primary);
+  --text-muted: var(--ib-text-primary);
+  --ib-shadow-1: none;
+  --ib-shadow-2: none;
+  --ib-shadow-3: none;
+  --ib-focus-width: 3px;
+  --background-modifier-border: var(--ib-text-primary);
+}
+.ib-eink :is(a, .external-link, .internal-link) {
+  color: var(--ib-text-primary);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+.ib-eink :is(*, *::before, *::after) {
+  box-shadow: none;
+  text-shadow: none;
+  transition: none;
+  animation: none;
+}
+.ib-eink :is(.callout, blockquote, pre, table) {
+  background: transparent;
+  border: 1px solid var(--ib-text-primary);
+}
+.ib-eink :is(mark, .cm-highlight) {
+  background: transparent;
+  color: inherit;
+  text-decoration: underline double;
+}
+
 /* Task statuses: - > < ? ! * i b " (the row carries data-task; without the theme they read as plain checkboxes). */
 :is(li.task-list-item, .HyperMD-task-line)[data-task="-"] { --ib-task-color: var(--ib-text-muted); --ib-task-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 6 6 18'/%3E%3Cpath d='m6 6 12 12'/%3E%3C/svg%3E"); }
 :is(li.task-list-item, .HyperMD-task-line)[data-task=">"] { --ib-task-color: var(--ib-warning-icon); --ib-task-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='m12 5 7 7-7 7'/%3E%3C/svg%3E"); }
