@@ -342,13 +342,13 @@ body {
 .theme-light {
   color-scheme: light;
 
-  --ib-bg-primary: #FAFBFD;
-  --ib-bg-secondary: #F4F6FA;
+  --ib-bg-primary: #FAF8F4;
+  --ib-bg-secondary: #F3F0EA;
   --ib-bg-tertiary: #FFFFFF;
-  --ib-bg-chrome: #F4F6FA;
+  --ib-bg-chrome: #F3F0EA;
   --ib-bg-input: #FFFFFF;
-  --ib-bg-code-inline: #EDF2F9;
-  --ib-bg-code-block: #F2F5F9;
+  --ib-bg-code-inline: #EFECE5;
+  --ib-bg-code-block: #F4F2ED;
   --ib-bg-hover: #EDF3FF;
   --ib-bg-active: #E1EAFC;
   --ib-bg-selection: #CFE0FF;
@@ -784,6 +784,23 @@ body {
   background: var(--ib-error-bg);
   border-color: var(--ib-error-border);
 }
+
+/* H1-H3 and their numbers take the accent colour; smaller headings stay in the text colour. */
+body {
+  --h4-color: var(--ib-text-primary);
+  --h5-color: var(--ib-text-primary);
+  --h6-color: var(--ib-text-primary);
+  --table-width: 100%;
+}
+
+/* Highlights read as soft pills in reading view; the page title keeps the text colour. */
+.markdown-rendered mark:not(.slide-surface mark) {
+  padding: 0.1em 0.55em;
+  border-radius: var(--ib-radius-md);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+body { --inline-title-color: var(--ib-text-primary); }
 
 /* Extra callout types, ready to use with no plugin: > [!decision], > [!risk], > [!definition], > [!idea].
    They reuse the four semantic palettes, so colour in light and dark stays consistent. */
@@ -2812,7 +2829,7 @@ body.is-phone .workspace-leaf-content[data-type="markdown"] :is(
 
 body {
   --ib-icon-list: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 12h.01'/%3E%3Cpath d='M3 18h.01'/%3E%3Cpath d='M3 6h.01'/%3E%3Cpath d='M8 12h13'/%3E%3Cpath d='M8 18h13'/%3E%3Cpath d='M8 6h13'/%3E%3C/svg%3E");
-  --ib-heading-color: var(--ib-text-primary);
+  --ib-heading-color: var(--ib-accent-solid);
   --ib-sec-bg: color-mix(in srgb, var(--ib-bg-primary) 20%, #FFFFFF);
   --ib-sec-head-bg: color-mix(in srgb, var(--ib-accent-brand) 4%, var(--ib-sec-bg));
   --ib-sec-border: color-mix(in srgb, var(--ib-accent-brand) 12%, var(--ib-border-default));
@@ -2840,7 +2857,7 @@ body {
   --inline-title-weight: 800;
 }
 .theme-dark {
-  --ib-heading-color: var(--ib-text-primary);
+  --ib-heading-color: var(--ib-text-accent);
   --ib-sec-bg: color-mix(in srgb, var(--ib-bg-primary) 88%, #FFFFFF);
   --ib-sec-head-bg: color-mix(in srgb, var(--ib-accent-brand) 8%, var(--ib-sec-bg));
   --ib-sec-border: color-mix(in srgb, var(--ib-accent-brand) 16%, var(--ib-border-default));
