@@ -1771,7 +1771,7 @@ body.ib-header-path .workspace-leaf-content:not(.ib-path-shown) .view-header-tit
 
 .markdown-rendered pre {
   border: 1px solid var(--ib-compat-code-border);
-  border-radius: var(--ib-radius-lg);
+  border-radius: var(--ib-code-radius);
   box-shadow: 0 1px 2px rgba(31, 51, 73, 0.04);
   padding: 1rem 1.1rem;
   overflow: auto;
@@ -2350,12 +2350,12 @@ body {
   padding-bottom: 10px;
   border-top: 1px solid var(--ib-card-border);
   border-bottom: 1px solid var(--background-modifier-border);
-  border-radius: var(--ib-card-radius) var(--ib-card-radius) 0 0;
+  border-radius: var(--ib-code-radius) var(--ib-code-radius) 0 0;
   background: linear-gradient(180deg, color-mix(in srgb, var(--ib-accent-brand) var(--ib-card-tint), var(--ib-bg-code-block)) 0%, var(--ib-bg-code-block) 100%);
 }
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end:not(#_ib) {
   border-bottom: 1px solid var(--ib-card-border);
-  border-radius: 0 0 var(--ib-card-radius) var(--ib-card-radius);
+  border-radius: 0 0 var(--ib-code-radius) var(--ib-code-radius);
 }
 .markdown-source-view.mod-cm6 .HyperMD-codeblock-begin .code-block-flair {
   left: var(--ib-space-3, 12px);
@@ -3385,14 +3385,16 @@ body { --ib-chapter-radius: 26px; --ib-chapter-rail-width: 3px; --ib-chapter-rai
   display: none;
 }
 
-/* Side notes: a callout of type `aside` (> [!aside] ...) sits in the page margin when the pane is wide,
-   and falls back to an ordinary inline callout otherwise. */
+/* Side notes: a callout of type `aside` (> [!aside] ...) sits in the page margin when this note's own pane
+   has room for it (a container query, so a narrow split pane in a wide window keeps it inline), and only
+   while the text column is limited; otherwise it is an ordinary inline callout. */
+.workspace-leaf-content[data-type="markdown"] .markdown-preview-view { container: ib-note / inline-size; }
 .markdown-preview-view .callout[data-callout="aside"] {
   --callout-color: var(--ib-text-muted);
   font-size: 0.88em;
 }
-@media (min-width: 1600px) {
-  .markdown-preview-view .callout[data-callout="aside"] {
+@container ib-note (min-width: 1320px) {
+  .markdown-preview-view.is-readable-line-width .callout[data-callout="aside"] {
     float: right;
     clear: right;
     width: 220px;
@@ -3412,6 +3414,35 @@ body { --ib-chapter-radius: 26px; --ib-chapter-rail-width: 3px; --ib-chapter-rai
   --ib-focus-width: 3px;
   --text-normal: var(--ib-text-primary);
   --text-muted: var(--ib-text-primary);
+  /* 组件字号变量在 body 上已按 15px 算好；这里按 20px 重算，引用、标注、脚注、标题随正文一起放大。 */
+  --ib-code-text-size: calc(var(--font-text-size, 15px) * .9);
+  --heading-spacing: var(--ib-space-5);
+  --ib-heading-h1-size: max(30px, calc(var(--font-text-size, 15px) * 30 / 15));
+  --ib-heading-h2-size: max(22px, calc(var(--font-text-size, 15px) * 22 / 15));
+  --ib-heading-h3-size: max(18px, calc(var(--font-text-size, 15px) * 18 / 15));
+  --ib-heading-h4-size: max(16px, calc(var(--font-text-size, 15px) * 16 / 15));
+  --ib-heading-h5-size: max(14px, calc(var(--font-text-size, 15px) * 14 / 15));
+  --ib-heading-h6-size: max(12px, calc(var(--font-text-size, 15px) * 12 / 15));
+  --ib-quote-size: max(15px, calc(var(--font-text-size, 15px) * 15 / 15));
+  --ib-quote-leading: max(24px, calc(var(--font-text-size, 15px) * 24 / 15));
+  --ib-quote-mark-size: max(32px, calc(var(--font-text-size, 15px) * 32 / 15));
+  --ib-callout-heading-size: max(14px, calc(var(--font-text-size, 15px) * 14 / 15));
+  --ib-callout-text-size: max(13px, calc(var(--font-text-size, 15px) * 13 / 15));
+  --ib-callout-leading: max(22px, calc(var(--font-text-size, 15px) * 22 / 15));
+  --ib-code-label-size: max(12px, calc(var(--font-text-size, 15px) * 12 / 15));
+  --ib-key-size: max(12px, calc(var(--font-text-size, 15px) * 12 / 15));
+  --ib-definition-size: max(13px, calc(var(--font-text-size, 15px) * 13 / 15));
+  --ib-definition-leading: max(24px, calc(var(--font-text-size, 15px) * 24 / 15));
+  --ib-footnote-size: max(11px, calc(var(--font-text-size, 15px) * 11 / 15));
+  --ib-footnote-leading: max(20px, calc(var(--font-text-size, 15px) * 20 / 15));
+  --ib-details-title-size: max(14px, calc(var(--font-text-size, 15px) * 14 / 15));
+  --ib-table-caption-size: max(13px, calc(var(--font-text-size, 15px) * 13 / 15));
+  --h1-size: var(--ib-heading-h1-size);
+  --h2-size: var(--ib-heading-h2-size);
+  --h3-size: var(--ib-heading-h3-size);
+  --h4-size: var(--ib-heading-h4-size);
+  --h5-size: var(--ib-heading-h5-size);
+  --h6-size: var(--ib-heading-h6-size);
 }
 .ib-large :is(a, .external-link, .internal-link) {
   text-decoration: underline;
@@ -3444,10 +3475,27 @@ body { --ib-chapter-radius: 26px; --ib-chapter-rail-width: 3px; --ib-chapter-rai
   background: transparent;
   border: 1px solid var(--ib-text-primary);
 }
-.ib-eink :is(mark, .cm-highlight) {
+.ib-eink {
+  /* 换成变量，不和前面高特异性的上色规则比优先级。 */
+  --ib-highlight-yellow-bg: transparent;
+  --ib-highlight-yellow-text: inherit;
+  --ib-highlight-blue-bg: transparent;
+  --ib-table-heading-bg: transparent;
+  --ib-table-stripe-bg: transparent;
+  --ib-quote-bg: transparent;
+  --ib-bg-active: transparent;
+}
+.ib-eink :is(mark, .cm-highlight):not(#_ib):not(#_ib2) {
   background: transparent;
   color: inherit;
   text-decoration: underline double;
+}
+.ib-eink :is(th, td):not(#_ib):not(#_ib2) { background: transparent; }
+/* 纸面噪点画在外层视图的 ::before 上：编辑视图本身带 cssclass，直接关；阅读视图由带 cssclass 的内层盖住。 */
+.markdown-source-view.mod-cm6.ib-eink::before { content: none; }
+.markdown-preview-view.ib-eink:not(#_ib):not(#_ib2) {
+  position: relative;
+  background: var(--ib-page-paper, var(--ib-bg-primary));
 }
 
 /* Task statuses: - > < ? ! * i b " (the row carries data-task; without the theme they read as plain checkboxes). */

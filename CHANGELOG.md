@@ -7,6 +7,14 @@ Search results in dark mode highlight matches with the same soft yellow pair as 
 
 Headings now match what 1.0.21 described, with one change: H1–H4 use the accent colour and H5–H6 the text colour; the page title weight is 500 (a later rule was still forcing 800).
 
+The Style Settings code block radius now applies to reading-view code blocks and to code fences in the editor, with or without Ignorance Advanced (it only reached the plugin's enhanced code cards before).
+
+`ib-large` now scales quotes, callouts, footnotes, definitions, captions and headings with the 20px text (quotes stayed at 15px and callout text at 13px).
+
+`ib-eink` now also removes highlight fills, table header and stripe fills and the paper texture.
+
+Side notes (`> [!aside]`) move to the margin based on the note's own pane width (1320px and up, with readable line length on), so a narrow split pane in a wide window keeps them inline instead of spilling over the next pane.
+
 With the theme alone (Ignorance Advanced not enabled), the folder path in the note header is no longer hidden.
 
 ## 1.0.21
