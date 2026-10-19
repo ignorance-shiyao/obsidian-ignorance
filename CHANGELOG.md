@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.0.20
 Continuous reading uses a flat paper surface. Larger serif headings, steadier paragraph spacing and compact tinted quotes bring the reading hierarchy together; code cards use clearer text and a smaller toolbar while staying light in light mode. Tables use tighter cells and calmer corners. Style Settings defaults match the updated quote and corner sizes.
 
 ## 1.0.16
