@@ -1,6 +1,8 @@
 # Changelog
 
 ## Unreleased
+Four extra callout types with no plugin needed: `> [!decision]`, `> [!risk]`, `> [!definition]` and `> [!idea]`, each with its own icon and one of the existing semantic palettes (so light and dark stay consistent).
+
 Side notes: a `> [!aside]` callout sits in the right page margin on very wide windows (1600px and up) and stays an ordinary quiet callout otherwise.
 
 Two long-form reading modes, switched per note with `cssclasses`: `ib-large` (20px text, looser lines, stronger contrast, thicker focus ring, underlined links) and `ib-eink` (no shadows, motion or tints; hard borders, underlined links, highlights shown as double underline). Meaning never depends on colour alone.

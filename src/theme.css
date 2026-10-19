@@ -785,6 +785,29 @@ body {
   border-color: var(--ib-error-border);
 }
 
+/* Extra callout types, ready to use with no plugin: > [!decision], > [!risk], > [!definition], > [!idea].
+   They reuse the four semantic palettes, so colour in light and dark stays consistent. */
+.callout[data-callout="decision"],
+.callout[data-callout="definition"] {
+  --callout-icon: lucide-git-branch;
+  --ib-callout-semantic-text: var(--ib-info-text);
+  background: var(--ib-info-bg);
+  border-color: var(--ib-info-border);
+}
+.callout[data-callout="definition"] { --callout-icon: lucide-book-open; }
+.callout[data-callout="risk"] {
+  --callout-icon: lucide-shield-alert;
+  --ib-callout-semantic-text: var(--ib-warning-text);
+  background: var(--ib-warning-bg);
+  border-color: var(--ib-warning-border);
+}
+.callout[data-callout="idea"] {
+  --callout-icon: lucide-lightbulb;
+  --ib-callout-semantic-text: var(--ib-success-text);
+  background: var(--ib-success-bg);
+  border-color: var(--ib-success-border);
+}
+
 /* Components — design draft page 3. Every value resolves to a token. */
 
 /* Buttons: primary / secondary / ghost / danger / icon / disabled. */
