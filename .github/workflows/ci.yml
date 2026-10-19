@@ -23,3 +23,11 @@ jobs:
           node -e "const s=require('fs').readFileSync('theme.css','utf8');let d=0;for(const c of s){if(c==='{')d++;if(c==='}')d--;if(d<0)process.exit(1)}if(d!==0){console.error('unbalanced braces');process.exit(1)}"
           test -f screenshot.png
           if grep -nE "@import|url\(https?:" theme.css; then echo "remote resources are not allowed"; exit 1; fi
+      - name: Device rules win over the desktop rules they adjust
+        run: npm run check:cascade
+      - name: Computed-style checks (width, contrast, headings, reading modes)
+        run: |
+          npx playwright install --with-deps chromium-headless-shell
+          npm run check:styles
+      - name: Release checks (size, metadata, commit emails, clean tree)
+        run: npm run check

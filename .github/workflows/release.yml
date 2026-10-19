@@ -17,6 +17,9 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+      - run: npm run check:cascade
+      - run: npx playwright install --with-deps chromium-headless-shell && npm run check:styles
+      - run: npm run check
       - name: Check manifest and CSS
         run: |
           node -e "const m=require('./manifest.json');if(m.version!==process.env.GITHUB_REF_NAME){console.error('tag != manifest version');process.exit(1)}"

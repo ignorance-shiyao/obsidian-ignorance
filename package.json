@@ -4,6 +4,14 @@
   "private": true,
   "description": "Ignorance, a calm Obsidian theme. src/theme.css is the readable source; theme.css is the minified build.",
   "license": "MIT",
-  "scripts": { "build": "node scripts/build.mjs", "check": "node scripts/check-release.mjs" },
-  "devDependencies": { "lightningcss": "1.33.0" }
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check-release.mjs",
+    "check:styles": "node scripts/check-styles.mjs",
+    "check:cascade": "node scripts/check-cascade.mjs"
+  },
+  "devDependencies": {
+    "lightningcss": "1.33.0",
+    "playwright": "1.56.1"
+  }
 }
