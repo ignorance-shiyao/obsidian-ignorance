@@ -1,76 +1,28 @@
 name: Ignorance
 id: ignorance
 settings:
-    -
-        id: ib-layout
-        title: Layout
-        type: heading
-        level: 2
-        collapsed: false
-    -
-        id: ib-content-max
-        title: Content width
-        description: Maximum width of the note body.
-        type: variable-number-slider
-        default: 960
-        min: 600
-        max: 1400
-        step: 20
-        format: px
-    -
-        id: ib-shapes
-        title: Corners and rails
-        type: heading
-        level: 2
-        collapsed: true
-    -
-        id: ib-code-radius
-        title: Code block radius
-        type: variable-number-slider
-        default: 8
-        min: 0
-        max: 24
-        step: 1
-        format: px
-    -
-        id: ib-callout-radius
-        title: Callout radius
-        type: variable-number-slider
-        default: 8
-        min: 0
-        max: 20
-        step: 1
-        format: px
-    -
-        id: ib-table-radius
-        title: Table radius
-        type: variable-number-slider
-        default: 6
-        min: 0
-        max: 24
-        step: 1
-        format: px
-    -
-        id: ib-quote-rail-width
-        title: Quote rail width
-        type: variable-number-slider
-        default: 2
-        min: 1
-        max: 8
-        step: 1
-        format: px
-    -
-        id: ib-type
-        title: Type
-        type: heading
-        level: 2
-        collapsed: true
-    -
-        id: ib-quote-size
-        title: Quote text size
-        type: variable-number-slider
-        default: 15
-        min: 14
-        max: 24
-        step: 1
-        format: px
+  - {id: ib-layout, title: Layout, type: heading, level: 2, collapsed: false}
+  - {id: ib-content-max, title: Content width, description: Maximum width of the note body., type: variable-number-slider, default: 960, min: 600, max: 1400, step: 20, format: px}
+  - {id: ib-wide-max, title: Wide block width, description: "Largest width for tables and images in notes that use ib-wide-tables or ib-wide-images (Reading view).", type: variable-number-slider, default: 1400, min: 900, max: 2000, step: 50, format: px}
+  - {id: ib-compact-ui, title: Compact sidebars, description: Tighter rows in the file explorer and other side panels., type: class-toggle}
+  - {id: ib-type, title: Type, type: heading, level: 2, collapsed: true}
+  - id: ib-font-heading
+    title: Heading font
+    description: With Ignorance Advanced enabled, its font setting takes priority.
+    type: variable-select
+    default: var(--ib-font-serif)
+    options:
+      - {label: Serif, value: var(--ib-font-serif)}
+      - {label: Sans-serif, value: var(--ib-font-sans)}
+      - {label: Monospace, value: var(--ib-font-mono)}
+  - {id: ib-hide-heading-labels, title: Hide heading level labels, description: Hides the H1–H6 labels in the left margin. Ignorance Advanced has its own switch that takes priority., type: class-toggle}
+  - {id: ib-quote-size, title: Quote text size, type: variable-number-slider, default: 15, min: 14, max: 24, step: 1, format: px}
+  - {id: ib-blocks, title: Blocks, type: heading, level: 2, collapsed: true}
+  - {id: ib-code-wrap, title: Wrap long code lines, description: Reading view code blocks wrap instead of scrolling sideways., type: class-toggle}
+  - {id: table-text-size, title: Table text size, type: variable-number-slider, default: 13, min: 11, max: 18, step: 1, format: px}
+  - {id: ib-no-table-stripes, title: No table stripes, type: class-toggle}
+  - {id: ib-shapes, title: Corners and rails, type: heading, level: 2, collapsed: true}
+  - {id: ib-code-radius, title: Code block radius, type: variable-number-slider, default: 8, min: 0, max: 24, step: 1, format: px}
+  - {id: ib-callout-radius, title: Callout radius, type: variable-number-slider, default: 8, min: 0, max: 20, step: 1, format: px}
+  - {id: ib-table-radius, title: Table radius, type: variable-number-slider, default: 6, min: 0, max: 24, step: 1, format: px}
+  - {id: ib-quote-rail-width, title: Quote rail width, type: variable-number-slider, default: 2, min: 1, max: 8, step: 1, format: px}

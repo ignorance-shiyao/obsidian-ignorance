@@ -70,8 +70,9 @@ The theme works on its own, though some looks depend on the companion plugin. Ad
 ## Notes
 
 - Fonts are not bundled; Noto Sans CJK SC is the fallback.
-- Per-note layouts: add `ib-wide`, `ib-narrow`, `ib-compact` or `ib-no-title` to a note's `cssclasses` property.
-- Works with the Style Settings plugin: content width, corner radii for code blocks, callouts and tables, quote rail width and quote text size.
+- Per-note layouts: add `ib-wide`, `ib-narrow`, `ib-compact` or `ib-no-title` to a note's `cssclasses` property. To keep the text column narrow and let only tables or images use more of the pane (Reading view), add `ib-wide-tables` or `ib-wide-images`; on a phone or in a narrow pane they stay at column width.
+- Works with the Style Settings plugin: content width and wide-block width, heading font, heading level labels, quote size, wrapping long code lines, table text size and stripes, compact sidebars, and corner radii for code blocks, callouts and tables. With Ignorance Advanced enabled, its own font and heading-label settings take priority.
+- Canvas and Graph take their colours from the theme (canvas background, dots and card labels; graph lines, nodes, tags and attachments).
 - Third-party plugins that ship their own views may keep their own styling.
 - `docs/style-check.md` exercises every element; copy it into a vault to review the theme.
 

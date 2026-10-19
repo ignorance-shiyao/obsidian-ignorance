@@ -1,6 +1,12 @@
 # Changelog
 
 ## Unreleased
+Content-level widths: add `ib-wide-tables` or `ib-wide-images` to a note's `cssclasses` and the text column stays narrow while tables or single-image paragraphs use more of the pane, up to the new Wide block width setting (Reading view; phone and narrow panes keep the column width).
+
+New Style Settings: heading font, hide heading level labels, wrap long code lines, table text size, no table stripes, compact sidebars, and Wide block width. The Content width slider goes up to 1400px.
+
+Canvas and Graph follow the theme: canvas background, dot pattern, card labels and a distinct yellow; graph lines, nodes, focused node, tags, attachments and labels; a selected canvas card gets a soft accent ring.
+
 Review warnings cleared: highlight pills no longer use `box-decoration-break` and `ib-eink` draws its double underline with a border, so the Obsidian directory review reports nothing for the stylesheet. `npm run lint:css` (also in CI) fails on any CSS feature Obsidian 1.7.4 only partly supports or on `:has()`, and `npm run check` keeps theme.css within 100 KB.
 
 theme.css is smaller (about 99 KB, was 112 KB): the presentation styles and Mermaid colour tokens moved to Ignorance Advanced, unused tokens were removed, and the file explorer keeps CSS icons for the common file types only (notes, canvas, Excalidraw, Bases, Word, PDF, Excel, PowerPoint, images, SVG); other types use the default file icon, or the full icon set when Ignorance Advanced is enabled.

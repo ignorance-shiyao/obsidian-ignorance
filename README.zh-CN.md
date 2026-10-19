@@ -73,7 +73,9 @@
 
 - 不内置字体；回退字体为 Noto Sans CJK SC。
 - 按笔记切换版式：在笔记属性 `cssclasses` 里写 `ib-wide`（加宽）、`ib-narrow`（收窄）、`ib-compact`（段落更紧凑）、`ib-no-title`（隐藏内联标题）。
-- 支持 [Style Settings](obsidian://show-plugin?id=obsidian-style-settings) 插件：可调正文宽度、代码块、标注块、表格的圆角、引用竖条宽度和引用字号。
+- 只想让表格或图片变宽、正文保持窄栏（阅读视图）：在 `cssclasses` 里写 `ib-wide-tables` 或 `ib-wide-images`；手机和窄窗格里自动保持栏宽。
+- 支持 [Style Settings](obsidian://show-plugin?id=obsidian-style-settings) 插件：可调正文宽度与宽块宽度、标题字体、标题层级标签、引用字号、代码长行折行、表格字号与斑马纹、紧凑侧栏，以及代码块、标注块、表格的圆角和引用竖条宽度。启用 Ignorance Advanced 时，它自己的字体与标题标签设置优先。
+- 白板（Canvas）与关系图谱的颜色跟随主题（白板背景、网点、卡片标签；图谱的连线、节点、标签和附件）。
 - 自带视图的第三方插件可能保留自己的样式。
 - `docs/style-check.md` 覆盖所有元素，可复制到库里检查主题效果。
 

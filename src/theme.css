@@ -428,12 +428,8 @@ body {
   --ib-syntax-type: #6B52B5;
 
   --ib-file-md: #4D81EF;
-  --ib-file-canvas: #8C6BE8;
-  --ib-file-pdf: #E46B72;
-  --ib-file-image: #3AAA83;
   --ib-file-sheet: #4AA477;
-  --ib-file-word: #2B63C6;
-  --ib-file-slide: #D5602B;
+  --ib-file-canvas: #8C6BE8;
 
   --ib-shadow-1: 0 1px 2px rgba(15, 23, 42, 0.06);
   --ib-shadow-2: 0 8px 24px rgba(15, 23, 42, 0.08);
@@ -522,12 +518,8 @@ body {
   --ib-syntax-type: #B39BEF;
 
   --ib-file-md: #78A3F5;
-  --ib-file-canvas: #A98AE5;
-  --ib-file-pdf: #F08A94;
-  --ib-file-image: #4FC3A5;
   --ib-file-sheet: #6ECBA4;
-  --ib-file-word: #6C9CF0;
-  --ib-file-slide: #F0875A;
+  --ib-file-canvas: #A98AE5;
 
   --ib-shadow-1: 0 0 0 1px rgba(255, 255, 255, 0.03);
   --ib-shadow-2: 0 12px 30px rgba(5, 10, 18, 0.45);
@@ -1167,7 +1159,9 @@ kbd,
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v1H5l-2 8zM5 11h17l-2 8H4z'/%3E%3C/svg%3E");
 }
 
-/* File-type icons: Lucide (lucide-static 1.48.0, ISC License, https://lucide.dev),
+/* File-type icons: only Obsidian's own types (notes, canvas, Excalidraw, Bases) are drawn here; Ignorance Advanced
+   draws the full Material icon set for every other file type and hides these once its icons have loaded.
+   Lucide (lucide-static 1.48.0, ISC License, https://lucide.dev),
    inlined as masks so every icon takes its color from the --ib-file-* tokens and
    follows light/dark mode. Each rule only sets --ib-file-icon / --ib-file-color. */
 .nav-file-title-content::before {
@@ -1186,12 +1180,6 @@ kbd,
 .nav-file-title:is([data-path$=".excalidraw.md" i],[data-path$=".excalidraw" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15.707 21.293a1 1 0 0 1-1.414 0l-1.586-1.586a1 1 0 0 1 0-1.414l5.586-5.586a1 1 0 0 1 1.414 0l1.586 1.586a1 1 0 0 1 0 1.414z'/%3E%3Cpath d='m18 13-1.375-6.874a1 1 0 0 0-.746-.776L3.235 2.028a1 1 0 0 0-1.207 1.207L5.35 15.879a1 1 0 0 0 .776.746L13 18'/%3E%3Cpath d='m2.3 2.3 7.286 7.286'/%3E%3Ccircle cx='11' cy='11' r='2'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-canvas); }
 .nav-file-title:is([data-path$=".canvas" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect width='7' height='9' x='3' y='3' rx='1'/%3E%3Crect width='7' height='5' x='14' y='3' rx='1'/%3E%3Crect width='7' height='9' x='14' y='12' rx='1'/%3E%3Crect width='7' height='5' x='3' y='16' rx='1'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-canvas); }
 .nav-file-title:is([data-path$=".base" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 9h18'/%3E%3Cpath d='M9 3v18'/%3E%3Crect x='3' y='3' width='18' height='18' rx='2'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-sheet); }
-.nav-file-title:is([data-path$=".doc" i],[data-path$=".docx" i],[data-path$=".dot" i],[data-path$=".dotx" i],[data-path$=".rtf" i],[data-path$=".odt" i],[data-path$=".pages" i],[data-path$=".wps" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14.364 13.634a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506l4.013-4.009a1 1 0 0 0-3.004-3.004z'/%3E%3Cpath d='M14.487 7.858A1 1 0 0 1 14 7V2'/%3E%3Cpath d='M20 19.645V20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l2.516 2.516'/%3E%3Cpath d='M8 18h1'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-word); }
-.nav-file-title:is([data-path$=".pdf" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z'/%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5'/%3E%3Cpath d='M11 18h2'/%3E%3Cpath d='M12 12v6'/%3E%3Cpath d='M9 13v-.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v.5'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-pdf); }
-.nav-file-title:is([data-path$=".xls" i],[data-path$=".xlsx" i],[data-path$=".xlsm" i],[data-path$=".ods" i],[data-path$=".numbers" i],[data-path$=".csv" i],[data-path$=".tsv" i],[data-path$=".et" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z'/%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5'/%3E%3Cpath d='M8 13h2'/%3E%3Cpath d='M14 13h2'/%3E%3Cpath d='M8 17h2'/%3E%3Cpath d='M14 17h2'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-sheet); }
-.nav-file-title:is([data-path$=".ppt" i],[data-path$=".pptx" i],[data-path$=".pps" i],[data-path$=".ppsx" i],[data-path$=".odp" i],[data-path$=".key" i],[data-path$=".dps" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 3h20'/%3E%3Cpath d='M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3'/%3E%3Cpath d='m7 21 5-5 5 5'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-slide); }
-.nav-file-title:is([data-path$=".png" i],[data-path$=".jpg" i],[data-path$=".jpeg" i],[data-path$=".gif" i],[data-path$=".webp" i],[data-path$=".bmp" i],[data-path$=".avif" i],[data-path$=".heic" i],[data-path$=".ico" i],[data-path$=".tif" i],[data-path$=".tiff" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z'/%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5'/%3E%3Ccircle cx='10' cy='12' r='2'/%3E%3Cpath d='m20 17-1.296-1.296a2.41 2.41 0 0 0-3.408 0L9 22'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-image); }
-.nav-file-title:is([data-path$=".svg" i],[data-path$=".drawio" i],[data-path$=".dio" i],[data-path$=".xmind" i],[data-path$=".fig" i],[data-path$=".sketch" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z'/%3E%3Crect x='3' y='14' width='7' height='7' rx='1'/%3E%3Ccircle cx='17.5' cy='17.5' r='3.5'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-canvas); }
 
 .theme-dark .workspace-split.mod-left-split,
 .theme-dark .workspace-split.mod-right-split,
@@ -2349,7 +2337,7 @@ body {
 body {
   --inline-title-size: 26px;
   --table-text-size: 13px;
-  --table-header-size: 13px;
+  --table-header-size: var(--table-text-size);
   --inline-title-weight: 500;
   --nav-indentation-guide-color: var(--ib-border-default);
   --nav-indentation-guide-width: 1px;
@@ -3318,3 +3306,40 @@ body {
 .dataview-error, .dataview-error-box { color: var(--ib-error-icon); background: color-mix(in srgb, var(--ib-error-icon) 8%, transparent); border-radius: var(--ib-radius-sm); padding: 0.4em 0.7em; }
 .dataview.inline-field-key { color: var(--ib-text-muted); }
 .task-extras, .tasks-backlink { color: var(--ib-text-muted); font-size: 0.85em; }
+
+/* Content-level widths (per note, via cssclasses): the text column stays at its width while tables or images
+   are allowed to use more of the pane, up to --ib-wide-max (Reading view). In a narrow pane or on a phone the
+   block keeps the column width, so nothing overflows. cqw is the width of the note's own pane (container ib-note). */
+.ib-wide-tables,
+.ib-wide-images { --ib-wide-w: max(100%, min(calc(100cqw - 48px), var(--ib-wide-max, 1400px))); }
+.ib-wide-tables.markdown-preview-view .el-table,
+.ib-wide-images.markdown-preview-view p > .image-embed:only-child {
+  display: block;
+  box-sizing: border-box;
+  width: var(--ib-wide-w);
+  max-width: none;
+  margin-inline: calc((100% - var(--ib-wide-w)) / 2);
+}
+.ib-wide-images.markdown-preview-view p > .image-embed:only-child img { width: 100%; max-width: none; }
+
+/* Style Settings switches. */
+body.ib-code-wrap .markdown-rendered pre code:not(#_ib) { white-space: pre-wrap; overflow-wrap: anywhere; }
+body.ib-no-table-stripes .markdown-rendered tbody tr td:not(#_ib) { background: var(--ib-bg-primary); }
+body.ib-compact-ui { --nav-item-padding: 2px var(--size-4-2) 2px var(--size-4-6); --nav-item-size: var(--font-ui-small); }
+
+/* Canvas and Graph: Obsidian reads these variables, so tying them to the theme tokens is enough. */
+body {
+  --canvas-background: var(--ib-page-paper, var(--ib-bg-primary));
+  --canvas-dot-pattern: var(--ib-border-default);
+  --canvas-card-label-color: var(--ib-text-muted);
+  --canvas-color-3: color-mix(in srgb, var(--ib-warning-icon) 55%, #E6C200);
+  --graph-line: var(--ib-border-strong);
+  --graph-node: var(--ib-text-muted);
+  --graph-node-focused: var(--ib-accent-brand);
+  --graph-node-tag: var(--ib-success-icon);
+  --graph-node-attachment: var(--ib-warning-icon);
+  --graph-node-unresolved: var(--text-faint);
+  --graph-text: var(--ib-text-primary);
+}
+.canvas-node-container { border-radius: var(--ib-card-radius, var(--radius-m)); }
+:is(.canvas-node.is-focused, .canvas-node.is-selected) .canvas-node-container { box-shadow: 0 0 0 var(--ib-focus-width) var(--ib-accent-subtle); }
