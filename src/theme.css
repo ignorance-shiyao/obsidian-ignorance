@@ -408,9 +408,10 @@ body {
   --ib-syntax-keyword: #8B3FD6;
   --ib-syntax-string: #146F50;
   --ib-syntax-number: var(--ib-syntax-string);
-  --ib-syntax-function: var(--ib-accent-brand);
+  /* 代码底色上品牌色只有约 3.3:1；按品牌色加深，换配色时仍同色系，并保持 4.5:1 以上。 */
+  --ib-syntax-function: color-mix(in srgb, var(--ib-accent-brand) 70%, #000);
   --ib-syntax-property: #0E7490;
-  --ib-syntax-comment: #5F6D7E;
+  --ib-syntax-comment: #596778;
   --ib-syntax-operator: #A13B66;
   --ib-syntax-punctuation: #465060;
   --ib-syntax-variable: #B23A48;
@@ -785,9 +786,8 @@ body {
   border-color: var(--ib-error-border);
 }
 
-/* H1-H3 and their numbers take the accent colour; smaller headings stay in the text colour. */
+/* H1-H4 and their numbers take the accent colour; H5-H6 stay in the text colour. */
 body {
-  --h4-color: var(--ib-text-primary);
   --h5-color: var(--ib-text-primary);
   --h6-color: var(--ib-text-primary);
   --table-width: 100%;
@@ -1383,8 +1383,9 @@ body.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile:not(#_
 
 /* Note header: the folder path (Obsidian's breadcrumb) shows only where
    Ignorance Advanced found room for it (.ib-path-shown) or the user expanded
-   it with the folder button; otherwise just the file name. */
-.workspace-leaf-content:not(.ib-path-shown) .view-header-title-parent { display: none; }
+   it with the folder button; otherwise just the file name. Without the plugin
+   (no folder button in the header) Obsidian's own path stays as it is. */
+.workspace-leaf-content:has(.ib-path-toggle):not(.ib-path-shown) .view-header-title-parent { display: none; }
 
 /* Native and pop-out window title bars use the same surface as their body. */
 .titlebar,
@@ -1939,9 +1940,10 @@ body.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile:not(#_
   border-radius: var(--ib-radius-sm);
 }
 
+/* 命中词用正文高亮的黄色配对，深浅两色都能读清（原来浅字配亮黄只有 1.6:1）。 */
 .search-result-file-matched-text {
-  color: var(--ib-text-primary);
-  background: var(--ib-warning-icon);
+  color: var(--ib-highlight-yellow-text);
+  background: var(--ib-highlight-yellow-bg);
 }
 
 /* Buttons, menus and dialogs retain the clean book-like surface. */
@@ -2465,16 +2467,23 @@ body {
   --h2-color: var(--ib-heading-color);
   --h3-color: var(--ib-heading-color);
   --h4-color: var(--ib-heading-color);
-  --h5-color: var(--ib-heading-color);
-  --h6-color: var(--ib-heading-color);
 }
 .theme-dark { --ib-heading-color: var(--ib-text-accent); }
 
 .markdown-rendered :is(h1, h2, h3, h4, h5, h6),
-.markdown-source-view.mod-cm6 :is(.HyperMD-header-1, .HyperMD-header-2, .HyperMD-header-3, .HyperMD-header-4, .HyperMD-header-5, .HyperMD-header-6),
-.markdown-source-view.mod-cm6 .cm-line :is(.cm-header, .cm-header-1, .cm-header-2, .cm-header-3, .cm-header-4, .cm-header-5, .cm-header-6) {
+.markdown-source-view.mod-cm6 :is(.HyperMD-header-1, .HyperMD-header-2, .HyperMD-header-3, .HyperMD-header-4, .HyperMD-header-5, .HyperMD-header-6) {
   letter-spacing: 0;
+}
+/* H1-H4 用标题色；H5、H6 走 Obsidian 的 --h5-color / --h6-color（正文色）。 */
+.markdown-rendered :is(h1, h2, h3, h4),
+.markdown-source-view.mod-cm6 :is(.HyperMD-header-1, .HyperMD-header-2, .HyperMD-header-3, .HyperMD-header-4),
+.markdown-source-view.mod-cm6 .cm-line :is(.cm-header-1, .cm-header-2, .cm-header-3, .cm-header-4) {
   color: var(--ib-heading-color);
+}
+.markdown-rendered :is(h5, h6),
+.markdown-source-view.mod-cm6 :is(.HyperMD-header-5, .HyperMD-header-6),
+.markdown-source-view.mod-cm6 .cm-line :is(.cm-header-5, .cm-header-6) {
+  color: var(--ib-text-primary);
 }
 
 
@@ -2749,7 +2758,7 @@ body {
 .workspace-leaf-content[data-type="markdown"] :is(
   .markdown-reading-view .markdown-preview-view:not(.is-readable-line-width) .markdown-preview-sizer,
   .markdown-source-view.mod-cm6:not(.is-readable-line-width) .cm-sizer
-):not(#_ib) {
+):not(#_ib):not(#_ib2) {
   width: calc(100% - 48px);
 }
 /* 分页阅读时正文宽度由纸张决定，宽度按钮置灰；打字机、专注只作用于编辑，阅读时隐藏。 */
@@ -2854,7 +2863,6 @@ body {
   --h5-font: var(--ib-font-heading-small);
   --h6-font: var(--ib-font-heading-small);
   --inline-title-size: 2.6em;
-  --inline-title-weight: 800;
 }
 .theme-dark {
   --ib-heading-color: var(--ib-text-accent);
@@ -2866,10 +2874,10 @@ body {
 .markdown-rendered :is(h1, h2, h3),
 .inline-title { letter-spacing: -0.01em; }
 
-/* V3.3 六级标题使用标题档文字色。 */
-.markdown-rendered :is(h4, h5, h6),
-.markdown-source-view.mod-cm6 :is(.HyperMD-header-4, .HyperMD-header-5, .HyperMD-header-6),
-.markdown-source-view.mod-cm6 .cm-line :is(.cm-header-4, .cm-header-5, .cm-header-6) {
+/* H4 与 H1-H3 同用标题色；H5、H6 保持正文色（见 --h5-color / --h6-color）。 */
+.markdown-rendered h4,
+.markdown-source-view.mod-cm6 .HyperMD-header-4,
+.markdown-source-view.mod-cm6 .cm-line .cm-header-4 {
   color: var(--ib-heading-color);
 }
 

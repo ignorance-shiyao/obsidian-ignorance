@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+Turning off Obsidian's 缩减栏宽 (Readable line length) now lets the note fill the pane again; the theme was still holding it at 820px.
+
+Search results in dark mode highlight matches with the same soft yellow pair as text highlights (was light text on bright yellow, about 1.6:1). In light code blocks, function names use a deepened accent colour (about 5:1 on the code background, was 3.3:1) and comments are slightly darker.
+
+Headings now match what 1.0.21 described, with one change: H1–H4 use the accent colour and H5–H6 the text colour; the page title weight is 500 (a later rule was still forcing 800).
+
+With the theme alone (Ignorance Advanced not enabled), the folder path in the note header is no longer hidden.
+
 ## 1.0.21
 Aligned with the store images: H1–H3 headings and their numbers use the accent colour (smaller headings and the page title keep the text colour), reading-view highlights are soft rounded pills, tables span the full width, and light paper is warm white. Code cards stay light in light mode.
 
