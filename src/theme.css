@@ -2429,6 +2429,8 @@ body {
 
 body {
   --inline-title-size: 26px;
+  --table-text-size: 13px;
+  --table-header-size: 13px;
   --inline-title-weight: 500;
   --nav-indentation-guide-color: var(--ib-border-default);
   --nav-indentation-guide-width: 1px;

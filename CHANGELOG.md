@@ -1,6 +1,8 @@
 # Changelog
 
 ## Unreleased
+Table text and header text are 13px (were 14px), matching the lighter tables in the store images.
+
 Headings use a lighter serif weight (500, was 600; the page title 500, was 700), closer to the store images; with the default serif heading font they now read as calm rather than heavy.
 
 Four extra callout types with no plugin needed: `> [!decision]`, `> [!risk]`, `> [!definition]` and `> [!idea]`, each with its own icon and one of the existing semantic palettes (so light and dark stay consistent).
