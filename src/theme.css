@@ -218,7 +218,7 @@
   --ib-details-radius: 8px;
   --ib-details-title-size: 14px;
   --ib-font-mono: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --ib-heading-weight: 600;
+  --ib-heading-weight: 500;
   --ib-presentation-scrim-strong: rgba(0, 0, 0, 0.66);
   --ib-presentation-scrim-soft: rgba(0, 0, 0, 0.12);
   --ib-presentation-text-on-scrim: #FFFFFF;
@@ -2429,7 +2429,7 @@ body {
 
 body {
   --inline-title-size: 26px;
-  --inline-title-weight: 700;
+  --inline-title-weight: 500;
   --nav-indentation-guide-color: var(--ib-border-default);
   --nav-indentation-guide-width: 1px;
   --indentation-guide-color: var(--ib-border-default);

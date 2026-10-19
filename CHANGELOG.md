@@ -1,6 +1,8 @@
 # Changelog
 
 ## Unreleased
+Headings use a lighter serif weight (500, was 600; the page title 500, was 700), closer to the store images; with the default serif heading font they now read as calm rather than heavy.
+
 Four extra callout types with no plugin needed: `> [!decision]`, `> [!risk]`, `> [!definition]` and `> [!idea]`, each with its own icon and one of the existing semantic palettes (so light and dark stay consistent).
 
 Side notes: a `> [!aside]` callout sits in the right page margin on very wide windows (1600px and up) and stays an ordinary quiet callout otherwise.
