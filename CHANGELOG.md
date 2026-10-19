@@ -1,6 +1,8 @@
 # Changelog
 
 ## Unreleased
+Task statuses: `[-]` cancelled, `[>]` deferred, `[<]` scheduled, `[?]` question, `[!]` important, `[*]` starred, `[i]` info, `[b]` bookmark and `["]` quote each get their own colour and icon in reading view and live preview, so they differ by shape and not only by colour. Cancelled tasks are struck through.
+
 Restored two icons lost in 1.0.16 (the notice close button and the properties heading showed a plain square). Properties: the heading uses a document icon and the heading colour; title, source/url/link, created and cssclasses get icons that say what they hold; list values other than tags read as quiet chips.
 
 ## 1.0.20
