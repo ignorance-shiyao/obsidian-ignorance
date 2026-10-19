@@ -3379,7 +3379,7 @@ body { --ib-chapter-radius: 26px; --ib-chapter-rail-width: 3px; --ib-chapter-rai
   --line-height-normal: 1.85;
   --ib-focus-width: 3px;
   --text-normal: var(--ib-text-primary);
-  --text-muted: color-mix(in srgb, var(--ib-text-primary) 82%, var(--ib-bg-primary));
+  --text-muted: var(--ib-text-primary);
 }
 .ib-large :is(a, .external-link, .internal-link) {
   text-decoration: underline;
