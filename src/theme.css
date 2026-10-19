@@ -3356,3 +3356,26 @@ body { --ib-chapter-radius: 26px; --ib-chapter-rail-width: 3px; --ib-chapter-rai
   text-decoration: line-through;
   color: var(--ib-text-muted);
 }
+
+/* Bases (core plugin): the table and cards views follow the same surfaces as reading-view tables. */
+body {
+  --bases-table-header-background: var(--ib-table-heading-bg);
+  --bases-table-header-color: var(--ib-text-secondary);
+  --bases-table-header-weight: 600;
+  --bases-table-border-color: var(--ib-border-default);
+  --bases-table-column-border-width: 0px;
+  --bases-table-row-background-hover: var(--ib-bg-hover);
+  --bases-table-container-border-radius: var(--ib-table-radius);
+  --bases-table-font-size: var(--ib-text-size);
+  --bases-cards-radius: var(--ib-radius-md);
+  --bases-cards-background: var(--ib-bg-tertiary);
+  --bases-cards-shadow: 0 0 0 1px var(--ib-border-default);
+  --bases-cards-shadow-hover: 0 0 0 1px var(--ib-accent-brand), var(--ib-shadow-float);
+  --bases-embed-border-radius: var(--ib-radius-md);
+  --bases-embed-border-color: var(--ib-border-default);
+}
+.bases-table .bases-td.mod-number, .bases-table .bases-td [data-property-type="number"] { font-variant-numeric: tabular-nums; }
+/* Dataview and Tasks: quiet metadata and clear errors. Written from their documented class names; not checked against the plugins. */
+.dataview-error, .dataview-error-box { color: var(--ib-error-icon); background: color-mix(in srgb, var(--ib-error-icon) 8%, transparent); border-radius: var(--ib-radius-sm); padding: 0.4em 0.7em; }
+.dataview.inline-field-key { color: var(--ib-text-muted); }
+.task-extras, .tasks-backlink { color: var(--ib-text-muted); font-size: 0.85em; }

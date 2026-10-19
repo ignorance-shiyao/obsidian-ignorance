@@ -1,6 +1,8 @@
 # Changelog
 
 ## Unreleased
+Bases tables and cards, plus Dataview errors and Tasks details, follow the theme: a tinted heading row, row lines without column borders, rounded cards, and the same colours in light and dark. Tested against the Bases core plugin; the Dataview and Tasks rules are written from their documented class names and were not checked against those plugins.
+
 Task statuses: `[-]` cancelled, `[>]` deferred, `[<]` scheduled, `[?]` question, `[!]` important, `[*]` starred, `[i]` info, `[b]` bookmark and `["]` quote each get their own colour and icon in reading view and live preview, so they differ by shape and not only by colour. Cancelled tasks are struck through.
 
 Restored two icons lost in 1.0.16 (the notice close button and the properties heading showed a plain square). Properties: the heading uses a document icon and the heading colour; title, source/url/link, created and cssclasses get icons that say what they hold; list values other than tags read as quiet chips.
