@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased
+Restored two icons lost in 1.0.16 (the notice close button and the properties heading showed a plain square). Properties: the heading uses a document icon and the heading colour; title, source/url/link, created and cssclasses get icons that say what they hold; list values other than tags read as quiet chips.
+
 ## 1.0.20
 Continuous reading uses a flat paper surface. Larger serif headings, steadier paragraph spacing and compact tinted quotes bring the reading hierarchy together; code cards use clearer text and a smaller toolbar while staying light in light mode. Tables use tighter cells and calmer corners. Style Settings defaults match the updated quote and corner sizes.
 

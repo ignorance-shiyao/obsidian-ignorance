@@ -1022,6 +1022,7 @@ kbd,
   height: 1.1em;
   background-color: currentColor;
   opacity: 0.55;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M18 6 6 18M6 6l12 12'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 .notice:hover::after {
   opacity: 1;
@@ -2850,7 +2851,7 @@ body {
   background: var(--ib-sec-head-bg);
   border-bottom: 1px solid color-mix(in srgb, var(--ib-sec-border) 60%, transparent);
 }
-.markdown-rendered .metadata-properties-heading .metadata-properties-title { color: var(--ib-text-accent); font-weight: 700; font-size: 1.05em; }
+.markdown-rendered .metadata-properties-heading .metadata-properties-title { font-weight: 700; font-size: 1.05em; }
 .markdown-rendered .metadata-properties-heading::before,
 .markdown-rendered .metadata-properties-heading::after { content: ""; position: absolute; top: 50%; }
 .markdown-rendered .metadata-properties-heading::before {
@@ -2860,6 +2861,39 @@ body {
 .markdown-rendered .metadata-properties-heading::after {
   left: 29px; width: 18px; height: 18px; margin-top: -9px;
   background: var(--ib-text-accent);
+}
+
+body {
+  --ib-icon-file-text: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z'/%3E%3Cpath d='M14 2v4a2 2 0 0 0 2 2h4'/%3E%3Cpath d='M10 9H8'/%3E%3Cpath d='M16 13H8'/%3E%3Cpath d='M16 17H8'/%3E%3C/svg%3E");
+  --ib-icon-type: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 7V4h16v3'/%3E%3Cpath d='M9 20h6'/%3E%3Cpath d='M12 4v16'/%3E%3C/svg%3E");
+  --ib-icon-link: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71'/%3E%3Cpath d='M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71'/%3E%3C/svg%3E");
+  --ib-icon-code: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m18 16 4-4-4-4'/%3E%3Cpath d='m6 8-4 4 4 4'/%3E%3Cpath d='m14.5 4-5 16'/%3E%3C/svg%3E");
+  --ib-icon-calendar-plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 2v4'/%3E%3Cpath d='M16 2v4'/%3E%3Cpath d='M21 13V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8'/%3E%3Cpath d='M3 10h18'/%3E%3Cpath d='M16 19h6'/%3E%3Cpath d='M19 16v6'/%3E%3C/svg%3E");
+}
+/* Properties heading: a document icon in a soft tile, title in the heading colour. */
+.markdown-rendered .metadata-properties-heading::after {
+  -webkit-mask: var(--ib-icon-file-text) center / 18px 18px no-repeat;
+  mask: var(--ib-icon-file-text) center / 18px 18px no-repeat;
+}
+.markdown-rendered .metadata-properties-heading .metadata-properties-title { color: var(--ib-heading-color); }
+/* Well-known keys get an icon that says what they hold. */
+.metadata-property:is([data-property-key="title"], [data-property-key="source"], [data-property-key="url"], [data-property-key="link"], [data-property-key="cssclasses"], [data-property-key="created"]) .metadata-property-icon svg { visibility: hidden; }
+.metadata-property:is([data-property-key="title"], [data-property-key="source"], [data-property-key="url"], [data-property-key="link"], [data-property-key="cssclasses"], [data-property-key="created"]) .metadata-property-icon {
+  background: currentColor;
+  -webkit-mask: var(--ib-prop-icon) center / var(--icon-size) var(--icon-size) no-repeat;
+  mask: var(--ib-prop-icon) center / var(--icon-size) var(--icon-size) no-repeat;
+}
+.metadata-property[data-property-key="title"] { --ib-prop-icon: var(--ib-icon-type); }
+.metadata-property:is([data-property-key="source"], [data-property-key="url"], [data-property-key="link"]) { --ib-prop-icon: var(--ib-icon-link); }
+.metadata-property[data-property-key="cssclasses"] { --ib-prop-icon: var(--ib-icon-code); }
+.metadata-property[data-property-key="created"] { --ib-prop-icon: var(--ib-icon-calendar-plus); }
+/* List values other than tags read as quiet chips. */
+.metadata-property:not([data-property-key="tags"]) .multi-select-pill {
+  background: var(--ib-bg-tertiary);
+  border: 1px solid var(--ib-border-default);
+  border-radius: 999px;
+  padding-inline: 0.6em 0.35em;
+  color: var(--text-normal);
 }
 
 /* Presentation view styles (used by the Ignorance Advanced plugin) */
