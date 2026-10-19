@@ -3330,6 +3330,21 @@ body { --ib-chapter-radius: 26px; --ib-chapter-rail-width: 3px; --ib-chapter-rai
   display: none;
 }
 
+/* Side notes: a callout of type `aside` (> [!aside] ...) sits in the page margin when the pane is wide,
+   and falls back to an ordinary inline callout otherwise. */
+.markdown-preview-view .callout[data-callout="aside"] {
+  --callout-color: var(--ib-text-muted);
+  font-size: 0.88em;
+}
+@media (min-width: 1600px) {
+  .markdown-preview-view .callout[data-callout="aside"] {
+    float: right;
+    clear: right;
+    width: 220px;
+    margin: 0 -250px 0.8em 1.5em;
+  }
+}
+
 /* Long-form reading modes (per note, via cssclasses).
  *   ib-large  bigger text, looser lines, stronger contrast, thicker focus ring
  *   ib-eink   no shadows, motion or tints; hard borders, underlined links (e-ink and low-power screens)

@@ -1,6 +1,8 @@
 # Changelog
 
 ## Unreleased
+Side notes: a `> [!aside]` callout sits in the right page margin on very wide windows (1600px and up) and stays an ordinary quiet callout otherwise.
+
 Two long-form reading modes, switched per note with `cssclasses`: `ib-large` (20px text, looser lines, stronger contrast, thicker focus ring, underlined links) and `ib-eink` (no shadows, motion or tints; hard borders, underlined links, highlights shown as double underline). Meaning never depends on colour alone.
 
 Bases tables and cards, plus Dataview errors and Tasks details, follow the theme: a tinted heading row, row lines without column borders, rounded cards, and the same colours in light and dark. Tested against the Bases core plugin; the Dataview and Tasks rules are written from their documented class names and were not checked against those plugins.
