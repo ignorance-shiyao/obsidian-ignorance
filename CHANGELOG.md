@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.0.21
 Aligned with the store images: H1–H3 headings and their numbers use the accent colour (smaller headings and the page title keep the text colour), reading-view highlights are soft rounded pills, tables span the full width, and light paper is warm white. Code cards stay light in light mode.
 
 Table text and header text are 13px (were 14px), matching the lighter tables in the store images.
