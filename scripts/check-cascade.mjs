@@ -4,10 +4,11 @@
 // which is easy to miss because both rules look right on their own. This check pairs every
 // `.is-phone` / `.is-mobile` / `.is-tablet` rule with the plain rules for the same selector, and
 // reports a pair whose shared properties the device rule would lose.
-//   node scripts/check-cascade.mjs [file.css …]      default: src/theme.css
+//   node scripts/check-cascade.mjs [file.css …]      default: the whole source (src/parts)
 // Cascade layers cannot replace this: Obsidian's own app.css is unlayered, and unlayered rules beat
 // every layered one, so layering our CSS would make all of it lose to Obsidian.
 import { readFileSync } from "node:fs";
+import { sourceText } from "./source.mjs";
 
 const DEVICE = /(?:body)?\.is-(?:phone|mobile|tablet)\b\s*/g;
 
@@ -109,8 +110,8 @@ function expand(sel) {
 const overlaps = (p, q) => p === q || p.startsWith(`${q}-`) || q.startsWith(`${p}-`);
 
 let problems = 0;
-for (const file of process.argv.slice(2).length ? process.argv.slice(2) : ["src/theme.css"]) {
-  const list = rules(readFileSync(file, "utf8"));
+for (const file of process.argv.slice(2).length ? process.argv.slice(2) : ["src/parts"]) {
+  const list = rules(file === "src/parts" ? sourceText() : readFileSync(file, "utf8"));
   const plain = new Map();
   for (const rule of list) for (const sel of rule.selectors) {
     if (DEVICE.test(sel)) { DEVICE.lastIndex = 0; continue; }

@@ -1,0 +1,457 @@
+/* ==========================================================================
+ * Page toolbar, zoom, width and paged view (Ignorance Advanced writes the
+ * --ibp-* variables; paged reading renders .ibp-book).
+ * ========================================================================== */
+
+
+.workspace-leaf-content[data-type="markdown"] :is(
+  .markdown-reading-view,
+  .markdown-source-view.mod-cm6
+) {
+  background: var(--ib-page-paper);
+}
+.workspace-leaf-content[data-type="markdown"] .markdown-reading-view .markdown-preview-view:not(#_ib),
+.workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-scroller:not(#_ib) {
+  background: transparent;
+}
+.workspace-leaf-content[data-type="markdown"] :is(
+  .markdown-reading-view .markdown-preview-sizer,
+  .markdown-source-view.mod-cm6 .cm-sizer
+):not(#_ib):not(#_ib2) {
+  position: relative;
+  box-sizing: border-box;
+  width: min(calc(100% - 48px), var(--ib-content-max, 960px));
+  max-width: none;
+  margin: 0 auto;
+  padding-inline: clamp(var(--ib-space-4, 16px), 3vw, var(--ib-space-6, 32px));
+  /* 纸面上下也留白，属性卡片和首段内容不贴着纸边。 */
+  padding-block: clamp(var(--ib-space-5, 24px), 3vw, 40px) clamp(var(--ib-space-6, 32px), 4vw, 56px);
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+.workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-sizer > :is(
+  .cm-contentContainer,
+  .metadata-container,
+  .embedded-backlinks
+) {
+  box-sizing: border-box;
+}
+.workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-sizer > :is(
+  .cm-contentContainer,
+  .metadata-container,
+  .embedded-backlinks
+):not(#_ib) {
+  width: 100%;
+  max-width: 100%;
+}
+/* 全宽由 Obsidian「编辑器 → 缩减栏宽」关闭决定；开启时用工具栏「正文宽度」档位。 */
+.workspace-leaf-content[data-type="markdown"] :is(
+  .markdown-reading-view .markdown-preview-view:not(.is-readable-line-width) .markdown-preview-sizer,
+  .markdown-source-view.mod-cm6:not(.is-readable-line-width) .cm-sizer
+):not(#_ib):not(#_ib2) {
+  width: calc(100% - 48px);
+}
+/* 分页阅读时正文宽度由纸张决定，宽度按钮置灰；打字机、专注只作用于编辑，阅读时隐藏。 */
+/* 手机：纸面铺满屏宽，不再留桌面边和阴影；上下保留呼吸空间，底部让出浮动导航栏。 */
+body.is-phone .workspace-leaf-content[data-type="markdown"] :is(
+  .markdown-reading-view,
+  .markdown-source-view.mod-cm6.is-live-preview
+) {
+  background: var(--ib-page-paper);
+}
+body.is-phone .workspace-leaf-content[data-type="markdown"] :is(
+  .markdown-reading-view .markdown-preview-sizer,
+  .markdown-source-view.mod-cm6.is-live-preview .cm-sizer
+):not(#_ib):not(#_ib2) {
+  /* 左右留白交给 Obsidian 移动端自带的 --file-margins，避免双重缩进。 */
+  width: 100%;
+  margin: 0;
+  padding: var(--ib-space-4, 16px) 0 calc(var(--ib-space-8, 64px) + 48px);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+
+@keyframes ibp-spin { to { transform: rotate(360deg); } }
+
+
+
+
+/* ==========================================================================
+ * Document design (设计稿): dark heavy headings, section cards, soft chrome
+ * ========================================================================== */
+
+body {
+  --ib-heading-color: var(--ib-accent-solid);
+  --ib-sec-bg: color-mix(in srgb, var(--ib-bg-primary) 20%, #FFFFFF);
+  --ib-sec-head-bg: color-mix(in srgb, var(--ib-accent-brand) 4%, var(--ib-sec-bg));
+  --ib-sec-border: color-mix(in srgb, var(--ib-accent-brand) 12%, var(--ib-border-default));
+  --ib-sec-radius: 12px;
+  --ib-chip-bg: color-mix(in srgb, var(--ib-accent-brand) 10%, var(--ib-sec-bg));
+  --h1-size: var(--ib-heading-h1-size);
+  --h2-size: var(--ib-heading-h2-size);
+  --h3-size: var(--ib-heading-h3-size);
+  --h4-size: var(--ib-heading-h4-size);
+  --h5-size: var(--ib-heading-h5-size);
+  --h6-size: var(--ib-heading-h6-size);
+  --h1-weight: var(--ib-heading-weight);
+  --h2-weight: var(--ib-heading-weight);
+  --h3-weight: var(--ib-heading-weight);
+  --h4-weight: var(--ib-heading-bold);
+  --h5-weight: var(--ib-heading-bold);
+  --h6-weight: var(--ib-heading-bold);
+  --h1-font: var(--ib-font-heading);
+  --h2-font: var(--ib-font-heading);
+  --h3-font: var(--ib-font-heading);
+  --h4-font: var(--ib-font-heading-small);
+  --h5-font: var(--ib-font-heading-small);
+  --h6-font: var(--ib-font-heading-small);
+  --inline-title-size: 2.6em;
+}
+.theme-dark {
+  --ib-heading-color: var(--ib-text-accent);
+  --ib-sec-bg: color-mix(in srgb, var(--ib-bg-primary) 88%, #FFFFFF);
+  --ib-sec-head-bg: color-mix(in srgb, var(--ib-accent-brand) 8%, var(--ib-sec-bg));
+  --ib-sec-border: color-mix(in srgb, var(--ib-accent-brand) 16%, var(--ib-border-default));
+  --ib-chip-bg: color-mix(in srgb, var(--ib-accent-brand) 18%, var(--ib-sec-bg));
+}
+.markdown-rendered :is(h1, h2, h3),
+.inline-title { letter-spacing: -0.01em; }
+
+/* H4 与 H1-H3 同用标题色；H5、H6 保持正文色（见 --h5-color / --h6-color）。 */
+.markdown-rendered h4,
+.markdown-source-view.mod-cm6 .HyperMD-header-4,
+.markdown-source-view.mod-cm6 .cm-line .cm-header-4 {
+  color: var(--ib-heading-color);
+}
+
+.markdown-rendered .metadata-container {
+  background: var(--ib-sec-bg);
+  border: 1px solid var(--ib-sec-border);
+  border-radius: var(--ib-sec-radius);
+  padding: 0 22px 10px;
+  overflow: hidden;
+}
+.markdown-rendered .metadata-properties-heading {
+  position: relative;
+  margin: 0 -22px 8px;
+  padding: 12px 22px 12px 68px;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  background: var(--ib-sec-head-bg);
+  border-bottom: 1px solid color-mix(in srgb, var(--ib-sec-border) 60%, transparent);
+}
+.markdown-rendered .metadata-properties-heading .metadata-properties-title { font-weight: 700; font-size: 1.05em; }
+.markdown-rendered .metadata-properties-heading::before,
+.markdown-rendered .metadata-properties-heading::after { content: ""; position: absolute; top: 50%; }
+.markdown-rendered .metadata-properties-heading::before {
+  left: 22px; width: 32px; height: 32px; margin-top: -16px;
+  border-radius: 9px; background: var(--ib-chip-bg);
+}
+.markdown-rendered .metadata-properties-heading::after {
+  left: 29px; width: 18px; height: 18px; margin-top: -9px;
+  background: var(--ib-text-accent);
+}
+
+body {
+  --ib-icon-file-text: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z'/%3E%3Cpath d='M14 2v4a2 2 0 0 0 2 2h4'/%3E%3Cpath d='M10 9H8'/%3E%3Cpath d='M16 13H8'/%3E%3Cpath d='M16 17H8'/%3E%3C/svg%3E");
+  --ib-icon-type: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 7V4h16v3'/%3E%3Cpath d='M9 20h6'/%3E%3Cpath d='M12 4v16'/%3E%3C/svg%3E");
+  --ib-icon-link: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71'/%3E%3Cpath d='M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71'/%3E%3C/svg%3E");
+  --ib-icon-code: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m18 16 4-4-4-4'/%3E%3Cpath d='m6 8-4 4 4 4'/%3E%3Cpath d='m14.5 4-5 16'/%3E%3C/svg%3E");
+  --ib-icon-calendar-plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 2v4'/%3E%3Cpath d='M16 2v4'/%3E%3Cpath d='M21 13V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8'/%3E%3Cpath d='M3 10h18'/%3E%3Cpath d='M16 19h6'/%3E%3Cpath d='M19 16v6'/%3E%3C/svg%3E");
+}
+/* Properties heading: a document icon in a soft tile, title in the heading colour. */
+.markdown-rendered .metadata-properties-heading::after {
+  -webkit-mask: var(--ib-icon-file-text) center / 18px 18px no-repeat;
+  mask: var(--ib-icon-file-text) center / 18px 18px no-repeat;
+}
+.markdown-rendered .metadata-properties-heading .metadata-properties-title { color: var(--ib-heading-color); }
+/* Well-known keys get an icon that says what they hold. */
+.metadata-property:is([data-property-key="title"], [data-property-key="source"], [data-property-key="url"], [data-property-key="link"], [data-property-key="cssclasses"], [data-property-key="created"]) .metadata-property-icon svg { visibility: hidden; }
+.metadata-property:is([data-property-key="title"], [data-property-key="source"], [data-property-key="url"], [data-property-key="link"], [data-property-key="cssclasses"], [data-property-key="created"]) .metadata-property-icon {
+  background: currentColor;
+  -webkit-mask: var(--ib-prop-icon) center / var(--icon-size) var(--icon-size) no-repeat;
+  mask: var(--ib-prop-icon) center / var(--icon-size) var(--icon-size) no-repeat;
+}
+.metadata-property[data-property-key="title"] { --ib-prop-icon: var(--ib-icon-type); }
+.metadata-property:is([data-property-key="source"], [data-property-key="url"], [data-property-key="link"]) { --ib-prop-icon: var(--ib-icon-link); }
+.metadata-property[data-property-key="cssclasses"] { --ib-prop-icon: var(--ib-icon-code); }
+.metadata-property[data-property-key="created"] { --ib-prop-icon: var(--ib-icon-calendar-plus); }
+/* List values other than tags read as quiet chips. */
+.metadata-property:not([data-property-key="tags"]) .multi-select-pill {
+  background: var(--ib-bg-tertiary);
+  border: 1px solid var(--ib-border-default);
+  border-radius: 999px;
+  padding-inline: 0.6em 0.35em;
+  color: var(--text-normal);
+}
+
+
+body:not(.is-phone) .modal.mod-bookmark {
+  width: min(460px, calc(100vw - 32px));
+  padding: var(--ib-space-5) var(--ib-space-5) var(--ib-space-4);
+  border-radius: var(--ib-radius-lg, 14px);
+}
+.modal.mod-bookmark .modal-title { font-size: var(--ib-h5-size, 17px); font-weight: 650; }
+.modal.mod-bookmark .modal-content { display: flex; flex-direction: column; gap: var(--ib-space-2); padding-top: var(--ib-space-3); }
+.modal.mod-bookmark .setting-item {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
+  padding: 0 0 var(--ib-space-3);
+}
+.modal.mod-bookmark .setting-item:not(#_ib) {
+  border: 0;
+}
+.modal.mod-bookmark .setting-item-info { margin: 0; }
+.modal.mod-bookmark .setting-item-description:empty { display: none; }
+:is(.modal.mod-bookmark .setting-item-name) {
+  color: var(--ib-text-muted);
+  font-size: var(--ib-small-size, 13px);
+  font-weight: 500;
+}
+.modal.mod-bookmark .setting-item-control { justify-content: stretch; width: 100%; }
+.modal.mod-bookmark :is(input[type="text"], input[type="url"], select.dropdown:not(.is-measuring)) {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  height: 40px;
+  padding-inline: 12px;
+  font-size: var(--ib-body-size, 15px);
+  border-radius: var(--ib-radius-md);
+}
+.modal.mod-bookmark :is(input[type="text"], input[type="url"], select.dropdown:not(.is-measuring)):not(#_ib) {
+  border: var(--ib-border-1, 1px) solid var(--ib-border-default);
+  background-color: var(--background-modifier-form-field, var(--background-primary));
+}
+.modal.mod-bookmark input[disabled] {
+  color: var(--ib-text-muted);
+  background: var(--ib-bg-subtle, var(--background-secondary));
+  border-color: transparent;
+  text-overflow: ellipsis;
+}
+.modal.mod-bookmark .modal-button-container { margin-top: var(--ib-space-3); gap: var(--ib-space-2); }
+.modal.mod-bookmark .modal-button-container > button { min-width: 84px; height: 36px; }
+
+/* 16px keeps iOS from zooming the page when a field is focused. */
+.is-mobile .modal.mod-bookmark :is(input, select.dropdown:not(.is-measuring)) { min-height: 44px; font-size: 16px; line-height: 44px; }
+.is-mobile .modal.mod-bookmark :is(input, select.dropdown:not(.is-measuring)):not(#_ib) { height: 44px; }
+/* Phones: Obsidian lays the dialog out as a sheet with 取消 / 保存 as text
+   buttons in the title bar; keep them plain instead of boxed. */
+.is-phone .modal.mod-bookmark .modal-content { padding: var(--ib-space-3) var(--ib-space-4) 0; }
+.is-phone .modal.mod-bookmark .modal-nav-action {
+  height: 44px;
+  min-width: 0;
+  padding: 0 var(--ib-space-4);
+  color: var(--ib-text-secondary, var(--text-muted));
+  font-size: 16px;
+  font-weight: 500;
+}
+.is-phone .modal.mod-bookmark .modal-nav-action:not(#_ib) {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.is-phone .modal.mod-bookmark .modal-nav-action.mod-cta { color: var(--ib-accent-brand); font-weight: 650; }
+.is-mobile .modal.mod-bookmark .modal-button-container {
+  display: flex;
+  flex-direction: row;
+  gap: var(--ib-space-3);
+  padding: 0;
+}
+.is-mobile .modal.mod-bookmark .modal-button-container > button { flex: 1 1 0; height: 44px; }
+.is-mobile .modal.mod-bookmark .modal-button-container > button:not(#_ib) { margin: 0; }
+.is-mobile .modal.mod-bookmark .modal-button-container > .mod-cancel { order: 0; }
+
+/* V3.3：分页与捕获区域继承静态时长，隔离后续交互动效。 */
+@media print {
+  :root { --ib-dur-fast: 0ms; --ib-dur-base: 0ms; --ib-dur-slow: 0ms; }
+  *:not(#_ib),
+*:not(#_ib)::before,
+*:not(#_ib)::after { animation: none; transition: none; }
+}
+
+/* V3.3 质感：Figma texture/noise 原图，100px 平铺；正文不随滚动运动。 */
+:root {
+  --ib-noise-opacity: 0.025;
+  --ib-noise-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAA3klEQVR42gXBscqCUACA0c9bYjglJI4SjW53UNBBkLZeybcSVzcxqKWhRRrESQwHcevq/f9zjDzP/8ZxxPd9zuczRVGw2+1IkoT7/Y4wTZMoini/30zThOu6KKVomoYgCBCWZVFVFZ7n8Xg8CIIAKSXruuI4Dvu2bTmdTkgpAfj9frxeL7IswzAMxOVyYRxHns8nZVmybRu2bfP5fPh+v4iu60jTlGVZuF6vdF1HGIZIKen7nr1SCtM0ieOYw+HAPM8Mw0Bd18RxjFBKobWmqiq01gghOB6P3G43tNb8Ayk6Yv8gOa1QAAAAAElFTkSuQmCC");
+  --h1-letter-spacing: -0.01em;
+  --h2-letter-spacing: -0.01em;
+  --h3-letter-spacing: -0.01em;
+  --h4-letter-spacing: -0.01em;
+  --h5-letter-spacing: -0.01em;
+  --h6-letter-spacing: -0.01em;
+}
+.theme-dark { --ib-noise-opacity: 0.02; }
+.workspace-leaf-content[data-type="markdown"] :is(.markdown-reading-view, .markdown-source-view.mod-cm6) { position: relative; }
+.workspace-leaf-content[data-type="markdown"] :is(.markdown-reading-view, .markdown-source-view.mod-cm6)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: var(--ib-noise-image);
+  background-size: 100px 100px;
+  background-repeat: repeat;
+  opacity: var(--ib-noise-opacity);
+}
+.markdown-rendered :is(h1,h2,h3,h4,h5,h6), .inline-title { letter-spacing: -0.01em; font-feature-settings: "palt"; }
+@media print {
+  :root, .theme-dark { --ib-noise-opacity: 0; --ib-noise-image: none; }
+  .workspace-leaf-content[data-type="markdown"] :is(.markdown-reading-view, .markdown-source-view.mod-cm6)::before { content: none; }
+}
+
+/* V3.3 复制反馈：只对成功后的图标做 transform，状态色即时变化。 */
+@keyframes ib-copy-confirm {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.10); }
+}
+
+/* V3.3 Callout：覆盖 Obsidian 的内联尺寸过渡，布局即时切换。 */
+.callout.is-collapsible > .callout-content:not(#_ib) {
+  height: auto;
+  transition-property: opacity;
+  transition-duration: var(--ib-dur-base);
+  transition-timing-function: var(--ib-ease-out);
+}
+.callout.is-collapsible.is-collapsed > .callout-content:not(#_ib) { display: none; }
+.callout-fold .svg-icon {
+  transition: transform var(--ib-dur-base) var(--ib-ease-out);
+  transform: rotate(0deg);
+}
+.callout-fold.is-collapsed .svg-icon { transform: rotate(calc(var(--direction, 1) * -180deg)); }
+@media (prefers-reduced-motion: reduce) {
+  .callout.is-collapsible > .callout-content:not(#_ib),
+.callout-fold .svg-icon:not(#_ib) { transition: none; }
+}
+/* 上述专用规则不能覆盖分页和捕获的静态隔离。 */
+@media print { .callout-content:not(#_ib),
+.callout-fold .svg-icon:not(#_ib) { transition: none; } }
+/* 沿用 Obsidian 打印时展开提示块的行为。 */
+.print .callout.is-collapsible.is-collapsed > .callout-content:not(#_ib) { display: block; }
+@media print {
+  .callout.is-collapsible.is-collapsed > .callout-content:not(#_ib) { display: block; }
+}
+
+/* 只由用户点击设置状态类，首次渲染不添加。 */
+@keyframes ib-callout-open { from { opacity: var(--ib-callout-opacity, 0); } to { opacity: 1; } }
+@keyframes ib-callout-close { from { opacity: var(--ib-callout-opacity, 1); } to { opacity: 0; } }
+
+/* V3.3 导出弹框：HTML 等交互预览淡入，PDF与分页输出保持静态。 */
+@keyframes ib-export-open {
+  from { opacity: 0; transform: scale(.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes ib-export-preview-ready { from { opacity: 0; } to { opacity: 1; } }
+
+/* V3.3 链接/按钮：下划线以opacity出现，按钮只在按压时缩放。 */
+.markdown-rendered a:is(.internal-link, .external-link):not(.ib-link-media) {
+  position: relative;
+  transition: color var(--ib-dur-fast) var(--ib-ease-out);
+}
+.markdown-rendered a:is(.internal-link, .external-link):not(.ib-link-media)::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: -0.12em;
+  border-bottom: 1px solid currentColor;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--ib-dur-fast) var(--ib-ease-out);
+}
+.markdown-rendered a:is(.internal-link, .external-link):not(.ib-link-media):is(:hover, :focus-visible) {
+  text-decoration: none;
+}
+.markdown-rendered a:is(.internal-link, .external-link):not(.ib-link-media):is(:hover, :focus-visible)::after { opacity: 1; }
+:is(button, .clickable-icon) { transition: transform var(--ib-dur-fast) var(--ib-ease-out), color var(--ib-dur-fast) var(--ib-ease-out); }
+:is(button, .clickable-icon):active:not(:disabled, [aria-disabled="true"], .is-disabled) { transform: scale(.97); }
+@media (prefers-reduced-motion: reduce) {
+  :is(button, .clickable-icon):active:not(#_ib) { transform: none; }
+  .markdown-rendered a:not(#_ib)::after { transition: none; }
+}
+@media print { :is(button, .clickable-icon):active:not(#_ib) { transform: none; } }
+
+
+
+body {
+  --ib-highlight-yellow-bg: #FFF2A8;
+  --ib-highlight-yellow-text: #6B5A00;
+  --ib-highlight-blue-bg: #DDE8FF;
+  --ib-highlight-blue-text: var(--ib-text-primary);
+}
+body.theme-dark {
+  --ib-highlight-yellow-bg: #4A3F10;
+  --ib-highlight-yellow-text: #FFE9A0;
+  --ib-highlight-blue-bg: var(--ib-accent-subtle);
+}
+/* Coloured highlights (==🟢text==, data-highlight="green") read Obsidian's own
+   --highlight-background-* variables, so a colour changed in a snippet or in
+   the app takes effect. Defaults are set here because Obsidian's are muddy
+   (yellow duplicates orange, purple is brown). */
+body {
+  --highlight-background-red: color-mix(in srgb, #EF4444 28%, transparent);
+  --highlight-background-orange: color-mix(in srgb, #F97316 28%, transparent);
+  --highlight-background-yellow: color-mix(in srgb, #EAB308 32%, transparent);
+  --highlight-background-green: color-mix(in srgb, #22C55E 28%, transparent);
+  --highlight-background-blue: color-mix(in srgb, #3B82F6 26%, transparent);
+  --highlight-background-purple: color-mix(in srgb, #8B5CF6 26%, transparent);
+}
+/* The editing line: Obsidian already tags a coloured highlight with .cm-highlight-<colour> on the one
+   element that carries the yellow default above, so recolour that element and nothing else (no extra
+   layer, nothing stacked). */
+.markdown-source-view.mod-cm6 .cm-line .cm-highlight:is(.cm-highlight-red, .cm-highlight-orange, .cm-highlight-green, .cm-highlight-blue, .cm-highlight-purple) { color: var(--ib-text-primary); }
+.markdown-source-view.mod-cm6 .cm-line .cm-highlight.cm-highlight-red { background: var(--highlight-background-red); }
+.markdown-source-view.mod-cm6 .cm-line .cm-highlight.cm-highlight-orange { background: var(--highlight-background-orange); }
+.markdown-source-view.mod-cm6 .cm-line .cm-highlight.cm-highlight-yellow { background: var(--highlight-background-yellow); }
+.markdown-source-view.mod-cm6 .cm-line .cm-highlight.cm-highlight-green { background: var(--highlight-background-green); }
+.markdown-source-view.mod-cm6 .cm-line .cm-highlight.cm-highlight-blue { background: var(--highlight-background-blue); }
+.markdown-source-view.mod-cm6 .cm-line .cm-highlight.cm-highlight-purple { background: var(--highlight-background-purple); }
+
+
+@media print {
+  .markdown-reading-view table:not(#_ib) { table-layout: fixed; width: 100%; max-width: 100%; min-width: 0; }
+  .markdown-reading-view :is(th, td) { overflow-wrap: anywhere; }
+  .markdown-reading-view :is(th, td):not(#_ib) { min-width: 0; }
+}
+
+body { --ib-chapter-radius: 26px; --ib-chapter-rail-width: 3px; --ib-chapter-rail-height: 110px; --ib-chapter-rail-inset: 18px; --ib-chapter-rail-purple: #8b5cf6; --ib-chapter-rail-cyan: #22b8d6; }
+
+/* Native chapter cards: preserve the renderer's cached section ownership. */
+
+/* Reading refinements: one chart frame, compact fit, theme-based marks. */
+.image-embed .image-resize-corner:not(#_ib) { display:none; }
+/* Reading images can omit image-wrapper; anchor their resize layer locally. */
+.image-embed .image-wrapper { position:relative; }
+.image-embed img[width][height] { object-fit:fill; }
+.image-embed img[width][height]:not(#_ib) { height:revert; }
+
+.markdown-source-view.mod-cm6 mark { color:var(--ib-text-primary); background:var(--ib-accent-subtle); border-radius:var(--ib-radius-xs); }
+/* A hidden closing fence is not a blank code line; reveal it when edited. */
+.markdown-source-view.mod-cm6.is-live-preview .cm-line.HyperMD-codeblock-end:not(.cm-active) { min-height:0;
+}
+.markdown-source-view.mod-cm6.is-live-preview .cm-line.HyperMD-codeblock-end:not(.cm-active):not(#_ib) {
+  font-size:0; line-height:0;
+  padding-top:0; padding-bottom:var(--ib-space-3, 12px);
+}
+
+/* Small diagrams keep a compact frame; large diagrams still fit the column. */
+
+/* Block position in Live Preview. Obsidian's own `.cm-content > * { margin: 0 !important }`
+   (specificity 0,3,0) outranks the plugin's [data-ib-chart-align] rules, so left / center /
+   right never moved the block there. These selectors are strictly more specific. */
+
+/* Tables in Live Preview sit in a content-sized .table-wrapper, so margins on the <table> itself
+   never moved anything; the wrapper is what has to be positioned. The default comes from the
+   body attribute and a table's own marker (ib-table-align) overrides it. */
+.markdown-source-view.mod-cm6 .cm-table-widget .table-wrapper { max-width: 100%; }
+
+/* Native reading uses the same user-selected body font as Live Preview. */
+.markdown-reading-view .markdown-preview-view {
+  font-family: var(--font-text-override, var(--font-text)), var(--font-text);
+  font-size: var(--font-text-size);
+}
+
+
+@keyframes ibt-detent { 0% { transform:scaleX(1); } 30% { transform:scaleX(3); filter:brightness(1.35); } 100% { transform:scaleX(1); filter:none; } }
+

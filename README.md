@@ -78,7 +78,7 @@ The theme works on its own, though some looks depend on the companion plugin. Ad
 
 ## Development
 
-`src/theme.css` is the readable source; `theme.css` is its minified build.
+The readable source is `src/parts/*.css`, joined in file-name order (the order is the cascade); `theme.css` is its minified build.
 
 ```bash
 npm ci && npm run build                      # regenerate theme.css

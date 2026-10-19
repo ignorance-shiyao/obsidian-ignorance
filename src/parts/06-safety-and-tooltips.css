@@ -1,0 +1,237 @@
+/* Buttons, menus and dialogs retain the clean book-like surface. */
+button,
+.dropdown,
+input[type="text"],
+input[type="search"],
+textarea {
+  border-radius: var(--ib-radius-md);
+}
+
+.modal,
+.menu {
+  border-radius: var(--ib-radius-lg);
+}
+
+/* File and control tooltips */
+.theme-light .tooltip {
+  color: var(--ib-text-primary);
+  background: linear-gradient(180deg, var(--ib-bg-tertiary) 0%, var(--ib-bg-hover) 100%);
+  border: 1px solid var(--ib-border-default);
+  border-radius: var(--ib-radius-md);
+  box-shadow: var(--ib-shadow-pop);
+}
+
+.theme-light .tooltip .tooltip-arrow,
+.theme-light .tooltip.mod-bottom .tooltip-arrow {
+  border-bottom-color: var(--ib-border-default);
+}
+
+.theme-light .tooltip.mod-top .tooltip-arrow {
+  border-top-color: var(--ib-border-default);
+}
+
+.theme-light .tooltip.mod-right .tooltip-arrow {
+  border-right-color: var(--ib-border-default);
+}
+
+.theme-light .tooltip.mod-left .tooltip-arrow {
+  border-left-color: var(--ib-border-default);
+}
+
+.theme-dark .tooltip {
+  color: var(--ib-text-primary);
+  background: var(--ib-bg-active);
+  border: 1px solid var(--ib-border-strong);
+  border-radius: var(--ib-radius-md);
+  box-shadow: var(--ib-shadow-pop);
+}
+
+.theme-dark .tooltip .tooltip-arrow,
+.theme-dark .tooltip.mod-bottom .tooltip-arrow {
+  border-bottom-color: var(--ib-border-strong);
+}
+
+.theme-dark .tooltip.mod-top .tooltip-arrow {
+  border-top-color: var(--ib-border-strong);
+}
+
+.theme-dark .tooltip.mod-right .tooltip-arrow {
+  border-right-color: var(--ib-border-strong);
+}
+
+.theme-dark .tooltip.mod-left .tooltip-arrow {
+  border-left-color: var(--ib-border-strong);
+}
+
+::selection {
+  background: var(--ib-bg-selection);
+}
+
+@media print {
+  body {
+    --background-primary: #FFFFFF;
+    --text-normal: var(--ib-text-primary);
+    --text-muted: var(--ib-text-secondary);
+    --code-background: var(--ib-bg-code-inline);
+  }
+
+  /* !important: the screen rule is gated by body:not(.ib-hide-heading-labels),
+     which outranks a plain selector here. */
+  .markdown-rendered :is(h1, h2, h3, h4, h5, h6):not(#_ib)::before {
+    content: none;
+  }
+
+  .markdown-rendered pre {
+    color: var(--ib-text-primary);
+    background: var(--ib-bg-code-block);
+    border: 1px solid var(--ib-border-default);
+  }
+}
+
+@media (max-width: 700px) {
+  .markdown-rendered :is(h1, h2, h3, h4, h5, h6),
+  .markdown-source-view.mod-cm6 :is(.HyperMD-header-1, .HyperMD-header-2, .HyperMD-header-3, .HyperMD-header-4, .HyperMD-header-5, .HyperMD-header-6) {
+    line-height: 1.5;
+  }
+}
+
+/* Content safety: long tokens must remain visible inside their own pane. */
+:is(.markdown-rendered, .markdown-preview-view, .markdown-source-view.mod-cm6) {
+  min-width: 0;
+  max-width: 100%;
+}
+
+:is(.markdown-rendered:not(.cm-table-widget), .markdown-preview-view) :is(
+  p, li, blockquote, figcaption, dt, dd,
+  h1, h2, h3, h4, h5, h6,
+  a, strong, em, mark, del, u,
+  .callout-content, .footnotes, .metadata-property-value
+) {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Inline code and very long paths/URLs wrap without adding oversized pills. */
+:is(.markdown-rendered:not(.cm-table-widget), .markdown-preview-view) :not(pre) > code:not(#_ib),
+.markdown-source-view.mod-cm6 .cm-line :is(.cm-inline-code, .cm-url, .cm-link):not(#_ib) {
+  white-space: break-spaces;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* The user prefers wrapping to horizontal scrolling for fenced source. */
+:is(.markdown-rendered:not(.cm-table-widget), .markdown-preview-view) pre:not(#_ib):not(#_ib2),
+:is(.markdown-rendered:not(.cm-table-widget), .markdown-preview-view) pre code:not(#_ib):not(#_ib2),
+.markdown-source-view.mod-cm6 .HyperMD-codeblock:not(#_ib):not(#_ib2),
+.markdown-source-view.mod-cm6 .HyperMD-codeblock .cm-line:not(#_ib):not(#_ib2) {
+  max-width: 100%;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.markdown-source-view.mod-cm6 .cm-content,
+.markdown-source-view.mod-cm6 .cm-line {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Tables keep their columns inside the note and wrap cell content. */
+:is(.markdown-rendered:not(.cm-table-widget), .markdown-preview-view) table {
+  width: 100%;
+  max-width: 100%;
+  table-layout: auto;
+}
+
+:is(.markdown-rendered:not(.cm-table-widget), .markdown-preview-view) :is(th, td) {
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: none;
+}
+
+:is(.markdown-rendered:not(.cm-table-widget), .markdown-preview-view) :is(th, td):not(#_ib) {
+  min-width: 0;
+  max-width: none;
+  white-space: normal;
+}
+
+/* Content-aware columns: auto layout already gives prose columns the spare
+   width. Headers stay on one line; a header-width 1% squeeze made body cells
+   wrap one character per line (可/用/率) while the last column took the rest. */
+:is(.markdown-rendered:not(.cm-table-widget), .markdown-preview-view) thead :is(th, td):not(#_ib) {
+  white-space: nowrap;
+}
+
+:is(.markdown-rendered:not(.cm-table-widget), .markdown-preview-view) :is(th, td) :is(a, code) {
+  max-width: 100%;
+}
+
+:is(.markdown-rendered:not(.cm-table-widget), .markdown-preview-view) :is(th, td) :is(a, code):not(#_ib) {
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+:is(.markdown-rendered:not(.cm-table-widget), .markdown-preview-view) :is(img, video, iframe, canvas),
+.markdown-source-view.mod-cm6 :is(img, video, iframe, canvas) {
+  height: auto;
+}
+
+:is(.markdown-rendered:not(.cm-table-widget), .markdown-preview-view) :is(img, video, iframe, canvas):not(#_ib),
+.markdown-source-view.mod-cm6 :is(img, video, iframe, canvas):not(#_ib) {
+  max-width: 100%;
+}
+
+/* Navigation, properties and controls should truncate or wrap inside the pane. */
+:is(.nav-file-title-content, .nav-folder-title-content, .tree-item-inner),
+:is(.metadata-property-value, .metadata-input-longtext, .setting-item-description),
+:is(.suggestion-content, .search-result-file-match) {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: normal;
+}
+
+/* Live Preview's table widget is `cm-embed-block cm-table-widget
+   markdown-rendered`, so every reading-view table rule reached it: its
+   min-width:0 !important collapsed Obsidian's 6ch column floor, its
+   content-aware widths flipped the moment a cell became an editor, its cell
+   padding stacked on .table-cell-wrapper's, and table{overflow:hidden} clipped
+   Obsidian's own row/column handles. Layout rules above now exclude the widget;
+   it is themed through Obsidian's own table variables instead. */
+.cm-table-widget {
+  --table-border-color: var(--ib-border-default);
+  --table-header-background: var(--ib-accent-solid);
+  --table-header-background-hover: var(--ib-accent-solid);
+  --table-header-color: var(--ib-text-on-accent);
+  --table-header-border-color: color-mix(in srgb, var(--ib-text-on-accent) 35%, transparent);
+  --table-row-alt-background: var(--ib-bg-secondary);
+  --table-row-background-hover: var(--ib-bg-hover);
+  --table-selection: color-mix(in srgb, var(--ib-focus) 14%, transparent);
+  --table-selection-border-color: var(--ib-focus);
+}
+
+/* The cell editor inside the table widget is a nested CodeMirror, so the
+   body editor's anti-overflow rules reached it: overflow-wrap:anywhere on
+   .cm-line collapses a cell's min-content to one character and inline-code
+   break-spaces re-wraps it — both reshuffle the columns mid-edit. Restore
+   Obsidian's table behaviour inside the widget. */
+.markdown-source-view.mod-cm6 .cm-table-widget :is(.cm-content, .cm-line) {
+  min-width: auto;
+  max-width: none;
+  overflow-wrap: normal;
+  word-break: normal;
+  font-size: inherit;
+}
+
+.markdown-source-view.mod-cm6 .cm-table-widget .cm-line :is(.cm-inline-code, .cm-url, .cm-link):not(#_ib) {
+  white-space: inherit;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+

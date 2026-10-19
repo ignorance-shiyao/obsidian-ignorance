@@ -2,7 +2,7 @@
   "name": "obsidian-ignorance",
   "version": "1.0.21",
   "private": true,
-  "description": "Ignorance, a calm Obsidian theme. src/theme.css is the readable source; theme.css is the minified build.",
+  "description": "Ignorance, a calm Obsidian theme. src/parts/*.css is the readable source (joined in file-name order); theme.css is the minified build.",
   "license": "MIT",
   "scripts": {
     "build": "node scripts/build.mjs",

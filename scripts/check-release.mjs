@@ -26,7 +26,7 @@ check(new RegExp(`^## ${manifest.version.replaceAll(".", "\\.")}$`, "m").test(ch
 // Built file is the current build of the source
 const before = css;
 execFileSync("node", ["scripts/build.mjs"], { stdio: "ignore" });
-check(read("theme.css") === before, "theme.css is up to date with src/theme.css");
+check(read("theme.css") === before, "theme.css is up to date with src/parts");
 
 // Phone / tablet rules must win over the desktop rules they adjust (see scripts/check-cascade.mjs).
 let cascade = "";

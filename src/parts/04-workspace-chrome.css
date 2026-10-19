@@ -1,0 +1,315 @@
+/* Workspace chrome */
+.workspace-ribbon,
+.workspace-sidedock-vault-profile,
+.workspace-tab-header-container,
+.workspace-tabs.mod-top .workspace-tab-header-container {
+  color: var(--nav-item-color);
+}
+
+.workspace-split.mod-left-split,
+.workspace-split.mod-right-split,
+.workspace-ribbon,
+.workspace-tabs.mod-sidedock {
+  background: var(--background-secondary);
+}
+
+/* Scoped to real tab strips: the mobile drawer reuses .workspace-tab-header for
+   its view switcher, and painting those with the editor surface produced a dark
+   slab underneath Obsidian's own inner highlight. */
+.workspace-tabs .workspace-tab-header.is-active {
+  background: var(--background-primary);
+}
+
+.workspace-tabs.mod-sidedock .workspace-tab-header.is-active {
+  color: var(--nav-item-color-active);
+  background: var(--nav-item-background-active);
+}
+
+.nav-file-title,
+.nav-folder-title {
+  min-height: 28px;
+  border-radius: var(--ib-radius-md);
+  color: var(--nav-item-color);
+}
+
+.nav-file-title:hover,
+.nav-folder-title:hover {
+  color: var(--nav-item-color-hover);
+}
+
+.nav-file-title.is-active {
+  color: var(--nav-item-color-active);
+  background: var(--nav-item-background-active);
+  font-weight: 600;
+}
+
+.nav-folder-title-content {
+  font-weight: 600;
+}
+
+.workspace-sidedock-vault-profile .workspace-drawer-vault-name,
+.workspace-sidedock-vault-profile .clickable-icon {
+  color: var(--nav-item-color);
+}
+
+/* Folder and file type icons */
+/* Obsidian 1.13+ may expose the folder toggle as collapse-icon/tree-item-icon
+   instead of nav-folder-collapse-indicator. Replace every folder chevron while
+   preserving the native clickable toggle element. */
+.nav-folder-title :is(.nav-folder-collapse-indicator, .collapse-icon, .tree-item-icon) {
+  flex: 0 0 18px;
+  margin-inline-end: 5px;
+  align-items: center;
+  justify-content: center;
+}
+.nav-folder-title :is(.nav-folder-collapse-indicator, .collapse-icon, .tree-item-icon):not(#_ib) {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  color: transparent;
+}
+
+.nav-folder-title :is(.nav-folder-collapse-indicator, .collapse-icon, .tree-item-icon) > svg:not(#_ib) {
+  display: none;
+}
+
+.nav-folder-title :is(.nav-folder-collapse-indicator, .collapse-icon, .tree-item-icon)::before {
+  content: "";
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-color: var(--ib-accent-brand);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M3 6a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.nav-folder:not(.is-collapsed) > .nav-folder-title :is(.nav-folder-collapse-indicator, .collapse-icon, .tree-item-icon)::before {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v1H5l-2 8zM5 11h17l-2 8H4z'/%3E%3C/svg%3E");
+}
+
+/* File-type icons: only Obsidian's own types (notes, canvas, Excalidraw, Bases) are drawn here; Ignorance Advanced
+   draws the full Material icon set for every other file type and hides these once its icons have loaded.
+   Lucide (lucide-static 1.48.0, ISC License, https://lucide.dev),
+   inlined as masks so every icon takes its color from the --ib-file-* tokens and
+   follows light/dark mode. Each rule only sets --ib-file-icon / --ib-file-color. */
+.nav-file-title-content::before {
+  content: "";
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+  margin-inline-end: 7px;
+  vertical-align: -0.12em;
+  background-color: var(--ib-file-color, var(--text-muted));
+  mask: var(--ib-file-icon) center / contain no-repeat;
+}
+.nav-file-title { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z'/%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5'/%3E%3C/svg%3E"); }
+.nav-file-title:is([data-path$=".md" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z'/%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5'/%3E%3Cpath d='M10 9H8'/%3E%3Cpath d='M16 13H8'/%3E%3Cpath d='M16 17H8'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-md); }
+.nav-file-title:is([data-path$=".excalidraw.md" i],[data-path$=".excalidraw" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15.707 21.293a1 1 0 0 1-1.414 0l-1.586-1.586a1 1 0 0 1 0-1.414l5.586-5.586a1 1 0 0 1 1.414 0l1.586 1.586a1 1 0 0 1 0 1.414z'/%3E%3Cpath d='m18 13-1.375-6.874a1 1 0 0 0-.746-.776L3.235 2.028a1 1 0 0 0-1.207 1.207L5.35 15.879a1 1 0 0 0 .776.746L13 18'/%3E%3Cpath d='m2.3 2.3 7.286 7.286'/%3E%3Ccircle cx='11' cy='11' r='2'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-canvas); }
+.nav-file-title:is([data-path$=".canvas" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect width='7' height='9' x='3' y='3' rx='1'/%3E%3Crect width='7' height='5' x='14' y='3' rx='1'/%3E%3Crect width='7' height='9' x='14' y='12' rx='1'/%3E%3Crect width='7' height='5' x='3' y='16' rx='1'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-canvas); }
+.nav-file-title:is([data-path$=".base" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 9h18'/%3E%3Cpath d='M9 3v18'/%3E%3Crect x='3' y='3' width='18' height='18' rx='2'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-sheet); }
+
+.theme-dark .workspace-split.mod-left-split,
+.theme-dark .workspace-split.mod-right-split,
+.theme-dark .workspace-ribbon,
+.theme-dark .workspace-tabs.mod-sidedock {
+  background: linear-gradient(180deg, var(--ib-bg-secondary) 0%, var(--ib-bg-secondary) 100%);
+  border-color: var(--background-modifier-border);
+}
+
+.theme-dark .workspace-tab-header-container {
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.theme-light .workspace-split.mod-left-split,
+.theme-light .workspace-split.mod-right-split,
+.theme-light .workspace-ribbon {
+  border-color: var(--background-modifier-border);
+}
+
+.theme-light .workspace-tab-header-container {
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+/* Compact, calmer document tabs. Keep this scoped to the root tab strip;
+   applying the same geometry to side docks breaks the macOS traffic-light row. */
+.workspace-tabs.mod-root > .workspace-tab-header-container {
+  min-height: 40px;
+  height: 40px;
+  padding: 5px 8px 0;
+  gap: 4px;
+  background: var(--tab-container-background);
+}
+
+.workspace-tabs.mod-root > .workspace-tab-header-container .workspace-tab-header {
+  min-height: 34px;
+  height: 34px;
+  padding: 0 12px;
+  border: 1px solid transparent;
+  border-radius: var(--ib-radius-lg) var(--ib-radius-lg) 0 0;
+  transition: color var(--ib-dur-fast) var(--ib-ease-out);
+}
+
+.workspace-tabs.mod-root > .workspace-tab-header-container .workspace-tab-header:hover {
+  background: var(--background-modifier-hover);
+}
+
+.workspace-tabs.mod-root > .workspace-tab-header-container .workspace-tab-header.is-active {
+  border-color: var(--background-modifier-border);
+  border-bottom-color: var(--background-primary);
+  box-shadow: inset 0 2px 0 var(--interactive-accent);
+}
+
+.workspace-tabs.mod-root > .workspace-tab-header-container .workspace-tab-header-inner {
+  gap: 7px;
+}
+
+.workspace-tabs.mod-root > .workspace-tab-header-container .workspace-tab-header-new-tab,
+.workspace-tabs.mod-root > .workspace-tab-header-container .workspace-tab-header-tab-list {
+  border-radius: var(--ib-radius-md);
+  color: var(--text-muted);
+}
+
+.workspace-tabs.mod-root > .workspace-tab-header-container .workspace-tab-header-new-tab:hover,
+.workspace-tabs.mod-root > .workspace-tab-header-container .workspace-tab-header-tab-list:hover {
+  color: var(--text-normal);
+  background: var(--background-modifier-hover);
+}
+
+/* Dark: the top band is assembled from three stacked elements — the native
+   title row, the tab strip and its inner wrapper. Leaving any one unpainted
+   lets a lighter system slate show through, so all of them take one surface
+   and inactive tabs stay transparent on top of it. */
+.theme-dark .titlebar:not(#_ib),
+.theme-dark .titlebar-inner:not(#_ib),
+.theme-dark .titlebar-button-container:not(#_ib),
+.theme-dark .workspace-tabs.mod-root > .workspace-tab-header-container:not(#_ib),
+.theme-dark .workspace-tabs.mod-root > .workspace-tab-header-container > .workspace-tab-header-container-inner:not(#_ib),
+.theme-dark .workspace-tab-header-container-inner:not(#_ib) {
+  background: var(--titlebar-background);
+}
+
+.theme-dark .workspace-tabs.mod-root > .workspace-tab-header-container .workspace-tab-header:not(.is-active) {
+  background: transparent;
+  border-color: transparent;
+  color: var(--tab-text-color);
+}
+
+.theme-dark .workspace-tabs.mod-root > .workspace-tab-header-container .workspace-tab-header:not(.is-active):hover {
+  background: var(--background-modifier-hover);
+  color: var(--tab-text-color-focused);
+}
+
+.theme-dark .workspace-tabs.mod-root > .workspace-tab-header-container .workspace-tab-header.is-active {
+  background: var(--background-primary);
+  color: var(--tab-text-color-active);
+}
+
+/* Mobile: left drawer view switcher (文件列表 / 搜索 / 标签 …). Obsidian tints
+   only .workspace-tab-header-inner here, so the outer row must stay clear. */
+.workspace-drawer-tab-options-list {
+  background-color: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--ib-radius-xl);
+  box-shadow: var(--ib-shadow-drawer);
+}
+
+.workspace-drawer-tab-options .workspace-tab-header:not(#_ib),
+.workspace-drawer-tab-options .workspace-tab-header.is-active:not(#_ib) {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.workspace-drawer-tab-options .workspace-tab-header-inner {
+  border-radius: var(--ib-radius-lg);
+}
+
+.workspace-drawer-tab-options:not(.has-swipe) .workspace-tab-header.is-active .workspace-tab-header-inner {
+  color: var(--text-accent);
+  --icon-color: var(--text-accent);
+  background-color: var(--nav-item-background-selected);
+}
+
+.workspace-drawer-tab-options .workspace-drawer-tab-select .workspace-tab-header-inner {
+  color: var(--text-muted);
+  --icon-color: var(--text-muted);
+  background-color: transparent;
+}
+
+/* macOS 半透明窗口
+ *
+ * Obsidian forces `background-color: transparent !important` on a fixed list of
+ * surfaces under `.is-translucent:not(.is-fullscreen) X` — three classes plus
+ * !important. Anything less specific loses, which is why tinting the layers
+ * underneath never showed. The traffic-light strip is the ribbon's ::before,
+ * and it is on that list too. Prefixing with `body` outranks it.
+ */
+body.is-translucent:not(.is-fullscreen) .app-container:not(#_ib),
+body.is-translucent:not(.is-fullscreen) .workspace-tabs .workspace-leaf:not(#_ib) {
+  background-color: var(--ib-bg-primary);
+}
+
+body.is-translucent:not(.is-fullscreen) .titlebar:not(#_ib),
+body.is-translucent:not(.is-fullscreen) .titlebar-inner:not(#_ib),
+body.is-translucent:not(.is-fullscreen) .titlebar-button-container:not(#_ib),
+body.is-translucent:not(.is-fullscreen) .sidebar-toggle-button:not(#_ib),
+body.is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-left:not(#_ib):before,
+body.is-translucent:not(.is-fullscreen) .workspace-tabs.mod-top > .workspace-tab-header-container:not(#_ib),
+body.is-translucent:not(.is-fullscreen) .mod-top .workspace-tab-header-container:not(#_ib) {
+  background-color: var(--ib-bg-chrome);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+body.is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-left:not(#_ib),
+body.is-translucent:not(.is-fullscreen) .workspace-split.mod-left-split:not(#_ib),
+body.is-translucent:not(.is-fullscreen) .workspace-split.mod-right-split:not(#_ib),
+body.is-translucent:not(.is-fullscreen) .mod-left-split .workspace-tab-header-container:not(#_ib),
+body.is-translucent:not(.is-fullscreen) .mod-right-split .workspace-tab-header-container:not(#_ib),
+body.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile:not(#_ib) {
+  background-color: var(--ib-bg-secondary);
+}
+
+/* Note header: the folder path (Obsidian's breadcrumb) shows only where
+   Ignorance Advanced found room for it (.ib-path-shown) or the user expanded
+   it with the folder button; otherwise just the file name. Without the plugin
+   (no body.ib-header-path) Obsidian's own path stays as it is. */
+body.ib-header-path .workspace-leaf-content:not(.ib-path-shown) .view-header-title-parent { display: none; }
+
+/* Native and pop-out window title bars use the same surface as their body. */
+.titlebar,
+.titlebar-inner,
+.titlebar-button-container,
+.is-hidden-frameless:not(.is-fullscreen) .titlebar,
+.is-hidden-frameless:not(.is-fullscreen) .titlebar-inner {
+  color: var(--titlebar-text-color-focused);
+}
+.titlebar:not(#_ib),
+.titlebar-inner:not(#_ib),
+.titlebar-button-container:not(#_ib),
+.is-hidden-frameless:not(.is-fullscreen) .titlebar:not(#_ib),
+.is-hidden-frameless:not(.is-fullscreen) .titlebar-inner:not(#_ib) {
+  background: var(--background-primary);
+  border-bottom-color: var(--background-modifier-border);
+}
+
+.workspace-tabs.mod-sidedock > .workspace-tab-header-container {
+  min-height: 42px;
+  height: 42px;
+  padding-block: 4px;
+  background: var(--background-secondary);
+}
+
+.workspace-ribbon .side-dock-ribbon-action,
+.workspace-ribbon .clickable-icon {
+  margin: 2px 5px;
+  border-radius: var(--ib-radius-lg);
+  color: var(--text-muted);
+}
+
+.workspace-ribbon .side-dock-ribbon-action:hover,
+.workspace-ribbon .clickable-icon:hover {
+  color: var(--text-normal);
+  background: var(--background-modifier-hover);
+}
+

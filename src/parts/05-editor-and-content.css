@@ -1,0 +1,522 @@
+/* Editor width and typography */
+.markdown-source-view.mod-cm6 .cm-scroller,
+.markdown-preview-view {
+  line-height: var(--ib-text-leading);
+}
+
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer,
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer {
+  max-width: var(--ib-content-max);
+}
+
+.markdown-preview-view p,
+.markdown-source-view.mod-cm6 .cm-line:not([class*="HyperMD-header"], .HyperMD-codeblock, .HyperMD-quote) {
+  font-size: var(--font-text-size);
+}
+
+.markdown-preview-view p {
+  margin-block: var(--ib-paragraph-gap, 0.9em);
+}
+
+/* Headings: H1-H6 scale with margin labels. */
+.markdown-rendered :is(h1, h2, h3, h4, h5, h6),
+.markdown-source-view.mod-cm6 :is(.HyperMD-header-1, .HyperMD-header-2, .HyperMD-header-3, .HyperMD-header-4, .HyperMD-header-5, .HyperMD-header-6) {
+  position: relative;
+  font-style: normal;
+  color: var(--text-normal);
+}
+
+@media (min-width: 900px) {
+  body:not(.ib-hide-heading-labels) .markdown-rendered :is(h1, h2, h3, h4, h5, h6)::before {
+    position: absolute;
+    right: calc(100% + 12px);
+    bottom: 0.45em;
+    color: var(--text-faint);
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  body:not(.ib-hide-heading-labels) .markdown-rendered h1::before { content: "H1"; }
+  body:not(.ib-hide-heading-labels) .markdown-rendered h2::before { content: "H2"; }
+  body:not(.ib-hide-heading-labels) .markdown-rendered h3::before { content: "H3"; }
+  body:not(.ib-hide-heading-labels) .markdown-rendered h4::before { content: "H4"; }
+  body:not(.ib-hide-heading-labels) .markdown-rendered h5::before { content: "H5"; }
+  body:not(.ib-hide-heading-labels) .markdown-rendered h6::before { content: "H6"; }
+}
+
+/* Links, emphasis, highlights and rules */
+.markdown-rendered a,
+.markdown-rendered .internal-link,
+.markdown-rendered .external-link,
+.markdown-source-view.mod-cm6 .cm-hmd-internal-link,
+.markdown-source-view.mod-cm6 .cm-link,
+.markdown-source-view.mod-cm6 .cm-url,
+.markdown-source-view.mod-cm6 .cm-hmd-internal-link .cm-underline,
+.markdown-source-view.mod-cm6 .cm-link .cm-underline {
+  text-decoration: none;
+}
+.markdown-rendered a:not(#_ib),
+.markdown-rendered .internal-link:not(#_ib),
+.markdown-rendered .external-link:not(#_ib),
+.markdown-source-view.mod-cm6 .cm-hmd-internal-link:not(#_ib),
+.markdown-source-view.mod-cm6 .cm-link:not(#_ib),
+.markdown-source-view.mod-cm6 .cm-url:not(#_ib),
+.markdown-source-view.mod-cm6 .cm-hmd-internal-link .cm-underline:not(#_ib),
+.markdown-source-view.mod-cm6 .cm-link .cm-underline:not(#_ib) {
+  color: var(--ib-link);
+}
+
+.markdown-rendered a:hover {
+  color: var(--text-accent-hover);
+  text-decoration: underline;
+}
+
+.markdown-rendered strong,
+.markdown-source-view.mod-cm6 .cm-strong { font-weight: 700; }
+
+.markdown-rendered del,
+.markdown-source-view.mod-cm6 .cm-strikethrough,
+.markdown-source-view.mod-cm6 .cm-formatting-strikethrough {
+  color: var(--ib-text-muted);
+  text-decoration: line-through;
+}
+
+.theme-dark .markdown-rendered del,
+.theme-dark .markdown-source-view.mod-cm6 .cm-strikethrough,
+.theme-dark .markdown-source-view.mod-cm6 .cm-formatting-strikethrough {
+  color: var(--ib-text-muted);
+}
+
+.markdown-rendered mark,
+.markdown-source-view.mod-cm6 .cm-highlight {
+  color: inherit;
+  background: color-mix(in srgb, var(--ib-accent-brand) 13%, transparent);
+  border-radius: var(--ib-radius-xs) var(--ib-radius-xs) 0 0;
+  box-shadow: inset 0 -2px 0 var(--ib-accent-brand);
+  padding: 0.02em 0.08em;
+}
+
+.theme-dark .markdown-rendered mark,
+.theme-dark .markdown-source-view.mod-cm6 .cm-highlight {
+  color: inherit;
+  background: color-mix(in srgb, var(--ib-text-accent) 18%, transparent);
+  box-shadow: inset 0 -2px 0 var(--ib-accent-brand);
+}
+
+.markdown-rendered hr {
+  height: 0;
+  border: 0;
+  border-top: 2px solid var(--background-modifier-border);
+}
+
+/* Lists and tasks */
+.markdown-rendered :is(ol, ul) {
+  padding-inline-start: 2rem;
+}
+
+.markdown-rendered ul > li > ul > li { list-style-type: circle; }
+.markdown-rendered ul > li > ul > li > ul > li { list-style-type: square; }
+.markdown-rendered ol > li > ol > li { list-style-type: lower-alpha; }
+.markdown-rendered ol > li > ol > li > ol > li { list-style-type: lower-roman; }
+
+/* Quotes and callouts */
+.markdown-rendered blockquote {
+  position: relative;
+  margin-inline: 0;
+  padding: 1rem 1rem 1rem 1.15rem;
+  color: var(--text-normal);
+  background: var(--blockquote-background-color);
+  border: 0;
+  border-radius: var(--ib-radius-md);
+}
+
+.markdown-rendered blockquote::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0.3rem;
+  background: var(--blockquote-border-color);
+  border-radius: var(--ib-radius-md) 0 0 var(--ib-radius-md);
+}
+
+
+/* Live Preview quotes follow the reading-view quote: serif type and a quiet background. */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-quote {
+  --blockquote-background-color: transparent;
+  background-color: var(--ib-quote-bg);
+  position: relative;
+  border-inline-start-width: var(--ib-quote-rail-width);
+  /* CodeMirror hangs wrapped lines with inline text-indent/padding sized for "> "; a quote with its own
+     inset needs the first line and its wraps to start in the same place. */
+  font-family: var(--ib-font-serif);
+  font-size: var(--ib-quote-size);
+  line-height: var(--ib-quote-leading);
+  font-weight: 400;
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-quote:not(#_ib) {
+  padding-inline: var(--ib-quote-inset) var(--ib-space-5);
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-quote .cm-quote { color: inherit; font: inherit; }
+/* CodeMirror hangs the line by a negative inline text-indent equal to the quote inset, so the hidden ">" markers
+   must keep exactly one inset of width per level or the first line slides under the rail. */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-quote:not(.cm-active) .cm-formatting-quote:not(#_ib) {
+  display: inline-block;
+  width: var(--ib-quote-inset);
+  font-size: 0;
+  overflow: hidden;
+  vertical-align: top;
+}
+/* Nested quotes: Obsidian draws the inner rails as inline widgets on the first visual line only, so wrapped
+   lines lose them and sit under the rail. Hide the widgets and paint every rail as a line background instead,
+   one inset per level, like the nested blockquotes in Reading view. */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-quote:not(.cm-active) .cm-blockquote-border { display: none; }
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-quote-2:not(#_ib) { padding-inline-start: calc(var(--ib-quote-inset) * 2); }
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-quote-3:not(#_ib) { padding-inline-start: calc(var(--ib-quote-inset) * 3); }
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-quote-4:not(#_ib) { padding-inline-start: calc(var(--ib-quote-inset) * 4); }
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-quote-2:not(.cm-active) {
+  background-image: linear-gradient(var(--ib-accent-brand), var(--ib-accent-brand));
+  background-repeat: no-repeat;
+  background-size: var(--ib-quote-rail-width) 100%;
+  background-position: var(--ib-quote-inset) 0;
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-quote-3:not(.cm-active) {
+  background-image: linear-gradient(var(--ib-accent-brand), var(--ib-accent-brand)), linear-gradient(var(--ib-accent-brand), var(--ib-accent-brand));
+  background-repeat: no-repeat;
+  background-size: var(--ib-quote-rail-width) 100%;
+  background-position: var(--ib-quote-inset) 0, calc(var(--ib-quote-inset) * 2) 0;
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-quote-4:not(.cm-active) {
+  background-image: linear-gradient(var(--ib-accent-brand), var(--ib-accent-brand)), linear-gradient(var(--ib-accent-brand), var(--ib-accent-brand)), linear-gradient(var(--ib-accent-brand), var(--ib-accent-brand));
+  background-repeat: no-repeat;
+  background-size: var(--ib-quote-rail-width) 100%;
+  background-position: var(--ib-quote-inset) 0, calc(var(--ib-quote-inset) * 2) 0, calc(var(--ib-quote-inset) * 3) 0;
+}
+
+.callout {
+  border: 1px solid color-mix(in srgb, var(--callout-color) 28%, var(--ib-bg-primary));
+  border-radius: var(--ib-callout-radius);
+  background: color-mix(in srgb, var(--callout-color) 10%, var(--ib-bg-primary));
+}
+
+/* Tables */
+.markdown-rendered:not(.cm-table-widget) table {
+  width: 100%;
+  margin-block: 1.2rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  word-break: normal;
+  color: var(--ib-text-primary);
+  border: 1px solid var(--ib-border-default);
+  border-radius: var(--ib-table-radius);
+  box-shadow: none;
+}
+
+.markdown-rendered:not(.cm-table-widget) :is(th, td) {
+  border: 0;
+  border-right: 1px solid var(--ib-divider);
+  border-bottom: 1px solid var(--ib-divider);
+  padding: 8px 12px;
+  vertical-align: middle;
+  line-height: 1.55;
+}
+
+.markdown-rendered thead:not(#_ib),
+.markdown-rendered thead tr:not(#_ib) {
+  background: transparent;
+}
+
+.markdown-rendered thead :is(th, td) {
+  color: color-mix(in srgb, var(--ib-text-primary) 72%, var(--ib-text-secondary));
+  font-weight: var(--ib-heading-bold);
+  font-size: var(--ib-table-heading-size);
+  letter-spacing: normal;
+  text-align: left;
+  vertical-align: middle;
+  border-color: var(--ib-divider);
+  text-shadow: none;
+}
+
+.markdown-rendered thead :is(th, td):not(#_ib) {
+  background: var(--ib-table-heading-bg);
+}
+
+/* 列显式对齐（:--: / --:）时表头跟随数据列，未指定时保持居中 */
+.markdown-rendered thead :is(th, td)[align="left"] { text-align: left; }
+.markdown-rendered thead :is(th, td)[align="right"] { text-align: right; }
+
+.markdown-rendered thead :is(th, td):empty:not(#_ib) {
+  background: transparent;
+}
+
+.markdown-rendered tbody tr:nth-child(odd) td {
+  background: var(--ib-bg-primary);
+}
+
+.markdown-rendered tbody tr:nth-child(even) td {
+  background: var(--ib-table-stripe-bg);
+}
+
+.markdown-rendered tr > :last-child {
+  border-right: 0;
+}
+
+.markdown-rendered tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.markdown-rendered thead tr:first-child > :first-child { border-start-start-radius: var(--ib-table-radius); }
+.markdown-rendered thead tr:first-child > :last-child { border-start-end-radius: var(--ib-table-radius); }
+.markdown-rendered tbody tr:last-child > :first-child { border-end-start-radius: var(--ib-table-radius); }
+.markdown-rendered tbody tr:last-child > :last-child { border-end-end-radius: var(--ib-table-radius); }
+
+.markdown-rendered tbody tr:hover td {
+  background: var(--ib-bg-active);
+}
+
+.markdown-rendered th code {
+  color: var(--ib-text-primary);
+  background: var(--ib-bg-tertiary);
+  border-color: var(--ib-border-default);
+}
+
+.theme-dark .markdown-rendered:not(.cm-table-widget) table {
+  border-color: var(--ib-border-default);
+  color: var(--ib-text-primary);
+  box-shadow: none;
+}
+
+.theme-dark .markdown-rendered:not(.cm-table-widget) :is(th, td) {
+  border-color: var(--ib-divider);
+}
+
+.theme-dark .markdown-rendered tbody tr:nth-child(odd) td {
+  background: var(--ib-bg-primary);
+}
+
+.theme-dark .markdown-rendered tbody tr:nth-child(even) td {
+  background: var(--ib-table-stripe-bg);
+}
+
+.theme-dark .markdown-rendered tbody tr:hover td {
+  background: var(--ib-bg-active);
+}
+
+/* Inline code and fenced code */
+.markdown-rendered code,
+.markdown-source-view.mod-cm6 .cm-inline-code {
+  color: var(--ib-accent-solid);
+  background: color-mix(in srgb, var(--ib-accent-brand) 10%, transparent);
+  border: 0;
+  border-radius: var(--ib-radius-sm);
+  padding: 0.08em 0.32em;
+  font-family: var(--font-monospace-theme);
+  font-size: 0.9em;
+  white-space: nowrap;
+}
+
+.theme-dark .markdown-rendered code,
+.theme-dark .markdown-source-view.mod-cm6 .cm-inline-code {
+  color: var(--ib-text-accent);
+  background: color-mix(in srgb, var(--ib-accent-brand) 18%, transparent);
+}
+
+.markdown-rendered pre,
+.markdown-source-view.mod-cm6 .HyperMD-codeblock {
+  color: var(--ib-compat-code-text);
+  background: var(--ib-compat-code-block);
+  font-family: var(--font-monospace-theme);
+  font-size: var(--ib-code-text-size);
+  line-height: var(--ib-code-leading);
+}
+
+/* Obsidian may apply its editor code colors after theme variables. Keep the
+   light editor block explicitly light so raw Mermaid and fenced text remain readable. */
+/* Obsidian may apply its editor code colors after theme variables; pin both modes. */
+:is(.theme-light, .theme-dark) .markdown-source-view.mod-cm6 :is(.cm-line.HyperMD-codeblock, .HyperMD-codeblock, .cm-formatting-code-block):not(#_ib) {
+  color: var(--ib-text-primary);
+  background-color: var(--ib-bg-code-block);
+}
+
+.theme-light .markdown-source-view.mod-cm6 .HyperMD-codeblock ::selection {
+  color: var(--ib-text-primary);
+  background: var(--ib-bg-selection);
+}
+
+.markdown-rendered pre {
+  border: 1px solid var(--ib-compat-code-border);
+  border-radius: var(--ib-code-radius);
+  box-shadow: 0 1px 2px rgba(31, 51, 73, 0.04);
+  padding: 1rem 1.1rem;
+  overflow: auto;
+}
+
+.markdown-rendered pre code {
+  color: inherit;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  line-height: inherit;
+}
+
+.markdown-rendered pre::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.markdown-rendered pre::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--ib-compat-blue) 24%, transparent);
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background-clip: padding-box;
+}
+
+/* Card borders and the header row are drawn in the diagram/code card section. */
+.markdown-source-view.mod-cm6 .HyperMD-codeblock-end {
+  padding-bottom: 0.85rem;
+}
+
+.markdown-source-view.mod-cm6 .HyperMD-codeblock:not(.HyperMD-codeblock-begin):not(.HyperMD-codeblock-end) {
+  border-radius: 0;
+}
+
+.markdown-rendered .token.comment,
+.markdown-source-view.mod-cm6 .cm-comment { color: var(--ib-compat-code-comment); font-style: italic; }
+.markdown-rendered .token.keyword,
+.markdown-source-view.mod-cm6 .cm-keyword { color: var(--ib-compat-code-keyword); font-weight: var(--ib-heading-bold); }
+.markdown-rendered .token.operator,
+.markdown-source-view.mod-cm6 .cm-operator { color: var(--ib-compat-code-text); }
+.markdown-rendered .token.string,
+.markdown-source-view.mod-cm6 .cm-string { color: var(--ib-compat-code-string); }
+.markdown-rendered .token.number,
+.markdown-rendered .token.boolean,
+.markdown-source-view.mod-cm6 .cm-number,
+.markdown-source-view.mod-cm6 .cm-bool { color: var(--ib-compat-code-number); }
+.markdown-rendered .token.function,
+.markdown-rendered .token.class-name,
+.markdown-source-view.mod-cm6 .cm-def,
+.markdown-source-view.mod-cm6 .cm-variableName.function { color: var(--ib-compat-code-function); font-weight: var(--ib-heading-bold); }
+.markdown-rendered .token.property,
+.markdown-source-view.mod-cm6 .cm-property { color: var(--ib-compat-code-property); }
+.markdown-rendered .token.tag,
+.markdown-source-view.mod-cm6 .cm-tag { color: var(--ib-syntax-operator); }
+.markdown-rendered .token.attr-name,
+.markdown-source-view.mod-cm6 .cm-attribute { color: var(--ib-syntax-number); }
+
+/* Mermaid preview: fit the viewport and center the diagram. */
+/* Only un-enhanced diagrams. Once the plugin takes a block over it owns the
+   container layout completely — this rule's place-items:center used to collapse
+   the plugin's header row to its content width and centre it. */
+
+/* Mermaid source highlighting in Live Preview and source mode. */
+.markdown-source-view.mod-cm6 .HyperMD-codeblock .cm-keyword,
+.markdown-source-view.mod-cm6 .HyperMD-codeblock .cm-type {
+  color: var(--ib-compat-code-keyword);
+  font-weight: 600;
+}
+
+.markdown-source-view.mod-cm6 .HyperMD-codeblock :is(.cm-def, .cm-variable, .cm-variable-2, .cm-variableName) {
+  color: var(--ib-compat-code-function);
+}
+
+.markdown-source-view.mod-cm6 .HyperMD-codeblock :is(.cm-string, .cm-string-2) {
+  color: var(--ib-compat-code-string);
+}
+
+.markdown-source-view.mod-cm6 .HyperMD-codeblock :is(.cm-number, .cm-atom, .cm-bool) {
+  color: var(--ib-compat-code-number);
+}
+
+.markdown-source-view.mod-cm6 .HyperMD-codeblock :is(.cm-operator, .cm-punctuation, .cm-bracket) {
+  color: var(--ib-compat-code-property);
+}
+
+.markdown-source-view.mod-cm6 .HyperMD-codeblock .cm-comment {
+  color: var(--ib-compat-code-comment);
+  font-style: italic;
+}
+
+.markdown-source-view.mod-cm6 .HyperMD-codeblock :is(.cm-meta, .cm-qualifier, .cm-attribute) {
+  color: var(--ib-syntax-number);
+}
+
+.theme-dark .markdown-source-view.mod-cm6 .HyperMD-codeblock :is(.cm-meta, .cm-qualifier, .cm-attribute) {
+  color: var(--ib-syntax-number);
+}
+
+/* Metadata, embeds, images and search */
+/* Properties: a light card with a bold heading. */
+.metadata-container {
+  color: var(--text-normal);
+  background: color-mix(in srgb, var(--ib-accent-brand) 6%, var(--ib-bg-tertiary));
+  border: 1px solid color-mix(in srgb, var(--ib-accent-brand) 20%, var(--ib-border-default));
+  border-radius: var(--ib-radius-xl);
+  padding: 0.9rem 1.25rem;
+  box-shadow: 0 1px 2px rgba(31, 55, 110, 0.04), 0 4px 14px color-mix(in srgb, var(--ib-accent-brand) 6%, transparent);
+}
+
+.theme-dark .metadata-container {
+  background: color-mix(in srgb, var(--ib-accent-brand) 10%, var(--ib-bg-tertiary));
+  border-color: color-mix(in srgb, var(--ib-accent-brand) 30%, var(--ib-border-default));
+  box-shadow: none;
+}
+
+.theme-dark .metadata-property,
+.theme-dark .metadata-property-key,
+.theme-dark .metadata-property-value {
+  color: var(--text-normal);
+}
+
+.markdown-embed,
+.file-embed {
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--ib-radius-md);
+}
+
+.markdown-rendered img {
+  margin-block: 0.2rem;
+  border-radius: var(--ib-radius-sm);
+}
+
+/* 图片对齐：本地图片嵌入独占一行，默认居中；在链接里写 left / right 改为左、右对齐。
+   ![说明|left|616](assets/a.webp) → alt 为「说明|left」；![[a.webp|right|616]] → alt 为「right」。
+   用 text-align 而不是 flex，复制到公众号、知乎时对齐也能保留。 */
+:is(.markdown-rendered, .markdown-source-view.mod-cm6) .image-embed {
+  display: block;
+  text-align: center;
+}
+/* 编辑区里 Obsidian 把图片容器设为 fit-content / inline-flex，只有图片那么宽，
+   对齐看不出来；撑满整行，对齐才相对于整个页面宽度。 */
+.markdown-source-view.mod-cm6 .cm-content .image-embed {
+  display: block;
+  width: auto;
+}
+/* 编辑图片链接时 Obsidian 在下方弹出的预览浮层没有宽度上限，
+   没写宽度的大图会按原图尺寸铺满窗口；限制在正文宽度内（插件提供 --ib-text-column）。 */
+.markdown-source-view.mod-cm6 .cm-editor .cm-tooltip.cm-image-reveal-tooltip .image-embed .image-wrapper img {
+  height: auto;
+}
+.markdown-source-view.mod-cm6 .cm-editor .cm-tooltip.cm-image-reveal-tooltip .image-embed .image-wrapper img:not(#_ib) {
+  max-width: var(--ib-text-column, var(--file-line-width));
+}
+:is(.markdown-rendered, .markdown-source-view.mod-cm6) .image-embed .image-wrapper {
+  display: inline-block;
+}
+
+/* 图片悬浮工具条（插件注入 .ib-image-actions）：贴在图片自身右上角，
+   鼠标移到图片上才淡淡出现，指向按钮时再完全显示；原生的放大/编辑按钮收进这里。 */
+:is(.markdown-rendered, .markdown-source-view.mod-cm6) .image-embed .image-wrapper {
+  position: relative;
+}
+
+.search-result-file-match {
+  border-radius: var(--ib-radius-sm);
+}
+
+/* 命中词用正文高亮的黄色配对，深浅两色都能读清（原来浅字配亮黄只有 1.6:1）。 */
+.search-result-file-matched-text {
+  color: var(--ib-highlight-yellow-text);
+  background: var(--ib-highlight-yellow-bg);
+}
+

@@ -1,0 +1,193 @@
+/* ==========================================================================
+ * Per-note layouts: add one of these to a note's `cssclasses` property.
+ *   ib-wide     wider reading column     ib-narrow   narrower reading column
+ *   ib-compact  tighter paragraph rhythm ib-no-title hide the inline title
+ * ========================================================================== */
+.ib-wide {
+  --ib-content-max: 1280px;
+  --file-line-width: 1280px;
+}
+.ib-narrow {
+  --ib-content-max: 780px;
+  --file-line-width: 780px;
+}
+.ib-compact {
+  --ib-paragraph-gap: 0.4em;
+  --p-spacing: var(--ib-space-2);
+  --list-spacing: 0;
+}
+.ib-no-title .inline-title {
+  display: none;
+}
+
+/* Side notes: a callout of type `aside` (> [!aside] ...) sits in the page margin when this note's own pane
+   has room for it (a container query, so a narrow split pane in a wide window keeps it inline), and only
+   while the text column is limited; otherwise it is an ordinary inline callout. */
+.workspace-leaf-content[data-type="markdown"] .markdown-preview-view { container: ib-note / inline-size; }
+.markdown-preview-view .callout[data-callout="aside"] {
+  --callout-color: var(--ib-text-muted);
+  font-size: 0.88em;
+}
+@container ib-note (min-width: 1320px) {
+  .markdown-preview-view.is-readable-line-width .callout[data-callout="aside"] {
+    float: right;
+    clear: right;
+    width: 220px;
+    margin: 0 -250px 0.8em 1.5em;
+  }
+}
+
+/* Long-form reading modes (per note, via cssclasses).
+ *   ib-large  bigger text, looser lines, stronger contrast, thicker focus ring
+ *   ib-eink   no shadows, motion or tints; hard borders, underlined links (e-ink and low-power screens)
+ * Meaning never relies on colour alone: links stay underlined, strong and emphasis stay weighted. */
+.ib-large {
+  --ib-text-size: 20px;
+  --ib-text-leading: 1.85;
+  --font-text-size: 20px;
+  --line-height-normal: 1.85;
+  --ib-focus-width: 3px;
+  --text-normal: var(--ib-text-primary);
+  --text-muted: var(--ib-text-primary);
+}
+.ib-large :is(a, .external-link, .internal-link) {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+.ib-large :is(table, .callout, pre) {
+  font-size: max(0.9em, 17px);
+}
+.ib-eink {
+  --text-normal: var(--ib-text-primary);
+  --text-muted: var(--ib-text-primary);
+  --ib-shadow-1: none;
+  --ib-shadow-2: none;
+  --ib-shadow-3: none;
+  --ib-focus-width: 3px;
+  --background-modifier-border: var(--ib-text-primary);
+}
+.ib-eink :is(a, .external-link, .internal-link) {
+  color: var(--ib-text-primary);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+.ib-eink :is(*, *::before, *::after) {
+  box-shadow: none;
+  text-shadow: none;
+  transition: none;
+  animation: none;
+}
+.ib-eink :is(.callout, blockquote, pre, table) {
+  background: transparent;
+  border: 1px solid var(--ib-text-primary);
+}
+.ib-eink {
+  /* 换成变量，不和前面高特异性的上色规则比优先级。 */
+  --ib-highlight-yellow-bg: transparent;
+  --ib-highlight-yellow-text: inherit;
+  --ib-highlight-blue-bg: transparent;
+  --ib-table-heading-bg: transparent;
+  --ib-table-stripe-bg: transparent;
+  --ib-quote-bg: transparent;
+  --ib-bg-active: transparent;
+}
+.ib-eink :is(mark, .cm-highlight):not(#_ib):not(#_ib2) {
+  background: transparent;
+  color: inherit;
+  border-bottom: 3px double currentColor;
+  border-radius: 0;
+}
+.ib-eink :is(th, td):not(#_ib):not(#_ib2) { background: transparent; }
+/* 纸面噪点画在外层视图的 ::before 上：编辑视图本身带 cssclass，直接关；阅读视图由带 cssclass 的内层盖住。 */
+.markdown-source-view.mod-cm6.ib-eink::before { content: none; }
+.markdown-preview-view.ib-eink:not(#_ib):not(#_ib2) {
+  position: relative;
+  background: var(--ib-page-paper, var(--ib-bg-primary));
+}
+
+/* Task statuses: - > < ? ! * i b " (the row carries data-task; without the theme they read as plain checkboxes). */
+:is(li.task-list-item, .HyperMD-task-line)[data-task="-"] { --ib-task-color: var(--ib-text-muted); --ib-task-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 6 6 18'/%3E%3Cpath d='m6 6 12 12'/%3E%3C/svg%3E"); }
+:is(li.task-list-item, .HyperMD-task-line)[data-task=">"] { --ib-task-color: var(--ib-warning-icon); --ib-task-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='m12 5 7 7-7 7'/%3E%3C/svg%3E"); }
+:is(li.task-list-item, .HyperMD-task-line)[data-task="<"] { --ib-task-color: var(--ib-info-icon); --ib-task-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E"); }
+:is(li.task-list-item, .HyperMD-task-line)[data-task="?"] { --ib-task-color: #8b5cf6; --ib-task-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 9a3 3 0 1 1 4.5 2.6c-.9.5-1.5 1.2-1.5 2.4'/%3E%3Cpath d='M12 18h.01'/%3E%3C/svg%3E"); }
+:is(li.task-list-item, .HyperMD-task-line)[data-task="!"] { --ib-task-color: var(--ib-error-icon); --ib-task-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 5v9'/%3E%3Cpath d='M12 19h.01'/%3E%3C/svg%3E"); }
+:is(li.task-list-item, .HyperMD-task-line)[data-task="*"] { --ib-task-color: var(--ib-warning-icon); --ib-task-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'%3E%3Cpath d='m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3L5.8 21 7 14.2 2 9.3l6.9-1z'/%3E%3C/svg%3E"); }
+:is(li.task-list-item, .HyperMD-task-line)[data-task="i"] { --ib-task-color: var(--ib-info-icon); --ib-task-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 11v6'/%3E%3Cpath d='M12 7h.01'/%3E%3C/svg%3E"); }
+:is(li.task-list-item, .HyperMD-task-line)[data-task="b"] { --ib-task-color: var(--ib-success-icon); --ib-task-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'%3E%3Cpath d='m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z'/%3E%3C/svg%3E"); }
+:is(li.task-list-item, .HyperMD-task-line)[data-task="\""] { --ib-task-color: var(--ib-text-muted); --ib-task-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 8h4v4c0 2-1 3-3 4'/%3E%3Cpath d='M14 8h4v4c0 2-1 3-3 4'/%3E%3C/svg%3E"); }
+:is(li.task-list-item, .HyperMD-task-line):is([data-task="-"], [data-task=">"], [data-task="<"], [data-task="?"], [data-task="!"], [data-task="*"], [data-task="i"], [data-task="b"], [data-task="\""]) input.task-list-item-checkbox:checked {
+  background-color: var(--ib-task-color);
+  border-color: var(--ib-task-color);
+  print-color-adjust: exact;
+}
+:is(li.task-list-item, .HyperMD-task-line):is([data-task="-"], [data-task=">"], [data-task="<"], [data-task="?"], [data-task="!"], [data-task="*"], [data-task="i"], [data-task="b"], [data-task="\""]) input.task-list-item-checkbox:checked::after {
+  -webkit-mask-image: var(--ib-task-icon);
+  mask-image: var(--ib-task-icon);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: 72%;
+}
+:is(li.task-list-item, .HyperMD-task-line)[data-task="-"] {
+  text-decoration: line-through;
+  color: var(--ib-text-muted);
+}
+
+/* Bases (core plugin): the table and cards views follow the same surfaces as reading-view tables. */
+body {
+  --bases-table-header-background: var(--ib-table-heading-bg);
+  --bases-table-header-color: var(--ib-text-secondary);
+  --bases-table-header-weight: 600;
+  --bases-table-border-color: var(--ib-border-default);
+  --bases-table-column-border-width: 0px;
+  --bases-table-row-background-hover: var(--ib-bg-hover);
+  --bases-table-container-border-radius: var(--ib-table-radius);
+  --bases-table-font-size: var(--ib-text-size);
+  --bases-cards-radius: var(--ib-radius-md);
+  --bases-cards-background: var(--ib-bg-tertiary);
+  --bases-cards-shadow: 0 0 0 1px var(--ib-border-default);
+  --bases-cards-shadow-hover: 0 0 0 1px var(--ib-accent-brand), var(--ib-shadow-float);
+  --bases-embed-border-radius: var(--ib-radius-md);
+  --bases-embed-border-color: var(--ib-border-default);
+}
+.bases-table .bases-td.mod-number, .bases-table .bases-td [data-property-type="number"] { font-variant-numeric: tabular-nums; }
+/* Dataview and Tasks: quiet metadata and clear errors. Written from their documented class names; not checked against the plugins. */
+.dataview-error, .dataview-error-box { color: var(--ib-error-icon); background: color-mix(in srgb, var(--ib-error-icon) 8%, transparent); border-radius: var(--ib-radius-sm); padding: 0.4em 0.7em; }
+.dataview.inline-field-key { color: var(--ib-text-muted); }
+.task-extras, .tasks-backlink { color: var(--ib-text-muted); font-size: 0.85em; }
+
+/* Content-level widths (per note, via cssclasses): the text column stays at its width while tables or images
+   are allowed to use more of the pane, up to --ib-wide-max (Reading view). In a narrow pane or on a phone the
+   block keeps the column width, so nothing overflows. cqw is the width of the note's own pane (container ib-note). */
+.ib-wide-tables,
+.ib-wide-images { --ib-wide-w: max(100%, min(calc(100cqw - 48px), var(--ib-wide-max, 1400px))); }
+.ib-wide-tables.markdown-preview-view .el-table,
+.ib-wide-images.markdown-preview-view p > .image-embed:only-child {
+  display: block;
+  box-sizing: border-box;
+  width: var(--ib-wide-w);
+  max-width: none;
+  margin-inline: calc((100% - var(--ib-wide-w)) / 2);
+}
+.ib-wide-images.markdown-preview-view p > .image-embed:only-child img { width: 100%; max-width: none; }
+
+/* Style Settings switches. */
+body.ib-code-wrap .markdown-rendered pre code:not(#_ib) { white-space: pre-wrap; overflow-wrap: anywhere; }
+body.ib-no-table-stripes .markdown-rendered tbody tr td:not(#_ib) { background: var(--ib-bg-primary); }
+body.ib-compact-ui { --nav-item-padding: 2px var(--size-4-2) 2px var(--size-4-6); --nav-item-size: var(--font-ui-small); }
+
+/* Canvas and Graph: Obsidian reads these variables, so tying them to the theme tokens is enough. */
+body {
+  --canvas-background: var(--ib-page-paper, var(--ib-bg-primary));
+  --canvas-dot-pattern: var(--ib-border-default);
+  --canvas-card-label-color: var(--ib-text-muted);
+  --canvas-color-3: color-mix(in srgb, var(--ib-warning-icon) 55%, #E6C200);
+  --graph-line: var(--ib-border-strong);
+  --graph-node: var(--ib-text-muted);
+  --graph-node-focused: var(--ib-accent-brand);
+  --graph-node-tag: var(--ib-success-icon);
+  --graph-node-attachment: var(--ib-warning-icon);
+  --graph-node-unresolved: var(--text-faint);
+  --graph-text: var(--ib-text-primary);
+}
+.canvas-node-container { border-radius: var(--ib-card-radius, var(--radius-m)); }
+:is(.canvas-node.is-focused, .canvas-node.is-selected) .canvas-node-container { box-shadow: 0 0 0 var(--ib-focus-width) var(--ib-accent-subtle); }

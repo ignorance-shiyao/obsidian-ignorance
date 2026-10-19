@@ -1,0 +1,209 @@
+/* ==========================================================================
+ * Document-style refresh
+ * Compact headings (set in the --h*-size tokens above), flat inline code,
+ * a properties card, indentation guides in the file tree and outline, and a
+ * floating status bar.
+ * ========================================================================== */
+
+body {
+  --inline-title-size: 26px;
+  --table-text-size: 13px;
+  --table-header-size: var(--table-text-size);
+  --inline-title-weight: 500;
+  --nav-indentation-guide-color: var(--ib-border-default);
+  --nav-indentation-guide-width: 1px;
+  --indentation-guide-color: var(--ib-border-default);
+  --status-bar-radius: var(--ib-radius-lg);
+  --status-bar-border-width: 1px;
+  --status-bar-border-color: var(--ib-border-default);
+  --status-bar-background: var(--ib-bg-tertiary);
+}
+
+/* Headings: tight rhythm, since the sizes are now close to body text. */
+body {
+  --ib-heading-color: var(--ib-accent-solid);
+  --h1-color: var(--ib-heading-color);
+  --h2-color: var(--ib-heading-color);
+  --h3-color: var(--ib-heading-color);
+  --h4-color: var(--ib-heading-color);
+}
+.theme-dark { --ib-heading-color: var(--ib-text-accent); }
+
+.markdown-rendered :is(h1, h2, h3, h4, h5, h6),
+.markdown-source-view.mod-cm6 :is(.HyperMD-header-1, .HyperMD-header-2, .HyperMD-header-3, .HyperMD-header-4, .HyperMD-header-5, .HyperMD-header-6) {
+  letter-spacing: 0;
+}
+/* H1-H4 用标题色；H5、H6 走 Obsidian 的 --h5-color / --h6-color（正文色）。 */
+.markdown-rendered :is(h1, h2, h3, h4),
+.markdown-source-view.mod-cm6 :is(.HyperMD-header-1, .HyperMD-header-2, .HyperMD-header-3, .HyperMD-header-4),
+.markdown-source-view.mod-cm6 .cm-line :is(.cm-header-1, .cm-header-2, .cm-header-3, .cm-header-4) {
+  color: var(--ib-heading-color);
+}
+.markdown-rendered :is(h5, h6),
+.markdown-source-view.mod-cm6 :is(.HyperMD-header-5, .HyperMD-header-6),
+.markdown-source-view.mod-cm6 .cm-line :is(.cm-header-5, .cm-header-6) {
+  color: var(--ib-text-primary);
+}
+
+
+/* Keyboard keys: small bordered pills. */
+kbd {
+  font-size: var(--font-ui-smaller);
+  padding: 1px 6px;
+  border-radius: var(--ib-radius-sm);
+  background: var(--ib-bg-tertiary);
+  box-shadow: 0 1px 0 var(--ib-border-default);
+}
+
+.metadata-container :is(.metadata-property-icon, .metadata-add-button) { color: var(--ib-accent-brand); }
+.metadata-properties-heading .metadata-properties-title {
+  color: var(--ib-heading-color);
+  font-size: var(--font-ui-medium);
+  font-weight: 650;
+}
+.metadata-property:hover { background: color-mix(in srgb, var(--ib-accent-brand) 6%, transparent); }
+
+/* 标题是自由文本：Obsidian 会在编辑时弹出「已有取值」下拉，像个选择器。
+   焦点在标题属性里时不显示它，保持纯文本输入。 */
+
+/* File tree: active note as an accent pill with bold accent text. */
+.nav-file-title.is-active,
+.tree-item-self.is-active {
+  color: var(--ib-accent-solid);
+  background: color-mix(in srgb, var(--ib-accent-brand) 12%, transparent);
+  font-weight: 650;
+}
+.theme-dark .nav-file-title.is-active,
+.theme-dark .tree-item-self.is-active {
+  color: var(--ib-text-accent);
+  background: color-mix(in srgb, var(--ib-accent-brand) 22%, transparent);
+}
+
+/* Outline: guides always on, compact muted entries. */
+.workspace-leaf-content[data-type="outline"] .tree-item-children {
+  border-inline-start: 1px solid var(--ib-border-default);
+}
+.workspace-leaf-content[data-type="outline"] .tree-item-self {
+  color: var(--ib-text-secondary);
+  font-size: var(--font-ui-small);
+}
+.workspace-leaf-content[data-type="outline"] .tree-item-self:hover {
+  color: var(--ib-accent-solid);
+}
+
+/* Status bar: a floating pill off the window corner. */
+body:not(.is-mobile) .status-bar {
+  bottom: 8px;
+  right: 8px;
+  padding: 2px 10px;
+  box-shadow: var(--ib-shadow-float);
+}
+
+
+
+/* ==========================================================================
+ * Built-in fallback
+ *
+ * The rules below need no plugin: they style Mermaid's own output (Obsidian's
+ * built-in Mermaid 11, or the plugin disabled). When the plugin runs, its
+ * tags (data-ibm-series, data-ibm-c4, cards, …) refine these further.
+ * ========================================================================== */
+
+
+
+
+
+body.is-phone {
+  --ib-card-radius: var(--ib-radius-md);
+  /* 手机正文字号偏大，2.6em 的标题会折成单字一行；按屏宽取值并设上下限。 */
+  --inline-title-size: clamp(26px, 7.5vw, 34px);
+  --file-margins: 16px;
+  /* Obsidian 默认每级缩进 2.25em，手机大字号下三四级列表就只剩一条窄缝。 */
+  --list-indent: 1.4em;
+  /* 属性名和值比正文小一号，属性卡片不再占掉首屏。 */
+  --metadata-label-font-size: 0.85em;
+  --metadata-input-font-size: 0.85em;
+  --metadata-label-width: min(32%, 6.5em);
+  /* 引用的左侧留白（放引号的位置）在窄屏上收窄。 */
+  --ib-quote-inset: 2.6em;
+}
+/* 手机笔记属性：只留一层卡片，去掉 Obsidian 移动端的内层底色框；
+   行宽保持在 250px 以上，属性名与值并排显示而不是上下折行。 */
+body.is-phone .metadata-container {
+  padding: var(--ib-space-2, 8px) var(--ib-space-3, 12px);
+  border-radius: var(--ib-radius-md);
+  box-shadow: none;
+}
+body.is-phone .metadata-content {
+  transform: none;
+  width: 100%;
+  padding: 0;
+  background: transparent;
+}
+body.is-phone .metadata-property {
+  flex-wrap: nowrap;
+}
+body.is-phone .metadata-property .metadata-property-key {
+  width: min(32%, 6.5em);
+  flex: 0 0 min(32%, 6.5em);
+}
+body.is-phone .metadata-property .metadata-property-value {
+  margin-top: 0;
+  padding-inline-start: 0;
+  min-width: 0;
+}
+/* 列表：桌面的 2rem 外加每级缩进在手机上会让四级列表挤出屏幕。 */
+body.is-phone .markdown-rendered :is(ol, ul) {
+  padding-inline-start: 0.5em;
+}
+body.is-phone .markdown-rendered:not(.cm-table-widget) :is(th, td) {
+  padding: 8px 10px;
+  font-size: var(--ib-small-size);
+}
+body.is-phone .markdown-rendered:not(.cm-table-widget) thead :is(th, td) { font-size: calc(var(--ib-small-size) + 1px); }
+body.is-phone .markdown-rendered:not(.cm-table-widget) table {
+  display: block;
+  overflow-x: auto;
+}
+body.is-phone .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock:not(#_ib) {
+  padding-inline: var(--ib-space-3);
+}
+
+/* 系统开启「减弱动态效果」时去掉过渡动画。 */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ib-dur-fast: 0ms;
+    --ib-dur-base: 0ms;
+    --ib-dur-slow: 0ms;
+  }
+  body *:not(#_ib),
+body *:not(#_ib)::before,
+body *:not(#_ib)::after {
+    transition-duration: 0ms;
+    animation-duration: 0ms;
+    animation-iteration-count: 1;
+  }
+}
+
+
+body {
+  --ib-sidebar-icon: color-mix(in srgb, var(--ib-accent-brand) 72%, var(--text-muted));
+}
+:is(.workspace-split.mod-left-split, .workspace-split.mod-right-split, .workspace-sidedock-vault-profile) :is(.clickable-icon, .workspace-tab-header-inner-icon, .nav-action-button) {
+  color: var(--ib-sidebar-icon);
+}
+:is(.workspace-split.mod-left-split, .workspace-split.mod-right-split, .workspace-sidedock-vault-profile) :is(.clickable-icon, .nav-action-button):hover,
+:is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header:hover .workspace-tab-header-inner-icon {
+  color: var(--ib-accent-brand);
+  background-color: color-mix(in srgb, var(--ib-accent-brand) 10%, transparent);
+}
+:is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
+:is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) :is(.clickable-icon, .nav-action-button).is-active {
+  color: var(--ib-accent-brand);
+  background-color: color-mix(in srgb, var(--ib-accent-brand) 16%, transparent);
+}
+.sidebar-toggle-button .clickable-icon { color: var(--ib-sidebar-icon); }
+.sidebar-toggle-button .clickable-icon:hover { color: var(--ib-accent-brand); }
+
+/* 调色板里的「自定义」格：彩虹环表示可选任意色，选过后中间显示当前色。 */
+

@@ -81,7 +81,7 @@
 
 ## 开发
 
-`src/theme.css` 是可读源码，`theme.css` 是它的压缩构建产物。
+`src/parts/*.css` 是可读源码（按文件名顺序拼接，顺序即层叠顺序），`theme.css` 是它的压缩构建产物。
 
 ```bash
 npm ci && npm run build                      # 重新生成 theme.css

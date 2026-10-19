@@ -1,0 +1,394 @@
+/* Type scale — Obsidian's variables cover size/weight/leading; the vertical
+   rhythm below comes from the spacing scale. */
+.markdown-rendered h1,
+.markdown-source-view.mod-cm6 .HyperMD-header-1 { margin: var(--ib-space-6) 0 var(--ib-space-4); }
+.markdown-rendered h2,
+.markdown-source-view.mod-cm6 .HyperMD-header-2 { margin: var(--ib-space-5) 0 var(--ib-space-3); }
+.markdown-rendered h3,
+.markdown-source-view.mod-cm6 .HyperMD-header-3 { margin: var(--ib-space-5) 0 var(--ib-space-3); }
+.markdown-rendered h4,
+.markdown-source-view.mod-cm6 .HyperMD-header-4 { margin: var(--ib-space-4) 0 var(--ib-space-2); }
+.markdown-rendered h5,
+.markdown-source-view.mod-cm6 .HyperMD-header-5 { margin: var(--ib-space-4) 0 var(--ib-space-2); }
+.markdown-rendered h6,
+.markdown-source-view.mod-cm6 .HyperMD-header-6 { margin: var(--ib-space-3) 0 var(--ib-space-2); }
+
+.markdown-rendered p {
+  margin-block: 0 var(--ib-paragraph-gap, var(--ib-space-4));
+  line-height: var(--ib-text-leading);
+}
+
+/* Chromium supports text-autospace; normalize mixed CJK and Latin text spacing. */
+.markdown-rendered :is(p, li, blockquote, td, th, h1, h2, h3, h4, h5, h6, .callout-title, .callout-content),
+.markdown-source-view.mod-cm6 .cm-line:not(.HyperMD-codeblock) {
+  text-autospace: normal;
+}
+
+.markdown-rendered :is(small, .footnote, figcaption) {
+  font-size: var(--ib-small-size);
+  line-height: var(--ib-small-leading);
+}
+
+/* One focus treatment everywhere: 2px brand ring, 2px offset. */
+:is(button, input, textarea, select, .clickable-icon, .nav-file-title, .nav-folder-title, .suggestion-item):not(.metadata-property *, .metadata-container *):focus-visible {
+  outline: var(--ib-focus-width) solid var(--ib-focus);
+  outline-offset: var(--ib-space-1);
+  box-shadow: none;
+}
+
+/* Tokens the spec defines that Obsidian has no variable for. */
+.markdown-rendered a:visited:not(.internal-link, .tag) {
+  color: var(--ib-link-visited);
+}
+
+.markdown-rendered .drag-over,
+.nav-file-title.is-being-dragged-over,
+.nav-folder-title.is-being-dragged-over {
+  background: var(--ib-bg-drag);
+}
+
+.markdown-source-view.mod-cm6 .cm-variableName,
+.markdown-source-view.mod-cm6 .cm-variable {
+  color: var(--ib-syntax-variable);
+}
+
+.callout[data-callout="note"],
+.callout[data-callout="info"] {
+  --ib-callout-semantic-text: var(--ib-info-text);
+  background: var(--ib-info-bg);
+  border-color: var(--ib-info-border);
+}
+
+.callout[data-callout="warning"],
+.callout[data-callout="caution"],
+.callout[data-callout="attention"] {
+  --ib-callout-semantic-text: var(--ib-warning-text);
+  background: var(--ib-warning-bg);
+  border-color: var(--ib-warning-border);
+}
+
+.callout[data-callout="tip"],
+.callout[data-callout="success"],
+.callout[data-callout="check"],
+.callout[data-callout="done"] {
+  --ib-callout-semantic-text: var(--ib-success-text);
+  background: var(--ib-success-bg);
+  border-color: var(--ib-success-border);
+}
+
+.callout[data-callout="failure"],
+.callout[data-callout="fail"],
+.callout[data-callout="danger"],
+.callout[data-callout="error"],
+.callout[data-callout="bug"] {
+  --ib-callout-semantic-text: var(--ib-error-text);
+  background: var(--ib-error-bg);
+  border-color: var(--ib-error-border);
+}
+
+/* H1-H4 and their numbers take the accent colour; H5-H6 stay in the text colour. */
+body {
+  --h5-color: var(--ib-text-primary);
+  --h6-color: var(--ib-text-primary);
+  --table-width: 100%;
+}
+
+/* Highlights read as soft pills in reading view; the page title keeps the text colour. */
+.markdown-rendered mark:not(.slide-surface mark) {
+  padding: 0.1em 0.55em;
+  border-radius: var(--ib-radius-md);
+}
+body { --inline-title-color: var(--ib-text-primary); }
+
+/* Extra callout types, ready to use with no plugin: > [!decision], > [!risk], > [!definition], > [!idea].
+   They reuse the four semantic palettes, so colour in light and dark stays consistent. */
+.callout[data-callout="decision"],
+.callout[data-callout="definition"] {
+  --callout-icon: lucide-git-branch;
+  --ib-callout-semantic-text: var(--ib-info-text);
+  background: var(--ib-info-bg);
+  border-color: var(--ib-info-border);
+}
+.callout[data-callout="definition"] { --callout-icon: lucide-book-open; }
+.callout[data-callout="source"] {
+  --callout-icon: lucide-link;
+  --ib-callout-semantic-text: var(--ib-text-muted);
+  font-size: 0.92em;
+}
+.callout[data-callout="risk"] {
+  --callout-icon: lucide-shield-alert;
+  --ib-callout-semantic-text: var(--ib-warning-text);
+  background: var(--ib-warning-bg);
+  border-color: var(--ib-warning-border);
+}
+.callout[data-callout="idea"] {
+  --callout-icon: lucide-lightbulb;
+  --ib-callout-semantic-text: var(--ib-success-text);
+  background: var(--ib-success-bg);
+  border-color: var(--ib-success-border);
+}
+
+/* Components — design draft page 3. Every value resolves to a token. */
+
+/* Buttons: primary / secondary / ghost / danger / icon / disabled. */
+button:not(.clickable-icon),
+.mod-cta,
+.mod-warning {
+  border-radius: var(--ib-radius-md);
+  font-weight: 600;
+}
+
+button:not(.clickable-icon, .mod-cta, .mod-warning, .mod-destructive) {
+  color: var(--ib-text-primary);
+  background: var(--ib-bg-secondary);
+  border: var(--ib-border-1) solid var(--ib-border-default);
+}
+
+button:not(.clickable-icon, .mod-cta, .mod-warning, .mod-destructive):hover {
+  background: var(--ib-bg-hover);
+  border-color: var(--ib-border-strong);
+}
+
+.mod-cta {
+  color: var(--ib-text-on-accent);
+  background: var(--ib-accent-solid);
+  border: var(--ib-border-1) solid var(--ib-accent-solid);
+}
+
+.mod-cta:hover {
+  background: var(--ib-accent-brand);
+  border-color: var(--ib-accent-brand);
+}
+
+/* Danger buttons. Obsidian 1.13 marks them .mod-destructive (solid when also
+   .mod-cta, e.g. "Uninstall"); older dialogs and plugins use .mod-warning.
+   Its own rules (0,1,1+) out-rank a bare class, so match them, keep white
+   text at 5:1 or better in both modes, and drop the accent border .mod-cta adds. */
+button.mod-warning,
+button.mod-destructive.mod-cta {
+  --text-color: var(--ib-on-danger);
+  color: var(--ib-on-danger);
+  background: var(--ib-danger-solid);
+  border: var(--ib-border-1) solid var(--ib-danger-solid);
+}
+
+button.mod-warning:hover,
+button.mod-destructive.mod-cta:hover {
+  background: var(--ib-danger-solid-hover);
+  border-color: var(--ib-danger-solid-hover);
+}
+
+/* Secondary danger (not the main action): red text on the normal surface. */
+button.mod-destructive:not(.mod-cta) {
+  --text-color: var(--ib-error-text);
+  color: var(--ib-error-text);
+  background: var(--ib-bg-tertiary);
+  border: var(--ib-border-1) solid var(--ib-error-border);
+}
+
+button.mod-destructive:not(.mod-cta):hover {
+  background: var(--ib-error-bg);
+  border-color: var(--ib-error-text);
+}
+
+:is(button.mod-warning, button.mod-destructive):focus-visible {
+  outline: 2px solid var(--ib-danger-solid);
+  outline-offset: 2px;
+}
+
+button:disabled,
+button.is-disabled {
+  color: var(--ib-text-disabled);
+  background: var(--ib-bg-secondary);
+  border-color: var(--ib-border-default);
+  cursor: not-allowed;
+}
+
+/* Inputs: default / focus / error / disabled. */
+/* Obsidian zeroes --input-border-width/--input-radius in contexts that own the
+   focus treatment themselves (property rows, inline editors). Honor that
+   contract instead of forcing chrome onto every input. */
+input:is([type="text"], [type="search"], [type="email"], [type="password"], [type="number"]),
+textarea,
+select,
+.dropdown {
+  color: var(--ib-text-primary);
+  /* Only the color: Obsidian draws the dropdown chevron with background-image
+     / -position / -repeat, which the background shorthand would wipe (light)
+     or leave tiling across the whole control (dark, where its image rule wins). */
+  background-color: var(--ib-bg-input);
+  border: var(--input-border-width, var(--ib-border-1)) solid var(--ib-border-default);
+  border-radius: var(--input-radius, var(--ib-radius-md));
+}
+
+input:is([type="text"], [type="search"], [type="email"], [type="password"], [type="number"]):focus,
+textarea:focus,
+select:focus {
+  border-color: var(--ib-focus);
+  outline: var(--ib-focus-width) solid color-mix(in srgb, var(--ib-focus) 30%, transparent);
+  outline-offset: 0;
+}
+
+/* Never nest: inside a property row the row is the focus target, so its inputs
+   stay completely bare. */
+.metadata-property :is(input, textarea, select, .metadata-input-longtext):not(#_ib),
+.metadata-property :is(input, textarea, select):focus:not(#_ib),
+.metadata-property :is(input, textarea, select):focus-visible:not(#_ib) {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  box-shadow: none;
+}
+
+.metadata-property {
+  --metadata-property-box-shadow-focus: inset 0 0 0 var(--ib-border-2) var(--ib-focus);
+  --metadata-property-radius: var(--ib-radius-md);
+  --metadata-property-radius-focus: var(--ib-radius-md);
+  --metadata-property-background-hover: var(--ib-bg-hover);
+}
+
+input.is-invalid,
+input[aria-invalid="true"],
+textarea.is-invalid {
+  border-color: var(--ib-error-icon);
+  color: var(--ib-error-text);
+}
+
+input:disabled,
+textarea:disabled,
+select:disabled {
+  color: var(--ib-text-disabled);
+  background: var(--ib-bg-secondary);
+}
+
+/* Checkbox, radio, toggle, slider. */
+input[type="checkbox"] {
+  border: var(--ib-border-1) solid var(--ib-border-strong);
+  border-radius: var(--ib-radius-sm);
+  background: var(--ib-bg-input);
+}
+
+input[type="checkbox"]:checked {
+  background: var(--ib-accent-solid);
+  border-color: var(--ib-accent-solid);
+}
+
+input[type="radio"] {
+  border-radius: 50%;
+}
+
+/* Toggles: Obsidian owns the geometry through its --toggle-* variables, so only
+   the colors are ours. The hidden <input> inside must stay bare — giving it the
+   generic checkbox chrome made it surface as a white slab over the track. */
+.checkbox-container {
+  background-color: var(--ib-border-strong);
+}
+
+.checkbox-container.is-enabled {
+  background-color: var(--ib-accent-solid);
+}
+
+.checkbox-container input[type="checkbox"]:not(#_ib) {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+input[type="range"] {
+  --slider-track-background: var(--ib-border-default);
+  --slider-thumb-border-color: var(--ib-accent-solid);
+}
+
+/* Command palette and search results. */
+.suggestion-item,
+.suggestion-item.mod-complex {
+  border-radius: var(--ib-radius-md);
+}
+
+.suggestion-item.is-selected {
+  color: var(--ib-text-accent);
+  background: var(--ib-bg-active);
+}
+
+.suggestion-highlight,
+.search-result-file-matched-text {
+  color: var(--ib-text-accent);
+  background: var(--ib-accent-subtle);
+  border-radius: var(--ib-radius-xs);
+}
+
+.prompt,
+.modal {
+  border-radius: var(--ib-radius-xl);
+  border: var(--ib-border-1) solid var(--ib-border-default);
+  background: var(--ib-bg-tertiary);
+  box-shadow: var(--ib-shadow-2);
+}
+
+kbd,
+.suggestion-hotkey {
+  font-family: var(--ib-font-mono);
+  font-size: var(--ib-tiny-size);
+  color: var(--ib-text-secondary);
+  background: var(--ib-bg-secondary);
+  border: var(--ib-border-1) solid var(--ib-border-default);
+  border-radius: var(--ib-radius-sm);
+  padding: var(--ib-space-1) var(--ib-space-2);
+}
+
+/* Tooltip, notice, context menu. */
+.tooltip .tooltip-content {
+  color: var(--ib-bg-primary);
+  background: var(--ib-text-primary);
+  border-radius: var(--ib-radius-sm);
+  font-size: var(--ib-tiny-size);
+}
+
+/* 提示跟随主题色。Obsidian 原生点击提示即关闭，右上角的 ✕ 只是把这个行为显式画出来。 */
+.notice {
+  position: relative;
+  padding-inline-end: 2.4em;
+  color: var(--ib-text-accent);
+  background: var(--ib-accent-subtle);
+  border: var(--ib-border-1) solid color-mix(in srgb, var(--ib-accent-brand) 35%, transparent);
+  border-radius: var(--ib-radius-md);
+  box-shadow: var(--ib-shadow-1);
+}
+.notice::after {
+  content: "";
+  position: absolute;
+  top: 0.6em;
+  inset-inline-end: 0.6em;
+  width: 1.1em;
+  height: 1.1em;
+  background-color: currentColor;
+  opacity: 0.55;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M18 6 6 18M6 6l12 12'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.notice:hover::after {
+  opacity: 1;
+}
+
+.menu {
+  background: var(--ib-bg-tertiary);
+  border: var(--ib-border-1) solid var(--ib-border-default);
+  border-radius: var(--ib-radius-lg);
+  box-shadow: var(--ib-shadow-1);
+}
+
+.menu-item:hover:not(.is-disabled) {
+  background: var(--ib-bg-hover);
+}
+
+/* Scrollbars follow the border tokens rather than the OS default. */
+::-webkit-scrollbar-thumb {
+  background: var(--ib-border-strong);
+  border-radius: var(--ib-radius-lg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ib-text-muted);
+}
+

@@ -1,0 +1,120 @@
+/* ==========================================================================
+ * Mermaid diagrams
+ *
+ * All diagram painting lives here; the Ignorance Advanced plugin only
+ * lays out, measures and tags structure (data-ibm-group / data-ibm-series)
+ * that CSS cannot infer.
+ *
+ * Specificity: Mermaid scopes its own sheet as `#<svg-id> .node rect`
+ * (1 id). `:is(#_ib#_ib, svg[id])` counts as 2 ids, so these rules win
+ * without !important — while an author's classDef (emitted with
+ * !important) and `style` statements (inline !important) still win over us.
+ * ========================================================================== */
+
+.theme-light {
+  --ib-page-desk: #E9EDF3;
+  --ib-page-paper: #FFFFFF;
+}
+
+.theme-dark {
+  --ib-page-desk: #0A1120;
+  --ib-page-paper: #141E30;
+}
+
+/* Diagram outlines and connectors: the accent, lifted in dark mode so thin
+   strokes stay visible on the dark canvas (the plugin sets it per palette). */
+body {
+}
+.theme-dark {}
+
+
+
+.theme-light {
+  --ib-card-edge: var(--ib-border-default);
+  --ib-card-mix: 18%;
+  --ib-card-mix-hover: 34%;
+  --ib-card-tint: 3%;
+  --ib-card-fade: 58%;
+  --ib-card-highlight: inset 0 1px 0 color-mix(in srgb, #FFFFFF 72%, transparent);
+  --ib-diagram-bg: var(--ib-bg-primary);
+}
+.theme-dark {
+  --ib-card-edge: #263B57;
+  --ib-card-mix: 28%;
+  --ib-card-mix-hover: 50%;
+  --ib-card-tint: 7%;
+  --ib-card-fade: 62%;
+  --ib-card-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.045);
+  --ib-diagram-bg: #101C2D;
+}
+body {
+  /* Re-declared on body so a Style Settings override of --ib-content-max reaches it. */
+  --file-line-width: var(--ib-content-max);
+  --ib-card-radius: var(--ib-radius-lg);
+  --ib-card-border: color-mix(in srgb, var(--ib-accent-brand) var(--ib-card-mix), var(--ib-card-edge));
+  --ib-card-border-hover: color-mix(in srgb, var(--ib-accent-brand) var(--ib-card-mix-hover), var(--ib-card-edge));
+}
+
+/* Code blocks share the diagram card: same border, tint, hover and header. */
+
+/* Editing view: long code lines wrap inside the block too. */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
+  overflow-wrap: anywhere;
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock:not(#_ib) {
+  white-space: pre-wrap;
+}
+
+/* Editing view: the block is drawn line by line, so the card is built from
+   the lines — same border, radius and tint as the diagram card, and the
+   opening fence line doubles as the header row with the language on the left. */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock:not(#_ib) {
+  border-inline: 1px solid var(--ib-card-border);
+  padding-inline: var(--ib-space-4, 16px);
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
+  position: relative;
+  min-height: 44px;
+  box-sizing: border-box;
+  box-shadow: var(--ib-card-highlight);
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin:not(#_ib) {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 1px solid var(--ib-card-border);
+  border-bottom: 1px solid var(--background-modifier-border);
+  border-radius: var(--ib-code-radius) var(--ib-code-radius) 0 0;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--ib-accent-brand) var(--ib-card-tint), var(--ib-bg-code-block)) 0%, var(--ib-bg-code-block) 100%);
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end:not(#_ib) {
+  border-bottom: 1px solid var(--ib-card-border);
+  border-radius: 0 0 var(--ib-code-radius) var(--ib-code-radius);
+}
+.markdown-source-view.mod-cm6 .HyperMD-codeblock-begin .code-block-flair {
+  left: var(--ib-space-3, 12px);
+  right: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 6px;
+  font-family: var(--font-interface-theme);
+  font-size: var(--ib-small-size, 14px);
+  font-weight: 600;
+  line-height: 22px;
+  color: var(--text-normal);
+}
+.markdown-source-view.mod-cm6 .HyperMD-codeblock-begin .code-block-flair:hover { color: var(--text-accent); }
+/* While the cursor is on the fence line its source shows; keep the label off it. */
+.markdown-source-view.mod-cm6 .cm-active.HyperMD-codeblock-begin .code-block-flair { display: none; }
+
+
+
+
+
+
+
+
+
+
+
+
+

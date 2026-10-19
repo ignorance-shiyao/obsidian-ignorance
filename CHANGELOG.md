@@ -1,6 +1,8 @@
 # Changelog
 
 ## Unreleased
+The source is now split into `src/parts/NN-name.css` (tokens, prose, components, workspace chrome, editor content, diagrams, page and design, modes), joined in file-name order into the same `theme.css`; comment-only leftovers were removed. The built file is byte-identical to before the split.
+
 Content-level widths: add `ib-wide-tables` or `ib-wide-images` to a note's `cssclasses` and the text column stays narrow while tables or single-image paragraphs use more of the pane, up to the new Wide block width setting (Reading view; phone and narrow panes keep the column width).
 
 New Style Settings: heading font, hide heading level labels, wrap long code lines, table text size, no table stripes, compact sidebars, and Wide block width. The Content width slider goes up to 1400px.
