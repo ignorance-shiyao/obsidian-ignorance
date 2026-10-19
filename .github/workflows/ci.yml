@@ -29,5 +29,7 @@ jobs:
         run: |
           npx playwright install --with-deps chromium-headless-shell
           npm run check:styles
+      - name: CSS lint (browser features Obsidian flags, :has)
+        run: npm run lint:css
       - name: Release checks (size, metadata, commit emails, clean tree)
         run: npm run check

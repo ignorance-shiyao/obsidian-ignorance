@@ -52,7 +52,7 @@ const view = cls => tab.evaluate(c => { const v = document.querySelector(".markd
 const failures = [];
 const check = (ok, what) => { console.log(`${ok ? "✔" : "✘"} ${what}`); if (!ok) failures.push(what); };
 const light = await probe();
-check(light.sizer <= 820, `readable line length limits the text column (${light.sizer}px)`);
+check(light.sizer <= 960, `readable line length limits the text column (${light.sizer}px)`);
 check(light.search >= 4.5, `search match contrast, light (${light.search}:1)`);
 for (const [name, value] of Object.entries(light.tokens)) check(value >= 4.5, `code ${name} contrast, light (${value}:1)`);
 // No app.css here, so <p> has no --text-normal; H5 is checked against the theme's text token instead.

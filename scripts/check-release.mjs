@@ -41,7 +41,10 @@ check(count(/:has\(/g, stripped) === 0, "no :has()", String(count(/:has\(/g, str
 check(count(/text-indent/g, stripped) === 0, "no text-indent", String(count(/text-indent/g, stripped)));
 check(count(/(^|[;{\s])columns?\s*:|column-count/g, stripped) <= 1, "multi-column used at most once (known: slides)", String(count(/(^|[;{\s])columns?\s*:|column-count/g, stripped)));
 check(count(/url\(\s*["']?(https?:)?\/\//g, stripped) === 0 && count(/@import/g, stripped) === 0, "no remote assets or @import");
-check(css.length < 140 * 1024, "theme.css under 140 KB", `${(css.length / 1024).toFixed(0)} KB`);
+// The directory review warns ("larger than recommended") above an unpublished size; 100 KB is the working budget.
+check(Buffer.byteLength(css) <= 100 * 1000, "theme.css within the 100 KB budget", `${(Buffer.byteLength(css) / 1000).toFixed(1)} KB`);
+try { execFileSync("node", ["scripts/lint-css.mjs"], { stdio: "pipe" }); check(true, "css lint: 0 warnings"); }
+catch (error) { check(false, "css lint: 0 warnings", String(error.stdout).trim().split("\n").slice(0, 3).join(" | ")); }
 
 // Nothing internal in the public repository
 const files = git("ls-files").split("\n");

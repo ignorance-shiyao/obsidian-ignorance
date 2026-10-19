@@ -1,6 +1,12 @@
 # Changelog
 
 ## Unreleased
+Review warnings cleared: highlight pills no longer use `box-decoration-break` and `ib-eink` draws its double underline with a border, so the Obsidian directory review reports nothing for the stylesheet. `npm run lint:css` (also in CI) fails on any CSS feature Obsidian 1.7.4 only partly supports or on `:has()`, and `npm run check` keeps theme.css within 100 KB.
+
+theme.css is smaller (about 99 KB, was 112 KB): the presentation styles and Mermaid colour tokens moved to Ignorance Advanced, unused tokens were removed, and the file explorer keeps CSS icons for the common file types only (notes, canvas, Excalidraw, Bases, Word, PDF, Excel, PowerPoint, images, SVG); other types use the default file icon, or the full icon set when Ignorance Advanced is enabled.
+
+The default reading column is wider (960px, was 820px); `ib-wide` is 1280px (was 1120px) and `ib-narrow` 780px (was 660px). The Content width slider now goes up to 1400px.
+
 Turning off Obsidian's 缩减栏宽 (Readable line length) now lets the note fill the pane again; the theme was still holding it at 820px.
 
 Search results in dark mode highlight matches with the same soft yellow pair as text highlights (was light text on bright yellow, about 1.6:1). In light code blocks, function names use a deepened accent colour (about 5:1 on the code background, was 3.3:1) and comments are slightly darker.

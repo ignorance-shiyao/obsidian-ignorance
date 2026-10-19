@@ -237,9 +237,8 @@
   --ib-radius-xl: 16px;
   --ib-border-1: 1px;
   --ib-border-2: 2px;
-  --ib-border-3: 3px;
   --ib-focus-width: 2px;
-  --ib-content-max: 820px;
+  --ib-content-max: 960px;
 
   --ib-space-1: 4px;
   --ib-space-2: 8px;
@@ -247,7 +246,6 @@
   --ib-space-4: 16px;
   --ib-space-5: 24px;
   --ib-space-6: 32px;
-  --ib-space-7: 48px;
   --ib-space-8: 64px;
 
   /* Type scale (design draft, Foundations) */
@@ -302,9 +300,10 @@
   --h6-line-height: 1.5;
 }
 
-/* Obsidian 在 body 上给 --font-*-theme 写了占位值，:root 上的声明到不了正文；
-   这里在 body 上重申主题默认字体栈。Obsidian「外观 → 字体」有设置时仍以它为准。 */
-body {
+/* 组件字号随正文放大：同一组变量对 body 和 .ib-large 各算一次（.ib-large 把 --font-text-size 设为 20px），
+   引用、标注、脚注、标题因此在大字模式下也按比例变化。 */
+body,
+.ib-large {
   --ib-code-text-size: calc(var(--font-text-size, 15px) * .9);
   /* Native consecutive-block headings read this variable after their own margins. */
   --heading-spacing: var(--ib-space-5);
@@ -331,6 +330,17 @@ body {
   --ib-footnote-leading: max(20px, calc(var(--font-text-size, 15px) * 20 / 15));
   --ib-details-title-size: max(14px, calc(var(--font-text-size, 15px) * 14 / 15));
   --ib-table-caption-size: max(13px, calc(var(--font-text-size, 15px) * 13 / 15));
+  --h1-size: var(--ib-heading-h1-size);
+  --h2-size: var(--ib-heading-h2-size);
+  --h3-size: var(--ib-heading-h3-size);
+  --h4-size: var(--ib-heading-h4-size);
+  --h5-size: var(--ib-heading-h5-size);
+  --h6-size: var(--ib-heading-h6-size);
+}
+
+/* Obsidian 在 body 上给 --font-*-theme 写了占位值，:root 上的声明到不了正文；
+   这里在 body 上重申主题默认字体栈。Obsidian「外观 → 字体」有设置时仍以它为准。 */
+body {
   --font-text-theme: var(--ib-font-sans);
   --font-interface-theme: var(--ib-font-interface);
   --font-monospace-theme: var(--ib-font-mono);
@@ -421,16 +431,9 @@ body {
   --ib-file-canvas: #8C6BE8;
   --ib-file-pdf: #E46B72;
   --ib-file-image: #3AAA83;
-  --ib-file-data: #D28A35;
   --ib-file-sheet: #4AA477;
-  --ib-file-web: #D26A54;
-  --ib-file-script: #D7A52B;
-  --ib-file-media: #A77AD9;
   --ib-file-word: #2B63C6;
   --ib-file-slide: #D5602B;
-  --ib-file-archive: #9A7B4F;
-  --ib-file-book: #0F8A72;
-  --ib-file-text: #7C8799;
 
   --ib-shadow-1: 0 1px 2px rgba(15, 23, 42, 0.06);
   --ib-shadow-2: 0 8px 24px rgba(15, 23, 42, 0.08);
@@ -439,7 +442,6 @@ body {
   --ib-shadow-pop: 0 8px 22px rgba(50, 85, 145, 0.16);
   --ib-shadow-drawer: var(--ib-shadow-3);
   --ib-shadow-paper: 0 0 0 1px color-mix(in srgb, var(--ib-border-default) 70%, transparent), var(--ib-shadow-1), var(--ib-shadow-2);
-  --ib-shadow-paper-long: 0 0 0 1px color-mix(in srgb, var(--ib-border-default) 70%, transparent), 0 1px 2px rgba(15, 23, 42, 0.06), 0 4px 8px rgba(15, 23, 42, 0.04);
 }
 
 .theme-dark {
@@ -523,16 +525,9 @@ body {
   --ib-file-canvas: #A98AE5;
   --ib-file-pdf: #F08A94;
   --ib-file-image: #4FC3A5;
-  --ib-file-data: #F2B84B;
   --ib-file-sheet: #6ECBA4;
-  --ib-file-web: #E9865A;
-  --ib-file-script: #EBD07A;
-  --ib-file-media: #C4A7F0;
   --ib-file-word: #6C9CF0;
   --ib-file-slide: #F0875A;
-  --ib-file-archive: #C9A777;
-  --ib-file-book: #4FC3A5;
-  --ib-file-text: #9CA3AF;
 
   --ib-shadow-1: 0 0 0 1px rgba(255, 255, 255, 0.03);
   --ib-shadow-2: 0 12px 30px rgba(5, 10, 18, 0.45);
@@ -541,7 +536,6 @@ body {
   --ib-shadow-pop: 0 8px 22px rgba(0, 0, 0, 0.28);
   --ib-shadow-drawer: var(--ib-shadow-3);
   --ib-shadow-paper: inset 0 0 0 1px color-mix(in srgb, var(--ib-text-primary) 6%, transparent), 0 2px 4px color-mix(in srgb, var(--ib-bg-primary) 35%, transparent), var(--ib-shadow-2);
-  --ib-shadow-paper-long: inset 0 0 0 1px color-mix(in srgb, var(--ib-text-primary) 6%, transparent), 0 1px 3px rgba(0, 0, 0, 0.35);
 }
 
 /* Token → Obsidian mapping. Both themes share it; only the tokens differ. */
@@ -674,13 +668,6 @@ body {
 
   /* Legacy aliases kept so existing component rules keep resolving. */
   --ib-compat-blue: var(--ib-accent-brand);
-  --ib-compat-navy: var(--ib-accent-brand);
-  --ib-compat-navy-soft: var(--ib-accent-subtle);
-  --ib-compat-text: var(--ib-text-primary);
-  --ib-compat-muted: var(--ib-text-secondary);
-  --ib-compat-border: var(--ib-border-default);
-  --ib-compat-soft: var(--ib-bg-secondary);
-  --ib-compat-code: var(--ib-bg-code-inline);
   --ib-compat-code-block: var(--ib-bg-code-block);
   --ib-compat-code-text: var(--ib-text-primary);
   --ib-compat-code-border: var(--ib-border-default);
@@ -797,8 +784,6 @@ body {
 .markdown-rendered mark:not(.slide-surface mark) {
   padding: 0.1em 0.55em;
   border-radius: var(--ib-radius-md);
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
 }
 body { --inline-title-color: var(--ib-text-primary); }
 
@@ -1207,17 +1192,6 @@ kbd,
 .nav-file-title:is([data-path$=".ppt" i],[data-path$=".pptx" i],[data-path$=".pps" i],[data-path$=".ppsx" i],[data-path$=".odp" i],[data-path$=".key" i],[data-path$=".dps" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 3h20'/%3E%3Cpath d='M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3'/%3E%3Cpath d='m7 21 5-5 5 5'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-slide); }
 .nav-file-title:is([data-path$=".png" i],[data-path$=".jpg" i],[data-path$=".jpeg" i],[data-path$=".gif" i],[data-path$=".webp" i],[data-path$=".bmp" i],[data-path$=".avif" i],[data-path$=".heic" i],[data-path$=".ico" i],[data-path$=".tif" i],[data-path$=".tiff" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z'/%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5'/%3E%3Ccircle cx='10' cy='12' r='2'/%3E%3Cpath d='m20 17-1.296-1.296a2.41 2.41 0 0 0-3.408 0L9 22'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-image); }
 .nav-file-title:is([data-path$=".svg" i],[data-path$=".drawio" i],[data-path$=".dio" i],[data-path$=".xmind" i],[data-path$=".fig" i],[data-path$=".sketch" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z'/%3E%3Crect x='3' y='14' width='7' height='7' rx='1'/%3E%3Ccircle cx='17.5' cy='17.5' r='3.5'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-canvas); }
-.nav-file-title:is([data-path$=".mp3" i],[data-path$=".wav" i],[data-path$=".m4a" i],[data-path$=".flac" i],[data-path$=".ogg" i],[data-path$=".aac" i],[data-path$=".opus" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6.835V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2h-.343'/%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5'/%3E%3Cpath d='M2 19a2 2 0 0 1 4 0v1a2 2 0 0 1-4 0v-4a6 6 0 0 1 12 0v4a2 2 0 0 1-4 0v-1a2 2 0 0 1 4 0'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-media); }
-.nav-file-title:is([data-path$=".mp4" i],[data-path$=".mov" i],[data-path$=".webm" i],[data-path$=".mkv" i],[data-path$=".avi" i],[data-path$=".m4v" i],[data-path$=".ogv" i],[data-path$=".3gp" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z'/%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5'/%3E%3Cpath d='M15.033 13.44a.647.647 0 0 1 0 1.12l-4.065 2.352a.645.645 0 0 1-.968-.56v-4.704a.645.645 0 0 1 .967-.56z'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-media); }
-.nav-file-title:is([data-path$=".zip" i],[data-path$=".rar" i],[data-path$=".7z" i],[data-path$=".tar" i],[data-path$=".gz" i],[data-path$=".tgz" i],[data-path$=".bz2" i],[data-path$=".xz" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M13.659 22H18a2 2 0 0 0 2-2V8a2.4 2.4 0 0 0-.706-1.706l-3.588-3.588A2.4 2.4 0 0 0 14 2H6a2 2 0 0 0-2 2v11.5'/%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5'/%3E%3Cpath d='M8 12v-1'/%3E%3Cpath d='M8 18v-2'/%3E%3Cpath d='M8 7V6'/%3E%3Ccircle cx='8' cy='20' r='2'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-archive); }
-.nav-file-title:is([data-path$=".epub" i],[data-path$=".mobi" i],[data-path$=".azw3" i],[data-path$=".fb2" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 5v16'/%3E%3Cpath d='M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-book); }
-.nav-file-title:is([data-path$=".html" i],[data-path$=".htm" i],[data-path$=".mhtml" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20'/%3E%3Cpath d='M2 12h20'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-web); }
-.nav-file-title:is([data-path$=".json" i],[data-path$=".jsonc" i],[data-path$=".json5" i],[data-path$=".yaml" i],[data-path$=".yml" i],[data-path$=".xml" i],[data-path$=".toml" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z'/%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5'/%3E%3Cpath d='M10 12a1 1 0 0 0-1 1v1a1 1 0 0 1-1 1 1 1 0 0 1 1 1v1a1 1 0 0 0 1 1'/%3E%3Cpath d='M14 18a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1 1 1 0 0 1-1-1v-1a1 1 0 0 0-1-1'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-data); }
-.nav-file-title:is([data-path$=".ini" i],[data-path$=".conf" i],[data-path$=".cfg" i],[data-path$=".env" i],[data-path$=".properties" i],[data-path$=".plist" i],[data-path$=".lock" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 8a1 1 0 0 1-1-1V2a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8z'/%3E%3Cpath d='M20 8v12a2 2 0 0 1-2 2h-4.182'/%3E%3Cpath d='m3.305 19.53.923-.382'/%3E%3Cpath d='M4 10.592V4a2 2 0 0 1 2-2h8'/%3E%3Cpath d='m4.228 16.852-.924-.383'/%3E%3Cpath d='m5.852 15.228-.383-.923'/%3E%3Cpath d='m5.852 20.772-.383.924'/%3E%3Cpath d='m8.148 15.228.383-.923'/%3E%3Cpath d='m8.53 21.696-.382-.924'/%3E%3Cpath d='m9.773 16.852.922-.383'/%3E%3Cpath d='m9.773 19.148.922.383'/%3E%3Ccircle cx='7' cy='18' r='3'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-data); }
-.nav-file-title:is([data-path$=".sql" i],[data-path$=".sqlite" i],[data-path$=".db" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cellipse cx='12' cy='5' rx='9' ry='3'/%3E%3Cpath d='M3 5V19A9 3 0 0 0 21 19V5'/%3E%3Cpath d='M3 12A9 3 0 0 0 21 12'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-data); }
-.nav-file-title:is([data-path$=".sh" i],[data-path$=".bash" i],[data-path$=".zsh" i],[data-path$=".fish" i],[data-path$=".bat" i],[data-path$=".cmd" i],[data-path$=".ps1" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z'/%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5'/%3E%3Cpath d='m8 16 2-2-2-2'/%3E%3Cpath d='M12 18h4'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-script); }
-.nav-file-title:is([data-path$=".js" i],[data-path$=".mjs" i],[data-path$=".cjs" i],[data-path$=".ts" i],[data-path$=".tsx" i],[data-path$=".jsx" i],[data-path$=".py" i],[data-path$=".java" i],[data-path$=".kt" i],[data-path$=".go" i],[data-path$=".rs" i],[data-path$=".c" i],[data-path$=".h" i],[data-path$=".cpp" i],[data-path$=".hpp" i],[data-path$=".cs" i],[data-path$=".rb" i],[data-path$=".php" i],[data-path$=".swift" i],[data-path$=".lua" i],[data-path$=".r" i],[data-path$=".dart" i],[data-path$=".vue" i],[data-path$=".svelte" i],[data-path$=".css" i],[data-path$=".scss" i],[data-path$=".less" i],[data-path$=".ipynb" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z'/%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5'/%3E%3Cpath d='M10 12.5 8 15l2 2.5'/%3E%3Cpath d='m14 12.5 2 2.5-2 2.5'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-script); }
-.nav-file-title:is([data-path$=".txt" i],[data-path$=".log" i],[data-path$=".text" i]) { --ib-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z'/%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5'/%3E%3C/svg%3E"); --ib-file-color: var(--ib-file-text); }
 
 .theme-dark .workspace-split.mod-left-split,
 .theme-dark .workspace-split.mod-right-split,
@@ -2197,94 +2171,20 @@ textarea {
  * ========================================================================== */
 
 .theme-light {
-  --ib-mm-canvas: var(--ib-bg-primary);
-  --ib-mm-text: var(--ib-text-primary);
-  --ib-mm-muted: var(--ib-text-secondary);
-  --ib-mm-card: #FFFFFF;
-  --ib-mm-node-fill: var(--ib-accent-subtle);
-  --ib-mm-node-stroke: color-mix(in srgb, var(--ib-accent-brand) 40%, transparent);
-  --ib-mm-cluster-fill: var(--ib-bg-secondary);
-  --ib-mm-cluster-stroke: var(--ib-border-default);
-  --ib-mm-alt-fill: #EDF2F9;
-  --ib-mm-note-fill: #EBF2FC;
-  --ib-mm-note-stroke: #B0C5E8;
-  --ib-mm-line: #8FA6CC;
-  --ib-mm-arrow: #6F8FC9;
-  --ib-mm-grid: rgba(107, 114, 128, 0.22);
-  --ib-mm-crit-fill: #FCEBEB;
-  --ib-mm-crit-stroke: #B63D49;
-  --ib-mm-active-fill: #E9F0FF;
-  --ib-mm-active-stroke: #356FD8;
-  --ib-mm-done-fill: #EBFCF1;
-  --ib-mm-done-stroke: #247A49;
-  --ib-mm-group-cluster: 8%;
-  --ib-mm-group-stroke: 28%;
-  --ib-mm-group-base: transparent;
   --ib-page-desk: #E9EDF3;
   --ib-page-paper: #FFFFFF;
-  --ib-mm-section-tint: 16%;
-  --ib-mm-task-text: color-mix(in srgb, var(--ib-accent-solid) 75%, var(--ib-mm-text));
-  --ib-mm-group-node: 14%;
-  --ib-mm-on-series: #F5F9FF;
-  --ib-mm-shadow: drop-shadow(0 1px 1.5px rgba(31, 55, 110, 0.07)) drop-shadow(0 4px 10px color-mix(in srgb, var(--ib-accent-brand) 8%, transparent));
 }
 
 .theme-dark {
-  --ib-mm-canvas: var(--ib-bg-primary);
-  --ib-mm-text: var(--ib-text-primary);
-  --ib-mm-muted: var(--ib-text-secondary);
-  --ib-mm-card: #243249;
-  --ib-mm-node-fill: var(--ib-accent-subtle);
-  --ib-mm-node-stroke: color-mix(in srgb, var(--ib-accent-brand) 80%, transparent);
-  --ib-mm-cluster-fill: #111827;
-  --ib-mm-cluster-stroke: #52678A;
-  --ib-mm-alt-fill: #1B2537;
-  --ib-mm-note-fill: #141F2C;
-  --ib-mm-note-stroke: #324A67;
-  --ib-mm-line: #8AA3CF;
-  --ib-mm-arrow: #A9BFE6;
-  --ib-mm-grid: rgba(156, 163, 175, 0.24);
-  --ib-mm-crit-fill: #2C1414;
-  --ib-mm-crit-stroke: #F87171;
-  --ib-mm-active-fill: #1B2B48;
-  --ib-mm-active-stroke: #6F9AF4;
-  --ib-mm-done-fill: #142C23;
-  --ib-mm-done-stroke: #34D399;
-  --ib-mm-group-cluster: 4%;
-  --ib-mm-group-stroke: 65%;
-  --ib-mm-group-base: #1A2538;
   --ib-page-desk: #0A1120;
   --ib-page-paper: #141E30;
-  --ib-mm-section-tint: 7%;
-  --ib-mm-task-text: var(--ib-mm-text-accent);
-  --ib-mm-group-node: 22%;
-  --ib-mm-on-series: #10151F;
-  --ib-mm-shadow: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.35));
 }
 
 /* Diagram outlines and connectors: the accent, lifted in dark mode so thin
    strokes stay visible on the dark canvas (the plugin sets it per palette). */
 body {
-  --ib-mm-accent-stroke: var(--ib-accent-brand);
-  --ib-mm-text-accent: var(--ib-text-accent);
-  --ib-mm-series-1: var(--ib-chart-1);
-  --ib-mm-series-text-1: var(--ib-mm-text);
-  --ib-mm-series-2: var(--ib-chart-2);
-  --ib-mm-series-text-2: var(--ib-mm-text);
-  --ib-mm-series-3: var(--ib-chart-3);
-  --ib-mm-series-text-3: var(--ib-mm-text);
-  --ib-mm-series-4: var(--ib-chart-4);
-  --ib-mm-series-text-4: var(--ib-mm-text);
-  --ib-mm-series-5: var(--ib-chart-5);
-  --ib-mm-series-text-5: var(--ib-mm-text);
-  --ib-mm-series-6: var(--ib-chart-6);
-  --ib-mm-series-text-6: var(--ib-mm-text);
-  --ib-mm-series-7: var(--ib-chart-7);
-  --ib-mm-series-text-7: var(--ib-mm-text);
-  --ib-mm-series-8: var(--ib-chart-8);
-  --ib-mm-series-text-8: var(--ib-mm-text);
 }
-.theme-dark { --ib-mm-accent-stroke: color-mix(in srgb, var(--ib-accent-brand) 70%, #FFFFFF); }
+.theme-dark {}
 
 /* ---------- Every family: text, connectors, grid ---------- */
 
@@ -2729,7 +2629,7 @@ body {
 ):not(#_ib):not(#_ib2) {
   position: relative;
   box-sizing: border-box;
-  width: min(calc(100% - 48px), var(--ib-content-max, 820px));
+  width: min(calc(100% - 48px), var(--ib-content-max, 960px));
   max-width: none;
   margin: 0 auto;
   padding-inline: clamp(var(--ib-space-4, 16px), 3vw, var(--ib-space-6, 32px));
@@ -2837,7 +2737,6 @@ body.is-phone .workspace-leaf-content[data-type="markdown"] :is(
  * ========================================================================== */
 
 body {
-  --ib-icon-list: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 12h.01'/%3E%3Cpath d='M3 18h.01'/%3E%3Cpath d='M3 6h.01'/%3E%3Cpath d='M8 12h13'/%3E%3Cpath d='M8 18h13'/%3E%3Cpath d='M8 6h13'/%3E%3C/svg%3E");
   --ib-heading-color: var(--ib-accent-solid);
   --ib-sec-bg: color-mix(in srgb, var(--ib-bg-primary) 20%, #FFFFFF);
   --ib-sec-head-bg: color-mix(in srgb, var(--ib-accent-brand) 4%, var(--ib-sec-bg));
@@ -2951,106 +2850,6 @@ body {
   color: var(--text-normal);
 }
 
-/* Presentation view styles (used by the Ignorance Advanced plugin) */
-/* 部分移植自 MorphDraft src/styles/slides.css（MIT）；适配 Ignorance Advanced 演示视图。 */
-/* ===== 幻灯片视觉：统一放在 .slide-surface，供 reveal 预览与导出离屏截图共用 ===== */
-/* reveal.css 默认会给容器/letterbox 铺白底，缩放居中后在幻灯片四周露出"白边框"，
-   在暗色主题下尤其割裂。强制透明 → letterbox 直接透出 .slide-frame(=var(--bg))，无缝一片。 */
-/* reveal.css 默认给容器/letterbox 铺白底，缩放居中后在幻灯片四周露出白边框（暗色尤其割裂）。
-   只把这些容器底色透明 → letterbox 透出 .slide-frame，无缝。注意：不要动 section 的 padding——
-   .slide-surface 自身的内容内边距来自它，清零会让内容越界。 */
-
-/* Presentation controls use Ignorance design tokens; the plugin stylesheet
-   owns only the geometry required by the view. */
-/* 操作栏：翻页、外观、输出、分屏都在这一条里；按钮与下拉统一为 30px 高的无边框控件。 */
-/* 皮肤、画幅、动效用按钮 + Obsidian 菜单，菜单样式由主题统一，不走系统下拉。 */
-
-/* 全屏翻页：只在全屏出现；鼠标移动时淡入，静止约 2 秒后淡出，不打扰放映。 */
-/* 这个视图的全部操作都在顶部操作栏，标题栏不再放「⋯」菜单。 */
-.workspace-leaf-content[data-type="ignorance-presentation"] .view-header .view-actions {
-  display: none;
-}
-/* 演示舞台跟随 Ignorance 主题的桌面底色（与笔记纸面外的底色一致），幻灯片皮肤只作用于画幅内部。
-   幻灯片作为一块悬浮画幅居中（Reveal margin 留出四周空间），操作区是舞台顶部的悬浮条。 */
-
-/* Reveal.js 会把幻灯片的 class 复制到铺满舞台的背景层（.backgrounds > .slide-background）上，
-   皮肤写给 .slide-surface 的底色、边框和条纹装饰会连带画满整个舞台，看起来像多叠了一页。
-   背景层只保留透明，画幅外露出舞台底色。 */
-
-/* fragment（\3c !-- step --> 分步块）默认全显：编辑预览、缩略图、导出都不因分步而隐藏内容。
-   放映时由 SlidePreview 的 .is-presenting 规则恢复「未 .visible 则隐藏」的分步行为。
-   用 !important 压过 reveal.css 的 .fragment{opacity:0}。 */
-/* S1: 内容页顶部主色细线，赋予「成套设计」观感（封面/章节页不加，它们另有处理） */
-
-/* 自动续页：顶对齐（无论原版式），内容从顶部顺排；重复的 H1 作为「章节眉头」略收敛 */
-
-/* ---- 标题排印 ---- */
-
-/* ---- 正文元素 ---- */
-
-/* ---- 容器与图表 ---- */
-
-/* 图片：圆角 + 细边 + 轻阴影 */
-
-/* ===== 版式 ===== */
-/* Blocks keep their height: shrinking squashed code and formula blocks into
-   slivers and hid the overflow that moves them to the next page. */
-/* 封面仅保留右上单角环境光，正文沿用静态底色。 */
-/* S1: 章节页大色块底，强分隔感 */
-
-/* 图文版式（借鉴 Gamma 图左/图右）：首张图浮到一侧，正文环绕 */
-
-/* ===== 新增版式：split（自动双栏）/ grid（卡片栅格）/ image-full（整图铺底）===== */
-/* split / grid 复用 default 的容器与标题骨架，仅正文排布不同 */
-/* split：正文自动分两栏（磁带式流排），块不被栏切断 */
-/* The divider sits in the middle of the gap between the two columns. */
-/* 内容自带分栏（:::cols）时不再二次分栏（见上，仅 :not(.ib-has-cols) 分栏），否则整个容器挤进左栏 */
-/* 列表是最常见的“厚重内容”：让条目跨栏流动，只保证单个条目不被栏切断 */
-/* grid：正文块排成 2 列卡片栅格 */
-
-/* image-full：首图整屏铺底，标题/正文叠加在底部，暗角保证可读 */
-
-/* 多栏：直接子元素（.col 或直接放 :::panel/:::card 等）一律等宽 */
-
-/* PPT 组件在幻灯片内的收口：画廊图去掉全局图片边框/限高，KPI 数字随画布略收 */
-
-/* ===== 逐语法适配（PPT 设计稿）：幻灯片内各 markdown 语法的样式精修，token 驱动 =====
-   注意：不动通用 ul/ol 标记（::marker 已着色），以免与 .kpi-grid/.steps/.process/.timeline
-   等复用 ul>li 的组件互相打架。这里只补「原本幻灯片里缺样式」的语法。 */
-
-/* 无序/有序列表：仅调间距，标记沿用既有 ::marker 主色 */
-
-/* 任务清单：复选框对齐主色、已完成项淡出 */
-
-/* 行内：键位 kbd / 高亮 mark（base.css 仅给 .doc-preview，幻灯片这里补齐） */
-
-/* 提示框/标注：幻灯片内统一圆角，贴近设计稿卡片 */
-
-/* 时间线 / 步骤：幻灯片内字号与间距收口，避免溢出 */
-
-/* 分隔线（幻灯片内的 *** / ___；--- 是分页符不走这里）：纤细主色渐隐 */
-/* 图注 figure/figcaption（base.css 的同名样式仅作用于 .doc-preview，幻灯片这里补齐） */
-/* 脚注：幻灯片内缩小、收口 */
-
-/* 内容较多时的兜底：保持画布比例，不让正文越过 16:9 边界。 */
-
-/* V3.3 翻页：复用主题时长，只允许opacity/transform。 */
-@keyframes ib-ppt-page-in {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* 导出 PPTX 时逐页截图，冻结过渡与进入动效，避免截到半透明的中间帧。 */
-
-/* M4-4: 演讲者备注只在演讲者窗口可见，幻灯片正文/缩略图/导出中隐藏 */
-.speaker-notes { display: none; }
-
-/* ::: 容器在幻灯片里：阅读视图的尺寸按像素设计，放到放大的画布上要改成按比例分配 */
-
-/* Palette skins carry their own light or dark mode, whatever the app is in;
-   code colours follow the slide, not the window. */
-
-/* End of presentation view styles */
 
 /* 色值圆点：行内代码整段是颜色值（#4D81EF、rgb()、hsl()…）时，在值左侧显示该颜色的小圆点；
    细描边让白色、浅色和半透明色也看得见。由 Ignorance Advanced 插入。 */
@@ -3369,12 +3168,12 @@ body { --ib-chapter-radius: 26px; --ib-chapter-rail-width: 3px; --ib-chapter-rai
  *   ib-compact  tighter paragraph rhythm ib-no-title hide the inline title
  * ========================================================================== */
 .ib-wide {
-  --ib-content-max: 1120px;
-  --file-line-width: 1120px;
+  --ib-content-max: 1280px;
+  --file-line-width: 1280px;
 }
 .ib-narrow {
-  --ib-content-max: 660px;
-  --file-line-width: 660px;
+  --ib-content-max: 780px;
+  --file-line-width: 780px;
 }
 .ib-compact {
   --ib-paragraph-gap: 0.4em;
@@ -3414,35 +3213,6 @@ body { --ib-chapter-radius: 26px; --ib-chapter-rail-width: 3px; --ib-chapter-rai
   --ib-focus-width: 3px;
   --text-normal: var(--ib-text-primary);
   --text-muted: var(--ib-text-primary);
-  /* 组件字号变量在 body 上已按 15px 算好；这里按 20px 重算，引用、标注、脚注、标题随正文一起放大。 */
-  --ib-code-text-size: calc(var(--font-text-size, 15px) * .9);
-  --heading-spacing: var(--ib-space-5);
-  --ib-heading-h1-size: max(30px, calc(var(--font-text-size, 15px) * 30 / 15));
-  --ib-heading-h2-size: max(22px, calc(var(--font-text-size, 15px) * 22 / 15));
-  --ib-heading-h3-size: max(18px, calc(var(--font-text-size, 15px) * 18 / 15));
-  --ib-heading-h4-size: max(16px, calc(var(--font-text-size, 15px) * 16 / 15));
-  --ib-heading-h5-size: max(14px, calc(var(--font-text-size, 15px) * 14 / 15));
-  --ib-heading-h6-size: max(12px, calc(var(--font-text-size, 15px) * 12 / 15));
-  --ib-quote-size: max(15px, calc(var(--font-text-size, 15px) * 15 / 15));
-  --ib-quote-leading: max(24px, calc(var(--font-text-size, 15px) * 24 / 15));
-  --ib-quote-mark-size: max(32px, calc(var(--font-text-size, 15px) * 32 / 15));
-  --ib-callout-heading-size: max(14px, calc(var(--font-text-size, 15px) * 14 / 15));
-  --ib-callout-text-size: max(13px, calc(var(--font-text-size, 15px) * 13 / 15));
-  --ib-callout-leading: max(22px, calc(var(--font-text-size, 15px) * 22 / 15));
-  --ib-code-label-size: max(12px, calc(var(--font-text-size, 15px) * 12 / 15));
-  --ib-key-size: max(12px, calc(var(--font-text-size, 15px) * 12 / 15));
-  --ib-definition-size: max(13px, calc(var(--font-text-size, 15px) * 13 / 15));
-  --ib-definition-leading: max(24px, calc(var(--font-text-size, 15px) * 24 / 15));
-  --ib-footnote-size: max(11px, calc(var(--font-text-size, 15px) * 11 / 15));
-  --ib-footnote-leading: max(20px, calc(var(--font-text-size, 15px) * 20 / 15));
-  --ib-details-title-size: max(14px, calc(var(--font-text-size, 15px) * 14 / 15));
-  --ib-table-caption-size: max(13px, calc(var(--font-text-size, 15px) * 13 / 15));
-  --h1-size: var(--ib-heading-h1-size);
-  --h2-size: var(--ib-heading-h2-size);
-  --h3-size: var(--ib-heading-h3-size);
-  --h4-size: var(--ib-heading-h4-size);
-  --h5-size: var(--ib-heading-h5-size);
-  --h6-size: var(--ib-heading-h6-size);
 }
 .ib-large :is(a, .external-link, .internal-link) {
   text-decoration: underline;
@@ -3488,7 +3258,8 @@ body { --ib-chapter-radius: 26px; --ib-chapter-rail-width: 3px; --ib-chapter-rai
 .ib-eink :is(mark, .cm-highlight):not(#_ib):not(#_ib2) {
   background: transparent;
   color: inherit;
-  text-decoration: underline double;
+  border-bottom: 3px double currentColor;
+  border-radius: 0;
 }
 .ib-eink :is(th, td):not(#_ib):not(#_ib2) { background: transparent; }
 /* 纸面噪点画在外层视图的 ::before 上：编辑视图本身带 cssclass，直接关；阅读视图由带 cssclass 的内层盖住。 */

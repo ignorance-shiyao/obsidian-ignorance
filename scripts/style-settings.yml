@@ -12,9 +12,9 @@ settings:
         title: Content width
         description: Maximum width of the note body.
         type: variable-number-slider
-        default: 820
+        default: 960
         min: 600
-        max: 1200
+        max: 1400
         step: 20
         format: px
     -
