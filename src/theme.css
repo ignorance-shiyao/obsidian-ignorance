@@ -1384,8 +1384,8 @@ body.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile:not(#_
 /* Note header: the folder path (Obsidian's breadcrumb) shows only where
    Ignorance Advanced found room for it (.ib-path-shown) or the user expanded
    it with the folder button; otherwise just the file name. Without the plugin
-   (no folder button in the header) Obsidian's own path stays as it is. */
-.workspace-leaf-content:has(.ib-path-toggle):not(.ib-path-shown) .view-header-title-parent { display: none; }
+   (no body.ib-header-path) Obsidian's own path stays as it is. */
+body.ib-header-path .workspace-leaf-content:not(.ib-path-shown) .view-header-title-parent { display: none; }
 
 /* Native and pop-out window title bars use the same surface as their body. */
 .titlebar,
