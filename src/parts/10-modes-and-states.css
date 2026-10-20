@@ -192,3 +192,12 @@ body {
 }
 .canvas-node-container { border-radius: var(--ib-card-radius, var(--radius-m)); }
 :is(.canvas-node.is-focused, .canvas-node.is-selected) .canvas-node-container { box-shadow: 0 0 0 var(--ib-focus-width) var(--ib-accent-subtle); }
+
+/* Theme and plugin browser: the highlighted card is only the keyboard cursor (the first one by default), not the
+   installed or active one. Obsidian fills it grey, which reads as "chosen"; a thin accent edge says "cursor". */
+body .community-item.is-selected.is-selected,
+body .community-item:hover.is-selected:hover {
+  background-color: var(--ib-bg-primary);
+  border-color: var(--ib-border-default);
+  box-shadow: inset 3px 0 0 var(--ib-accent-brand);
+}
