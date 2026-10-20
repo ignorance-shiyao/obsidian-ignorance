@@ -1,6 +1,8 @@
 # Changelog
 
 ## Unreleased
+Task checkboxes are round (all task statuses, Reading view and Live Preview).
+
 The command palette and quick switcher input no longer draws its own box inside the panel: the nested frame, the clipped focus ring and the doubled blue line under it are gone, leaving one divider line that turns blue on focus.
 
 The source is now split into `src/parts/NN-name.css` (tokens, prose, components, workspace chrome, editor content, diagrams, page and design, modes), joined in file-name order into the same `theme.css`; comment-only leftovers were removed. The built file is byte-identical to before the split.

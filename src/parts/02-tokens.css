@@ -30,7 +30,7 @@
   --ib-code-label-size: 12px;
   --ib-code-leading: 1.667;
   --ib-code-highlight-radius: 5px;
-  --ib-task-radius: 4px;
+  --ib-task-radius: 50%;
   --ib-key-radius: 999px;
   --ib-key-size: 12px;
   --ib-definition-size: 13px;

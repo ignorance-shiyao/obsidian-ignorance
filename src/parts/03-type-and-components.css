@@ -295,6 +295,11 @@ input[type="radio"] {
   border-radius: 50%;
 }
 
+/* Task checkboxes are round in both views (the generic checkbox radius above would win in Live Preview). */
+input.task-list-item-checkbox:not(#_ib) {
+  border-radius: var(--ib-task-radius);
+}
+
 /* Toggles: Obsidian owns the geometry through its --toggle-* variables, so only
    the colors are ours. The hidden <input> inside must stay bare — giving it the
    generic checkbox chrome made it surface as a white slab over the track. */
