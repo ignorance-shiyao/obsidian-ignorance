@@ -229,6 +229,23 @@ select:focus {
   outline-offset: 0;
 }
 
+/* The command palette and quick switcher already sit in a bordered, rounded
+   panel (.prompt). A boxed input inside it gives a frame within a frame, and
+   its focus ring is clipped by the panel's overflow. Keep the input bare like
+   Obsidian does and let a single divider line carry the focus state. */
+.prompt .prompt-input:not(#_ib),
+.prompt .prompt-input:is(:hover, :focus, :focus-visible):not(#_ib) {
+  background: transparent;
+  border: 0;
+  border-bottom: var(--ib-border-1) solid var(--ib-border-default);
+  border-radius: 0;
+  outline: none;
+  box-shadow: none;
+}
+.prompt .prompt-input:is(:focus, :focus-visible):not(#_ib) {
+  border-bottom-color: var(--ib-focus);
+}
+
 /* Never nest: inside a property row the row is the focus target, so its inputs
    stay completely bare. */
 .metadata-property :is(input, textarea, select, .metadata-input-longtext):not(#_ib),

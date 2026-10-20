@@ -18,6 +18,7 @@ const page = `
   </div></div></div>
 </div>
 <div class="search-result-file-matched-text">命中</div>
+<div class="prompt"><input type="text" class="prompt-input" value="命令"></div>
 <div class="workspace-leaf-content" data-type="markdown" style="width:1500px"><div class="markdown-preview-view is-readable-line-width"><div class="markdown-preview-sizer"><div class="callout" data-callout="aside" id="wide">s</div></div></div></div>
 <div class="workspace-leaf-content" data-type="markdown" style="width:1500px"><div class="markdown-preview-view markdown-rendered is-readable-line-width ib-wide-tables"><div class="markdown-preview-sizer"><div class="el-table" id="widetable"><table><tbody><tr><td>x</td></tr></tbody></table></div></div></div></div>
 <div class="workspace-leaf-content" data-type="markdown" style="width:1500px"><div class="markdown-preview-view markdown-rendered is-readable-line-width"><div class="markdown-preview-sizer"><div class="el-table" id="plaintable"><table><tbody><tr><td>x</td></tr></tbody></table></div></div></div></div>
@@ -47,6 +48,7 @@ const probe = () => tab.evaluate(() => {
     quote: parseFloat(s("blockquote p").fontSize), callout: parseFloat(s(".callout-content p").fontSize),
     mark: s("mark").backgroundColor, td: s("tr:nth-child(2) td").backgroundColor,
     wideTable: parseFloat(s("#widetable").width), plainTable: parseFloat(s("#plaintable").width),
+    promptInput: (() => { document.querySelector(".prompt-input").focus(); const c = s(".prompt-input"); return { top: c.borderTopWidth, left: c.borderLeftWidth, radius: c.borderTopLeftRadius, outline: c.outlineStyle, bottom: c.borderBottomWidth }; })(),
     wide: s("#wide").float, narrow: s("#narrow").float
   };
 });
@@ -62,6 +64,7 @@ for (const [name, value] of Object.entries(light.tokens)) check(value >= 4.5, `c
 check(light.h4 === light.h1 && light.h5 !== light.h1 && light.h5 === light.textPrimary, `H1–H4 use the heading colour, H5 the text colour (${light.h4}, ${light.h5})`);
 check(light.titleWeight === "500", `page title weight 500 (${light.titleWeight})`);
 check(light.wideTable >= 1300 && light.plainTable <= 960, `ib-wide-tables lets a table use the pane while text stays narrow (${light.wideTable}px vs ${light.plainTable}px)`);
+check(light.promptInput.top === "0px" && light.promptInput.left === "0px" && light.promptInput.radius === "0px" && light.promptInput.outline === "none" && light.promptInput.bottom !== "0px", `command palette input is bare: no box, no ring, one divider line (${JSON.stringify(light.promptInput)})`);
 check(light.wide === "right" && light.narrow === "none", "side notes go to the margin only in a wide pane");
 
 await view("");
