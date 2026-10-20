@@ -16,7 +16,8 @@
   --p-spacing: var(--ib-space-2);
   --list-spacing: 0;
 }
-.ib-no-title .inline-title {
+/* The tab header already shows the file name (and renames it), so the page title above the text is only space. */
+.inline-title {
   display: none;
 }
 

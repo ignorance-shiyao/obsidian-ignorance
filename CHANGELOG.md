@@ -1,6 +1,8 @@
 # Changelog
 
 ## Unreleased
+The page title (inline title) above the text is hidden: the tab header already shows the file name and renames it, so the title only took space. `ib-no-title` stays accepted and does nothing extra.
+
 Task checkboxes are round (all task statuses, Reading view and Live Preview).
 
 The command palette and quick switcher input no longer draws its own box inside the panel: the nested frame, the clipped focus ring and the doubled blue line under it are gone, leaving one divider line that turns blue on focus.
