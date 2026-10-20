@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.0.22
 In the theme and plugin browser the highlighted card (the keyboard cursor, not the active one) is drawn with a thin accent edge instead of a grey fill, so it no longer looks like the chosen item.
 
 The page title (inline title) above the text is hidden: the tab header already shows the file name and renames it, so the title only took space. `ib-no-title` stays accepted and does nothing extra.

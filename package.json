@@ -1,6 +1,6 @@
 {
   "name": "obsidian-ignorance",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "private": true,
   "description": "Ignorance, a calm Obsidian theme. src/parts/*.css is the readable source (joined in file-name order); theme.css is the minified build.",
   "license": "MIT",
