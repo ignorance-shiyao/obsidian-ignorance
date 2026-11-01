@@ -118,3 +118,23 @@ body {
 
 
 
+
+/* Obsidian's diagram renderer reads these: nodes on an accent wash, softened connectors, the chart palette. */
+body {
+  --mermaid-background: var(--ib-diagram-bg);
+  --mermaid-line-color: color-mix(in srgb, var(--ib-accent-brand) 45%, var(--ib-text-muted));
+  --mermaid-surface: var(--ib-accent-subtle);
+  --mermaid-surface-alt: var(--ib-bg-secondary);
+  --mermaid-border-color: color-mix(in srgb, var(--ib-accent-brand) 45%, transparent);
+  --mermaid-accent: var(--ib-accent-brand);
+  --mermaid-critical: var(--ib-error-icon);
+  --mermaid-radius: var(--ib-radius-md);
+  --mermaid-color-1: var(--ib-chart-1);
+  --mermaid-color-2: var(--ib-chart-2);
+  --mermaid-color-3: var(--ib-chart-3);
+  --mermaid-color-4: var(--ib-chart-4);
+  --mermaid-color-5: var(--ib-chart-5);
+  --mermaid-color-6: var(--ib-chart-6);
+  --mermaid-color-7: var(--ib-chart-7);
+  --mermaid-color-8: var(--ib-chart-8);
+}
