@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.0.23
+## 1.0.24
 Diagrams drawn by Obsidian 1.13 follow the theme without the plugin: nodes sit on a light accent wash, connectors are softer, and charts use the theme palette, in light and dark.
 
 ## 1.0.22
