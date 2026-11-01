@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.23
+Diagrams drawn by Obsidian 1.13 follow the theme without the plugin: nodes sit on a light accent wash, connectors are softer, and charts use the theme palette, in light and dark.
+
 ## 1.0.22
 In the theme and plugin browser the highlighted card (the keyboard cursor, not the active one) is drawn with a thin accent edge instead of a grey fill, so it no longer looks like the chosen item.
 
