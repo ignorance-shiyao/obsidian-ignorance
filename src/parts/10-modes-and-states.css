@@ -199,5 +199,5 @@ body .community-item.is-selected.is-selected,
 body .community-item:hover.is-selected:hover {
   background-color: var(--ib-bg-primary);
   border-color: var(--ib-border-default);
-  box-shadow: inset 3px 0 0 var(--ib-accent-brand);
+  border-color: var(--ib-accent-brand);
 }

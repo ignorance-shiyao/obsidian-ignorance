@@ -130,14 +130,7 @@
   border-radius: var(--ib-radius-md);
 }
 
-.markdown-rendered blockquote::before {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 0.3rem;
-  background: var(--blockquote-border-color);
-  border-radius: var(--ib-radius-md) 0 0 var(--ib-radius-md);
-}
+.markdown-rendered blockquote::before { content: none; }
 
 
 /* Live Preview quotes follow the reading-view quote: serif type and a quiet background. */
@@ -145,7 +138,7 @@
   --blockquote-background-color: transparent;
   background-color: var(--ib-quote-bg);
   position: relative;
-  border-inline-start-width: var(--ib-quote-rail-width);
+  border: 0;
   /* CodeMirror hangs wrapped lines with inline text-indent/padding sized for "> "; a quote with its own
      inset needs the first line and its wraps to start in the same place. */
   font-family: var(--ib-font-serif);
@@ -157,6 +150,18 @@
   padding-inline: var(--ib-quote-inset) var(--ib-space-5);
 }
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-quote .cm-quote { color: inherit; font: inherit; }
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-quote::before { border: 0; }
+/* The plugin marks the ends of each quote run; together the lines read as one rounded card. */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-quote.ib-quote-first {
+  border-start-start-radius: var(--ib-radius-lg, 12px);
+  border-start-end-radius: var(--ib-radius-lg, 12px);
+  padding-block-start: var(--ib-space-3);
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-quote.ib-quote-last {
+  border-end-start-radius: var(--ib-radius-lg, 12px);
+  border-end-end-radius: var(--ib-radius-lg, 12px);
+  padding-block-end: var(--ib-space-3);
+}
 /* CodeMirror hangs the line by a negative inline text-indent equal to the quote inset, so the hidden ">" markers
    must keep exactly one inset of width per level or the first line slides under the rail. */
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-quote:not(.cm-active) .cm-formatting-quote:not(#_ib) {
@@ -167,30 +172,11 @@
   vertical-align: top;
 }
 /* Nested quotes: Obsidian draws the inner rails as inline widgets on the first visual line only, so wrapped
-   lines lose them and sit under the rail. Hide the widgets and paint every rail as a line background instead,
-   one inset per level, like the nested blockquotes in Reading view. */
+   lines lose them. Hide the widgets; nesting reads from the inset alone, with no side rails. */
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-quote:not(.cm-active) .cm-blockquote-border { display: none; }
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-quote-2:not(#_ib) { padding-inline-start: calc(var(--ib-quote-inset) * 2); }
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-quote-3:not(#_ib) { padding-inline-start: calc(var(--ib-quote-inset) * 3); }
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-quote-4:not(#_ib) { padding-inline-start: calc(var(--ib-quote-inset) * 4); }
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-quote-2:not(.cm-active) {
-  background-image: linear-gradient(var(--ib-accent-brand), var(--ib-accent-brand));
-  background-repeat: no-repeat;
-  background-size: var(--ib-quote-rail-width) 100%;
-  background-position: var(--ib-quote-inset) 0;
-}
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-quote-3:not(.cm-active) {
-  background-image: linear-gradient(var(--ib-accent-brand), var(--ib-accent-brand)), linear-gradient(var(--ib-accent-brand), var(--ib-accent-brand));
-  background-repeat: no-repeat;
-  background-size: var(--ib-quote-rail-width) 100%;
-  background-position: var(--ib-quote-inset) 0, calc(var(--ib-quote-inset) * 2) 0;
-}
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-quote-4:not(.cm-active) {
-  background-image: linear-gradient(var(--ib-accent-brand), var(--ib-accent-brand)), linear-gradient(var(--ib-accent-brand), var(--ib-accent-brand)), linear-gradient(var(--ib-accent-brand), var(--ib-accent-brand));
-  background-repeat: no-repeat;
-  background-size: var(--ib-quote-rail-width) 100%;
-  background-position: var(--ib-quote-inset) 0, calc(var(--ib-quote-inset) * 2) 0, calc(var(--ib-quote-inset) * 3) 0;
-}
 
 .callout {
   border: 1px solid color-mix(in srgb, var(--callout-color) 28%, var(--ib-bg-primary));
