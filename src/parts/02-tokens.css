@@ -15,7 +15,6 @@
   --ib-quote-leading: 24px;
   --ib-quote-mark-size: 32px;
   --ib-quote-mark-opacity: .85;
-  --ib-quote-rail-width: 2px;
   --ib-quote-inset: 40px;
   --ib-table-radius: 6px;
   /* One step above the table text, whatever size that is. */
@@ -253,11 +252,11 @@ body {
   --ib-file-sheet: #4AA477;
   --ib-file-canvas: #8C6BE8;
 
-  --ib-shadow-1: 0 1px 2px rgba(15, 23, 42, 0.06);
-  --ib-shadow-2: 0 8px 24px rgba(15, 23, 42, 0.08);
-  --ib-shadow-3: 0 12px 28px rgba(39, 54, 74, 0.14);
-  --ib-shadow-float: 0 4px 14px rgba(31, 55, 110, 0.08);
-  --ib-shadow-pop: 0 8px 22px rgba(50, 85, 145, 0.16);
+  --ib-shadow-1: 0 1px 2px rgba(74, 60, 40, 0.07);
+  --ib-shadow-2: 0 1px 2px rgba(74, 60, 40, 0.05), 0 6px 16px rgba(74, 60, 40, 0.09);
+  --ib-shadow-3: 0 2px 4px rgba(74, 60, 40, 0.05), 0 14px 32px rgba(74, 60, 40, 0.15);
+  --ib-shadow-float: var(--ib-shadow-2);
+  --ib-shadow-pop: var(--ib-shadow-3);
   --ib-shadow-drawer: var(--ib-shadow-3);
   --ib-shadow-paper: 0 0 0 1px color-mix(in srgb, var(--ib-border-default) 70%, transparent), var(--ib-shadow-1), var(--ib-shadow-2);
 }
@@ -343,11 +342,11 @@ body {
   --ib-file-sheet: #6ECBA4;
   --ib-file-canvas: #A98AE5;
 
-  --ib-shadow-1: 0 0 0 1px rgba(255, 255, 255, 0.03);
-  --ib-shadow-2: 0 12px 30px rgba(5, 10, 18, 0.45);
-  --ib-shadow-3: 0 16px 40px rgba(0, 0, 0, 0.45);
-  --ib-shadow-float: 0 4px 14px rgba(0, 0, 0, 0.35);
-  --ib-shadow-pop: 0 8px 22px rgba(0, 0, 0, 0.28);
+  --ib-shadow-1: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 1px 2px rgba(0, 0, 0, 0.32);
+  --ib-shadow-2: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 8px 20px rgba(0, 0, 0, 0.42);
+  --ib-shadow-3: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 16px 40px rgba(0, 0, 0, 0.55);
+  --ib-shadow-float: var(--ib-shadow-2);
+  --ib-shadow-pop: var(--ib-shadow-3);
   --ib-shadow-drawer: var(--ib-shadow-3);
   --ib-shadow-paper: inset 0 0 0 1px color-mix(in srgb, var(--ib-text-primary) 6%, transparent), 0 2px 4px color-mix(in srgb, var(--ib-bg-primary) 35%, transparent), var(--ib-shadow-2);
 }

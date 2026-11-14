@@ -18,7 +18,7 @@ textarea {
   background: linear-gradient(180deg, var(--ib-bg-tertiary) 0%, var(--ib-bg-hover) 100%);
   border: 1px solid var(--ib-border-default);
   border-radius: var(--ib-radius-md);
-  box-shadow: var(--ib-shadow-pop);
+  box-shadow: var(--ib-shadow-2);
 }
 
 .theme-light .tooltip .tooltip-arrow,
@@ -43,7 +43,7 @@ textarea {
   background: var(--ib-bg-active);
   border: 1px solid var(--ib-border-strong);
   border-radius: var(--ib-radius-md);
-  box-shadow: var(--ib-shadow-pop);
+  box-shadow: var(--ib-shadow-2);
 }
 
 .theme-dark .tooltip .tooltip-arrow,

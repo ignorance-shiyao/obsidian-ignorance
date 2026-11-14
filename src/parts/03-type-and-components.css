@@ -29,11 +29,11 @@
   line-height: var(--ib-small-leading);
 }
 
-/* One focus treatment everywhere: 2px brand ring, 2px offset. */
+/* One focus treatment everywhere: surface gap + 2px brand ring. */
 :is(button, input, textarea, select, .clickable-icon, .nav-file-title, .nav-folder-title, .suggestion-item):not(.metadata-property *, .metadata-container *):focus-visible {
-  outline: var(--ib-focus-width) solid var(--ib-focus);
-  outline-offset: var(--ib-space-1);
-  box-shadow: none;
+  outline: var(--ib-focus-width) solid transparent;
+  outline-offset: 0;
+  box-shadow: 0 0 0 2px var(--ib-bg-primary), 0 0 0 4px var(--ib-focus);
 }
 
 /* Tokens the spec defines that Obsidian has no variable for. */
@@ -325,13 +325,15 @@ input[type="range"] {
 
 /* Command palette and search results. */
 .suggestion-item,
-.suggestion-item.mod-complex {
+.suggestion-item.mod-complex,
+.menu-item {
   border-radius: var(--ib-radius-md);
+  transition: background-color var(--ib-dur-fast) var(--ib-ease-out), color var(--ib-dur-fast) var(--ib-ease-out);
 }
 
 .suggestion-item.is-selected {
   color: var(--ib-text-accent);
-  background: var(--ib-bg-active);
+  background: var(--ib-accent-subtle);
 }
 
 .suggestion-highlight,
@@ -346,7 +348,7 @@ input[type="range"] {
   border-radius: var(--ib-radius-xl);
   border: var(--ib-border-1) solid var(--ib-border-default);
   background: var(--ib-bg-tertiary);
-  box-shadow: var(--ib-shadow-2);
+  box-shadow: var(--ib-shadow-3);
 }
 
 kbd,
@@ -393,24 +395,16 @@ kbd,
   opacity: 1;
 }
 
-.menu {
+.menu,
+.popover {
   background: var(--ib-bg-tertiary);
   border: var(--ib-border-1) solid var(--ib-border-default);
   border-radius: var(--ib-radius-lg);
-  box-shadow: var(--ib-shadow-1);
+  box-shadow: var(--ib-shadow-2);
 }
 
-.menu-item:hover:not(.is-disabled) {
+.menu-item:is(:hover, .selected):not(.is-disabled) {
   background: var(--ib-bg-hover);
 }
 
-/* Scrollbars follow the border tokens rather than the OS default. */
-::-webkit-scrollbar-thumb {
-  background: var(--ib-border-strong);
-  border-radius: var(--ib-radius-lg);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--ib-text-muted);
-}
 
