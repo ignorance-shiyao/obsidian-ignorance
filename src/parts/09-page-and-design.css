@@ -464,3 +464,4 @@ body { --ib-chapter-radius: 26px; --ib-chapter-rail-width: 3px; --ib-chapter-rai
 .markdown-reading-view:not(.ibp-book-host) .el-table.ib-table-tall { max-height: 70vh; overflow: auto; }
 .markdown-reading-view:not(.ibp-book-host) .el-table.ib-table-tall thead :is(th, td) { position: sticky; top: 0; z-index: 2; background: var(--ib-table-heading-bg); }
 .markdown-reading-view:not(.ibp-book-host) .el-table.ib-table-tall thead tr > :first-child { z-index: 3; }
+.markdown-rendered blockquote > p.ib-quote-title { margin-bottom: .3em; color: var(--ib-accent-brand); font: 600 var(--ib-small-size) / 1.5 var(--ib-font-sans); }
